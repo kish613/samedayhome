@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.j
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
 import { Textarea } from '@/components/ui/textarea.jsx'
 import { Checkbox } from '@/components/ui/checkbox.jsx'
-import { ArrowLeft, Home, User, Phone, Mail, Calendar, MapPin, Loader2, CheckCircle, AlertCircle } from 'lucide-react'
+import { ArrowLeft, Home, User, Phone, Mail, Calendar, MapPin, Loader2, CheckCircle, AlertCircle, Clock } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { apiClient } from '../services/apiClient.js'
 import OfferResult from './OfferResult.jsx'

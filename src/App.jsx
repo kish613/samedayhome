@@ -102,21 +102,21 @@ function App() {
     <div className="min-h-screen bg-white">
       {/* Enhanced Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-4">
               <motion.img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-16 w-auto cursor-pointer"
+                className="h-20 w-auto cursor-pointer"
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               />
-              <div className="hidden md:flex items-center space-x-2">
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+              <div className="hidden md:flex flex-col space-y-1">
+                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 text-xs">
                   NAPB Approved
                 </Badge>
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
+                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 text-xs">
                   RICS Regulated
                 </Badge>
               </div>
@@ -175,7 +175,7 @@ function App() {
 
             <motion.form 
               onSubmit={handleSubmit}
-              className="max-w-lg mx-auto mb-12 bg-white/10 backdrop-blur-sm rounded-2xl p-6"
+              className="max-w-2xl mx-auto mb-12 bg-white/10 backdrop-blur-sm rounded-2xl p-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
