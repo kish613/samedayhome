@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(pgrep:*)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:propertydata.co.uk)",
+      "WebFetch(domain:platform.openai.com)",
+      "Bash(npm install)",
+      "Bash(npm install:*)"
+    ],
+    "deny": []
+  }
+}
