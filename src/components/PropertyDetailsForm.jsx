@@ -102,50 +102,80 @@ function PropertyDetailsForm({ postcode, onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Header */}
-          <div className="mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      {/* Header Section with Brand Consistency */}
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <Button 
               variant="ghost" 
               onClick={onBack}
-              className="mb-4 text-blue-900 hover:text-blue-700"
+              className="mb-6 text-white hover:text-blue-200 hover:bg-white/10"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to postcode search
             </Button>
             
             <div className="text-center">
-              <h1 className="text-4xl font-bold text-blue-900 mb-4">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="mb-6"
+              >
+                <div className="mx-auto w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center">
+                  <CheckCircle className="h-10 w-10 text-white" />
+                </div>
+              </motion.div>
+              
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 Get Your Free Cash Offer
               </h1>
-              <p className="text-xl text-gray-600 mb-2">
-                Property in <span className="font-semibold text-blue-900">{postcode}</span>
+              <p className="text-xl md:text-2xl mb-4">
+                Property in <span className="text-orange-400 font-bold">{postcode}</span>
               </p>
-              <p className="text-gray-500">
-                Please provide your property details and contact information to receive your offer within 2 hours
+              <p className="text-blue-100 text-lg max-w-3xl mx-auto">
+                Our AI-powered valuation system will analyze your property and provide you with a guaranteed cash offer within 2 hours
               </p>
             </div>
-          </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Form Section */}
+      <div className="container mx-auto px-4 max-w-6xl -mt-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
 
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               
               {/* Property Details Card */}
-              <motion.div variants={fadeInUp} initial="initial" animate="animate">
-                <Card className="h-fit">
-                  <CardHeader>
-                    <CardTitle className="flex items-center text-blue-900">
-                      <Home className="h-5 w-5 mr-2" />
+              <motion.div 
+                variants={fadeInUp} 
+                initial="initial" 
+                animate="animate"
+                className="relative"
+              >
+                <Card className="border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-white to-blue-50 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardHeader className="relative z-10">
+                    <CardTitle className="flex items-center text-blue-900 text-xl">
+                      <div className="bg-orange-100 rounded-full w-12 h-12 flex items-center justify-center mr-3 group-hover:bg-orange-500 transition-colors duration-300">
+                        <Home className="h-6 w-6 text-orange-600 group-hover:text-white transition-colors duration-300" />
+                      </div>
                       Property Details
                     </CardTitle>
+                    <p className="text-gray-600 mt-2">Tell us about your property so we can provide an accurate valuation</p>
                   </CardHeader>
-                  <CardContent className="space-y-6">
+                  <CardContent className="space-y-6 relative z-10">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="doorNumber">Door Number *</Label>
@@ -235,15 +265,24 @@ function PropertyDetailsForm({ postcode, onBack }) {
               </motion.div>
 
               {/* Contact Details Card */}
-              <motion.div variants={fadeInUp} initial="initial" animate="animate">
-                <Card className="h-fit">
-                  <CardHeader>
-                    <CardTitle className="flex items-center text-blue-900">
-                      <User className="h-5 w-5 mr-2" />
+              <motion.div 
+                variants={fadeInUp} 
+                initial="initial" 
+                animate="animate"
+                className="relative"
+              >
+                <Card className="border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-white to-green-50 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardHeader className="relative z-10">
+                    <CardTitle className="flex items-center text-blue-900 text-xl">
+                      <div className="bg-green-100 rounded-full w-12 h-12 flex items-center justify-center mr-3 group-hover:bg-orange-500 transition-colors duration-300">
+                        <User className="h-6 w-6 text-green-600 group-hover:text-white transition-colors duration-300" />
+                      </div>
                       Contact Details
                     </CardTitle>
+                    <p className="text-gray-600 mt-2">How can we reach you with your cash offer?</p>
                   </CardHeader>
-                  <CardContent className="space-y-6">
+                  <CardContent className="space-y-6 relative z-10">
                     <div>
                       <Label htmlFor="fullName">Full Name *</Label>
                       <Input
@@ -281,18 +320,20 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     </div>
 
                     {/* Permission Checkbox */}
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <div className="flex items-start space-x-3">
+                    <div className="bg-gradient-to-r from-orange-50 to-blue-50 p-6 rounded-xl border border-orange-200">
+                      <div className="flex items-start space-x-4">
                         <Checkbox
                           id="contactPermission"
                           checked={formData.contactPermission}
                           onCheckedChange={(checked) => handleInputChange('contactPermission', checked)}
+                          className="mt-1"
                         />
                         <div className="flex-1">
-                          <Label htmlFor="contactPermission" className="text-sm font-medium text-blue-900 cursor-pointer">
+                          <Label htmlFor="contactPermission" className="text-base font-semibold text-blue-900 cursor-pointer flex items-center">
+                            <CheckCircle className="h-4 w-4 mr-2 text-orange-500" />
                             Permission to Contact *
                           </Label>
-                          <p className="text-sm text-blue-700 mt-1">
+                          <p className="text-sm text-gray-700 mt-2 leading-relaxed">
                             I agree to be contacted by Same Day Home Buyer regarding my property enquiry. 
                             We will never share your details with third parties and you can unsubscribe at any time.
                           </p>
@@ -301,12 +342,26 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     </div>
 
                     {/* Trust Indicators */}
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-900 mb-2">Your Information is Safe</h4>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• We never share your details with third parties</li>
-                        <li>• No spam or unwanted marketing calls</li>
-                        <li>• GDPR compliant data handling</li>
+                    <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-xl border border-green-200">
+                      <h4 className="font-bold text-blue-900 mb-3 flex items-center">
+                        <div className="bg-green-500 rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                          <CheckCircle className="h-4 w-4 text-white" />
+                        </div>
+                        Your Information is Safe
+                      </h4>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li className="flex items-center">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                          We never share your details with third parties
+                        </li>
+                        <li className="flex items-center">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                          No spam or unwanted marketing calls
+                        </li>
+                        <li className="flex items-center">
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                          GDPR compliant data handling
+                        </li>
                       </ul>
                     </div>
                   </CardContent>
@@ -331,36 +386,109 @@ function PropertyDetailsForm({ postcode, onBack }) {
               </motion.div>
             )}
 
-            {/* Submit Button */}
+            {/* Submit Button Section */}
             <motion.div
-              className="text-center"
+              className="text-center py-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <Button 
-                type="submit" 
-                className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-4 text-lg font-semibold disabled:opacity-50"
-                disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Calculating Your Offer...
-                  </>
-                ) : (
-                  'Get My Free Cash Offer'
-                )}
-              </Button>
-              <p className="text-sm text-gray-500 mt-3">
-                {isSubmitting 
-                  ? 'Analyzing property data and market comparables...' 
-                  : "We'll calculate your offer instantly using AI-powered property analysis"
-                }
-              </p>
+              <div className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-8 text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-black/10"></div>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold mb-4">Ready for Your Instant Cash Offer?</h3>
+                  <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+                    Our AI will analyze your property details and provide a guaranteed cash offer within minutes
+                  </p>
+                  
+                  <Button 
+                    type="submit" 
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-16 py-6 text-xl font-bold rounded-xl disabled:opacity-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                        Calculating Your Offer...
+                      </>
+                    ) : (
+                      <>
+                        Get My Free Cash Offer
+                        <CheckCircle className="ml-3 h-6 w-6" />
+                      </>
+                    )}
+                  </Button>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 text-sm">
+                    <div className="flex items-center justify-center space-x-2">
+                      <CheckCircle className="h-5 w-5 text-green-400" />
+                      <span>Instant AI Analysis</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-2">
+                      <CheckCircle className="h-5 w-5 text-green-400" />
+                      <span>No Hidden Fees</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-2">
+                      <CheckCircle className="h-5 w-5 text-green-400" />
+                      <span>2-Hour Response</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-blue-200 mt-4 text-sm">
+                    {isSubmitting 
+                      ? 'Analyzing property data using 10+ market factors and AI intelligence...' 
+                      : "Join thousands of satisfied customers who chose our AI-powered valuation service"
+                    }
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </form>
         </motion.div>
+      </div>
+      
+      {/* Bottom Trust Section */}
+      <div className="bg-gray-50 py-16 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold text-blue-900 mb-6">Why Choose Same Day Home Buyer?</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-8 w-8 text-orange-600" />
+                </div>
+                <h4 className="font-semibold text-blue-900 mb-2">Guaranteed Offers</h4>
+                <p className="text-gray-600 text-sm">Every offer is backed by our commitment to complete</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                  <Clock className="h-8 w-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold text-blue-900 mb-2">2-Hour Response</h4>
+                <p className="text-gray-600 text-sm">Fast AI-powered analysis and instant decisions</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                  <Home className="h-8 w-8 text-green-600" />
+                </div>
+                <h4 className="font-semibold text-blue-900 mb-2">Any Condition</h4>
+                <p className="text-gray-600 text-sm">We buy properties in any condition, as-is</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-8 w-8 text-purple-600" />
+                </div>
+                <h4 className="font-semibold text-blue-900 mb-2">Zero Fees</h4>
+                <p className="text-gray-600 text-sm">No estate agent fees, legal costs, or hidden charges</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   )
