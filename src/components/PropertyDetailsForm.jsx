@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea.jsx'
 import { Checkbox } from '@/components/ui/checkbox.jsx'
 import { ArrowLeft, Home, User, Phone, Mail, Calendar, MapPin, Loader2, CheckCircle, AlertCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { propertyValuationService } from '../services/propertyValuation.js'
+import { apiClient } from '../services/apiClient.js'
 import OfferResult from './OfferResult.jsx'
 
 function PropertyDetailsForm({ postcode, onBack }) {
@@ -58,8 +58,8 @@ function PropertyDetailsForm({ postcode, onBack }) {
     try {
       console.log('Processing property valuation...', formData)
       
-      // Process property offer using our valuation service
-      const result = await propertyValuationService.processPropertyOffer(formData)
+      // Process property offer using our Vercel API
+      const result = await apiClient.processPropertyOffer(formData)
       
       if (result.success) {
         setOfferResult(result.data)
