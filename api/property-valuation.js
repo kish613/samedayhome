@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Property data required' })
     }
 
-    // Validate API keys
+    // Validate API keys are configured
     if (!PROPERTYDATA_API_KEY || !OPENAI_API_KEY) {
       return res.status(500).json({ 
         error: 'API keys not configured',
