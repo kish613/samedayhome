@@ -104,22 +104,14 @@ function App() {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center">
               <motion.img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-20 w-auto cursor-pointer"
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="h-24 w-auto cursor-pointer drop-shadow-md"
+                whileHover={{ scale: 1.08, rotate: 3 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
               />
-              <div className="hidden md:flex flex-col space-y-1">
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 text-xs">
-                  NAPB Approved
-                </Badge>
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 text-xs">
-                  RICS Regulated
-                </Badge>
-              </div>
             </div>
             
             <nav className="hidden lg:flex items-center space-x-8">
