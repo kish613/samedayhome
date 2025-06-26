@@ -6,10 +6,11 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Clock, Phone, Mail, CheckCircle, Star, ArrowRight, Home, Users, Award, TrendingUp, FileText, Calendar, MapPin, ChevronDown, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
+import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
 import './App.css'
 
 // Import assets
-import logoImg from './assets/samedayhomebuyer_logo_animated.png'
+const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750951255/samedayssave_fnfu6n.png'
 import heroImg from './assets/uk_houses_hero.jpg'
 import cashIcon from './assets/cash_icon.png'
 import cashGuaranteeIcon from './assets/cash_guarantee_icon.png'
@@ -18,6 +19,8 @@ function App() {
   const [address, setAddress] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
+  const [showForm, setShowForm] = useState(false)
+  const [submittedPostcode, setSubmittedPostcode] = useState('')
 
   useEffect(() => {
     setIsVisible(true)
@@ -25,7 +28,23 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Address submitted:', address)
+    if (!address.trim()) return
+    
+    // Basic postcode validation
+    const postcodeRegex = /^[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$/i
+    if (!postcodeRegex.test(address.trim())) {
+      alert('Please enter a valid UK postcode')
+      return
+    }
+    
+    setSubmittedPostcode(address.trim().toUpperCase())
+    setShowForm(true)
+  }
+
+  const handleBackToSearch = () => {
+    setShowForm(false)
+    setAddress('')
+    setSubmittedPostcode('')
   }
 
   const fadeInUp = {
@@ -74,6 +93,11 @@ function App() {
     }
   ]
 
+  // Show property details form if postcode submitted
+  if (showForm) {
+    return <PropertyDetailsForm postcode={submittedPostcode} onBack={handleBackToSearch} />
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Enhanced Header */}
@@ -84,7 +108,7 @@ function App() {
               <motion.img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-12 cursor-pointer"
+                className="h-16 w-auto cursor-pointer"
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               />
@@ -225,34 +249,122 @@ function App() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col items-center">
-              <div className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4">
+            <motion.div 
+              className="flex flex-col items-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <motion.div 
+                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
+                whileHover={{ 
+                  scale: 1.1,
+                  rotate: [0, -10, 10, -10, 0],
+                  transition: { duration: 0.5 }
+                }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: 0.2
+                }}
+                viewport={{ once: true }}
+              >
                 <Award className="h-10 w-10" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">20+</h3>
               <p className="text-gray-600 font-medium">Years Experience</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4">
+            </motion.div>
+            <motion.div 
+              className="flex flex-col items-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <motion.div 
+                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
+                whileHover={{ 
+                  scale: 1.1,
+                  y: [-2, -8, -2],
+                  transition: { duration: 0.6, repeat: Infinity, repeatType: "reverse" }
+                }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: 0.3
+                }}
+                viewport={{ once: true }}
+              >
                 <Home className="h-10 w-10" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">15,000+</h3>
               <p className="text-gray-600 font-medium">Properties Bought</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4">
+            </motion.div>
+            <motion.div 
+              className="flex flex-col items-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <motion.div 
+                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
+                whileHover={{ 
+                  scale: 1.1,
+                  rotate: [0, 360],
+                  transition: { duration: 1 }
+                }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: 0.4
+                }}
+                viewport={{ once: true }}
+              >
                 <img src={cashIcon} alt="Cash Icon" className="h-10 w-10" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">£500M+</h3>
               <p className="text-gray-600 font-medium">Total Invested</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4">
+            </motion.div>
+            <motion.div 
+              className="flex flex-col items-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <motion.div 
+                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
+                whileHover={{ 
+                  scale: 1.1,
+                  rotate: [0, -45, 45, 0],
+                  transition: { duration: 0.8 }
+                }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: 0.5
+                }}
+                viewport={{ once: true }}
+              >
                 <Clock className="h-10 w-10" />
-              </div>
+              </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">2 Hours</h3>
               <p className="text-gray-600 font-medium">Average Decision Time</p>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* As Featured In */}
@@ -604,7 +716,7 @@ function App() {
               <motion.img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-12 mb-4 brightness-0 invert cursor-pointer"
+                className="h-14 w-auto mb-4 cursor-pointer filter brightness-0 invert"
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               />
