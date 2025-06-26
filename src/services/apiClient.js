@@ -2,10 +2,8 @@
 export class ApiClient {
   
   constructor() {
-    // Use relative URLs for Vercel deployment
-    this.baseUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://your-app.vercel.app/api'
-      : '/api'
+    // Use relative URLs for both development and production
+    this.baseUrl = '/api'
   }
 
   async processPropertyOffer(formData) {
