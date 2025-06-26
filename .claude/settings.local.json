@@ -8,7 +8,9 @@
       "WebFetch(domain:propertydata.co.uk)",
       "WebFetch(domain:platform.openai.com)",
       "Bash(npm install)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(pkill:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
