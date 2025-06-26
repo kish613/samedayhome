@@ -8,9 +8,17 @@
       "config": {
         "distDir": "dist"
       }
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
     {
       "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|gif|svg|webp|mp4|woff|woff2|ttf))",
       "headers": {
