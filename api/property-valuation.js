@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     const { formData } = req.body
 
     if (!formData || !formData.postcode) {
-      return res.status(400).json({ error: 'Property data required' })
+      return res.status(400).json({ error: 'Postcode required for property valuation' })
     }
 
     console.log('📊 Form Data Received:', JSON.stringify(formData, null, 2))
