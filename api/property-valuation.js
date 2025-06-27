@@ -182,18 +182,36 @@ Remember: You have access to extensive UK property market data. Use this knowled
     const marketValuePatterns = [
       /MARKET VALUE:\s*£([\d,]+)/i,
       /market value:\s*£([\d,]+)/i,
-      /Current Market Value:\s*£([\d,]+)/i
+      /Current Market Value:\s*£([\d,]+)/i,
+      // Add more flexible patterns for common AI variations
+      /market value.{0,50}£([\d,]+)/i,
+      /current value.{0,50}£([\d,]+)/i,
+      /property value.{0,50}£([\d,]+)/i,
+      /estimated value.{0,50}£([\d,]+)/i,
+      /worth.{0,50}£([\d,]+)/i,
+      /valued at.{0,50}£([\d,]+)/i,
+      /£([\d,]+).{0,50}market value/i,
+      /£([\d,]+).{0,50}current value/i
     ]
     
     const cashOfferPatterns = [
       /CASH OFFER:\s*£([\d,]+)/i,
       /cash offer:\s*£([\d,]+)/i,
       /Cash Buyer Offer:\s*£([\d,]+)/i,
-      /competitive cash offer amount:\s*£([\d,]+)/i
+      /competitive cash offer amount:\s*£([\d,]+)/i,
+      // Add more flexible patterns for common AI variations
+      /cash offer.{0,50}£([\d,]+)/i,
+      /cash buyer.{0,50}£([\d,]+)/i,
+      /offer.{0,50}£([\d,]+)/i,
+      /quick sale.{0,50}£([\d,]+)/i,
+      /same day.{0,50}£([\d,]+)/i,
+      /£([\d,]+).{0,50}cash offer/i,
+      /£([\d,]+).{0,50}offer/i
     ]
 
     console.log('🔍 Searching for values in AI response...')
-    console.log('AI Response excerpt:', analysis.substring(0, 500) + '...')
+    console.log('AI Response excerpt:', analysis.substring(0, 1000) + '...')
+    console.log('Full AI Response Length:', analysis.length)
 
     const marketValue = extractValueFromText(analysis, marketValuePatterns)
     const cashOffer = extractValueFromText(analysis, cashOfferPatterns)
@@ -202,12 +220,13 @@ Remember: You have access to extensive UK property market data. Use this knowled
     console.log('Market Value:', marketValue)
     console.log('Cash Offer:', cashOffer)
 
-    // If we couldn't extract proper values, return an error
+    // If we couldn't extract proper values, return an error with full debug info
     if (!marketValue || !cashOffer) {
       console.error('❌ Failed to extract proper values from AI response')
       console.error('Market Value found:', marketValue)
       console.error('Cash Offer found:', cashOffer)
-      console.error('Full AI Response:', analysis)
+      console.error('FULL AI Response for debugging:')
+      console.error(analysis)
       
       return res.status(500).json({
         error: 'Failed to extract property values from AI analysis',
@@ -215,7 +234,8 @@ Remember: You have access to extensive UK property market data. Use this knowled
         debug: {
           marketValueFound: !!marketValue,
           cashOfferFound: !!cashOffer,
-          responseExcerpt: analysis.substring(0, 1000)
+          fullResponse: analysis,
+          responseLength: analysis.length
         }
       })
     }
