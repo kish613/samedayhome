@@ -17,22 +17,39 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  // IMMEDIATE DEBUG: Check environment variables first
+  console.log('🔧 Environment Check:')
+  console.log('PROPERTYDATA_API_KEY exists:', !!PROPERTYDATA_API_KEY)
+  console.log('OPENAI_API_KEY exists:', !!OPENAI_API_KEY)
+  
+  if (PROPERTYDATA_API_KEY) {
+    console.log('PROPERTYDATA_API_KEY length:', PROPERTYDATA_API_KEY.length)
+    console.log('PROPERTYDATA_API_KEY prefix:', PROPERTYDATA_API_KEY.substring(0, 8) + '...')
+  }
+  
+  if (OPENAI_API_KEY) {
+    console.log('OPENAI_API_KEY length:', OPENAI_API_KEY.length)
+    console.log('OPENAI_API_KEY prefix:', OPENAI_API_KEY.substring(0, 8) + '...')
+  }
+
   try {
     const { formData } = req.body
+    console.log('📝 Received form data:', formData)
 
     if (!formData || !formData.postcode) {
-      return res.status(400).json({ error: 'Property data required' })
+      console.log('❌ Missing form data or postcode')
+      return res.status(400).json({ error: 'Property data required - missing postcode' })
     }
 
     // Validate API keys are configured
     if (!PROPERTYDATA_API_KEY) {
-      console.error('❌ PROPERTYDATA_API_KEY not configured')
-      return res.status(500).json({ error: 'PropertyData API key not configured' })
+      console.error('❌ PROPERTYDATA_API_KEY not configured in environment')
+      return res.status(500).json({ error: 'PropertyData API key not configured in Vercel environment variables' })
     }
 
     if (!OPENAI_API_KEY) {
-      console.error('❌ OPENAI_API_KEY not configured')
-      return res.status(500).json({ error: 'OpenAI API key not configured' })
+      console.error('❌ OPENAI_API_KEY not configured in environment')
+      return res.status(500).json({ error: 'OpenAI API key not configured in Vercel environment variables' })
     }
 
     console.log('🔍 Processing valuation request for:', formData.postcode)
@@ -40,7 +57,7 @@ export default async function handler(req, res) {
     // Step 1: Get property valuation from PropertyData API
     const propertyDataUrl = `https://api.propertydata.co.uk/valuation-sale?key=${PROPERTYDATA_API_KEY}&postcode=${encodeURIComponent(formData.postcode)}`
     
-    console.log('🌐 Calling PropertyData API:', propertyDataUrl.replace(PROPERTYDATA_API_KEY, 'KEY_HIDDEN'))
+    console.log('🌐 Calling PropertyData API for postcode:', formData.postcode)
 
     const propertyResponse = await fetch(propertyDataUrl, {
       method: 'GET',
@@ -50,14 +67,17 @@ export default async function handler(req, res) {
     })
 
     console.log('📡 PropertyData API Response Status:', propertyResponse.status)
+    console.log('📡 PropertyData API Response Headers:', Object.fromEntries(propertyResponse.headers.entries()))
 
     if (!propertyResponse.ok) {
       const errorText = await propertyResponse.text()
-      console.error('❌ PropertyData API Error:', errorText)
+      console.error('❌ PropertyData API Error Response:', errorText)
+      console.error('❌ PropertyData API Error Status:', propertyResponse.status)
       return res.status(400).json({ 
-        error: 'PropertyData API failed', 
-        details: errorText,
-        status: propertyResponse.status 
+        error: 'Property data not found',
+        details: `PropertyData API returned ${propertyResponse.status}: ${errorText}`,
+        status: propertyResponse.status,
+        postcode: formData.postcode
       })
     }
 
@@ -79,6 +99,8 @@ export default async function handler(req, res) {
       if (rentalResponse.ok) {
         rentalData = await rentalResponse.json()
         console.log('✅ Rental Data Success:', JSON.stringify(rentalData, null, 2))
+      } else {
+        console.log('⚠️ Rental data API returned:', rentalResponse.status)
       }
     } catch (error) {
       console.log('⚠️ Rental data not available:', error.message)
@@ -164,9 +186,11 @@ Format as a professional property report.`
 
   } catch (error) {
     console.error('❌ Valuation API Error:', error)
+    console.error('❌ Error stack:', error.stack)
     return res.status(500).json({ 
       error: 'Internal server error', 
-      details: error.message 
+      details: error.message,
+      stack: error.stack
     })
   }
 }
