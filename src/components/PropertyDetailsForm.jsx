@@ -5,13 +5,16 @@ import { Label } from '@/components/ui/label.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
 import { Checkbox } from '@/components/ui/checkbox.jsx'
-import { ArrowLeft, Building2, Shield, Clock, Banknote, Loader2, CheckCircle, Star, Award, TrendingUp } from 'lucide-react'
+import { ArrowLeft, Shield, Clock, Banknote, Loader2, CheckCircle, Star, Award, TrendingUp } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { apiClient } from '../services/apiClient.js'
 import OfferResult from './OfferResult.jsx'
 
 // Import the same hero image as homepage
 import heroImg from '../assets/uk_houses_hero.jpg'
+
+// Custom form icon
+const formIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751049056/ChatGPT_Image_Jun_27_2025_06_57_52_PM_qdknfe.png'
 
 function PropertyDetailsForm({ postcode, onBack }) {
   const [formData, setFormData] = useState({
@@ -172,7 +175,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                 <div className="space-y-8 mb-10">
                   <div className="border-l-4 border-orange-500 pl-6">
                     <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
-                      <Building2 className="h-6 w-6 mr-3 text-orange-500" />
+                      <img src={formIcon} alt="Property Icon" className="h-6 w-6 mr-3" />
                       Property Information
                     </h2>
                     <p className="text-slate-600">Provide accurate details for the most precise valuation</p>
