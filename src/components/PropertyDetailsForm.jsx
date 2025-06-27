@@ -352,30 +352,23 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     </div>
                   </div>
 
-                  {/* Premium Features with Better Visibility */}
-                  <div className="bg-orange-50/90 backdrop-blur-sm p-6 rounded-xl border-2 border-orange-300">
-                    <h4 className="font-bold text-slate-900 mb-4 flex items-center text-lg">
-                      <Banknote className="h-5 w-5 mr-2 text-orange-600" />
-                      Your Guaranteed Benefits
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-800">
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
-                        <span className="font-medium">2-hour decision guarantee</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
-                        <span className="font-medium">No estate agent fees</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
-                        <span className="font-medium">All legal costs covered</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
-                        <span className="font-medium">24-hour completion available</span>
-                      </div>
-                    </div>
+                  {/* Submit Button - Clean and centered */}
+                  <div className="text-center pt-6">
+                    <Button 
+                      type="submit" 
+                      size="lg"
+                      className="bg-orange-500 hover:bg-orange-600 text-white px-16 py-4 text-lg font-bold rounded-xl disabled:opacity-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                          Processing Details...
+                        </>
+                      ) : (
+                        'Submit Details'
+                      )}
+                    </Button>
                   </div>
                 </div>
 
@@ -390,34 +383,41 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   </motion.div>
                 )}
 
-                {/* Premium Submit Section */}
-                <div className="text-center">
-                  <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-white">
-                    <h3 className="text-3xl font-bold mb-4">Get Your Exclusive Cash Offer</h3>
-                    <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
+                {/* Premium Features Section - Now after submit button */}
+                <div className="mt-12 space-y-8">
+                  <div className="bg-orange-50/90 backdrop-blur-sm p-8 rounded-xl border-2 border-orange-300">
+                    <h4 className="font-bold text-slate-900 mb-6 flex items-center text-xl text-center justify-center">
+                      <Banknote className="h-6 w-6 mr-3 text-orange-600" />
+                      Your Guaranteed Benefits
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base text-slate-800">
+                      <div className="flex items-center space-x-3">
+                        <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">2-hour decision guarantee</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">No estate agent fees</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">All legal costs covered</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">24-hour completion available</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Premium Promise Section */}
+                  <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-white text-center">
+                    <h3 className="text-2xl font-bold mb-4">Your Exclusive Cash Offer Promise</h3>
+                    <p className="text-blue-100 mb-6 text-lg max-w-2xl mx-auto">
                       Our advanced AI system will analyze your property and deliver a guaranteed cash offer in under 2 hours
                     </p>
                     
-                    <Button 
-                      type="submit" 
-                      size="lg"
-                      className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-6 text-xl font-bold rounded-xl disabled:opacity-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
-                      disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                          Processing Your Valuation...
-                        </>
-                      ) : (
-                        <>
-                          <Clock className="mr-3 h-6 w-6" />
-                          Get My Guaranteed Cash Offer
-                        </>
-                      )}
-                    </Button>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-sm">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
                       <div className="flex items-center justify-center space-x-2">
                         <CheckCircle className="h-5 w-5 text-green-400" />
                         <span>Advanced AI Analysis</span>
