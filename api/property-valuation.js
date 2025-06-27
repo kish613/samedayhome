@@ -21,121 +21,101 @@ export default async function handler(req, res) {
   console.log('🔧 Environment Check:')
   console.log('PROPERTYDATA_API_KEY exists:', !!PROPERTYDATA_API_KEY)
   console.log('OPENAI_API_KEY exists:', !!OPENAI_API_KEY)
-  
   if (PROPERTYDATA_API_KEY) {
     console.log('PROPERTYDATA_API_KEY length:', PROPERTYDATA_API_KEY.length)
-    console.log('PROPERTYDATA_API_KEY prefix:', PROPERTYDATA_API_KEY.substring(0, 8) + '...')
+    console.log('PROPERTYDATA_API_KEY prefix:', PROPERTYDATA_API_KEY.substring(0, 10) + '...')
   }
-  
   if (OPENAI_API_KEY) {
     console.log('OPENAI_API_KEY length:', OPENAI_API_KEY.length)
-    console.log('OPENAI_API_KEY prefix:', OPENAI_API_KEY.substring(0, 8) + '...')
+    console.log('OPENAI_API_KEY prefix:', OPENAI_API_KEY.substring(0, 10) + '...')
   }
 
   try {
     const { formData } = req.body
-    console.log('📝 Received form data:', formData)
 
     if (!formData || !formData.postcode) {
-      console.log('❌ Missing form data or postcode')
-      return res.status(400).json({ error: 'Property data required - missing postcode' })
+      console.log('❌ Missing form data:', { formData })
+      return res.status(400).json({ error: 'Property data required' })
     }
 
-    // Validate API keys are configured
+    console.log('📋 Form Data Received:', formData)
+
     if (!PROPERTYDATA_API_KEY) {
-      console.error('❌ PROPERTYDATA_API_KEY not configured in environment')
-      return res.status(500).json({ error: 'PropertyData API key not configured in Vercel environment variables' })
+      console.log('❌ PROPERTYDATA_API_KEY not configured')
+      return res.status(500).json({ error: 'PropertyData API key not configured' })
     }
 
     if (!OPENAI_API_KEY) {
-      console.error('❌ OPENAI_API_KEY not configured in environment')
-      return res.status(500).json({ error: 'OpenAI API key not configured in Vercel environment variables' })
+      console.log('❌ OPENAI_API_KEY not configured')
+      return res.status(500).json({ error: 'OpenAI API key not configured' })
     }
 
-    console.log('🔍 Processing valuation request for:', formData.postcode)
+    const { postcode } = formData
 
-    // Step 1: Get property valuation from PropertyData API
-    const propertyDataUrl = `https://api.propertydata.co.uk/valuation-sale?key=${PROPERTYDATA_API_KEY}&postcode=${encodeURIComponent(formData.postcode)}`
+    console.log('📡 Calling PropertyData API for postcode:', postcode)
+
+    // Call PropertyData API for valuation
+    const propertyDataUrl = `https://api.propertydata.co.uk/valuation-sale?key=${PROPERTYDATA_API_KEY}&postcode=${encodeURIComponent(postcode)}`
+    console.log('🔗 PropertyData URL (masked):', propertyDataUrl.replace(PROPERTYDATA_API_KEY, 'HIDDEN_KEY'))
+
+    const propertyResponse = await fetch(propertyDataUrl)
     
-    console.log('🌐 Calling PropertyData API for postcode:', formData.postcode)
-
-    const propertyResponse = await fetch(propertyDataUrl, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-
-    console.log('📡 PropertyData API Response Status:', propertyResponse.status)
-    console.log('📡 PropertyData API Response Headers:', Object.fromEntries(propertyResponse.headers.entries()))
+    console.log('📊 PropertyData Response Status:', propertyResponse.status)
+    console.log('📊 PropertyData Response Headers:', Object.fromEntries(propertyResponse.headers.entries()))
+    
+    const propertyResponseText = await propertyResponse.text()
+    console.log('📊 PropertyData Raw Response:', propertyResponseText)
 
     if (!propertyResponse.ok) {
-      const errorText = await propertyResponse.text()
-      console.error('❌ PropertyData API Error Response:', errorText)
-      console.error('❌ PropertyData API Error Status:', propertyResponse.status)
+      console.log('❌ PropertyData API failed:', {
+        status: propertyResponse.status,
+        statusText: propertyResponse.statusText,
+        response: propertyResponseText
+      })
       return res.status(400).json({ 
         error: 'Property data not found',
-        details: `PropertyData API returned ${propertyResponse.status}: ${errorText}`,
-        status: propertyResponse.status,
-        postcode: formData.postcode
+        details: `PropertyData API returned ${propertyResponse.status}: ${propertyResponseText}`
       })
     }
 
-    const propertyData = await propertyResponse.json()
-    console.log('✅ PropertyData API Success:', JSON.stringify(propertyData, null, 2))
+    let propertyData
+    try {
+      propertyData = JSON.parse(propertyResponseText)
+      console.log('✅ PropertyData parsed successfully:', propertyData)
+    } catch (parseError) {
+      console.log('❌ Failed to parse PropertyData response:', parseError)
+      return res.status(500).json({ 
+        error: 'Invalid response from PropertyData API',
+        details: propertyResponseText
+      })
+    }
 
-    // Step 2: Get rental valuation as well if available
-    const rentalDataUrl = `https://api.propertydata.co.uk/valuation-rent?key=${PROPERTYDATA_API_KEY}&postcode=${encodeURIComponent(formData.postcode)}`
-    
+    // Also try to get rental data
     let rentalData = null
     try {
-      const rentalResponse = await fetch(rentalDataUrl, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
+      console.log('🏠 Fetching rental data...')
+      const rentalUrl = `https://api.propertydata.co.uk/valuation-rental?key=${PROPERTYDATA_API_KEY}&postcode=${encodeURIComponent(postcode)}`
+      const rentalResponse = await fetch(rentalUrl)
       
       if (rentalResponse.ok) {
-        rentalData = await rentalResponse.json()
-        console.log('✅ Rental Data Success:', JSON.stringify(rentalData, null, 2))
+        const rentalText = await rentalResponse.text()
+        rentalData = JSON.parse(rentalText)
+        console.log('✅ Rental data fetched:', rentalData)
       } else {
-        console.log('⚠️ Rental data API returned:', rentalResponse.status)
+        console.log('⚠️ Rental data not available:', rentalResponse.status)
       }
-    } catch (error) {
-      console.log('⚠️ Rental data not available:', error.message)
+    } catch (rentalError) {
+      console.log('⚠️ Rental data fetch failed (non-critical):', rentalError.message)
     }
-
-    // Step 3: Generate AI analysis with OpenAI
-    const prompt = `Based on this UK property data, provide a comprehensive property valuation analysis:
-
-Property Data: ${JSON.stringify(propertyData, null, 2)}
-${rentalData ? `Rental Data: ${JSON.stringify(rentalData, null, 2)}` : ''}
-
-Property Details from Form:
-- Postcode: ${formData.postcode}
-- Property Type: ${formData.propertyType || 'Not specified'}
-- Bedrooms: ${formData.bedrooms || 'Not specified'}
-- Bathrooms: ${formData.bathrooms || 'Not specified'}
-- Condition: ${formData.condition || 'Not specified'}
-
-Please provide:
-1. Current market value estimate and range
-2. Local market analysis and trends
-3. Rental yield potential (if rental data available)
-4. Investment potential and recommendations
-5. Key factors affecting value
-6. Market outlook for this area
-
-Format as a professional property report.`
 
     console.log('🤖 Calling OpenAI API...')
 
+    // Call OpenAI for analysis
     const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${OPENAI_API_KEY}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         model: 'gpt-4',
@@ -146,51 +126,69 @@ Format as a professional property report.`
           },
           {
             role: 'user',
-            content: prompt
+            content: `Based on this UK property data, provide a comprehensive property valuation analysis:
+
+Property Data: ${JSON.stringify(propertyData)}
+Rental Data: ${rentalData ? JSON.stringify(rentalData) : 'Not available'}
+
+Property Details from Form:
+- Postcode: ${formData.postcode || 'Not specified'}
+- Property Type: ${formData.propertyType || 'Not specified'}
+- Bedrooms: ${formData.bedrooms || 'Not specified'}
+- Bathrooms: ${formData.bathrooms || 'Not specified'}
+- Condition: ${formData.condition || 'Not specified'}
+
+Please provide:
+1. A realistic market valuation range
+2. Key factors affecting the valuation
+3. Local market insights
+4. Investment potential analysis
+5. Quick sale estimate (for cash buyers)
+
+Format the response as a professional property report suitable for homeowners.`
           }
         ],
-        max_tokens: 2000,
+        max_tokens: 1500,
         temperature: 0.7
       })
     })
 
-    console.log('📡 OpenAI API Response Status:', openaiResponse.status)
+    console.log('🤖 OpenAI Response Status:', openaiResponse.status)
 
     if (!openaiResponse.ok) {
-      const errorText = await openaiResponse.text()
-      console.error('❌ OpenAI API Error:', errorText)
-      return res.status(400).json({ 
-        error: 'OpenAI API failed', 
-        details: errorText,
-        status: openaiResponse.status 
+      const openaiError = await openaiResponse.text()
+      console.log('❌ OpenAI API failed:', {
+        status: openaiResponse.status,
+        error: openaiError
+      })
+      return res.status(500).json({ 
+        error: 'AI analysis failed',
+        details: `OpenAI API returned ${openaiResponse.status}: ${openaiError}`
       })
     }
 
-    const aiResponse = await openaiResponse.json()
-    console.log('✅ OpenAI API Success')
+    const openaiData = await openaiResponse.json()
+    console.log('✅ OpenAI response received successfully')
 
-    const analysis = aiResponse.choices[0].message.content
+    const analysis = openaiData.choices[0].message.content
 
-    // Return successful response
-    const result = {
+    console.log('🎉 Success! Returning complete analysis')
+
+    return res.status(200).json({
       success: true,
-      propertyData,
-      rentalData,
-      analysis,
-      postcode: formData.postcode,
-      timestamp: new Date().toISOString()
-    }
-
-    console.log('✅ Returning successful valuation result')
-    return res.status(200).json(result)
+      valuation: {
+        propertyData,
+        rentalData,
+        analysis,
+        formData
+      }
+    })
 
   } catch (error) {
-    console.error('❌ Valuation API Error:', error)
-    console.error('❌ Error stack:', error.stack)
+    console.log('💥 Unexpected error:', error)
     return res.status(500).json({ 
-      error: 'Internal server error', 
-      details: error.message,
-      stack: error.stack
+      error: 'Internal server error',
+      details: error.message
     })
   }
 }
