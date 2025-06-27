@@ -62,7 +62,7 @@ REQUIRED ANALYSIS - Please provide a comprehensive professional report including
 - Consider local market trends and demand
 
 **2. DETAILED PROPERTY VALUATION**
-- **Current Market Value**: Realistic market value range based on comparables
+- **Current Market Value**: £XXX,XXX (provide exact figure)
 - **Quick Sale Value**: 10-15% below market value for urgent sales
 - **Cash Buyer Offer**: 75-85% of market value (our competitive cash offer)
 - **Conservative Estimate**: Lower end for cautious buyers
@@ -88,18 +88,25 @@ REQUIRED ANALYSIS - Please provide a comprehensive professional report including
 - **Investor Appeal**: Attractiveness to property investors
 
 **6. SAME DAY HOME BUYER OFFER**
-- Our competitive cash offer amount
+- Our competitive cash offer amount: £XXX,XXX (provide exact figure)
 - Benefits of quick completion (7-28 days)
 - No chain complications
 - No survey or mortgage delays
 
+**CRITICAL OUTPUT FORMAT REQUIREMENTS:**
+You MUST include these exact phrases with specific monetary values:
+
+"MARKET VALUE: £XXX,XXX" (where XXX,XXX is the full amount like £425,000)
+"CASH OFFER: £XXX,XXX" (where XXX,XXX is the full amount like £350,000)
+
 **VALUATION REQUIREMENTS:**
 - All figures must be in GBP (£)
-- Provide specific numbers, not just ranges
+- Provide specific numbers with full amounts (e.g., £425,000 not £425k)
 - Use current 2024/2025 UK market conditions
 - Base estimates on actual comparable data
 - Consider postcode-specific factors
 - Account for property type and condition
+- Values should be realistic for UK properties (typically £150,000-£2,000,000+)
 
 **FORMAT:**
 Present as a professional property valuation report suitable for homeowners considering a quick sale. Include specific monetary figures and be confident in your assessments based on market knowledge.
@@ -149,7 +156,7 @@ Remember: You have access to extensive UK property market data. Use this knowled
     const analysis = openaiData.choices[0].message.content
 
     // Extract key valuation figures from the analysis for structured response
-    // This will help the frontend display specific values
+    // Look for the exact format phrases specified in the prompt
     const extractValueFromText = (text, patterns) => {
       for (const pattern of patterns) {
         const match = text.match(pattern)
@@ -158,84 +165,60 @@ Remember: You have access to extensive UK property market data. Use this knowled
           const cleanValue = match[1].replace(/[£,\s]/g, '')
           const numValue = parseInt(cleanValue)
           
+          console.log(`🔍 Found match: ${match[0]} -> ${numValue}`)
+          
           // Ensure reasonable property values (UK properties typically £50k-£2M+)
-          if (numValue >= 50000) {
+          if (numValue >= 50000 && numValue <= 5000000) {
             return numValue
+          } else {
+            console.log(`⚠️ Value ${numValue} outside reasonable range`)
           }
         }
       }
       return null
     }
 
-    // Try to extract specific values from the analysis with improved patterns
+    // Look for the exact format phrases we specified in the prompt
     const marketValuePatterns = [
-      /market value[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /current.*value[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /valued at[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /worth[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /estimate[^£]*£([\d,]+(?:,\d{3})*)/i
+      /MARKET VALUE:\s*£([\d,]+)/i,
+      /market value:\s*£([\d,]+)/i,
+      /Current Market Value:\s*£([\d,]+)/i
     ]
     
     const cashOfferPatterns = [
-      /cash offer[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /cash buyer[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /same day.*offer[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /quick sale[^£]*£([\d,]+(?:,\d{3})*)/i,
-      /urgent sale[^£]*£([\d,]+(?:,\d{3})*)/i
+      /CASH OFFER:\s*£([\d,]+)/i,
+      /cash offer:\s*£([\d,]+)/i,
+      /Cash Buyer Offer:\s*£([\d,]+)/i,
+      /competitive cash offer amount:\s*£([\d,]+)/i
     ]
 
-    let marketValue = extractValueFromText(analysis, marketValuePatterns)
-    let cashOffer = extractValueFromText(analysis, cashOfferPatterns)
+    console.log('🔍 Searching for values in AI response...')
+    console.log('AI Response excerpt:', analysis.substring(0, 500) + '...')
 
-    // Fallback logic for reasonable UK property values based on postcode area
-    if (!marketValue || marketValue < 50000) {
-      // Generate reasonable market value based on UK property data
-      const postcodeArea = formData.postcode.toUpperCase().substring(0, 2)
-      const postcodeMultipliers = {
-        'SW': 650000, 'W1': 800000, 'WC': 750000, 'EC': 600000, 'N1': 550000,
-        'E1': 450000, 'SE': 400000, 'NW': 500000, 'W': 600000, 'E': 350000,
-        'N': 450000, 'S': 350000, 'CR': 400000, 'BR': 450000, 'DA': 350000,
-        'KT': 500000, 'TW': 450000, 'HA': 400000, 'UB': 350000, 'EN': 400000,
-        'WD': 450000, 'AL': 500000, 'HP': 400000, 'SL': 450000, 'RG': 400000,
-        'GU': 450000, 'BN': 350000, 'RH': 400000, 'TN': 350000, 'ME': 300000,
-        'CT': 300000, 'TR': 250000, 'PL': 250000, 'EX': 300000, 'TQ': 350000,
-        'BA': 400000, 'BS': 350000, 'GL': 300000, 'SN': 300000, 'SP': 350000,
-        'BH': 400000, 'SO': 350000, 'PO': 300000, 'GU': 400000, 'RG': 350000
-      }
-      
-      const baseValue = postcodeMultipliers[postcodeArea] || 350000
-      
-      // Adjust based on property type and bedrooms
-      const propertyMultiplier = {
-        'detached': 1.3,
-        'semi-detached': 1.1,
-        'terraced': 1.0,
-        'flat': 0.8,
-        'apartment': 0.85,
-        'bungalow': 1.1,
-        'maisonette': 0.9
-      }
-      
-      const bedroomMultiplier = {
-        '1': 0.7, '2': 0.85, '3': 1.0, '4': 1.2, '5': 1.4, '6+': 1.6
-      }
-      
-      const propType = formData.propertyType?.toLowerCase() || 'terraced'
-      const bedrooms = formData.bedrooms || '3'
-      
-      marketValue = Math.round(baseValue * 
-        (propertyMultiplier[propType] || 1.0) * 
-        (bedroomMultiplier[bedrooms] || 1.0))
-    }
-
-    // Calculate cash offer as 80-85% of market value if not extracted
-    if (!cashOffer || cashOffer < 50000) {
-      cashOffer = Math.round(marketValue * 0.82) // 82% of market value
-    }
+    const marketValue = extractValueFromText(analysis, marketValuePatterns)
+    const cashOffer = extractValueFromText(analysis, cashOfferPatterns)
 
     console.log('💰 Extracted Values:')
     console.log('Market Value:', marketValue)
     console.log('Cash Offer:', cashOffer)
+
+    // If we couldn't extract proper values, return an error
+    if (!marketValue || !cashOffer) {
+      console.error('❌ Failed to extract proper values from AI response')
+      console.error('Market Value found:', marketValue)
+      console.error('Cash Offer found:', cashOffer)
+      console.error('Full AI Response:', analysis)
+      
+      return res.status(500).json({
+        error: 'Failed to extract property values from AI analysis',
+        details: 'AI response format issue - values not found in expected format',
+        debug: {
+          marketValueFound: !!marketValue,
+          cashOfferFound: !!cashOffer,
+          responseExcerpt: analysis.substring(0, 1000)
+        }
+      })
+    }
 
     // Return successful response with enhanced analysis
     const response = {
