@@ -162,7 +162,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
         </div>
 
         {/* Premium Form Section with Enhanced Visibility */}
-        <div className="container mx-auto px-6 py-8 max-w-7xl">
+        <div className="container mx-auto px-6 -mt-16 relative z-10 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -300,10 +300,10 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   <div className="space-y-8">
                     <div className="border-l-4 border-blue-500 pl-6">
                       <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
-                        <Banknote className="h-6 w-6 mr-3 text-blue-500" />
-                        Contact Details
+                        <Shield className="h-6 w-6 mr-3 text-blue-500" />
+                        Contact Information
                       </h2>
-                      <p className="text-slate-600">We'll send your instant cash offer to these details</p>
+                      <p className="text-slate-600">Secure details for your guaranteed offer delivery</p>
                     </div>
 
                     <div className="space-y-6">
@@ -311,7 +311,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                         <Label className="text-slate-700 font-semibold">Full Name</Label>
                         <Input
                           type="text"
-                          placeholder="Your full name"
+                          placeholder="Your full legal name"
                           value={formData.fullName}
                           onChange={(e) => handleInputChange('fullName', e.target.value)}
                           className="h-12 border-2 border-slate-200 focus:border-blue-500 bg-white/90"
@@ -323,7 +323,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                         <Label className="text-slate-700 font-semibold">Email Address</Label>
                         <Input
                           type="email"
-                          placeholder="your.email@example.com"
+                          placeholder="your.name@email.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
                           className="h-12 border-2 border-slate-200 focus:border-blue-500 bg-white/90"
@@ -342,103 +342,185 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           required
                         />
                       </div>
+                    </div>
 
-                      <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                        <div className="flex items-start space-x-3">
-                          <Checkbox
-                            id="contact-permission"
-                            checked={formData.contactPermission}
-                            onCheckedChange={(checked) => handleInputChange('contactPermission', checked)}
-                            className="mt-1"
-                            required
-                          />
-                          <div className="space-y-1">
-                            <Label 
-                              htmlFor="contact-permission"
-                              className="text-sm font-medium text-slate-700 cursor-pointer leading-relaxed"
-                            >
-                              I consent to being contacted by Same Day Home Buyer regarding my property enquiry. 
-                              I understand this is required to receive my free valuation and cash offer.
-                            </Label>
-                            <p className="text-xs text-slate-500">
-                              We respect your privacy and will never share your details with third parties.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {error && (
-                        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                          <p className="text-red-600 text-sm">{error}</p>
-                        </div>
-                      )}
-
-                      <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full h-14 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="h-5 w-5 mr-3 animate-spin" />
-                            Processing Your Valuation...
-                          </>
-                        ) : (
-                          <>
-                            <Clock className="h-5 w-5 mr-3" />
-                            Get My Instant Cash Offer
-                          </>
-                        )}
-                      </Button>
-
-                      <div className="text-center space-y-3">
-                        <div className="flex items-center justify-center space-x-6 text-sm text-slate-600">
-                          <div className="flex items-center space-x-2">
-                            <CheckCircle className="h-4 w-4 text-green-500" />
-                            <span>2-Hour Response</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <CheckCircle className="h-4 w-4 text-green-500" />
-                            <span>No Obligation</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <CheckCircle className="h-4 w-4 text-green-500" />
-                            <span>Zero Fees</span>
+                    {/* Premium Trust Section */}
+                    <div className="bg-gradient-to-r from-slate-50 to-blue-50 p-6 rounded-xl border border-slate-200">
+                      <div className="flex items-start space-x-4">
+                        <Checkbox
+                          id="contactPermission"
+                          checked={formData.contactPermission}
+                          onCheckedChange={(checked) => handleInputChange('contactPermission', checked)}
+                          className="mt-1 border-slate-400"
+                        />
+                        <div className="flex-1 space-y-3">
+                          <Label htmlFor="contactPermission" className="text-slate-800 font-semibold cursor-pointer">
+                            I authorize Same Day Home Buyer to contact me regarding this property enquiry
+                          </Label>
+                          <div className="text-sm text-slate-600 space-y-2">
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                              <span>GDPR compliant - your data is fully protected</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                              <span>No third-party sharing - we value your privacy</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                              <span>Unsubscribe anytime - you're in control</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Awards & Trust Indicators Footer */}
-                <div className="mt-12 pt-8 border-t border-slate-200">
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                    <div className="flex flex-col items-center space-y-2">
-                      <Award className="h-8 w-8 text-orange-500" />
-                      <span className="font-semibold text-slate-700">Award-Winning Service</span>
-                      <span className="text-sm text-slate-500">Industry Recognition</span>
-                    </div>
-                    <div className="flex flex-col items-center space-y-2">
-                      <Shield className="h-8 w-8 text-blue-500" />
-                      <span className="font-semibold text-slate-700">RICS Regulated</span>
-                      <span className="text-sm text-slate-500">Professional Standards</span>
-                    </div>
-                    <div className="flex flex-col items-center space-y-2">
-                      <Star className="h-8 w-8 text-yellow-500" />
-                      <span className="font-semibold text-slate-700">4.9/5 Trustpilot</span>
-                      <span className="text-sm text-slate-500">Customer Satisfaction</span>
-                    </div>
-                    <div className="flex flex-col items-center space-y-2">
-                      <TrendingUp className="h-8 w-8 text-green-500" />
-                      <span className="font-semibold text-slate-700">£500M+ Invested</span>
-                      <span className="text-sm text-slate-500">Financial Security</span>
+                    {/* Premium Features */}
+                    <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-6 rounded-xl border border-orange-200">
+                      <h4 className="font-bold text-slate-900 mb-4 flex items-center">
+                        <Banknote className="h-5 w-5 mr-2 text-orange-600" />
+                        Your Guaranteed Benefits
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700">
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                          <span>2-hour decision guarantee</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                          <span>No estate agent fees</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                          <span>All legal costs covered</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                          <span>24-hour completion available</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Error Display */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-8 bg-red-50 border border-red-200 rounded-xl p-4 text-center"
+                >
+                  <p className="text-red-700 font-medium">{error}</p>
+                </motion.div>
+              )}
+
+              {/* Premium Submit Section */}
+              <div className="mt-12 text-center">
+                <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-white">
+                  <h3 className="text-3xl font-bold mb-4">Get Your Exclusive Cash Offer</h3>
+                  <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
+                    Our advanced AI system will analyze your property and deliver a guaranteed cash offer in under 2 hours
+                  </p>
+                  
+                  <Button 
+                    type="submit" 
+                    size="lg"
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-6 text-xl font-bold rounded-xl disabled:opacity-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+                    disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                        Processing Your Valuation...
+                      </>
+                    ) : (
+                      <>
+                        <Clock className="mr-3 h-6 w-6" />
+                        Get My Guaranteed Cash Offer
+                      </>
+                    )}
+                  </Button>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-sm">
+                    <div className="flex items-center justify-center space-x-2">
+                      <CheckCircle className="h-5 w-5 text-green-400" />
+                      <span>Advanced AI Analysis</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-2">
+                      <CheckCircle className="h-5 w-5 text-green-400" />
+                      <span>Guaranteed Completion</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-2">
+                      <CheckCircle className="h-5 w-5 text-green-400" />
+                      <span>Zero Hidden Costs</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-blue-200 mt-6 text-sm">
+                    {isSubmitting 
+                      ? 'Analyzing market data, comparable sales, and property specifics...' 
+                      : "Join 15,000+ satisfied property owners who chose our premium service"
+                    }
+                  </p>
+                </div>
+              </div>
             </form>
           </motion.div>
+        </div>
+        
+        {/* Premium Footer Section */}
+        <div className="bg-slate-100 py-16 mt-16">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">Why 15,000+ Property Owners Choose Us</h3>
+              <p className="text-slate-600 text-lg max-w-3xl mx-auto">
+                We're not just another house buying service. We're the UK's most trusted and experienced cash property buyers.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+              <div className="text-center group">
+                <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <Award className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Award Winning</h4>
+                  <p className="text-slate-600 text-sm">Recognized industry leader with multiple awards for customer service excellence</p>
+                </div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <Clock className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Lightning Fast</h4>
+                  <p className="text-slate-600 text-sm">2-hour decision guarantee with 24-hour completion available nationwide</p>
+                </div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <Shield className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Fully Regulated</h4>
+                  <p className="text-slate-600 text-sm">RICS regulated, fully insured, and compliant with all industry standards</p>
+                </div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <TrendingUp className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-lg">£500M+ Invested</h4>
+                  <p className="text-slate-600 text-sm">Massive investment fund ready to complete on your property immediately</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
