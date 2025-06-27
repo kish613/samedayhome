@@ -179,7 +179,7 @@ function App() {
                   placeholder="Enter your property postcode"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="flex-1 h-14 text-gray-900 text-lg"
+                  className="flex-1 h-14 text-blue-900 text-xl font-bold placeholder:text-blue-700 placeholder:font-semibold border-2 border-white/50 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
                 />
                 <Button 
                   type="submit"
