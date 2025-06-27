@@ -110,7 +110,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
       {/* Content Container */}
       <div className="relative z-10">
         {/* Premium Header */}
-        <div className="text-white">
+        <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white">
           <div className="container mx-auto px-6 py-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -211,7 +211,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="e.g. 42"
                           value={formData.doorNumber}
                           onChange={(e) => handleInputChange('doorNumber', e.target.value)}
-                          className="h-12 border-2 border-slate-200 focus:border-orange-500 bg-white/90"
+                          className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500"
                           required
                         />
                       </div>
@@ -222,7 +222,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           type="text"
                           value={formData.postcode}
                           onChange={(e) => handleInputChange('postcode', e.target.value)}
-                          className="h-12 border-2 border-slate-200 focus:border-orange-500 bg-slate-100"
+                          className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500 bg-slate-100"
                           readOnly
                         />
                       </div>
@@ -235,7 +235,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                         placeholder="e.g. Downing Street, Westminster"
                         value={formData.fullAddress}
                         onChange={(e) => handleInputChange('fullAddress', e.target.value)}
-                        className="h-12 border-2 border-slate-200 focus:border-orange-500 bg-white/90"
+                        className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500"
                         required
                       />
                     </div>
@@ -244,7 +244,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                       <div className="space-y-2">
                         <Label className="text-slate-700 font-semibold">Property Type</Label>
                         <Select onValueChange={(value) => handleInputChange('propertyType', value)} required>
-                          <SelectTrigger className="h-12 border-2 border-slate-200 focus:border-orange-500 bg-white/90">
+                          <SelectTrigger className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500">
                             <SelectValue placeholder="Select property type" />
                           </SelectTrigger>
                           <SelectContent>
@@ -263,7 +263,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                       <div className="space-y-2">
                         <Label className="text-slate-700 font-semibold">Number of Bedrooms</Label>
                         <Select onValueChange={(value) => handleInputChange('bedrooms', value)} required>
-                          <SelectTrigger className="h-12 border-2 border-slate-200 focus:border-orange-500 bg-white/90">
+                          <SelectTrigger className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500">
                             <SelectValue placeholder="Select bedrooms" />
                           </SelectTrigger>
                           <SelectContent>
@@ -282,7 +282,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     <div className="space-y-2">
                       <Label className="text-slate-700 font-semibold">Property Condition</Label>
                       <Select onValueChange={(value) => handleInputChange('condition', value)} required>
-                        <SelectTrigger className="h-12 border-2 border-slate-200 focus:border-orange-500 bg-white/90">
+                        <SelectTrigger className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500">
                           <SelectValue placeholder="Select condition" />
                         </SelectTrigger>
                         <SelectContent>
@@ -314,7 +314,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="Your full legal name"
                           value={formData.fullName}
                           onChange={(e) => handleInputChange('fullName', e.target.value)}
-                          className="h-12 border-2 border-slate-200 focus:border-blue-500 bg-white/90"
+                          className="h-12 border-slate-300 focus:border-blue-500 focus:ring-blue-500"
                           required
                         />
                       </div>
@@ -326,7 +326,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="your.name@email.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
-                          className="h-12 border-2 border-slate-200 focus:border-blue-500 bg-white/90"
+                          className="h-12 border-slate-300 focus:border-blue-500 focus:ring-blue-500"
                           required
                         />
                       </div>
@@ -338,7 +338,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="07xxx xxx xxx"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          className="h-12 border-2 border-slate-200 focus:border-blue-500 bg-white/90"
+                          className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500"
                           required
                         />
                       </div>
@@ -402,67 +402,67 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Error Display */}
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-8 bg-red-50 border border-red-200 rounded-xl p-4 text-center"
-                >
-                  <p className="text-red-700 font-medium">{error}</p>
-                </motion.div>
-              )}
-
-              {/* Premium Submit Section */}
-              <div className="mt-12 text-center">
-                <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-white">
-                  <h3 className="text-3xl font-bold mb-4">Get Your Exclusive Cash Offer</h3>
-                  <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
-                    Our advanced AI system will analyze your property and deliver a guaranteed cash offer in under 2 hours
-                  </p>
-                  
-                  <Button 
-                    type="submit" 
-                    size="lg"
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-6 text-xl font-bold rounded-xl disabled:opacity-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
-                    disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
+                {/* Error Display */}
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-8 bg-red-50 border border-red-200 rounded-xl p-4 text-center"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                        Processing Your Valuation...
-                      </>
-                    ) : (
-                      <>
-                        <Clock className="mr-3 h-6 w-6" />
-                        Get My Guaranteed Cash Offer
-                      </>
-                    )}
-                  </Button>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-sm">
-                    <div className="flex items-center justify-center space-x-2">
-                      <CheckCircle className="h-5 w-5 text-green-400" />
-                      <span>Advanced AI Analysis</span>
+                    <p className="text-red-700 font-medium">{error}</p>
+                  </motion.div>
+                )}
+
+                {/* Premium Submit Section */}
+                <div className="mt-12 text-center">
+                  <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-white">
+                    <h3 className="text-3xl font-bold mb-4">Get Your Exclusive Cash Offer</h3>
+                    <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
+                      Our advanced AI system will analyze your property and deliver a guaranteed cash offer in under 2 hours
+                    </p>
+                    
+                    <Button 
+                      type="submit" 
+                      size="lg"
+                      className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-6 text-xl font-bold rounded-xl disabled:opacity-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+                      disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                          Processing Your Valuation...
+                        </>
+                      ) : (
+                        <>
+                          <Clock className="mr-3 h-6 w-6" />
+                          Get My Guaranteed Cash Offer
+                        </>
+                      )}
+                    </Button>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-sm">
+                      <div className="flex items-center justify-center space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400" />
+                        <span>Advanced AI Analysis</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400" />
+                        <span>Guaranteed Completion</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400" />
+                        <span>Zero Hidden Costs</span>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-center space-x-2">
-                      <CheckCircle className="h-5 w-5 text-green-400" />
-                      <span>Guaranteed Completion</span>
-                    </div>
-                    <div className="flex items-center justify-center space-x-2">
-                      <CheckCircle className="h-5 w-5 text-green-400" />
-                      <span>Zero Hidden Costs</span>
-                    </div>
+                    
+                    <p className="text-blue-200 mt-6 text-sm">
+                      {isSubmitting 
+                        ? 'Analyzing market data, comparable sales, and property specifics...' 
+                        : "Join 15,000+ satisfied property owners who chose our premium service"
+                      }
+                    </p>
                   </div>
-                  
-                  <p className="text-blue-200 mt-6 text-sm">
-                    {isSubmitting 
-                      ? 'Analyzing market data, comparable sales, and property specifics...' 
-                      : "Join 15,000+ satisfied property owners who chose our premium service"
-                    }
-                  </p>
                 </div>
               </div>
             </form>
