@@ -169,7 +169,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit}>
-              <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 lg:p-12 border border-white/50">
+              <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-2xl p-8 lg:p-12 border border-white/40">
                 
                 {/* Progress Indicators */}
                 <div className="flex items-center justify-center mb-12">
