@@ -10,91 +10,68 @@ import { motion } from 'framer-motion'
 import { apiClient } from '../services/apiClient.js'
 import OfferResult from './OfferResult.jsx'
 
-// Import the same hero image
+// Import the same hero image as homepage
 import heroImg from '../assets/uk_houses_hero.jpg'
 
 function PropertyDetailsForm({ postcode, onBack }) {
   const [formData, setFormData] = useState({
-    // Property Details
     doorNumber: '',
-    fullAddress: '',
     postcode: postcode || '',
+    fullAddress: '',
     propertyType: '',
     bedrooms: '',
     condition: '',
-    
-    // Contact Details
     fullName: '',
     email: '',
     phone: '',
-    
-    // Permissions
     contactPermission: false
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
+  const [showOfferResult, setShowOfferResult] = useState(false)
   const [offerResult, setOfferResult] = useState(null)
-  const [error, setError] = useState(null)
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }))
+    setFormData(prev => ({ ...prev, [field]: value }))
+    setError('')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    // Validate required fields
-    if (!formData.doorNumber || !formData.fullAddress || !formData.propertyType || 
-        !formData.bedrooms || !formData.condition || !formData.fullName || 
-        !formData.email || !formData.phone || !formData.contactPermission) {
-      setError('Please complete all required fields to proceed with your valuation.')
+    if (!formData.contactPermission) {
+      setError('Please provide permission to contact you about this property enquiry.')
       return
     }
-    
+
     setIsSubmitting(true)
-    setError(null)
-    
+    setError('')
+
     try {
-      console.log('Processing property valuation...', formData)
-      
-      // Process property offer using our Vercel API
-      const result = await apiClient.processPropertyOffer(formData)
-      
-      if (result.success) {
-        setOfferResult(result.data)
-        console.log('Offer calculated successfully:', result.data)
-      } else {
-        // Use fallback if APIs failed
-        setOfferResult({
-          success: false,
-          offer: result.fallback,
-          message: result.message
-        })
-        console.log('Using fallback calculation:', result.fallback)
+      const submissionData = {
+        ...formData,
+        submittedAt: new Date().toISOString()
       }
+
+      const response = await apiClient.submitPropertyValuation(submissionData)
       
+      if (response.success) {
+        setOfferResult(response.data)
+        setShowOfferResult(true)
+      } else {
+        throw new Error(response.error || 'Failed to process your request')
+      }
     } catch (error) {
-      console.error('Error processing offer:', error)
-      setError('We apologize for the inconvenience. Please contact our team directly at 0333 090 6219 for immediate assistance.')
+      console.error('Form submission error:', error)
+      setError(error.message || 'Unable to process your valuation request. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  // Show offer result if calculation is complete
-  if (offerResult) {
-    return <OfferResult 
-      offerData={offerResult} 
-      propertyData={formData} 
-      onBack={() => setOfferResult(null)}
-      onStartNew={() => {
-        setOfferResult(null)
-        onBack()
-      }}
-    />
+  if (showOfferResult && offerResult) {
+    return <OfferResult result={offerResult} propertyDetails={formData} onStartNew={() => { setShowOfferResult(false); setOfferResult(null); }} />
   }
 
   return (
@@ -161,8 +138,8 @@ function PropertyDetailsForm({ postcode, onBack }) {
           </div>
         </div>
 
-        {/* Premium Form Section with Enhanced Visibility */}
-        <div className="container mx-auto px-6 -mt-16 relative z-10 max-w-7xl">
+        {/* Enhanced Form Section - Single Column for Better Mobile UX */}
+        <div className="container mx-auto px-6 -mt-16 relative z-10 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -191,213 +168,212 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
-                  
-                  {/* Property Information */}
-                  <div className="space-y-8">
-                    <div className="border-l-4 border-orange-500 pl-6">
-                      <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
-                        <Building2 className="h-6 w-6 mr-3 text-orange-500" />
-                        Property Information
-                      </h2>
-                      <p className="text-slate-600">Provide accurate details for the most precise valuation</p>
-                    </div>
+                {/* Property Information Section */}
+                <div className="space-y-8 mb-10">
+                  <div className="border-l-4 border-orange-500 pl-6">
+                    <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+                      <Building2 className="h-6 w-6 mr-3 text-orange-500" />
+                      Property Information
+                    </h2>
+                    <p className="text-slate-600">Provide accurate details for the most precise valuation</p>
+                  </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label className="text-slate-700 font-semibold">Property Number</Label>
-                        <Input
-                          type="text"
-                          placeholder="e.g. 42"
-                          value={formData.doorNumber}
-                          onChange={(e) => handleInputChange('doorNumber', e.target.value)}
-                          className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500"
-                          required
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label className="text-slate-700 font-semibold">Postcode</Label>
-                        <Input
-                          type="text"
-                          value={formData.postcode}
-                          onChange={(e) => handleInputChange('postcode', e.target.value)}
-                          className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500 bg-slate-100"
-                          readOnly
-                        />
-                      </div>
-                    </div>
-
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label className="text-slate-700 font-semibold">Full Address</Label>
+                      <Label className="text-slate-800 font-semibold text-base">Property Number *</Label>
                       <Input
                         type="text"
-                        placeholder="e.g. Downing Street, Westminster"
-                        value={formData.fullAddress}
-                        onChange={(e) => handleInputChange('fullAddress', e.target.value)}
-                        className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500"
+                        placeholder="e.g. 42"
+                        value={formData.doorNumber}
+                        onChange={(e) => handleInputChange('doorNumber', e.target.value)}
+                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
                         required
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label className="text-slate-700 font-semibold">Property Type</Label>
-                        <Select onValueChange={(value) => handleInputChange('propertyType', value)} required>
-                          <SelectTrigger className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500">
-                            <SelectValue placeholder="Select property type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="detached-house">Detached House</SelectItem>
-                            <SelectItem value="semi-detached-house">Semi-Detached House</SelectItem>
-                            <SelectItem value="terraced-house">Terraced House</SelectItem>
-                            <SelectItem value="flat-apartment">Flat/Apartment</SelectItem>
-                            <SelectItem value="bungalow">Bungalow</SelectItem>
-                            <SelectItem value="maisonette">Maisonette</SelectItem>
-                            <SelectItem value="cottage">Cottage</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                    <div className="space-y-2">
+                      <Label className="text-slate-800 font-semibold text-base">Postcode *</Label>
+                      <Input
+                        type="text"
+                        value={formData.postcode}
+                        onChange={(e) => handleInputChange('postcode', e.target.value)}
+                        className="h-14 border-2 border-slate-600 bg-slate-200/80 backdrop-blur-sm text-slate-900 font-medium"
+                        readOnly
+                      />
+                    </div>
+                  </div>
 
-                      <div className="space-y-2">
-                        <Label className="text-slate-700 font-semibold">Number of Bedrooms</Label>
-                        <Select onValueChange={(value) => handleInputChange('bedrooms', value)} required>
-                          <SelectTrigger className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500">
-                            <SelectValue placeholder="Select bedrooms" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="studio">Studio</SelectItem>
-                            <SelectItem value="1">1 Bedroom</SelectItem>
-                            <SelectItem value="2">2 Bedrooms</SelectItem>
-                            <SelectItem value="3">3 Bedrooms</SelectItem>
-                            <SelectItem value="4">4 Bedrooms</SelectItem>
-                            <SelectItem value="5">5 Bedrooms</SelectItem>
-                            <SelectItem value="6+">6+ Bedrooms</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                  <div className="space-y-2">
+                    <Label className="text-slate-800 font-semibold text-base">Full Address *</Label>
+                    <Input
+                      type="text"
+                      placeholder="e.g. Downing Street, Westminster"
+                      value={formData.fullAddress}
+                      onChange={(e) => handleInputChange('fullAddress', e.target.value)}
+                      className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
+                      required
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-slate-800 font-semibold text-base">Property Type *</Label>
+                      <Select onValueChange={(value) => handleInputChange('propertyType', value)} required>
+                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium">
+                          <SelectValue placeholder="Select property type" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
+                          <SelectItem value="detached-house">Detached House</SelectItem>
+                          <SelectItem value="semi-detached-house">Semi-Detached House</SelectItem>
+                          <SelectItem value="terraced-house">Terraced House</SelectItem>
+                          <SelectItem value="flat-apartment">Flat/Apartment</SelectItem>
+                          <SelectItem value="bungalow">Bungalow</SelectItem>
+                          <SelectItem value="maisonette">Maisonette</SelectItem>
+                          <SelectItem value="cottage">Cottage</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
 
                     <div className="space-y-2">
-                      <Label className="text-slate-700 font-semibold">Property Condition</Label>
-                      <Select onValueChange={(value) => handleInputChange('condition', value)} required>
-                        <SelectTrigger className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500">
-                          <SelectValue placeholder="Select condition" />
+                      <Label className="text-slate-800 font-semibold text-base">Number of Bedrooms *</Label>
+                      <Select onValueChange={(value) => handleInputChange('bedrooms', value)} required>
+                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium">
+                          <SelectValue placeholder="Select bedrooms" />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="excellent">Excellent - Recently renovated/new build</SelectItem>
-                          <SelectItem value="good">Good - Well maintained, minor work needed</SelectItem>
-                          <SelectItem value="fair">Fair - Some modernisation required</SelectItem>
-                          <SelectItem value="poor">Poor - Significant renovation needed</SelectItem>
-                          <SelectItem value="very-poor">Very Poor - Major structural work required</SelectItem>
+                        <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
+                          <SelectItem value="studio">Studio</SelectItem>
+                          <SelectItem value="1">1 Bedroom</SelectItem>
+                          <SelectItem value="2">2 Bedrooms</SelectItem>
+                          <SelectItem value="3">3 Bedrooms</SelectItem>
+                          <SelectItem value="4">4 Bedrooms</SelectItem>
+                          <SelectItem value="5">5 Bedrooms</SelectItem>
+                          <SelectItem value="6+">6+ Bedrooms</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
 
-                  {/* Contact Information & Submission */}
-                  <div className="space-y-8">
-                    <div className="border-l-4 border-blue-500 pl-6">
-                      <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
-                        <Shield className="h-6 w-6 mr-3 text-blue-500" />
-                        Contact Information
-                      </h2>
-                      <p className="text-slate-600">Secure details for your guaranteed offer delivery</p>
+                  <div className="space-y-2">
+                    <Label className="text-slate-800 font-semibold text-base">Property Condition *</Label>
+                    <Select onValueChange={(value) => handleInputChange('condition', value)} required>
+                      <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium">
+                        <SelectValue placeholder="Select condition" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
+                        <SelectItem value="excellent">Excellent - Recently renovated/new build</SelectItem>
+                        <SelectItem value="good">Good - Well maintained, minor work needed</SelectItem>
+                        <SelectItem value="fair">Fair - Some modernisation required</SelectItem>
+                        <SelectItem value="poor">Poor - Significant renovation needed</SelectItem>
+                        <SelectItem value="very-poor">Very Poor - Major structural work required</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                {/* Contact Information Section */}
+                <div className="space-y-8 mb-10">
+                  <div className="border-l-4 border-blue-500 pl-6">
+                    <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+                      <Shield className="h-6 w-6 mr-3 text-blue-500" />
+                      Contact Information
+                    </h2>
+                    <p className="text-slate-600">Secure details for your guaranteed offer delivery</p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <Label className="text-slate-800 font-semibold text-base">Full Name *</Label>
+                      <Input
+                        type="text"
+                        placeholder="Your full legal name"
+                        value={formData.fullName}
+                        onChange={(e) => handleInputChange('fullName', e.target.value)}
+                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
+                        required
+                      />
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label className="text-slate-700 font-semibold">Full Name</Label>
-                        <Input
-                          type="text"
-                          placeholder="Your full legal name"
-                          value={formData.fullName}
-                          onChange={(e) => handleInputChange('fullName', e.target.value)}
-                          className="h-12 border-slate-300 focus:border-blue-500 focus:ring-blue-500"
-                          required
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label className="text-slate-700 font-semibold">Email Address</Label>
+                        <Label className="text-slate-800 font-semibold text-base">Email Address *</Label>
                         <Input
                           type="email"
                           placeholder="your.name@email.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
-                          className="h-12 border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
                           required
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label className="text-slate-700 font-semibold">Phone Number</Label>
+                        <Label className="text-slate-800 font-semibold text-base">Phone Number *</Label>
                         <Input
                           type="tel"
                           placeholder="07xxx xxx xxx"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          className="h-12 border-slate-300 focus:border-orange-500 focus:ring-orange-500"
+                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
                           required
                         />
                       </div>
                     </div>
+                  </div>
 
-                    {/* Premium Trust Section */}
-                    <div className="bg-gradient-to-r from-slate-50 to-blue-50 p-6 rounded-xl border border-slate-200">
-                      <div className="flex items-start space-x-4">
-                        <Checkbox
-                          id="contactPermission"
-                          checked={formData.contactPermission}
-                          onCheckedChange={(checked) => handleInputChange('contactPermission', checked)}
-                          className="mt-1 border-slate-400"
-                        />
-                        <div className="flex-1 space-y-3">
-                          <Label htmlFor="contactPermission" className="text-slate-800 font-semibold cursor-pointer">
-                            I authorize Same Day Home Buyer to contact me regarding this property enquiry
-                          </Label>
-                          <div className="text-sm text-slate-600 space-y-2">
-                            <div className="flex items-center space-x-2">
-                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                              <span>GDPR compliant - your data is fully protected</span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                              <span>No third-party sharing - we value your privacy</span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                              <span>Unsubscribe anytime - you're in control</span>
-                            </div>
+                  {/* Premium Trust Section with Better Visibility */}
+                  <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border-2 border-slate-300">
+                    <div className="flex items-start space-x-4">
+                      <Checkbox
+                        id="contactPermission"
+                        checked={formData.contactPermission}
+                        onCheckedChange={(checked) => handleInputChange('contactPermission', checked)}
+                        className="mt-1 border-2 border-slate-600 w-5 h-5"
+                      />
+                      <div className="flex-1 space-y-3">
+                        <Label htmlFor="contactPermission" className="text-slate-900 font-semibold cursor-pointer text-base">
+                          I authorize Same Day Home Buyer to contact me regarding this property enquiry *
+                        </Label>
+                        <div className="text-sm text-slate-700 space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                            <span>GDPR compliant - your data is fully protected</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                            <span>No third-party sharing - we value your privacy</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                            <span>Unsubscribe anytime - you're in control</span>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Premium Features */}
-                    <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-6 rounded-xl border border-orange-200">
-                      <h4 className="font-bold text-slate-900 mb-4 flex items-center">
-                        <Banknote className="h-5 w-5 mr-2 text-orange-600" />
-                        Your Guaranteed Benefits
-                      </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700">
-                        <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                          <span>2-hour decision guarantee</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                          <span>No estate agent fees</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                          <span>All legal costs covered</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                          <span>24-hour completion available</span>
-                        </div>
+                  {/* Premium Features with Better Visibility */}
+                  <div className="bg-orange-50/90 backdrop-blur-sm p-6 rounded-xl border-2 border-orange-300">
+                    <h4 className="font-bold text-slate-900 mb-4 flex items-center text-lg">
+                      <Banknote className="h-5 w-5 mr-2 text-orange-600" />
+                      Your Guaranteed Benefits
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-800">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">2-hour decision guarantee</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">No estate agent fees</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">All legal costs covered</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-orange-600 flex-shrink-0" />
+                        <span className="font-medium">24-hour completion available</span>
                       </div>
                     </div>
                   </div>
@@ -408,14 +384,14 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-8 bg-red-50 border border-red-200 rounded-xl p-4 text-center"
+                    className="mb-8 bg-red-100/90 backdrop-blur-sm border-2 border-red-400 rounded-xl p-4 text-center"
                   >
-                    <p className="text-red-700 font-medium">{error}</p>
+                    <p className="text-red-800 font-semibold">{error}</p>
                   </motion.div>
                 )}
 
                 {/* Premium Submit Section */}
-                <div className="mt-12 text-center">
+                <div className="text-center">
                   <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-white">
                     <h3 className="text-3xl font-bold mb-4">Get Your Exclusive Cash Offer</h3>
                     <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
