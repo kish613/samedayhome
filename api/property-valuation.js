@@ -37,81 +37,49 @@ export default async function handler(req, res) {
     }
 
     // Create comprehensive enhanced prompt for accurate UK property valuation
-    const enhancedPrompt = `You are a Senior UK Property Valuation Expert with 20+ years of experience in the UK property market. You have access to comprehensive market data and comparable sales information.
+    const enhancedPrompt = `CRITICAL FORMATTING INSTRUCTIONS - READ FIRST:
 
-CRITICAL INSTRUCTIONS:
-1. Use your knowledge of recent UK property market trends, comparable sales, and current market conditions
-2. Research typical property values for the specific postcode area provided
-3. Consider recent sales data, asking prices, and market trends in your analysis
-4. Provide realistic, professional valuations that match current UK market conditions
-5. Base your estimates on actual comparable properties in the area
+You MUST start your response with these exact two lines in this exact format:
+MARKET_VALUE: £XXX,XXX
+CASH_OFFER: £XXX,XXX
+
+Example:
+MARKET_VALUE: £425,000
+CASH_OFFER: £350,000
+
+After these two required lines, provide your detailed analysis.
+
+---
+
+You are a Senior UK Property Valuation Expert with 20+ years of experience in the UK property market.
 
 PROPERTY TO VALUE:
 - Postcode: ${formData.postcode}
-- Property Type: ${formData.propertyType || 'Mixed residential properties in area'}
-- Bedrooms: ${formData.bedrooms || 'Typical for area'}
-- Bathrooms: ${formData.bathrooms || 'Standard configuration'}
+- Property Type: ${formData.propertyType || 'Standard residential property'}
+- Bedrooms: ${formData.bedrooms || '3'}
+- Bathrooms: ${formData.bathrooms || '1'}
 - Property Condition: ${formData.condition || 'Average condition'}
 
-REQUIRED ANALYSIS - Please provide a comprehensive professional report including:
+VALUATION REQUIREMENTS:
+1. Research current market conditions for ${formData.postcode} area
+2. Consider comparable sales and local market trends
+3. Provide realistic UK property valuations (typically £150,000-£2,000,000)
+4. Cash offer should be 75-85% of market value
 
-**1. MARKET RESEARCH & COMPARABLES**
-- Search your knowledge of recent sales in ${formData.postcode} area
-- Identify 3-5 comparable properties that have sold recently
-- Analyze current asking prices vs sold prices in the area
-- Consider local market trends and demand
+RESPONSE FORMAT (MANDATORY):
+Start with exactly these two lines:
+MARKET_VALUE: £[amount with commas]
+CASH_OFFER: £[amount with commas]
 
-**2. DETAILED PROPERTY VALUATION**
-- **Current Market Value**: £XXX,XXX (provide exact figure)
-- **Quick Sale Value**: 10-15% below market value for urgent sales
-- **Cash Buyer Offer**: 75-85% of market value (our competitive cash offer)
-- **Conservative Estimate**: Lower end for cautious buyers
-- **Optimistic Estimate**: Higher end in favorable market conditions
+Then provide detailed analysis including:
+- Market research for ${formData.postcode} area
+- Comparable properties analysis
+- Local market trends and factors
+- Investment potential
+- Rental yield estimates
+- Benefits of our cash offer
 
-**3. LOCATION & MARKET ANALYSIS**
-- Area desirability and local amenities
-- Transport links and accessibility
-- School catchment areas and quality
-- Recent development and regeneration projects
-- Local market trends (rising/falling/stable)
-
-**4. PROPERTY-SPECIFIC FACTORS**
-- Impact of property type on value
-- Bedroom/bathroom configuration analysis
-- Condition assessment and value impact
-- Potential improvement opportunities
-
-**5. INVESTMENT ANALYSIS**
-- **Rental Yield Estimate**: Monthly/annual rental income potential
-- **Gross Yield %**: Annual rental income as % of property value
-- **Capital Growth Potential**: 3-5 year outlook
-- **Investor Appeal**: Attractiveness to property investors
-
-**6. SAME DAY HOME BUYER OFFER**
-- Our competitive cash offer amount: £XXX,XXX (provide exact figure)
-- Benefits of quick completion (7-28 days)
-- No chain complications
-- No survey or mortgage delays
-
-**CRITICAL OUTPUT FORMAT REQUIREMENTS:**
-You MUST include these exact phrases with specific monetary values:
-
-"MARKET VALUE: £XXX,XXX" (where XXX,XXX is the full amount like £425,000)
-"CASH OFFER: £XXX,XXX" (where XXX,XXX is the full amount like £350,000)
-
-**VALUATION REQUIREMENTS:**
-- All figures must be in GBP (£)
-- Provide specific numbers with full amounts (e.g., £425,000 not £425k)
-- Use current 2024/2025 UK market conditions
-- Base estimates on actual comparable data
-- Consider postcode-specific factors
-- Account for property type and condition
-- Values should be realistic for UK properties (typically £150,000-£2,000,000+)
-
-**FORMAT:**
-Present as a professional property valuation report suitable for homeowners considering a quick sale. Include specific monetary figures and be confident in your assessments based on market knowledge.
-
-Remember: You have access to extensive UK property market data. Use this knowledge to provide accurate, realistic valuations that reflect current market conditions in ${formData.postcode}.`
+Remember: Your first two lines MUST be the values in the exact format shown above.`
 
     console.log('🤖 Calling OpenAI API with enhanced prompt...')
 
@@ -180,38 +148,22 @@ Remember: You have access to extensive UK property market data. Use this knowled
 
     // Look for the exact format phrases we specified in the prompt
     const marketValuePatterns = [
-      /MARKET VALUE:\s*£([\d,]+)/i,
+      /MARKET_VALUE:\s*£([\d,]+)/i,
+      // Backup patterns in case AI doesn't follow exact format
       /market value:\s*£([\d,]+)/i,
-      /Current Market Value:\s*£([\d,]+)/i,
-      // Add more flexible patterns for common AI variations
-      /market value.{0,50}£([\d,]+)/i,
-      /current value.{0,50}£([\d,]+)/i,
-      /property value.{0,50}£([\d,]+)/i,
-      /estimated value.{0,50}£([\d,]+)/i,
-      /worth.{0,50}£([\d,]+)/i,
-      /valued at.{0,50}£([\d,]+)/i,
-      /£([\d,]+).{0,50}market value/i,
-      /£([\d,]+).{0,50}current value/i
+      /market value.{0,50}£([\d,]+)/i
     ]
     
     const cashOfferPatterns = [
-      /CASH OFFER:\s*£([\d,]+)/i,
+      /CASH_OFFER:\s*£([\d,]+)/i,
+      // Backup patterns in case AI doesn't follow exact format
       /cash offer:\s*£([\d,]+)/i,
-      /Cash Buyer Offer:\s*£([\d,]+)/i,
-      /competitive cash offer amount:\s*£([\d,]+)/i,
-      // Add more flexible patterns for common AI variations
-      /cash offer.{0,50}£([\d,]+)/i,
-      /cash buyer.{0,50}£([\d,]+)/i,
-      /offer.{0,50}£([\d,]+)/i,
-      /quick sale.{0,50}£([\d,]+)/i,
-      /same day.{0,50}£([\d,]+)/i,
-      /£([\d,]+).{0,50}cash offer/i,
-      /£([\d,]+).{0,50}offer/i
+      /cash offer.{0,50}£([\d,]+)/i
     ]
 
     console.log('🔍 Searching for values in AI response...')
-    console.log('AI Response excerpt:', analysis.substring(0, 1000) + '...')
-    console.log('Full AI Response Length:', analysis.length)
+    console.log('AI Response first 200 chars:', analysis.substring(0, 200))
+    console.log('Looking for MARKET_VALUE: and CASH_OFFER: patterns...')
 
     const marketValue = extractValueFromText(analysis, marketValuePatterns)
     const cashOffer = extractValueFromText(analysis, cashOfferPatterns)
@@ -225,17 +177,17 @@ Remember: You have access to extensive UK property market data. Use this knowled
       console.error('❌ Failed to extract proper values from AI response')
       console.error('Market Value found:', marketValue)
       console.error('Cash Offer found:', cashOffer)
-      console.error('FULL AI Response for debugging:')
-      console.error(analysis)
+      console.error('First 500 chars of AI response:')
+      console.error(analysis.substring(0, 500))
       
       return res.status(500).json({
         error: 'Failed to extract property values from AI analysis',
-        details: 'AI response format issue - values not found in expected format',
+        details: 'AI did not follow the required format. Expected MARKET_VALUE: £XXX,XXX and CASH_OFFER: £XXX,XXX at the start.',
         debug: {
           marketValueFound: !!marketValue,
           cashOfferFound: !!cashOffer,
-          fullResponse: analysis,
-          responseLength: analysis.length
+          responseStart: analysis.substring(0, 500),
+          expectedFormat: 'MARKET_VALUE: £XXX,XXX\\nCASH_OFFER: £XXX,XXX'
         }
       })
     }
