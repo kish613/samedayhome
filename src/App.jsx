@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
@@ -15,7 +16,7 @@ import heroImg from './assets/uk_houses_hero.jpg'
 import cashIcon from './assets/cash_icon.png'
 import cashGuaranteeIcon from './assets/cash_guarantee_icon.png'
 
-function App() {
+function HomePage() {
   const [address, setAddress] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
@@ -773,6 +774,14 @@ function App() {
         </div>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
   )
 }
 
