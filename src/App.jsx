@@ -8,6 +8,10 @@ import { Clock, Phone, Mail, CheckCircle, Star, ArrowRight, Home, Users, Award, 
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
+import LondonLandingPage from './components/LondonLandingPage.jsx'
+import ManchesterLandingPage from './components/ManchesterLandingPage.jsx'
+import BirminghamLandingPage from './components/BirminghamLandingPage.jsx'
+import LiverpoolLandingPage from './components/LiverpoolLandingPage.jsx'
 import './App.css'
 
 // Import assets
@@ -781,6 +785,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/london" element={<LondonLandingPage />} />
+      <Route path="/manchester" element={<ManchesterLandingPage />} />
+      <Route path="/birmingham" element={<BirminghamLandingPage />} />
+      <Route path="/liverpool" element={<LiverpoolLandingPage />} />
     </Routes>
   )
 }
