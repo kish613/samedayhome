@@ -126,22 +126,121 @@ function HomePage() {
             </div>
             
             <nav className="hidden lg:flex items-center space-x-8">
-              <a href="#how-it-works" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">How It Works</a>
-              <a href="#why-us" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Why Choose Us</a>
-              <a href="#comparison" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Compare Options</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Reviews</a>
-              <a href="#faq" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">FAQs</a>
-              <a href="/blog" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Blog</a>
+              <motion.a 
+                href="#how-it-works" 
+                className="relative text-gray-700 font-medium cursor-pointer group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                How It Works
+                <motion.div 
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
+              <motion.a 
+                href="#why-us" 
+                className="relative text-gray-700 font-medium cursor-pointer group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                Why Choose Us
+                <motion.div 
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
+              <motion.a 
+                href="#comparison" 
+                className="relative text-gray-700 font-medium cursor-pointer group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                Compare Options
+                <motion.div 
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
+              <motion.a 
+                href="#testimonials" 
+                className="relative text-gray-700 font-medium cursor-pointer group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                Reviews
+                <motion.div 
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
+              <motion.a 
+                href="#faq" 
+                className="relative text-gray-700 font-medium cursor-pointer group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                FAQs
+                <motion.div 
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
+              <motion.a 
+                href="/blog" 
+                className="relative text-gray-700 font-medium cursor-pointer group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                Blog
+                <motion.div 
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
             </nav>
 
             <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-2 text-blue-900">
-                <Phone className="h-4 w-4" />
+              <motion.div 
+                className="hidden md:flex items-center space-x-2 text-blue-900 cursor-pointer"
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "rgba(30, 58, 138, 0.1)",
+                  borderRadius: "12px"
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                style={{ padding: "8px 12px" }}
+              >
+                <motion.div
+                  whileHover={{ rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Phone className="h-4 w-4" />
+                </motion.div>
                 <span className="font-semibold">0333 090 6219</span>
-              </div>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold">
-                Free Cash Offer
-              </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                  Free Cash Offer
+                </Button>
+              </motion.div>
             </div>
           </div>
         </div>
