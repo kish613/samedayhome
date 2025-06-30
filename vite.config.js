@@ -11,33 +11,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Development server configuration for Vercel API routes
   server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-        configure: (proxy, options) => {
-          // Fallback for development - return mock data when API server isn't running
-          proxy.on('error', (err, req, res) => {
-            res.writeHead(200, { 'Content-Type': 'application/json' })
-            res.end(JSON.stringify({
-              success: true,
-              data: {
-                success: true,
-                offer: {
-                  market_value: 350000,
-                  cash_offer: 315000,
-                  discount_percentage: 10,
-                  reasoning: `Mock valuation for development. Property details processed successfully.`,
-                  risk_factors: ['Development mode', 'Mock data used'],
-                  comparable_analysis: 'Mock comparable analysis for development'
-                },
-                timestamp: new Date().toISOString()
-              }
-            }))
-          })
-        }
-      }
-    }
+    // For development, we'll install and use Vercel CLI or update the frontend to handle fallback
+    middlewareMode: false
   }
 })
