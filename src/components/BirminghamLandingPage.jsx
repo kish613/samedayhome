@@ -5,7 +5,7 @@ import { ArrowRight, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import PropertyDetailsForm from './PropertyDetailsForm.jsx'
 
-const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291324/samedaylogo_txcpky.png'
+const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
 import heroImg from '../assets/uk_houses_hero.jpg'
 
 function BirminghamLandingPage() {

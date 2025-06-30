@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 import ProcessChart from './ProcessChart.jsx'
 
 // Import assets
-const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291324/samedaylogo_txcpky.png'
+const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
 import heroImg from '../assets/uk_houses_hero.jpg'
 import cashIcon from '../assets/cash_icon.png'
 import cashGuaranteeIcon from '../assets/cash_guarantee_icon.png'
