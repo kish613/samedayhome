@@ -100,7 +100,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
               <Button 
                 variant="ghost" 
                 onClick={onBack}
-                className="mb-8 text-white/80 hover:text-white hover:bg-white/10 border border-white/20"
+                className="mb-8 text-white/80 hover:text-white hover:bg-white/10 border border-white/20 transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-0.5"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Return to Search
@@ -149,7 +149,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit}>
-              <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-2xl p-8 lg:p-12 border border-white/40">
+              <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-2xl p-8 lg:p-12 border border-white/40 hover:shadow-3xl hover:bg-white/75 transition-all duration-500 ease-in-out">
                 
                 {/* Progress Indicators */}
                 <div className="flex items-center justify-center mb-12">
@@ -173,7 +173,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
 
                 {/* Property Information Section */}
                 <div className="space-y-8 mb-10">
-                  <div className="border-l-4 border-orange-500 pl-6">
+                  <div className="border-l-4 border-orange-500 pl-6 hover:border-orange-600 hover:bg-orange-50/20 rounded-r-lg transition-all duration-300 ease-in-out transform hover:translate-x-1">
                     <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
                       <img src={formIcon} alt="Property Icon" className="h-6 w-6 mr-3" />
                       Property Information
@@ -189,7 +189,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                         placeholder="e.g. 42"
                         value={formData.doorNumber}
                         onChange={(e) => handleInputChange('doorNumber', e.target.value)}
-                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
+                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
                         required
                       />
                     </div>
@@ -213,7 +213,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                       placeholder="e.g. Downing Street, Westminster"
                       value={formData.fullAddress}
                       onChange={(e) => handleInputChange('fullAddress', e.target.value)}
-                      className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
+                      className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
                       required
                     />
                   </div>
@@ -222,7 +222,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     <div className="space-y-2">
                       <Label className="text-slate-800 font-semibold text-base">Property Type *</Label>
                       <Select onValueChange={(value) => handleInputChange('propertyType', value)} required>
-                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium">
+                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]">
                           <SelectValue placeholder="Select property type" />
                         </SelectTrigger>
                         <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
@@ -241,7 +241,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     <div className="space-y-2">
                       <Label className="text-slate-800 font-semibold text-base">Number of Bedrooms *</Label>
                       <Select onValueChange={(value) => handleInputChange('bedrooms', value)} required>
-                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium">
+                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]">
                           <SelectValue placeholder="Select bedrooms" />
                         </SelectTrigger>
                         <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
@@ -260,7 +260,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   <div className="space-y-2">
                     <Label className="text-slate-800 font-semibold text-base">Property Condition *</Label>
                     <Select onValueChange={(value) => handleInputChange('condition', value)} required>
-                      <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium">
+                      <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]">
                         <SelectValue placeholder="Select condition" />
                       </SelectTrigger>
                       <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
@@ -276,7 +276,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
 
                 {/* Contact Information Section */}
                 <div className="space-y-8 mb-10">
-                  <div className="border-l-4 border-blue-500 pl-6">
+                  <div className="border-l-4 border-blue-500 pl-6 hover:border-blue-600 hover:bg-blue-50/20 rounded-r-lg transition-all duration-300 ease-in-out transform hover:translate-x-1">
                     <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
                       <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286863/clipboard_lectern_zjmzsv.png" alt="Contact Information" className="h-6 w-6 mr-3" />
                       Contact Information
@@ -292,7 +292,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                         placeholder="Your full legal name"
                         value={formData.fullName}
                         onChange={(e) => handleInputChange('fullName', e.target.value)}
-                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
+                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
                         required
                       />
                     </div>
@@ -305,7 +305,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="your.name@email.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
-                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
+                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
                           required
                         />
                       </div>
@@ -317,7 +317,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="07xxx xxx xxx"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium"
+                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
                           required
                         />
                       </div>
@@ -325,7 +325,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   </div>
 
                   {/* Premium Trust Section with Better Visibility */}
-                  <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border-2 border-slate-300">
+                  <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border-2 border-slate-300 hover:bg-white/90 hover:border-slate-400 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-[1.01]">
                     <div className="flex items-start space-x-4">
                       <Checkbox
                         id="contactPermission"
@@ -360,7 +360,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     <Button 
                       type="submit" 
                       size="lg"
-                      className="bg-orange-500 hover:bg-orange-600 text-white px-16 py-4 text-lg font-bold rounded-xl disabled:opacity-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="bg-orange-500 hover:bg-orange-600 text-white px-16 py-4 text-lg font-bold rounded-xl disabled:opacity-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
                       disabled={isSubmitting || !formData.doorNumber || !formData.fullAddress || !formData.postcode || !formData.propertyType || !formData.bedrooms || !formData.condition || !formData.fullName || !formData.phone || !formData.email || !formData.contactPermission}
                     >
                       {isSubmitting ? (
@@ -388,25 +388,25 @@ function PropertyDetailsForm({ postcode, onBack }) {
 
                 {/* Premium Features Section - Now after submit button */}
                 <div className="mt-12 space-y-8">
-                  <div className="bg-orange-50/90 backdrop-blur-sm p-8 rounded-xl border-2 border-orange-300">
+                  <div className="bg-orange-50/90 backdrop-blur-sm p-8 rounded-xl border-2 border-orange-300 hover:bg-orange-50 hover:border-orange-400 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-[1.01]">
                     <h4 className="font-bold text-slate-900 mb-6 flex items-center text-xl text-center justify-center">
                       <Banknote className="h-6 w-6 mr-3 text-orange-600" />
                       Your Guaranteed Benefits
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base text-slate-800">
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 hover:bg-orange-100/50 p-2 rounded-lg transition-all duration-200 ease-in-out transform hover:scale-105">
                         <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
                         <span className="font-medium">2-hour decision guarantee</span>
                       </div>
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 hover:bg-orange-100/50 p-2 rounded-lg transition-all duration-200 ease-in-out transform hover:scale-105">
                         <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
                         <span className="font-medium">No estate agent fees</span>
                       </div>
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 hover:bg-orange-100/50 p-2 rounded-lg transition-all duration-200 ease-in-out transform hover:scale-105">
                         <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
                         <span className="font-medium">All legal costs covered</span>
                       </div>
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 hover:bg-orange-100/50 p-2 rounded-lg transition-all duration-200 ease-in-out transform hover:scale-105">
                         <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0" />
                         <span className="font-medium">24-hour completion available</span>
                       </div>
