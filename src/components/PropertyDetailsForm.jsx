@@ -74,7 +74,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
   }
 
   if (showOfferResult && offerResult) {
-    return <OfferResult result={offerResult} propertyDetails={formData} onStartNew={() => { setShowOfferResult(false); setOfferResult(null); }} />
+    return <OfferResult offerData={offerResult} propertyData={formData} onStartNew={() => { setShowOfferResult(false); setOfferResult(null); }} />
   }
 
   return (

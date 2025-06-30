@@ -6,7 +6,7 @@ import { CheckCircle, ArrowLeft, Phone, Mail, Home, TrendingDown, AlertTriangle,
 import { motion } from 'framer-motion'
 
 function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
-  const { offer, success } = offerData
+  const { offer, success } = offerData.data || offerData
   
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-GB', {
