@@ -29,6 +29,11 @@ export class ApiClient {
     }
   }
 
+  // Alias for processPropertyOffer to match form expectations
+  async submitPropertyValuation(submissionData) {
+    return this.processPropertyOffer(submissionData)
+  }
+
   async getEnhancedData(propertyData) {
     try {
       const response = await fetch(`${this.baseUrl}/enhanced-data`, {
