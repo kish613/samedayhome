@@ -48,7 +48,7 @@ function LiverpoolLandingPage() {
             <motion.img 
               src={logoImg} 
               alt="Same Day Home Buyer" 
-              className="h-24 w-auto cursor-pointer drop-shadow-md"
+              className="h-20 w-auto cursor-pointer drop-shadow-md"
             />
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-2 text-blue-900">

@@ -57,7 +57,7 @@ function LondonLandingPage() {
               <motion.img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-24 w-auto cursor-pointer drop-shadow-md"
+                className="h-20 w-auto cursor-pointer drop-shadow-md"
                 whileHover={{ scale: 1.08, rotate: 3 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
               />
