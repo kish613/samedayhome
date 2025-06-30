@@ -24,6 +24,11 @@ import './App.css'
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
 import heroImg from './assets/uk_houses_hero.jpg'
 
+// Import local assets for Why Choose Us section  
+import lightningFastIcon from './assets/speed_icon.png'
+import cashGuaranteeIcon from './assets/cash_guarantee_icon.png'
+import zeroFeesIcon from './assets/cash_icon.png'
+
 // Custom Cloudinary icons for trust section
 const calendarIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/calender_no_bg_icon_morvmr.png'
 const housesIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/lots_of_houses_no_bg_wxee7u.png'
@@ -524,7 +529,7 @@ function HomePage() {
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
-                      <img src={cashIcon} alt="Lightning Fast Icon" className="h-16 w-16" />
+                      <img src={lightningFastIcon} alt="Lightning Fast Icon" className="h-16 w-16" />
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-orange-500 transition-colors duration-300">Lightning Fast</h3>
@@ -564,7 +569,7 @@ function HomePage() {
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
-                      <img src={cashIcon} alt="Zero Fees Icon" className="h-16 w-16" />
+                      <img src={zeroFeesIcon} alt="Zero Fees Icon" className="h-16 w-16" />
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-orange-500 transition-colors duration-300">Zero Fees</h3>
