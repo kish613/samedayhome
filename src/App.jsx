@@ -23,10 +23,12 @@ import './App.css'
 // Import assets
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
 import heroImg from './assets/uk_houses_hero.jpg'
-import cashIcon from './assets/cash_icon.png'
-import cashGuaranteeIcon from './assets/cash_guarantee_icon.png'
-import trustIcon from './assets/trust_icon.png'
-import speedIcon from './assets/speed_icon.png'
+
+// Custom Cloudinary icons for trust section
+const calendarIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/calender_no_bg_icon_morvmr.png'
+const housesIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/lots_of_houses_no_bg_wxee7u.png'
+const moneyIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/money_mount_no_bg_icon_hlcte7.png'
+const clockIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/2_hour_clock_no_bg_fzxyai.png'
 
 function HomePage() {
   const [address, setAddress] = useState('')
@@ -230,7 +232,7 @@ function HomePage() {
                   whileHover={{ rotate: [0, -10, 10, 0] }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Phone className="h-4 w-4" />
+                <Phone className="h-4 w-4" />
                 </motion.div>
                 <span className="font-semibold">0333 090 6219</span>
               </motion.div>
@@ -240,8 +242,8 @@ function HomePage() {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                  Free Cash Offer
-                </Button>
+                Free Cash Offer
+              </Button>
               </motion.div>
             </div>
           </div>
@@ -378,7 +380,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={trustIcon} alt="Trust Icon" className="h-10 w-10" />
+                <img src={calendarIcon} alt="Calendar Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">20+</h3>
               <p className="text-gray-600 font-medium">Years Experience</p>
@@ -407,7 +409,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={cashGuaranteeIcon} alt="Cash Guarantee Icon" className="h-10 w-10" />
+                <img src={housesIcon} alt="Houses Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">15,000+</h3>
               <p className="text-gray-600 font-medium">Properties Bought</p>
@@ -436,7 +438,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={cashIcon} alt="Cash Icon" className="h-10 w-10" />
+                <img src={moneyIcon} alt="Money Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">£500M+</h3>
               <p className="text-gray-600 font-medium">Total Invested</p>
@@ -465,7 +467,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={speedIcon} alt="Speed Icon" className="h-10 w-10" />
+                <img src={clockIcon} alt="Clock Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">2 Hours</h3>
               <p className="text-gray-600 font-medium">Average Decision Time</p>
