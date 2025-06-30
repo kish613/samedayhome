@@ -12,6 +12,12 @@ import LondonLandingPage from './components/LondonLandingPage.jsx'
 import ManchesterLandingPage from './components/ManchesterLandingPage.jsx'
 import BirminghamLandingPage from './components/BirminghamLandingPage.jsx'
 import LiverpoolLandingPage from './components/LiverpoolLandingPage.jsx'
+import BlogPage from './components/BlogPage.jsx'
+import SellProbateHouseUK from './components/blog/SellProbateHouseUK.jsx'
+import AvoidRepossessionUK from './components/blog/AvoidRepossessionUK.jsx'
+import SellDisrepairHouse from './components/blog/SellDisrepairHouse.jsx'
+import SellHouseAfterDivorce from './components/blog/SellHouseAfterDivorce.jsx'
+import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
 import './App.css'
 
 // Import assets
@@ -125,6 +131,7 @@ function HomePage() {
               <a href="#comparison" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Compare Options</a>
               <a href="#testimonials" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Reviews</a>
               <a href="#faq" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">FAQs</a>
+              <a href="/blog" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Blog</a>
             </nav>
 
             <div className="flex items-center space-x-4">
@@ -789,6 +796,12 @@ function App() {
       <Route path="/manchester" element={<ManchesterLandingPage />} />
       <Route path="/birmingham" element={<BirminghamLandingPage />} />
       <Route path="/liverpool" element={<LiverpoolLandingPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/sell-probate-house-uk" element={<SellProbateHouseUK />} />
+      <Route path="/blog/avoid-repossession-uk" element={<AvoidRepossessionUK />} />
+      <Route path="/blog/sell-disrepair-house" element={<SellDisrepairHouse />} />
+      <Route path="/blog/sell-house-after-divorce-uk" element={<SellHouseAfterDivorce />} />
+      <Route path="/blog/emigration-house-sale" element={<EmigrationHouseSale />} />
     </Routes>
   )
 }

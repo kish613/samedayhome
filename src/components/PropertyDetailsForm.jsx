@@ -278,7 +278,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                 <div className="space-y-8 mb-10">
                   <div className="border-l-4 border-blue-500 pl-6">
                     <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
-                      <Shield className="h-6 w-6 mr-3 text-blue-500" />
+                      <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286863/clipboard_lectern_zjmzsv.png" alt="Contact Information" className="h-6 w-6 mr-3" />
                       Contact Information
                     </h2>
                     <p className="text-slate-600">Secure details for your guaranteed offer delivery</p>
@@ -462,7 +462,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Award className="h-8 w-8 text-white" />
+                    <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286323/award_no_bg_oc9rae.png" alt="Award" className="h-8 w-8" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Award Winning</h4>
                   <p className="text-slate-600 text-sm">Recognized industry leader with multiple awards for customer service excellence</p>
@@ -472,7 +472,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Clock className="h-8 w-8 text-white" />
+                    <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/2_hour_clock_no_bg_fzxyai.png" alt="Lightning Fast" className="h-8 w-8" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Lightning Fast</h4>
                   <p className="text-slate-600 text-sm">2-hour decision guarantee with 24-hour completion available nationwide</p>
@@ -482,7 +482,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-8 w-8 text-white" />
+                    <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286321/approved_stamp_qi2reb.png" alt="Fully Regulated" className="h-8 w-8" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Fully Regulated</h4>
                   <p className="text-slate-600 text-sm">RICS regulated, fully insured, and compliant with all industry standards</p>
@@ -492,7 +492,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <TrendingUp className="h-8 w-8 text-white" />
+                    <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286316/line_graph_la3r9u.png" alt="£500M+ Invested" className="h-8 w-8" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">£500M+ Invested</h4>
                   <p className="text-slate-600 text-sm">Massive investment fund ready to complete on your property immediately</p>
