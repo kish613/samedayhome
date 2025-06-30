@@ -5,7 +5,7 @@ import { Calendar, Clock, ArrowLeft, ArrowRight, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
 
-const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750951255/samedayssave_fnfu6n.png'
+const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291324/samedaylogo_txcpky.png'
 
 function BlogPost({ 
   title, 

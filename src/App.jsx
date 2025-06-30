@@ -21,7 +21,7 @@ import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
 import './App.css'
 
 // Import assets
-const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750951255/samedayssave_fnfu6n.png'
+const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291324/samedaylogo_txcpky.png'
 import heroImg from './assets/uk_houses_hero.jpg'
 import cashIcon from './assets/cash_icon.png'
 import cashGuaranteeIcon from './assets/cash_guarantee_icon.png'

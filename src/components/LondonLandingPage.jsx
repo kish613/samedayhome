@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import PropertyDetailsForm from './PropertyDetailsForm.jsx'
 
 // Import assets - same as homepage
-const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750951255/samedayssave_fnfu6n.png'
+const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291324/samedaylogo_txcpky.png'
 import heroImg from '../assets/uk_houses_hero.jpg'
 
 function LondonLandingPage() {

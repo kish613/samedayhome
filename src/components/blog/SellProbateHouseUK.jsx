@@ -169,7 +169,7 @@ function SellProbateHouseUK() {
               "name": "Same Day Home Buyer",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://samedayhomebuyer.co.uk/logo.png"
+                "url": "https://res.cloudinary.com/dmns9ystn/image/upload/v1751291324/samedaylogo_txcpky.png"
               }
             },
             "datePublished": "2024-01-15",
