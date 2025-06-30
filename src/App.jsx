@@ -336,7 +336,7 @@ function HomePage() {
       </section>
 
       {/* Trust Indicators with Media Mentions */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50/30">
         <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-12"
@@ -350,7 +350,7 @@ function HomePage() {
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
               ))}
-              <span className="ml-2 text-lg font-semibold">4.9/5 on Trustpilot</span>
+              <span className="ml-2 text-lg font-semibold text-green-600">4.9/5 on Trustpilot</span>
             </div>
           </motion.div>
 
@@ -387,7 +387,7 @@ function HomePage() {
               >
                 <img src={calendarIcon} alt="Calendar Icon" className="h-10 w-10" />
               </motion.div>
-              <h3 className="text-3xl font-bold text-blue-900 mb-2">20+</h3>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-2">20+</h3>
               <p className="text-gray-600 font-medium">Years Experience</p>
             </motion.div>
             <motion.div 
@@ -416,7 +416,7 @@ function HomePage() {
               >
                 <img src={housesIcon} alt="Houses Icon" className="h-10 w-10" />
               </motion.div>
-              <h3 className="text-3xl font-bold text-blue-900 mb-2">15,000+</h3>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">15,000+</h3>
               <p className="text-gray-600 font-medium">Properties Bought</p>
             </motion.div>
             <motion.div 
@@ -445,7 +445,7 @@ function HomePage() {
               >
                 <img src={moneyIcon} alt="Money Icon" className="h-10 w-10" />
               </motion.div>
-              <h3 className="text-3xl font-bold text-blue-900 mb-2">£500M+</h3>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent mb-2">£500M+</h3>
               <p className="text-gray-600 font-medium">Total Invested</p>
             </motion.div>
             <motion.div 
@@ -474,7 +474,7 @@ function HomePage() {
               >
                 <img src={clockIcon} alt="Clock Icon" className="h-10 w-10" />
               </motion.div>
-              <h3 className="text-3xl font-bold text-blue-900 mb-2">2 Hours</h3>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent mb-2">2 Hours</h3>
               <p className="text-gray-600 font-medium">Average Decision Time</p>
             </motion.div>
           </motion.div>
@@ -495,12 +495,53 @@ function HomePage() {
               <div className="text-2xl font-bold text-gray-700">Guardian</div>
             </div>
           </motion.div>
+
+          {/* Trust Badges */}
+          <motion.div 
+            className="mt-12 flex flex-col md:flex-row items-center justify-center gap-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl p-4 flex items-center space-x-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -5 }}
+            >
+              <img 
+                src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/nabp_no_bg_ul5cyq.png" 
+                alt="NAPB Approved" 
+                className="h-16 w-auto"
+              />
+              <div>
+                <p className="text-green-700 font-bold">NAPB Approved</p>
+                <p className="text-gray-600 text-sm">National Association of Property Buyers</p>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-4 flex items-center space-x-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -5 }}
+            >
+              <img 
+                src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/rics_no_bg_e2gx0k.png" 
+                alt="RICS Regulated" 
+                className="h-16 w-auto"
+              />
+              <div>
+                <p className="text-blue-700 font-bold">RICS Regulated</p>
+                <p className="text-gray-600 text-sm">Royal Institution of Chartered Surveyors</p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Enhanced Benefits Section */}
-      <section id="why-us" className="py-20">
-        <div className="container mx-auto px-4">
+      <section id="why-us" className="py-20 bg-gradient-to-br from-white via-blue-50/20 to-white relative overflow-hidden">
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'}}></div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -587,8 +628,10 @@ function HomePage() {
       </section>
 
       {/* Comparison Section */}
-      <section id="comparison" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section id="comparison" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100/50 relative overflow-hidden">
+        {/* Subtle geometric pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%236b7280" fill-opacity="0.3" fill-rule="evenodd"%3E%3Cpath d="M0 40L40 0H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E")'}}></div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -623,24 +666,42 @@ function HomePage() {
               </thead>
               <tbody>
                 {comparisonData.map((row, index) => (
-                  <tr key={index} className={`${row.highlight ? 'bg-orange-50 border-l-4 border-orange-500' : 'hover:bg-gray-50'} transition-colors`}>
-                    <td className={`px-6 py-4 font-semibold ${row.highlight ? 'text-orange-600' : 'text-gray-900'}`}>
+                  <tr key={index} className={`${row.highlight ? 'bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500' : 'hover:bg-gray-50'} transition-all duration-300`}>
+                    <td className={`px-6 py-4 font-semibold ${row.highlight ? 'text-green-700' : 'text-gray-900'}`}>
                       {row.method}
-                      {row.highlight && <Badge className="ml-2 bg-orange-500 text-white">BEST CHOICE</Badge>}
+                      {row.highlight && <Badge className="ml-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-sm">BEST CHOICE</Badge>}
                     </td>
-                    <td className="px-6 py-4 text-center">{row.time}</td>
-                    <td className="px-6 py-4 text-center">
-                      {row.fees}
+                    <td className={`px-6 py-4 text-center ${row.highlight ? 'text-green-700 font-medium' : ''}`}>{row.time}</td>
+                    <td className={`px-6 py-4 text-center ${row.highlight ? 'text-green-700 font-medium' : ''}`}>
+                      <span className={row.fees === '£0' ? 'text-green-600 font-bold' : 'text-red-600'}>
+                        {row.fees}
+                      </span>
                     </td>
                     <td className="px-6 py-4 text-center">
                       {row.guarantee === 'Yes' ? (
-                        <CheckCircle className="h-5 w-5 text-green-500 mx-auto" />
+                        <div className="flex items-center justify-center">
+                          <div className="bg-green-100 rounded-full p-1">
+                            <CheckCircle className="h-5 w-5 text-green-600" />
+                          </div>
+                        </div>
                       ) : (
-                        <span className="text-red-500">✗</span>
+                        <div className="flex items-center justify-center">
+                          <div className="bg-red-100 rounded-full p-1">
+                            <span className="text-red-600 font-bold text-lg">✗</span>
+                          </div>
+                        </div>
                       )}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <Badge variant={row.hassle === 'None' ? 'default' : row.hassle === 'Medium' ? 'secondary' : 'destructive'}>
+                      <Badge 
+                        className={
+                          row.hassle === 'None' 
+                            ? 'bg-green-100 text-green-700 border-green-300' 
+                            : row.hassle === 'Medium' 
+                            ? 'bg-amber-100 text-amber-700 border-amber-300' 
+                            : 'bg-red-100 text-red-700 border-red-300'
+                        }
+                      >
                         {row.hassle}
                       </Badge>
                     </td>
@@ -653,7 +714,7 @@ function HomePage() {
       </section>
 
       {/* Process Chart Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-br from-white to-gray-50/30">
         <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-16"
@@ -674,7 +735,7 @@ function HomePage() {
       </section>
 
       {/* Enhanced Testimonials */}
-      <section id="testimonials" className="py-20 bg-gray-50">
+      <section id="testimonials" className="py-20 bg-gradient-to-br from-blue-50/30 to-gray-50">
         <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-16"
@@ -690,7 +751,7 @@ function HomePage() {
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
               ))}
-              <span className="ml-2 text-lg font-semibold">4.9/5 from 2,847 reviews</span>
+              <span className="ml-2 text-lg font-semibold text-green-600">4.9/5 from 2,847 reviews</span>
             </div>
           </motion.div>
 
@@ -869,18 +930,30 @@ function HomePage() {
             
             <div>
               <h4 className="font-semibold mb-4 text-lg">Trust & Security</h4>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2">
-                  <Badge variant="outline" className="bg-green-900 text-green-300 border-green-700">
-                    NAPB Approved
-                  </Badge>
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 border border-green-700 rounded-lg p-3 flex items-center space-x-3">
+                  <img 
+                    src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/nabp_no_bg_ul5cyq.png" 
+                    alt="NAPB Approved" 
+                    className="h-12 w-auto"
+                  />
+                  <div>
+                    <p className="text-green-300 font-medium text-sm">NAPB Approved</p>
+                    <p className="text-gray-400 text-xs">National Association of Property Buyers</p>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Badge variant="outline" className="bg-blue-900 text-blue-300 border-blue-700">
-                    RICS Regulated
-                  </Badge>
+                <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border border-blue-700 rounded-lg p-3 flex items-center space-x-3">
+                  <img 
+                    src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/rics_no_bg_e2gx0k.png" 
+                    alt="RICS Regulated" 
+                    className="h-12 w-auto"
+                  />
+                  <div>
+                    <p className="text-blue-300 font-medium text-sm">RICS Regulated</p>
+                    <p className="text-gray-400 text-xs">Royal Institution of Chartered Surveyors</p>
+                  </div>
                 </div>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm mt-4">
                   Fully insured and regulated for your peace of mind.
                 </p>
               </div>
