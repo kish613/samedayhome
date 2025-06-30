@@ -57,7 +57,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
         submittedAt: new Date().toISOString()
       }
 
-      const response = await apiClient.submitPropertyValuation(submissionData)
+      const response = await apiClient.processPropertyOffer(submissionData)
       
       if (response.success) {
         setOfferResult(response.data)

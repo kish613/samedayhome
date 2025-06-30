@@ -1,6 +1,76 @@
 // Vercel API route for property valuation (Enhanced OpenAI only)
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 
+// Fallback calculation function when OpenAI API is unavailable
+function handleFallbackCalculation(formData, res) {
+  console.log('🔄 Using fallback property valuation calculation')
+  
+  // Basic valuation logic based on property type and area
+  const baseValuesByType = {
+    'detached-house': 450000,
+    'semi-detached-house': 350000,
+    'terraced-house': 275000,
+    'flat-apartment': 225000,
+    'bungalow': 320000,
+    'maisonette': 240000,
+    'cottage': 380000,
+    'other': 300000
+  }
+  
+  const bedroomMultipliers = {
+    'studio': 0.6,
+    '1': 0.7,
+    '2': 0.85,
+    '3': 1.0,
+    '4': 1.25,
+    '5': 1.5,
+    '6+': 1.8
+  }
+  
+  const conditionMultipliers = {
+    'excellent': 1.1,
+    'good': 1.0,
+    'fair': 0.9,
+    'poor': 0.75,
+    'very-poor': 0.6
+  }
+  
+  // Calculate market value
+  const baseValue = baseValuesByType[formData.propertyType] || 300000
+  const bedroomMultiplier = bedroomMultipliers[formData.bedrooms] || 1.0
+  const conditionMultiplier = conditionMultipliers[formData.condition] || 1.0
+  
+  const marketValue = Math.round(baseValue * bedroomMultiplier * conditionMultiplier)
+  
+  // Calculate cash offer (10-15% below market value based on condition)
+  const discountPercentage = formData.condition === 'excellent' ? 10 : 
+                           formData.condition === 'good' ? 12 : 
+                           formData.condition === 'fair' ? 13 : 15
+  
+  const cashOffer = Math.round(marketValue * (100 - discountPercentage) / 100)
+  
+  const fallbackResponse = {
+    success: true,
+    data: {
+      offer: {
+        market_value: marketValue,
+        cash_offer: cashOffer,
+        discount_percentage: discountPercentage,
+        reasoning: `Fallback calculation based on property type (${formData.propertyType}), ${formData.bedrooms} bedrooms, and ${formData.condition} condition in ${formData.postcode} area. This is an estimated valuation - for more accurate results, please contact us directly.`,
+        risk_factors: ['Estimated valuation only', 'API services temporarily unavailable', 'Contact for professional assessment'],
+        comparable_analysis: 'Based on general market averages for similar properties'
+      },
+      propertyDetails: formData,
+      generatedAt: new Date().toISOString(),
+      source: 'Fallback Calculation System',
+      methodology: 'Basic calculation using property type, size, and condition factors'
+    }
+  }
+  
+  console.log('📊 Fallback calculation complete:', fallbackResponse.data.offer)
+  return res.status(200).json(fallbackResponse)
+}
+
 export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -30,10 +100,10 @@ export default async function handler(req, res) {
 
     console.log('📊 Form Data Received:', JSON.stringify(formData, null, 2))
 
-    // Validate OpenAI API key
+    // Validate OpenAI API key - if missing, use fallback calculation
     if (!OPENAI_API_KEY) {
-      console.error('❌ OpenAI API key missing')
-      return res.status(500).json({ error: 'OpenAI API key not configured' })
+      console.error('❌ OpenAI API key missing - using fallback calculation')
+      return handleFallbackCalculation(formData, res)
     }
 
     // Create comprehensive enhanced prompt for accurate UK property valuation
@@ -112,10 +182,8 @@ Remember: Your first two lines MUST be the values in the exact format shown abov
     if (!openaiResponse.ok) {
       const errorText = await openaiResponse.text()
       console.error('❌ OpenAI API Error:', errorText)
-      return res.status(500).json({ 
-        error: 'OpenAI API error',
-        details: errorText
-      })
+      console.log('🔄 OpenAI API failed, falling back to basic calculation')
+      return handleFallbackCalculation(formData, res)
     }
 
     const openaiData = await openaiResponse.json()
@@ -180,16 +248,8 @@ Remember: Your first two lines MUST be the values in the exact format shown abov
       console.error('First 500 chars of AI response:')
       console.error(analysis.substring(0, 500))
       
-      return res.status(500).json({
-        error: 'Failed to extract property values from AI analysis',
-        details: 'AI did not follow the required format. Expected MARKET_VALUE: £XXX,XXX and CASH_OFFER: £XXX,XXX at the start.',
-        debug: {
-          marketValueFound: !!marketValue,
-          cashOfferFound: !!cashOffer,
-          responseStart: analysis.substring(0, 500),
-          expectedFormat: 'MARKET_VALUE: £XXX,XXX\\nCASH_OFFER: £XXX,XXX'
-        }
-      })
+      console.log('🔄 AI response parsing failed, falling back to basic calculation')
+      return handleFallbackCalculation(formData, res)
     }
 
     // Return successful response with enhanced analysis
@@ -216,9 +276,15 @@ Remember: Your first two lines MUST be the values in the exact format shown abov
 
   } catch (error) {
     console.error('💥 Unexpected error:', error)
-    return res.status(500).json({ 
-      error: 'Internal server error',
-      details: error.message 
-    })
+    console.log('🔄 Unexpected error occurred, falling back to basic calculation')
+    try {
+      return handleFallbackCalculation(formData, res)
+    } catch (fallbackError) {
+      console.error('💥 Fallback calculation also failed:', fallbackError)
+      return res.status(500).json({ 
+        error: 'Internal server error',
+        details: 'Both primary and fallback calculations failed. Please try again later.' 
+      })
+    }
   }
 }

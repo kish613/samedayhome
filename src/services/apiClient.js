@@ -1,4 +1,6 @@
 // Frontend API client for Vercel backend
+import { FallbackValuationService } from './fallbackValuation.js'
+
 export class ApiClient {
   
   constructor() {
@@ -25,7 +27,21 @@ export class ApiClient {
 
     } catch (error) {
       console.error('API client error:', error)
-      throw error
+      console.log('🔄 API unavailable, using client-side fallback calculation')
+      
+      // Use client-side fallback when API is unavailable
+      return FallbackValuationService.calculateEnhancedValuation(formData)
+    }
+  }
+
+  // Alias method for backward compatibility
+  async submitPropertyValuation(formData) {
+    try {
+      return await this.processPropertyOffer(formData)
+    } catch (error) {
+      console.error('submitPropertyValuation error:', error)
+      console.log('🔄 Using client-side fallback for submitPropertyValuation')
+      return FallbackValuationService.calculateEnhancedValuation(formData)
     }
   }
 
