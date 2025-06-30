@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
-import { Clock, Phone, Mail, CheckCircle, Star, ArrowRight, Home, Users, Award, TrendingUp, FileText, Calendar, MapPin, ChevronDown, Play } from 'lucide-react'
+import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText, Calendar, MapPin, ChevronDown, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
@@ -25,6 +25,8 @@ const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/2
 import heroImg from './assets/uk_houses_hero.jpg'
 import cashIcon from './assets/cash_icon.png'
 import cashGuaranteeIcon from './assets/cash_guarantee_icon.png'
+import trustIcon from './assets/trust_icon.png'
+import speedIcon from './assets/speed_icon.png'
 
 function HomePage() {
   const [address, setAddress] = useState('')
@@ -376,7 +378,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <Award className="h-10 w-10" />
+                <img src={trustIcon} alt="Trust Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">20+</h3>
               <p className="text-gray-600 font-medium">Years Experience</p>
@@ -405,7 +407,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <Home className="h-10 w-10" />
+                <img src={cashGuaranteeIcon} alt="Cash Guarantee Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">15,000+</h3>
               <p className="text-gray-600 font-medium">Properties Bought</p>
@@ -463,7 +465,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <Clock className="h-10 w-10" />
+                <img src={speedIcon} alt="Speed Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold text-blue-900 mb-2">2 Hours</h3>
               <p className="text-gray-600 font-medium">Average Decision Time</p>
