@@ -797,29 +797,31 @@ function HomePage() {
             viewport={{ once: true }}
           >
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative overflow-hidden bg-transparent">
+              <Card className="h-full hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-transparent group perspective-1000 hover:scale-105 hover:-translate-y-2">
                 {/* Property Background */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center blur-sm"
+                  className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
                   style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/6dddcd638408e418e3ec81783553e9e062b671a9a1e2d7cb7a74f22c67524f7d/image.webp)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
-                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                    <div className="flex items-center space-x-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
+                    <div>
+                      <div className="flex items-center space-x-1 mb-4 transition-all duration-300 group-hover:scale-110">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-gray-700 mb-4 italic font-medium leading-relaxed transition-all duration-300 group-hover:text-gray-800 group-hover:font-semibold group-hover:scale-105">
+                        "Absolutely fantastic service. They delivered exactly what they promised - cash offer in 2 hours and completion in just 3 days. Couldn't be happier with the process!"
+                      </p>
                     </div>
-                    <p className="text-gray-700 mb-4 italic font-medium">
-                      "Absolutely fantastic service. They did exactly what they promised - cash offer in 2 hours and completed in 3 days. Couldn't be happier!"
-                    </p>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                    <div className="flex items-center space-x-3 transition-all duration-300 group-hover:scale-105">
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-200">
                         <span className="text-blue-600 font-semibold">SM</span>
                       </div>
                       <div>
-                        <div className="font-semibold text-blue-900">Sarah M.</div>
-                        <div className="text-sm text-gray-600">London • Verified Purchase</div>
+                        <div className="font-semibold text-blue-900 transition-all duration-300 group-hover:text-blue-800">Sarah M.</div>
+                        <div className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-700">London • Verified Purchase</div>
                       </div>
                     </div>
                   </div>
@@ -828,29 +830,31 @@ function HomePage() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative overflow-hidden bg-transparent">
+              <Card className="h-full hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-transparent group perspective-1000 hover:scale-105 hover:-translate-y-2">
                 {/* Property Background */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center blur-sm"
+                  className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
                   style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/9dc877585da810dce4cc699ca313b9560096e466da36f7565f08d4b6d772e4b9/image.webp)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
-                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                    <div className="flex items-center space-x-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
+                    <div>
+                      <div className="flex items-center space-x-1 mb-4 transition-all duration-300 group-hover:scale-110">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-gray-700 mb-4 italic font-medium leading-relaxed transition-all duration-300 group-hover:text-gray-800 group-hover:font-semibold group-hover:scale-105">
+                        "After months of trying to sell through traditional estate agents, Same Day Home Buyer sorted everything in just one week. Incredibly professional and completely stress-free experience."
+                      </p>
                     </div>
-                    <p className="text-gray-700 mb-4 italic font-medium">
-                      "After months of trying to sell through estate agents, Same Day Home Buyer sorted everything in a week. Professional and stress-free."
-                    </p>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                    <div className="flex items-center space-x-3 transition-all duration-300 group-hover:scale-105">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-green-200">
                         <span className="text-green-600 font-semibold">JT</span>
                       </div>
                       <div>
-                        <div className="font-semibold text-blue-900">James T.</div>
-                        <div className="text-sm text-gray-600">Manchester • Verified Purchase</div>
+                        <div className="font-semibold text-blue-900 transition-all duration-300 group-hover:text-blue-800">James T.</div>
+                        <div className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-700">Manchester • Verified Purchase</div>
                       </div>
                     </div>
                   </div>
@@ -859,29 +863,31 @@ function HomePage() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative overflow-hidden bg-transparent">
+              <Card className="h-full hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-transparent group perspective-1000 hover:scale-105 hover:-translate-y-2">
                 {/* Property Background */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center blur-sm"
+                  className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
                   style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/5cd3436d8f000066565037d49bae399668cea4c3c007a240255a74636b7c6480/image.webp)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
-                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                    <div className="flex items-center space-x-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
+                    <div>
+                      <div className="flex items-center space-x-1 mb-4 transition-all duration-300 group-hover:scale-110">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-gray-700 mb-4 italic font-medium leading-relaxed transition-all duration-300 group-hover:text-gray-800 group-hover:font-semibold group-hover:scale-105">
+                        "Needed to sell quickly due to unexpected financial difficulties. They were incredibly understanding, completely fair with pricing, and amazingly fast with the entire process. Highly recommended!"
+                      </p>
                     </div>
-                    <p className="text-gray-700 mb-4 italic font-medium">
-                      "Needed to sell quickly due to financial difficulties. They were understanding, fair, and incredibly fast. Highly recommended."
-                    </p>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                    <div className="flex items-center space-x-3 transition-all duration-300 group-hover:scale-105">
+                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-purple-200">
                         <span className="text-purple-600 font-semibold">ER</span>
                       </div>
                       <div>
-                        <div className="font-semibold text-blue-900">Emma R.</div>
-                        <div className="text-sm text-gray-600">Birmingham • Verified Purchase</div>
+                        <div className="font-semibold text-blue-900 transition-all duration-300 group-hover:text-blue-800">Emma R.</div>
+                        <div className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-700">Birmingham • Verified Purchase</div>
                       </div>
                     </div>
                   </div>
