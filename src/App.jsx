@@ -339,10 +339,10 @@ function HomePage() {
       <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50/30 relative overflow-hidden">
         {/* Trust Seal Watermark */}
         <div 
-          className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.03] pointer-events-none"
+          className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.04] pointer-events-none"
           style={{ 
-            backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/4562d93d3e7377ddd6f4a0a4c64d51e972bd3068b49e2b9f4a79893be3c6c0c8/image.webp)',
-            backgroundSize: '300px 300px'
+            backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/5a88606346bab01c92b147769c306c8de4383bc6b7f6ca935199e5c07b7a9f3c/image.webp)',
+            backgroundSize: '500px 500px'
           }}
         />
         <div className="container mx-auto px-4 relative z-10">
