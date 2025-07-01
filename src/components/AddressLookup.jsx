@@ -117,13 +117,13 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
     <div className="space-y-6">
       {/* Postcode Display and Lookup */}
       <div className="space-y-4">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
           <div className="flex-1">
             <Label className="text-slate-800 font-semibold text-base">Postcode *</Label>
             <Input
               type="text"
               value={postcode}
-              className="h-14 border-2 border-slate-600 bg-slate-200/80 backdrop-blur-sm text-slate-900 font-medium"
+              className="h-12 sm:h-14 border-2 border-slate-600 bg-slate-200/80 backdrop-blur-sm text-slate-900 font-medium"
               readOnly
             />
           </div>
@@ -131,7 +131,7 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
             type="button"
             onClick={handleLookupStreets}
             disabled={isLoading || !postcodeService.isValidPostcode(postcode)}
-            className="mt-6 h-14 bg-blue-600 hover:bg-blue-700 text-white px-6 transition-all duration-300 ease-in-out transform hover:scale-105"
+            className="mt-3 sm:mt-6 h-12 sm:h-14 w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 transition-all duration-300 ease-in-out transform sm:hover:scale-105"
           >
             {isLoading ? (
               <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -171,7 +171,7 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
             </span>
           </Label>
           <Select value={selectedStreet} onValueChange={handleStreetSelect}>
-            <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]">
+            <SelectTrigger className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]">
               <SelectValue placeholder="Choose your street..." />
             </SelectTrigger>
             <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300 max-h-60">
@@ -205,18 +205,18 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
               </span>
             )}
           </Label>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             <Input
               type="text"
               placeholder="e.g. 42, 42A, Flat 1, The Cottage"
               value={doorNumber}
               onChange={(e) => handleDoorNumberChange(e.target.value)}
-              className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
+              className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]"
               required
             />
             {isLoading && selectedStreet && (
-              <div className="flex items-center justify-center w-14">
-                <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
+              <div className="flex items-center justify-center w-12 sm:w-14">
+                <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin text-blue-600" />
               </div>
             )}
           </div>
@@ -229,7 +229,7 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
           <Label className="text-slate-800 font-semibold text-base text-sm">
             Did you mean one of these?
           </Label>
-          <div className="max-h-48 overflow-y-auto border border-slate-300 rounded-lg bg-white/90">
+          <div className="max-h-32 sm:max-h-48 overflow-y-auto border border-slate-300 rounded-lg bg-white/90">
             {houseNumbers
               .filter(addr => 
                 addr.number?.toString().toLowerCase().includes(doorNumber.toLowerCase())

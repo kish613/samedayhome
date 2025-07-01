@@ -185,6 +185,36 @@ html {
   .hero-subtitle {
     font-size: 1.25rem;
   }
+  
+  /* Mobile form improvements */
+  .mobile-form-spacing {
+    padding: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .mobile-no-hover {
+    transform: none !important;
+  }
+  
+  .mobile-input-height {
+    height: 3rem !important;
+  }
+  
+  /* Mobile badge improvements */
+  .mobile-badges {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Mobile progress indicators */
+  .mobile-progress {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .mobile-progress-connector {
+    display: none !important;
+  }
 }
 
 /* Loading animation for images */

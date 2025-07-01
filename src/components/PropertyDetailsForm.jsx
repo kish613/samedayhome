@@ -133,17 +133,17 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   to deliver a guaranteed cash offer within 2 hours
                 </p>
                 
-                <div className="flex items-center justify-center space-x-8 text-sm">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-8 text-xs sm:text-sm">
                   <div className="flex items-center space-x-2">
-                    <Shield className="h-5 w-5 text-green-400" />
+                    <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-green-400" />
                     <span>RICS Regulated</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Star className="h-5 w-5 text-yellow-400" />
+                    <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
                     <span>4.9/5 Trustpilot</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <TrendingUp className="h-5 w-5 text-blue-400" />
+                    <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-blue-400" />
                     <span>£500M+ Invested</span>
                   </div>
                 </div>
@@ -160,30 +160,30 @@ function PropertyDetailsForm({ postcode, onBack }) {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit}>
-              <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-2xl p-8 lg:p-12 border border-white/40 hover:shadow-3xl hover:bg-white/75 transition-all duration-500 ease-in-out">
+              <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-2xl p-4 sm:p-8 lg:p-12 border border-white/40 hover:shadow-3xl hover:bg-white/75 transition-all duration-500 ease-in-out">
                 
                 {/* Progress Indicators */}
-                <div className="flex items-center justify-center mb-12">
-                  <div className="flex items-center space-x-4">
+                <div className="flex items-center justify-center mb-8 sm:mb-12">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
-                      <span className="font-semibold text-slate-700">Property Details</span>
+                      <span className="text-sm font-medium sm:font-semibold text-slate-700">Property Details</span>
                     </div>
-                    <div className="w-16 h-0.5 bg-slate-300"></div>
+                    <div className="w-16 h-0.5 bg-slate-300 hidden sm:block"></div>
                     <div className="flex items-center space-x-2">
                       <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
-                      <span className="font-semibold text-slate-700">Contact Information</span>
+                      <span className="text-sm font-medium sm:font-semibold text-slate-700">Contact Information</span>
                     </div>
-                    <div className="w-16 h-0.5 bg-slate-300"></div>
+                    <div className="w-16 h-0.5 bg-slate-300 hidden sm:block"></div>
                     <div className="flex items-center space-x-2">
                       <div className="w-8 h-8 bg-slate-300 rounded-full flex items-center justify-center text-slate-500 font-bold text-sm">3</div>
-                      <span className="font-medium text-slate-500">Instant Offer</span>
+                      <span className="text-sm font-medium text-slate-500">Instant Offer</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Property Information Section */}
-                <div className="space-y-8 mb-10">
+                <div className="space-y-6 sm:space-y-8 mb-6 sm:mb-10">
                   <div className="border-l-4 border-orange-500 pl-6 hover:border-orange-600 hover:bg-orange-50/20 rounded-r-lg transition-all duration-300 ease-in-out transform hover:translate-x-1">
                     <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
                       <img src={formIcon} alt="Property Icon" className="h-6 w-6 mr-3" />
@@ -200,11 +200,11 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     onAddressChange={(value) => handleInputChange('fullAddress', value)}
                   />
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label className="text-slate-800 font-semibold text-base">Property Type *</Label>
                       <Select onValueChange={(value) => handleInputChange('propertyType', value)} required>
-                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]">
+                        <SelectTrigger className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]">
                           <SelectValue placeholder="Select property type" />
                         </SelectTrigger>
                         <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
@@ -223,7 +223,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     <div className="space-y-2">
                       <Label className="text-slate-800 font-semibold text-base">Number of Bedrooms *</Label>
                       <Select onValueChange={(value) => handleInputChange('bedrooms', value)} required>
-                        <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]">
+                        <SelectTrigger className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]">
                           <SelectValue placeholder="Select bedrooms" />
                         </SelectTrigger>
                         <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
@@ -242,7 +242,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   <div className="space-y-2">
                     <Label className="text-slate-800 font-semibold text-base">Property Condition *</Label>
                     <Select onValueChange={(value) => handleInputChange('condition', value)} required>
-                      <SelectTrigger className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]">
+                      <SelectTrigger className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]">
                         <SelectValue placeholder="Select condition" />
                       </SelectTrigger>
                       <SelectContent className="bg-white/95 backdrop-blur-md border-2 border-slate-300">
@@ -257,7 +257,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                 </div>
 
                 {/* Contact Information Section */}
-                <div className="space-y-8 mb-10">
+                <div className="space-y-6 sm:space-y-8 mb-6 sm:mb-10">
                   <div className="border-l-4 border-blue-500 pl-6 hover:border-blue-600 hover:bg-blue-50/20 rounded-r-lg transition-all duration-300 ease-in-out transform hover:translate-x-1">
                     <h2 className="text-2xl font-bold text-slate-900 mb-2 flex items-center">
                       <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286863/clipboard_lectern_zjmzsv.png" alt="Contact Information" className="h-6 w-6 mr-3" />
@@ -274,12 +274,12 @@ function PropertyDetailsForm({ postcode, onBack }) {
                         placeholder="Your full legal name"
                         value={formData.fullName}
                         onChange={(e) => handleInputChange('fullName', e.target.value)}
-                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
+                        className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]"
                         required
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <div className="space-y-2">
                         <Label className="text-slate-800 font-semibold text-base">Email Address *</Label>
                         <Input
@@ -287,7 +287,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="your.name@email.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
-                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
+                          className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-blue-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]"
                           required
                         />
                       </div>
@@ -299,7 +299,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                           placeholder="07xxx xxx xxx"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
+                          className="h-12 sm:h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform sm:hover:scale-[1.02]"
                           required
                         />
                       </div>
