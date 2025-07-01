@@ -680,7 +680,7 @@ function HomePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <table className="w-full bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden border border-white/40">
+            <table className="w-full bg-white/30 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden border border-white/40">
               <thead className="bg-blue-900/70 backdrop-blur-sm text-white">
                 <tr>
                   <th className="px-6 py-4 text-left font-semibold">Selling Method</th>

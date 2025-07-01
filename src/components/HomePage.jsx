@@ -458,7 +458,7 @@ function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="min-w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="min-w-full bg-white/30 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden">
               <table className="min-w-full">
                 <thead className="bg-gradient-to-r from-blue-900 to-blue-700 text-white">
                   <tr>
