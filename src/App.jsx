@@ -565,8 +565,15 @@ function HomePage() {
             viewport={{ once: true }}
           >
             <motion.div variants={fadeInUp}>
-              <Card className="h-full border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl relative overflow-hidden group bg-gradient-to-br from-white to-blue-50">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <Card className="h-full border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl relative overflow-hidden group">
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/ac020ed2faf23a741df5e848e5cbbc3dafa6f99a86a41eb2667021717c4d9979/image.webp)' }}
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
+                {/* Content */}
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
@@ -585,8 +592,15 @@ function HomePage() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl relative overflow-hidden group bg-gradient-to-br from-white to-green-50">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <Card className="h-full border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl relative overflow-hidden group">
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/8f7a05b3e437b043fad186c9d3db8f547417ffcdf7406a3449dab2281414e723/image.webp)' }}
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
+                {/* Content */}
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
@@ -605,8 +619,15 @@ function HomePage() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl relative overflow-hidden group bg-gradient-to-br from-white to-purple-50">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <Card className="h-full border-2 border-transparent hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl relative overflow-hidden group">
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/54fd99ec061a50246bb05af886afb9aa3a769a3cd6d93cb59da7b520d1e23802/image.webp)' }}
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
+                {/* Content */}
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
