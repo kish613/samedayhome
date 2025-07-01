@@ -581,13 +581,13 @@ function HomePage() {
                   
                   return (
                   <div key={index} className="w-1/3 flex-shrink-0 px-4">
-                    <Card className="h-full border-2 border-transparent hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden">
+                    <Card className="h-full border-2 border-transparent hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden bg-transparent">
                       {/* Property Background - Full Card Blur */}
                       <div 
                         className="absolute inset-0 bg-cover bg-center blur-sm"
                         style={{ backgroundImage: `url(${propertyImages[index % propertyImages.length]})` }}
                       />
-                      <CardContent className="p-6 relative z-10">
+                      <CardContent className="p-6 relative z-10 bg-transparent">
                         <div className="flex items-center mb-4">
                           <img 
                             src={testimonial.avatar} 
