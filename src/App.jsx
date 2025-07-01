@@ -656,7 +656,7 @@ function HomePage() {
           style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/a962d0196f0c3da6d6452bb6bc75f25e625cca64ac1c61c8b2239c32180977a7/image.webp)' }}
         />
         {/* Light overlay for readability */}
-        <div className="absolute inset-0 bg-white/30"></div>
+        <div className="absolute inset-0 bg-white/15"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -680,8 +680,8 @@ function HomePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <table className="w-full bg-white/80 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden border border-white/30">
-              <thead className="bg-blue-900 text-white">
+            <table className="w-full bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden border border-white/40">
+              <thead className="bg-blue-900/70 backdrop-blur-sm text-white">
                 <tr>
                   <th className="px-6 py-4 text-left font-semibold">Selling Method</th>
                   <th className="px-6 py-4 text-center font-semibold">Time to Complete</th>
@@ -692,7 +692,7 @@ function HomePage() {
               </thead>
               <tbody>
                 {comparisonData.map((row, index) => (
-                  <tr key={index} className={`${row.highlight ? 'bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500' : 'hover:bg-gray-50'} transition-all duration-300`}>
+                  <tr key={index} className={`${row.highlight ? 'bg-green-500/20 backdrop-blur-sm border-l-4 border-green-500' : 'hover:bg-white/30 backdrop-blur-sm'} transition-all duration-300`}>
                     <td className={`px-6 py-4 font-semibold ${row.highlight ? 'text-green-700' : 'text-gray-900'}`}>
                       {row.method}
                       {row.highlight && <Badge className="ml-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-sm">BEST CHOICE</Badge>}
@@ -706,13 +706,13 @@ function HomePage() {
                     <td className="px-6 py-4 text-center">
                       {row.guarantee === 'Yes' ? (
                         <div className="flex items-center justify-center">
-                          <div className="bg-green-100 rounded-full p-1">
+                          <div className="bg-green-100/60 backdrop-blur-sm rounded-full p-1">
                             <CheckCircle className="h-5 w-5 text-green-600" />
                           </div>
                         </div>
                       ) : (
                         <div className="flex items-center justify-center">
-                          <div className="bg-red-100 rounded-full p-1">
+                          <div className="bg-red-100/60 backdrop-blur-sm rounded-full p-1">
                             <span className="text-red-600 font-bold text-lg">✗</span>
                           </div>
                         </div>
@@ -722,10 +722,10 @@ function HomePage() {
                       <Badge 
                         className={
                           row.hassle === 'None' 
-                            ? 'bg-green-100 text-green-700 border-green-300' 
+                            ? 'bg-green-100/60 text-green-700 border-green-300/60 backdrop-blur-sm' 
                             : row.hassle === 'Medium' 
-                            ? 'bg-amber-100 text-amber-700 border-amber-300' 
-                            : 'bg-red-100 text-red-700 border-red-300'
+                            ? 'bg-amber-100/60 text-amber-700 border-amber-300/60 backdrop-blur-sm' 
+                            : 'bg-red-100/60 text-red-700 border-red-300/60 backdrop-blur-sm'
                         }
                       >
                         {row.hassle}
