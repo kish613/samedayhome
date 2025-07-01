@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Label } from '@/components/ui/label.jsx'
@@ -35,6 +35,16 @@ function PropertyDetailsForm({ postcode, onBack }) {
   const [error, setError] = useState('')
   const [showOfferResult, setShowOfferResult] = useState(false)
   const [offerResult, setOfferResult] = useState(null)
+
+  // Scroll to top when valuation result appears
+  useEffect(() => {
+    if (showOfferResult && offerResult) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
+  }, [showOfferResult, offerResult])
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }))
