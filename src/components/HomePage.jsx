@@ -587,8 +587,6 @@ function HomePage() {
                         className="absolute inset-0 bg-cover bg-center blur-sm"
                         style={{ backgroundImage: `url(${propertyImages[index % propertyImages.length]})` }}
                       />
-                      {/* Very Transparent Overlay for Text Readability */}
-                      <div className="absolute inset-0 bg-white/40"></div>
                       <CardContent className="p-6 relative z-10">
                         <div className="flex items-center mb-4">
                           <img 
