@@ -43,10 +43,10 @@ export class FallbackValuationService {
     
     const marketValue = Math.round(baseValue * bedroomMultiplier * conditionMultiplier)
     
-    // Calculate competitive cash offer (5-8% below market value - much more competitive)
-    const discountPercentage = formData.condition === 'excellent' ? 5 : 
-                             formData.condition === 'good' ? 6 : 
-                             formData.condition === 'fair' ? 7 : 8
+    // Calculate cash offer (10-12% below market value)
+    const discountPercentage = formData.condition === 'excellent' ? 10 : 
+                             formData.condition === 'good' ? 11 : 
+                             formData.condition === 'fair' ? 11 : 12
     
     const cashOffer = Math.round(marketValue * (100 - discountPercentage) / 100)
     
@@ -57,7 +57,7 @@ export class FallbackValuationService {
           market_value: marketValue,
           cash_offer: cashOffer,
           discount_percentage: discountPercentage,
-          reasoning: `Enhanced property valuation for ${formData.propertyType} with ${formData.bedrooms} bedrooms in ${formData.condition} condition at ${formData.fullAddress || formData.postcode}. Market value of £${marketValue.toLocaleString()} calculated using current 2024/2025 UK property values. Our competitive cash offer of £${cashOffer.toLocaleString()} represents ${100-discountPercentage}% of market value, providing quick completion with no fees, chains, or delays.`,
+          reasoning: `Enhanced property valuation for ${formData.propertyType} with ${formData.bedrooms} bedrooms in ${formData.condition} condition at ${formData.fullAddress || formData.postcode}. Market value of £${marketValue.toLocaleString()} calculated using current 2024/2025 UK property values. Our cash offer of £${cashOffer.toLocaleString()} represents ${100-discountPercentage}% of market value (${discountPercentage}% below market), providing quick completion with no fees, chains, or delays.`,
           risk_factors: [
             'Estimated valuation based on current market data',
             'Professional survey recommended for final accuracy',

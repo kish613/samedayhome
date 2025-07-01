@@ -42,10 +42,10 @@ function handleFallbackCalculation(formData, res) {
   
   const marketValue = Math.round(baseValue * bedroomMultiplier * conditionMultiplier)
   
-  // Calculate competitive cash offer (5-8% below market value - much more competitive)
-  const discountPercentage = formData.condition === 'excellent' ? 5 : 
-                           formData.condition === 'good' ? 6 : 
-                           formData.condition === 'fair' ? 7 : 8
+  // Calculate cash offer (10-12% below market value)
+  const discountPercentage = formData.condition === 'excellent' ? 10 : 
+                           formData.condition === 'good' ? 11 : 
+                           formData.condition === 'fair' ? 11 : 12
   
   const cashOffer = Math.round(marketValue * (100 - discountPercentage) / 100)
   
@@ -56,7 +56,7 @@ function handleFallbackCalculation(formData, res) {
         market_value: marketValue,
         cash_offer: cashOffer,
         discount_percentage: discountPercentage,
-        reasoning: `Enhanced property valuation for ${formData.propertyType} with ${formData.bedrooms} bedrooms in ${formData.condition} condition at ${formData.fullAddress || formData.postcode}. Market value of £${marketValue.toLocaleString()} calculated using current 2024/2025 UK property values. Our competitive cash offer of £${cashOffer.toLocaleString()} represents ${100-discountPercentage}% of market value, providing quick completion with no fees, chains, or delays.`,
+        reasoning: `Enhanced property valuation for ${formData.propertyType} with ${formData.bedrooms} bedrooms in ${formData.condition} condition at ${formData.fullAddress || formData.postcode}. Market value of £${marketValue.toLocaleString()} calculated using current 2024/2025 UK property values. Our cash offer of £${cashOffer.toLocaleString()} represents ${100-discountPercentage}% of market value (${discountPercentage}% below market), providing quick completion with no fees, chains, or delays.`,
         risk_factors: ['Estimated valuation based on current market data', 'Professional survey recommended for final accuracy', 'Local market conditions may vary'],
         comparable_analysis: `Based on updated UK market averages for ${formData.propertyType} properties with ${formData.bedrooms} bedrooms in ${formData.condition} condition`
       },
@@ -115,7 +115,7 @@ CASH_OFFER: £XXX,XXX
 
 Example:
 MARKET_VALUE: £525,000
-CASH_OFFER: £485,000
+CASH_OFFER: £470,000
 
 After these two required lines, provide your detailed analysis.
 
@@ -137,7 +137,7 @@ VALUATION REQUIREMENTS:
 3. Account for local transport links, schools, amenities, and market trends
 4. Provide accurate UK property valuations reflecting current 2024/2025 market conditions
 5. Consider that UK property values range from £50,000 (rural areas) to £10M+ (prime London)
-6. Cash offer should be 90-95% of market value (competitive cash buying rate)
+6. Cash offer should be 88-90% of market value (10-12% below market value)
 
 MARKET CONTEXT:
 - Use 2024/2025 UK property market data
@@ -157,7 +157,7 @@ Then provide detailed analysis including:
 - Location benefits and transport links
 - Investment potential and rental yields
 - Property condition impact on value
-- Benefits of our competitive 90-95% cash offer
+- Benefits of our competitive 88-90% cash offer
 
 Remember: Your first two lines MUST be the values in the exact format shown above. Be realistic about current UK property values.`
 
