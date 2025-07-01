@@ -649,9 +649,14 @@ function HomePage() {
       </section>
 
       {/* Comparison Section */}
-      <section id="comparison" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100/50 relative overflow-hidden">
-        {/* Subtle geometric pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%236b7280" fill-opacity="0.3" fill-rule="evenodd"%3E%3Cpath d="M0 40L40 0H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E")'}}></div>
+      <section id="comparison" className="py-20 relative overflow-hidden">
+        {/* Visual Metrics Background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/b92fd6f80cec96fc628410babae87e4a05b01bd849e27c577ca662d5f39cf94a/image.webp)' }}
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/95 to-blue-50/90"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
