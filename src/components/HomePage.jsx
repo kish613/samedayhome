@@ -165,7 +165,16 @@ function HomePage() {
                 <Phone className="h-4 w-4" />
                 <span className="font-semibold">0333 090 6219</span>
               </div>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold">
+              <Button 
+                onClick={() => {
+                  // Scroll to the main form on the homepage
+                  const heroSection = document.querySelector('section')
+                  if (heroSection) {
+                    heroSection.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold"
+              >
                 Free Cash Offer
               </Button>
             </div>

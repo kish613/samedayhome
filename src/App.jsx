@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
@@ -8,6 +8,7 @@ import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
+import ValuationPage from './components/ValuationPage.jsx'
 import LondonLandingPage from './components/LondonLandingPage.jsx'
 import ManchesterLandingPage from './components/ManchesterLandingPage.jsx'
 import BirminghamLandingPage from './components/BirminghamLandingPage.jsx'
@@ -42,6 +43,7 @@ function HomePage() {
   const [activeTab, setActiveTab] = useState(0)
   const [showForm, setShowForm] = useState(false)
   const [submittedPostcode, setSubmittedPostcode] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
     setIsVisible(true)
@@ -58,15 +60,19 @@ function HomePage() {
       return
     }
     
-    setSubmittedPostcode(address.trim().toUpperCase())
-    setShowForm(true)
+    // Navigate to valuation page with postcode
+    navigate(`/valuation/${encodeURIComponent(address.trim().toUpperCase())}`)
   }
 
-  const handleBackToSearch = () => {
-    setShowForm(false)
-    setAddress('')
-    setSubmittedPostcode('')
+  const handleCTAClick = () => {
+    // Scroll to the main form on the homepage
+    const heroSection = document.querySelector('section')
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: 'smooth' })
+    }
   }
+
+
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -114,10 +120,7 @@ function HomePage() {
     }
   ]
 
-  // Show property details form if postcode submitted
-  if (showForm) {
-    return <PropertyDetailsForm postcode={submittedPostcode} onBack={handleBackToSearch} />
-  }
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -206,20 +209,23 @@ function HomePage() {
                   transition={{ duration: 0.3 }}
                 />
               </motion.a>
-              <motion.a 
-                href="/blog" 
+              <Link 
+                to="/blog" 
                 className="relative text-gray-700 font-medium cursor-pointer group"
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                Blog
-                <motion.div 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  Blog
+                  <motion.div 
+                    className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
+                    initial={{ width: 0 }}
+                    whileHover={{ width: "100%" }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.div>
+              </Link>
             </nav>
 
             <div className="flex items-center space-x-4">
@@ -247,9 +253,12 @@ function HomePage() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                Free Cash Offer
-              </Button>
+                <Button 
+                  onClick={handleCTAClick}
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Free Cash Offer
+                </Button>
               </motion.div>
             </div>
           </div>
@@ -916,7 +925,10 @@ function HomePage() {
               Get your free cash offer today. No obligation, no hassle, no fees. Join thousands of satisfied customers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold">
+              <Button 
+                onClick={handleCTAClick}
+                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
+              >
                 Get Free Cash Offer
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -1035,6 +1047,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/valuation/:postcode" element={<ValuationPage />} />
       <Route path="/london" element={<LondonLandingPage />} />
       <Route path="/manchester" element={<ManchesterLandingPage />} />
       <Route path="/birmingham" element={<BirminghamLandingPage />} />
