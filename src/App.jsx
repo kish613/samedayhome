@@ -797,8 +797,13 @@ function HomePage() {
             viewport={{ once: true }}
           >
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
+              <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative overflow-hidden bg-transparent">
+                {/* Property Background */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center blur-sm"
+                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/6dddcd638408e418e3ec81783553e9e062b671a9a1e2d7cb7a74f22c67524f7d/image.webp)' }}
+                />
+                <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -821,8 +826,13 @@ function HomePage() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
+              <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative overflow-hidden bg-transparent">
+                {/* Property Background */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center blur-sm"
+                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/9dc877585da810dce4cc699ca313b9560096e466da36f7565f08d4b6d772e4b9/image.webp)' }}
+                />
+                <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -845,8 +855,13 @@ function HomePage() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
+              <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative overflow-hidden bg-transparent">
+                {/* Property Background */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center blur-sm"
+                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/5cd3436d8f000066565037d49bae399668cea4c3c007a240255a74636b7c6480/image.webp)' }}
+                />
+                <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
