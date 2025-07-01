@@ -571,10 +571,23 @@ function HomePage() {
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentTestimonial * (100 / 3)}%)` }}
               >
-                {testimonialData.map((testimonial, index) => (
+                {testimonialData.map((testimonial, index) => {
+                  // Property background images matching locations
+                  const propertyImages = [
+                    'https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/6dddcd638408e418e3ec81783553e9e062b671a9a1e2d7cb7a74f22c67524f7d/image.webp', // Terrace
+                    'https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/9dc877585da810dce4cc699ca313b9560096e466da36f7565f08d4b6d772e4b9/image.webp', // Victorian  
+                    'https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/5cd3436d8f000066565037d49bae399668cea4c3c007a240255a74636b7c6480/image.webp'  // Bungalow
+                  ];
+                  
+                  return (
                   <div key={index} className="w-1/3 flex-shrink-0 px-4">
-                    <Card className="h-full border-2 border-transparent hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl bg-white/90 backdrop-blur-sm">
-                      <CardContent className="p-6">
+                    <Card className="h-full border-2 border-transparent hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl bg-white/90 backdrop-blur-sm relative overflow-hidden">
+                      {/* Property Background */}
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center opacity-10 blur-sm"
+                        style={{ backgroundImage: `url(${propertyImages[index % propertyImages.length]})` }}
+                      />
+                      <CardContent className="p-6 relative z-10 bg-white/85 backdrop-blur-sm">
                         <div className="flex items-center mb-4">
                           <img 
                             src={testimonial.avatar} 
@@ -605,7 +618,8 @@ function HomePage() {
                       </CardContent>
                     </Card>
                   </div>
-                ))}
+                  );
+                })}
               </motion.div>
             </div>
             
