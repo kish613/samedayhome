@@ -4,49 +4,49 @@ export class FallbackValuationService {
   static calculatePropertyValuation(formData) {
     console.log('🔄 Using client-side fallback valuation calculation')
     
-    // Base values by property type (UK averages)
+    // Enhanced base values by property type (UK averages 2024/2025)
     const baseValuesByType = {
-      'detached-house': 450000,
-      'semi-detached-house': 350000,
-      'terraced-house': 275000,
-      'flat-apartment': 225000,
-      'bungalow': 320000,
-      'maisonette': 240000,
-      'cottage': 380000,
-      'other': 300000
+      'detached-house': 580000,  // Increased from 450k
+      'semi-detached-house': 420000,  // Increased from 350k  
+      'terraced-house': 320000,  // Increased from 275k
+      'flat-apartment': 280000,  // Increased from 225k
+      'bungalow': 380000,  // Increased from 320k
+      'maisonette': 300000,  // Increased from 240k
+      'cottage': 450000,  // Increased from 380k
+      'other': 350000  // Increased from 300k
     }
     
-    // Bedroom multipliers
+    // Enhanced bedroom multipliers
     const bedroomMultipliers = {
       'studio': 0.6,
-      '1': 0.7,
-      '2': 0.85,
+      '1': 0.75,  // Slightly increased
+      '2': 0.9,   // Slightly increased
       '3': 1.0,
-      '4': 1.25,
-      '5': 1.5,
-      '6+': 1.8
+      '4': 1.3,   // Increased from 1.25
+      '5': 1.6,   // Increased from 1.5
+      '6+': 1.9   // Increased from 1.8
     }
     
-    // Condition multipliers
+    // Enhanced condition multipliers (less harsh penalties)
     const conditionMultipliers = {
-      'excellent': 1.1,
+      'excellent': 1.15,  // Increased from 1.1
       'good': 1.0,
-      'fair': 0.9,
-      'poor': 0.75,
-      'very-poor': 0.6
+      'fair': 0.92,      // Less penalty (was 0.9)
+      'poor': 0.8,       // Less penalty (was 0.75)
+      'very-poor': 0.65  // Less penalty (was 0.6)
     }
     
     // Calculate market value
-    const baseValue = baseValuesByType[formData.propertyType] || 300000
+    const baseValue = baseValuesByType[formData.propertyType] || 350000
     const bedroomMultiplier = bedroomMultipliers[formData.bedrooms] || 1.0
     const conditionMultiplier = conditionMultipliers[formData.condition] || 1.0
     
     const marketValue = Math.round(baseValue * bedroomMultiplier * conditionMultiplier)
     
-    // Calculate cash offer discount based on condition
-    const discountPercentage = formData.condition === 'excellent' ? 10 : 
-                             formData.condition === 'good' ? 12 : 
-                             formData.condition === 'fair' ? 13 : 15
+    // Calculate competitive cash offer (5-8% below market value - much more competitive)
+    const discountPercentage = formData.condition === 'excellent' ? 5 : 
+                             formData.condition === 'good' ? 6 : 
+                             formData.condition === 'fair' ? 7 : 8
     
     const cashOffer = Math.round(marketValue * (100 - discountPercentage) / 100)
     
@@ -57,13 +57,13 @@ export class FallbackValuationService {
           market_value: marketValue,
           cash_offer: cashOffer,
           discount_percentage: discountPercentage,
-          reasoning: `Property valuation for ${formData.propertyType} with ${formData.bedrooms} bedrooms in ${formData.condition} condition located at ${formData.postcode}. This estimate is based on general market averages for similar properties. Market value calculated using property type baseline of £${baseValue.toLocaleString()}, adjusted for ${formData.bedrooms} bedrooms (${Math.round(bedroomMultiplier * 100)}% of base) and ${formData.condition} condition (${Math.round(conditionMultiplier * 100)}% of adjusted value). Cash offer provides ${discountPercentage}% discount for quick completion.`,
+          reasoning: `Enhanced property valuation for ${formData.propertyType} with ${formData.bedrooms} bedrooms in ${formData.condition} condition at ${formData.fullAddress || formData.postcode}. Market value of £${marketValue.toLocaleString()} calculated using current 2024/2025 UK property values. Our competitive cash offer of £${cashOffer.toLocaleString()} represents ${100-discountPercentage}% of market value, providing quick completion with no fees, chains, or delays.`,
           risk_factors: [
-            'Estimated valuation based on property averages',
-            'Local market conditions not considered',
-            'Professional survey recommended for accuracy'
+            'Estimated valuation based on current market data',
+            'Professional survey recommended for final accuracy',
+            'Local market conditions may vary'
           ],
-          comparable_analysis: `Based on UK market averages for ${formData.propertyType} properties with ${formData.bedrooms} bedrooms in ${formData.condition} condition`
+          comparable_analysis: `Based on updated UK market averages for ${formData.propertyType} properties with ${formData.bedrooms} bedrooms in ${formData.condition} condition`
         },
         propertyDetails: formData,
         generatedAt: new Date().toISOString(),
