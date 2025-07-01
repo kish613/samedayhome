@@ -336,8 +336,16 @@ function HomePage() {
       </section>
 
       {/* Trust Indicators with Media Mentions */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50/30">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50/30 relative overflow-hidden">
+        {/* Trust Seal Watermark */}
+        <div 
+          className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.03] pointer-events-none"
+          style={{ 
+            backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/4562d93d3e7377ddd6f4a0a4c64d51e972bd3068b49e2b9f4a79893be3c6c0c8/image.webp)',
+            backgroundSize: '300px 300px'
+          }}
+        />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0, y: 30 }}
