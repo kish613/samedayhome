@@ -649,14 +649,14 @@ function HomePage() {
       </section>
 
       {/* Comparison Section */}
-      <section id="comparison" className="py-20 relative overflow-hidden">
+      <section id="comparison" className="py-20 relative overflow-hidden min-h-screen">
         {/* Visual Metrics Background */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-40"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
           style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/a962d0196f0c3da6d6452bb6bc75f25e625cca64ac1c61c8b2239c32180977a7/image.webp)' }}
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/85 to-blue-50/75"></div>
+        {/* Light overlay for readability */}
+        <div className="absolute inset-0 bg-white/30"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -680,7 +680,7 @@ function HomePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+            <table className="w-full bg-white/80 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden border border-white/30">
               <thead className="bg-blue-900 text-white">
                 <tr>
                   <th className="px-6 py-4 text-left font-semibold">Selling Method</th>
