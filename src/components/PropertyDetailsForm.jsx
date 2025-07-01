@@ -9,6 +9,7 @@ import { ArrowLeft, Shield, Clock, Banknote, Loader2, CheckCircle, Star, Award, 
 import { motion } from 'framer-motion'
 import { apiClient } from '../services/apiClient.js'
 import OfferResult from './OfferResult.jsx'
+import AddressLookup from './AddressLookup.jsx'
 
 // Import the same hero image as homepage
 import heroImg from '../assets/uk_houses_hero.jpg'
@@ -181,42 +182,13 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     <p className="text-slate-600">Provide accurate details for the most precise valuation</p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label className="text-slate-800 font-semibold text-base">Property Number *</Label>
-                      <Input
-                        type="text"
-                        placeholder="e.g. 42"
-                        value={formData.doorNumber}
-                        onChange={(e) => handleInputChange('doorNumber', e.target.value)}
-                        className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label className="text-slate-800 font-semibold text-base">Postcode *</Label>
-                      <Input
-                        type="text"
-                        value={formData.postcode}
-                        onChange={(e) => handleInputChange('postcode', e.target.value)}
-                        className="h-14 border-2 border-slate-600 bg-slate-200/80 backdrop-blur-sm text-slate-900 font-medium"
-                        readOnly
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label className="text-slate-800 font-semibold text-base">Full Address *</Label>
-                    <Input
-                      type="text"
-                      placeholder="e.g. Downing Street, Westminster"
-                      value={formData.fullAddress}
-                      onChange={(e) => handleInputChange('fullAddress', e.target.value)}
-                      className="h-14 border-2 border-slate-600 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-slate-900 placeholder:text-slate-500 font-medium hover:border-orange-400 hover:shadow-lg hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-[1.02]"
-                      required
-                    />
-                  </div>
+                  {/* Smart Address Lookup Component */}
+                  <AddressLookup 
+                    postcode={formData.postcode}
+                    doorNumber={formData.doorNumber}
+                    onDoorNumberChange={(value) => handleInputChange('doorNumber', value)}
+                    onAddressChange={(value) => handleInputChange('fullAddress', value)}
+                  />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
