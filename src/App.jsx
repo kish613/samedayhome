@@ -18,6 +18,7 @@ import AvoidRepossessionUK from './components/blog/AvoidRepossessionUK.jsx'
 import SellDisrepairHouse from './components/blog/SellDisrepairHouse.jsx'
 import SellHouseAfterDivorce from './components/blog/SellHouseAfterDivorce.jsx'
 import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react'
 import './App.css'
 
 // Import assets
@@ -1032,19 +1033,27 @@ function HomePage() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/london" element={<LondonLandingPage />} />
-      <Route path="/manchester" element={<ManchesterLandingPage />} />
-      <Route path="/birmingham" element={<BirminghamLandingPage />} />
-      <Route path="/liverpool" element={<LiverpoolLandingPage />} />
-      <Route path="/blog" element={<BlogPage />} />
-      <Route path="/blog/sell-probate-house-uk" element={<SellProbateHouseUK />} />
-      <Route path="/blog/avoid-repossession-uk" element={<AvoidRepossessionUK />} />
-      <Route path="/blog/sell-disrepair-house" element={<SellDisrepairHouse />} />
-      <Route path="/blog/sell-house-after-divorce-uk" element={<SellHouseAfterDivorce />} />
-      <Route path="/blog/emigration-house-sale" element={<EmigrationHouseSale />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/london" element={<LondonLandingPage />} />
+        <Route path="/manchester" element={<ManchesterLandingPage />} />
+        <Route path="/birmingham" element={<BirminghamLandingPage />} />
+        <Route path="/liverpool" element={<LiverpoolLandingPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/sell-probate-house-uk" element={<SellProbateHouseUK />} />
+        <Route path="/blog/avoid-repossession-uk" element={<AvoidRepossessionUK />} />
+        <Route path="/blog/sell-disrepair-house" element={<SellDisrepairHouse />} />
+        <Route path="/blog/sell-house-after-divorce-uk" element={<SellHouseAfterDivorce />} />
+        <Route path="/blog/emigration-house-sale" element={<EmigrationHouseSale />} />
+      </Routes>
+      
+      {/* Tawk.to Chat Widget */}
+      <TawkMessengerReact
+        propertyId="68642f48e9265e190f81b24c"
+        widgetId="1iv3lhcn0"
+      />
+    </>
   )
 }
 
