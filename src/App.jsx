@@ -32,7 +32,7 @@ import zeroFeesIcon from './assets/cash_icon.png'
 // Custom Cloudinary icons for trust section
 const calendarIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/calender_no_bg_icon_morvmr.png'
 const housesIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/lots_of_houses_no_bg_wxee7u.png'
-const moneyIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/money_mount_no_bg_icon_hlcte7.png'
+const moneyMountainIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/money_mount_no_bg_icon_hlcte7.png'
 const clockIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/2_hour_clock_no_bg_fzxyai.png'
 
 function HomePage() {
@@ -443,7 +443,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={moneyIcon} alt="Money Icon" className="h-10 w-10" />
+                <img src={moneyMountainIcon} alt="Money Mountain Icon" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent mb-2">£500M+</h3>
               <p className="text-gray-600 font-medium">Total Invested</p>
