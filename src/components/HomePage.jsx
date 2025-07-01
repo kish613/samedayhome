@@ -582,21 +582,13 @@ function HomePage() {
                   return (
                   <div key={index} className="w-1/3 flex-shrink-0 px-4">
                     <Card className="h-full border-2 border-transparent hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden">
-                      {/* Property Background with Smooth Fade */}
+                      {/* Property Background - Full Card Blur */}
                       <div 
-                        className="absolute inset-0 bg-cover bg-center"
+                        className="absolute inset-0 bg-cover bg-center blur-sm"
                         style={{ backgroundImage: `url(${propertyImages[index % propertyImages.length]})` }}
                       />
-                      {/* Multi-layer Gradient Fade for Smooth Transition */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/60 to-white/80"></div>
-                      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/70"></div>
-                      {/* Center fade for focus */}
-                      <div 
-                        className="absolute inset-0 opacity-60"
-                        style={{ 
-                          background: 'radial-gradient(circle at center, transparent 20%, rgba(255,255,255,0.4) 70%, rgba(255,255,255,0.8) 100%)'
-                        }}
-                      />
+                      {/* Very Transparent Overlay for Text Readability */}
+                      <div className="absolute inset-0 bg-white/40"></div>
                       <CardContent className="p-6 relative z-10">
                         <div className="flex items-center mb-4">
                           <img 
