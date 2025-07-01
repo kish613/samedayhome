@@ -587,7 +587,7 @@ function HomePage() {
                         className="absolute inset-0 bg-cover bg-center opacity-10 blur-sm"
                         style={{ backgroundImage: `url(${propertyImages[index % propertyImages.length]})` }}
                       />
-                      <CardContent className="p-6 relative z-10 bg-white/85 backdrop-blur-sm">
+                                             <CardContent className="p-6 relative z-10 bg-white/60 backdrop-blur-sm">
                         <div className="flex items-center mb-4">
                           <img 
                             src={testimonial.avatar} 
