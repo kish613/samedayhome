@@ -19,6 +19,7 @@ import AvoidRepossessionUK from './components/blog/AvoidRepossessionUK.jsx'
 import SellDisrepairHouse from './components/blog/SellDisrepairHouse.jsx'
 import SellHouseAfterDivorce from './components/blog/SellHouseAfterDivorce.jsx'
 import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
+import ReferralPage from './components/ReferralPage.jsx'
 
 import './App.css'
 
@@ -224,6 +225,17 @@ function HomePage() {
                     whileHover={{ width: "100%" }}
                     transition={{ duration: 0.3 }}
                   />
+                </motion.div>
+              </Link>
+              <Link 
+                to="/refer" 
+                className="relative text-white font-bold cursor-pointer group bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  Earn £100
                 </motion.div>
               </Link>
             </nav>
@@ -999,6 +1011,7 @@ function HomePage() {
                 <li>Distressed Property Sales</li>
                 <li>Quick Property Valuations</li>
                 <li>Auction Alternative</li>
+                <li><Link to="/refer" className="hover:text-white transition-colors">Earn £100 - Refer Properties</Link></li>
               </ul>
             </div>
             
@@ -1048,6 +1061,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/valuation/:postcode" element={<ValuationPage />} />
+      <Route path="/refer" element={<ReferralPage />} />
       <Route path="/london" element={<LondonLandingPage />} />
       <Route path="/manchester" element={<ManchesterLandingPage />} />
       <Route path="/birmingham" element={<BirminghamLandingPage />} />
