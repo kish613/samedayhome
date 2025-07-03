@@ -131,7 +131,7 @@ function HomePage() {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <AnimatedLogo className="h-6 w-auto cursor-pointer -mt-3" />
+              <AnimatedLogo className="h-6 w-auto cursor-pointer -mt-5" />
             </div>
             
             <nav className="hidden lg:flex items-center space-x-6">
