@@ -20,6 +20,7 @@ import SellDisrepairHouse from './components/blog/SellDisrepairHouse.jsx'
 import SellHouseAfterDivorce from './components/blog/SellHouseAfterDivorce.jsx'
 import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
 import ReferralPage from './components/ReferralPage.jsx'
+import AnimatedLogo from './components/AnimatedLogo.jsx'
 
 import './App.css'
 
@@ -130,11 +131,7 @@ function HomePage() {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <img 
-                src={logoImg} 
-                alt="Same Day Home Buyer" 
-                className="h-12 w-auto cursor-pointer"
-              />
+              <AnimatedLogo className="h-12 w-auto cursor-pointer" />
             </div>
             
             <nav className="hidden lg:flex items-center space-x-6">
