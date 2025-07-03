@@ -138,21 +138,19 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Enhanced Header */}
+      {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <motion.img 
+              <img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-24 w-auto cursor-pointer drop-shadow-md"
-                whileHover={{ scale: 1.08, rotate: 3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="h-12 w-auto cursor-pointer"
               />
             </div>
             
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-6">
               <a href="#how-it-works" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">How It Works</a>
               <a href="#why-us" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Why Choose Us</a>
               <a href="#comparison" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Compare Options</a>
@@ -583,9 +581,9 @@ function HomePage() {
                 {testimonialData.map((testimonial, index) => {
                   // Property background images matching locations
                   const propertyImages = [
-                    '/src/assets/property_bg_1.webp', // Terrace
-                    '/src/assets/property_bg_2.jpg', // Victorian  
-                    '/src/assets/property_bg_3.jpg'  // Bungalow
+                    '/property_bg_1.webp', // Terrace
+                    '/property_bg_2.jpg', // Victorian  
+                    '/property_bg_3.jpg'  // Bungalow
                   ];
                   
                   return (

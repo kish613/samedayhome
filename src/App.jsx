@@ -125,153 +125,74 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Enhanced Header */}
+      {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <motion.img 
+              <img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-20 w-auto cursor-pointer drop-shadow-md"
-                whileHover={{ scale: 1.08, rotate: 3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="h-12 w-auto cursor-pointer"
               />
             </div>
             
-            <nav className="hidden lg:flex items-center space-x-8">
-              <motion.a 
+            <nav className="hidden lg:flex items-center space-x-6">
+              <a 
                 href="#how-it-works" 
-                className="relative text-gray-700 font-medium cursor-pointer group"
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
               >
                 How It Works
-                <motion.div 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-              <motion.a 
+              </a>
+              <a 
                 href="#why-us" 
-                className="relative text-gray-700 font-medium cursor-pointer group"
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
               >
                 Why Choose Us
-                <motion.div 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-              <motion.a 
+              </a>
+              <a 
                 href="#comparison" 
-                className="relative text-gray-700 font-medium cursor-pointer group"
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
               >
                 Compare Options
-                <motion.div 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-              <motion.a 
+              </a>
+              <a 
                 href="#testimonials" 
-                className="relative text-gray-700 font-medium cursor-pointer group"
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
               >
                 Reviews
-                <motion.div 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-              <motion.a 
+              </a>
+              <a 
                 href="#faq" 
-                className="relative text-gray-700 font-medium cursor-pointer group"
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
               >
                 FAQs
-                <motion.div 
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
+              </a>
               <Link 
                 to="/blog" 
-                className="relative text-gray-700 font-medium cursor-pointer group"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
               >
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  Blog
-                  <motion.div 
-                    className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-900 to-orange-500"
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.div>
+                Blog
               </Link>
               <Link 
                 to="/refer" 
-                className="relative text-white font-bold cursor-pointer group bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
               >
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  Earn £100
-                </motion.div>
+                Earn £100
               </Link>
             </nav>
 
             <div className="flex items-center space-x-4">
-              <motion.div 
-                className="hidden md:flex items-center space-x-2 text-blue-900 cursor-pointer"
-                whileHover={{ 
-                  scale: 1.05,
-                  backgroundColor: "rgba(30, 58, 138, 0.1)",
-                  borderRadius: "12px"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                style={{ padding: "8px 12px" }}
-              >
-                <motion.div
-                  whileHover={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 0.5 }}
-                >
+              <div className="hidden md:flex items-center space-x-2 text-blue-900">
                 <Phone className="h-4 w-4" />
-                </motion.div>
                 <span className="font-semibold">0333 090 6219</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              </div>
+              <Button 
+                onClick={handleCTAClick}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold"
               >
-                <Button 
-                  onClick={handleCTAClick}
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Free Cash Offer
-                </Button>
-              </motion.div>
+                Free Cash Offer
+              </Button>
             </div>
           </div>
         </div>
@@ -363,7 +284,7 @@ function HomePage() {
         <div 
           className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.04] pointer-events-none"
           style={{ 
-            backgroundImage: 'url(/src/assets/uk_houses_hero.jpg)',
+            backgroundImage: 'url(/uk_houses_hero.jpg)',
             backgroundSize: '500px 500px'
           }}
         />
@@ -599,7 +520,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/src/assets/modern_uk_house.jpg)' }}
+                  style={{ backgroundImage: 'url(/modern_uk_house.jpg)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -626,7 +547,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/src/assets/property_bg_1.webp)' }}
+                  style={{ backgroundImage: 'url(/property_bg_1.webp)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -653,7 +574,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/src/assets/property_bg_2.jpg)' }}
+                  style={{ backgroundImage: 'url(/property_bg_2.jpg)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -683,7 +604,7 @@ function HomePage() {
         {/* Visual Metrics Background */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-          style={{ backgroundImage: 'url(/src/assets/uk_houses_hero.jpg)' }}
+          style={{ backgroundImage: 'url(/uk_houses_hero.jpg)' }}
         />
         {/* Light overlay for readability */}
         <div className="absolute inset-0 bg-white/15"></div>
@@ -823,7 +744,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/src/assets/property_bg_1.webp)' }}
+                  style={{ backgroundImage: 'url(/property_bg_1.webp)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -856,7 +777,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/src/assets/property_bg_2.jpg)' }}
+                  style={{ backgroundImage: 'url(/property_bg_2.jpg)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -889,7 +810,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/src/assets/property_bg_3.jpg)' }}
+                  style={{ backgroundImage: 'url(/property_bg_3.jpg)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
