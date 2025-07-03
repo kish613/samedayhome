@@ -430,22 +430,7 @@ function HomePage() {
             </motion.div>
           </motion.div>
 
-          {/* As Featured In */}
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-gray-600 mb-6 font-medium">As featured in:</p>
-            <div className="flex items-center justify-center space-x-8 opacity-60">
-              <div className="text-2xl font-bold text-gray-700">BBC</div>
-              <div className="text-2xl font-bold text-gray-700">The Times</div>
-              <div className="text-2xl font-bold text-gray-700">Telegraph</div>
-              <div className="text-2xl font-bold text-gray-700">Guardian</div>
-            </div>
-          </motion.div>
+
 
           {/* Trust Badges */}
           <motion.div 
