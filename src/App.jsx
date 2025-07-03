@@ -284,7 +284,7 @@ function HomePage() {
         <div 
           className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.04] pointer-events-none"
           style={{ 
-            backgroundImage: 'url(/uk_houses_hero.jpg)',
+            backgroundImage: 'url(https://res.cloudinary.com/dmns9ystn/image/upload/v1751563492/ChatGPT_Image_Jul_3_2025_06_24_40_PM_uuigx5.png)',
             backgroundSize: '500px 500px'
           }}
         />
