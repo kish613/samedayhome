@@ -128,65 +128,65 @@ function HomePage() {
     <div className="min-h-screen bg-white">
       {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between">
+        <div className="container mx-auto px-4 py-1.5">
+          <div className="flex items-center justify-between h-14">
             <div className="flex items-center">
-              <AnimatedLogo className="h-12 w-auto cursor-pointer" />
+              <AnimatedLogo className="h-8 w-auto cursor-pointer" />
             </div>
             
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden lg:flex items-center space-x-5">
               <a 
                 href="#how-it-works" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
               >
                 How It Works
               </a>
               <a 
                 href="#why-us" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
               >
                 Why Choose Us
               </a>
               <a 
                 href="#comparison" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
               >
                 Compare Options
               </a>
               <a 
                 href="#testimonials" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
               >
                 Reviews
               </a>
               <a 
                 href="#faq" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
               >
                 FAQs
               </a>
               <Link 
                 to="/blog" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
               >
                 Blog
               </Link>
               <Link 
                 to="/refer" 
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-1.5 rounded-md transition-colors text-sm"
               >
                 Earn £100
               </Link>
             </nav>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
               <div className="hidden md:flex items-center space-x-2 text-blue-900">
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold">0333 090 6219</span>
+                <span className="font-semibold text-sm">0333 090 6219</span>
               </div>
               <Button 
                 onClick={handleCTAClick}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-1.5 text-sm"
               >
                 Free Cash Offer
               </Button>
