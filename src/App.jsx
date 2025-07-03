@@ -128,10 +128,10 @@ function HomePage() {
     <div className="min-h-screen bg-white">
       {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-1.5">
-          <div className="flex items-center justify-between h-14">
+        <div className="container mx-auto px-4 py-1">
+          <div className="flex items-center justify-between h-12">
             <div className="flex items-center">
-              <AnimatedLogo className="h-8 w-auto cursor-pointer" />
+              <AnimatedLogo className="h-6 w-auto cursor-pointer" />
             </div>
             
             <nav className="hidden lg:flex items-center space-x-5">
@@ -186,7 +186,7 @@ function HomePage() {
               </div>
               <Button 
                 onClick={handleCTAClick}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-1.5 text-sm"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-1 text-sm"
               >
                 Free Cash Offer
               </Button>
