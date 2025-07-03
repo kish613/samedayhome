@@ -841,6 +841,85 @@ function HomePage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Badge className="bg-blue-100 text-blue-900 px-4 py-2 text-sm font-semibold mb-4">
+              FAQ
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Everything you need to know about selling your house to us
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {[
+              {
+                question: "How quickly can you complete?",
+                answer: "We can provide a cash offer within 2 hours and complete the purchase in as little as 24 hours. Most transactions complete within 2-3 weeks, depending on your preferred timeline."
+              },
+              {
+                question: "Do you charge any fees?",
+                answer: "No, we don't charge any fees whatsoever. No estate agent fees, no legal costs, no survey fees, no administrative charges. The offer we make is the amount you receive."
+              },
+              {
+                question: "What types of properties do you buy?",
+                answer: "We buy all types of residential properties including houses, flats, bungalows, and maisonettes in any condition. Whether your property needs extensive renovation or is move-in ready, we're interested."
+              },
+              {
+                question: "How do you calculate your offers?",
+                answer: "Our offers are based on current market values, property condition, location, and local comparable sales. We use AI-powered analysis combined with local market expertise to ensure fair and competitive offers."
+              },
+              {
+                question: "Is there any obligation?",
+                answer: "Absolutely none. Our valuation service is completely free with no obligation to proceed. You can accept or decline our offer with no pressure or consequences."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="border-2 border-transparent hover:border-orange-500 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <button
+                      className="w-full text-left"
+                      onClick={() => setActiveTab(activeTab === index ? -1 : index)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-semibold text-blue-900">{faq.question}</h3>
+                        <ChevronDown className={`h-5 w-5 text-gray-500 transform transition-transform duration-200 ${activeTab === index ? 'rotate-180' : ''}`} />
+                      </div>
+                    </button>
+                    {activeTab === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4 pt-4 border-t border-gray-200"
+                      >
+                        <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                      </motion.div>
+                    )}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
