@@ -363,7 +363,7 @@ function HomePage() {
         <div 
           className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.04] pointer-events-none"
           style={{ 
-            backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/5a88606346bab01c92b147769c306c8de4383bc6b7f6ca935199e5c07b7a9f3c/image.webp)',
+            backgroundImage: 'url(/src/assets/uk_houses_hero.jpg)',
             backgroundSize: '500px 500px'
           }}
         />
@@ -599,7 +599,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/ac020ed2faf23a741df5e848e5cbbc3dafa6f99a86a41eb2667021717c4d9979/image.webp)' }}
+                  style={{ backgroundImage: 'url(/src/assets/modern_uk_house.jpg)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -626,7 +626,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/8f7a05b3e437b043fad186c9d3db8f547417ffcdf7406a3449dab2281414e723/image.webp)' }}
+                  style={{ backgroundImage: 'url(/src/assets/property_bg_1.webp)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -653,7 +653,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/54fd99ec061a50246bb05af886afb9aa3a769a3cd6d93cb59da7b520d1e23802/image.webp)' }}
+                  style={{ backgroundImage: 'url(/src/assets/property_bg_2.jpg)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -683,7 +683,7 @@ function HomePage() {
         {/* Visual Metrics Background */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-          style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/a962d0196f0c3da6d6452bb6bc75f25e625cca64ac1c61c8b2239c32180977a7/image.webp)' }}
+          style={{ backgroundImage: 'url(/src/assets/uk_houses_hero.jpg)' }}
         />
         {/* Light overlay for readability */}
         <div className="absolute inset-0 bg-white/15"></div>
@@ -823,7 +823,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/6dddcd638408e418e3ec81783553e9e062b671a9a1e2d7cb7a74f22c67524f7d/image.webp)' }}
+                  style={{ backgroundImage: 'url(/src/assets/property_bg_1.webp)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -856,7 +856,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/9dc877585da810dce4cc699ca313b9560096e466da36f7565f08d4b6d772e4b9/image.webp)' }}
+                  style={{ backgroundImage: 'url(/src/assets/property_bg_2.jpg)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -889,7 +889,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/5cd3436d8f000066565037d49bae399668cea4c3c007a240255a74636b7c6480/image.webp)' }}
+                  style={{ backgroundImage: 'url(/src/assets/property_bg_3.jpg)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">

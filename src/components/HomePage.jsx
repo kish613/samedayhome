@@ -583,9 +583,9 @@ function HomePage() {
                 {testimonialData.map((testimonial, index) => {
                   // Property background images matching locations
                   const propertyImages = [
-                    'https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/6dddcd638408e418e3ec81783553e9e062b671a9a1e2d7cb7a74f22c67524f7d/image.webp', // Terrace
-                    'https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/9dc877585da810dce4cc699ca313b9560096e466da36f7565f08d4b6d772e4b9/image.webp', // Victorian  
-                    'https://evalstate-flux1-schnell.hf.space/gradio_api/file=/tmp/gradio/5cd3436d8f000066565037d49bae399668cea4c3c007a240255a74636b7c6480/image.webp'  // Bungalow
+                    '/src/assets/property_bg_1.webp', // Terrace
+                    '/src/assets/property_bg_2.jpg', // Victorian  
+                    '/src/assets/property_bg_3.jpg'  // Bungalow
                   ];
                   
                   return (
