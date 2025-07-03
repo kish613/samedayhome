@@ -137,43 +137,43 @@ function HomePage() {
             <nav className="hidden lg:flex items-center space-x-6">
               <a 
                 href="#how-it-works" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base"
               >
                 How It Works
               </a>
               <a 
                 href="#why-us" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base"
               >
                 Why Choose Us
               </a>
               <a 
                 href="#comparison" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base"
               >
                 Compare Options
               </a>
               <a 
                 href="#testimonials" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base"
               >
                 Reviews
               </a>
               <a 
                 href="#faq" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base"
               >
                 FAQs
               </a>
               <Link 
                 to="/blog" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base"
               >
                 Blog
               </Link>
               <Link 
                 to="/refer" 
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors text-base"
               >
                 Earn £100
               </Link>
@@ -181,12 +181,12 @@ function HomePage() {
 
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-2 text-blue-900">
-                <Phone className="h-4 w-4" />
-                <span className="font-semibold text-sm">0333 090 6219</span>
+                <Phone className="h-5 w-5" />
+                <span className="font-semibold text-base">0333 090 6219</span>
               </div>
               <Button 
                 onClick={handleCTAClick}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-sm"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-base"
               >
                 Free Cash Offer
               </Button>
