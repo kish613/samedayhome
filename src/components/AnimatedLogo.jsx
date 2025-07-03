@@ -61,7 +61,7 @@ const AnimatedLogo = ({ className = "h-12 w-auto cursor-pointer" }) => {
       onMouseLeave={handleMouseLeave}
     >
 
-      <svg className="sameday-logo" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg" style={svgStyle}>
+      <svg className="sameday-logo" viewBox="0 0 180 48" xmlns="http://www.w3.org/2000/svg" style={svgStyle}>
         <defs>
           <linearGradient id="shimmer-gradient" x1="-200%" y1="0" x2="200%" y2="0">
             <stop offset="0%" stopColor="#F97316" />
@@ -75,22 +75,22 @@ const AnimatedLogo = ({ className = "h-12 w-auto cursor-pointer" }) => {
         </defs>
 
         <g className="logo-glow" style={{ transition: 'filter 0.4s ease-in-out' }}>
-          <path d="M35 20 L12 38 L12 60 L58 60 L58 38 L35 20 Z M35 15 L65 38 L65 65 L5 65 L5 38 Z" fill="#3B82F6"/>
-          <path d="M48 28 L55 28 L55 38 L48 38 Z" fill="#3B82F6"/>
+          <path d="M24 8 L8 20 L8 32 L40 32 L40 20 L24 8 Z M24 6 L44 20 L44 36 L4 36 L4 20 Z" fill="#3B82F6"/>
+          <path d="M32 14 L37 14 L37 20 L32 20 Z" fill="#3B82F6"/>
 
-          <circle cx="35" cy="40" r="18" fill="none" stroke="#F97316" strokeWidth="4" strokeDasharray="56 56" strokeDashoffset="28"/>
-          <circle cx="35" cy="40" r="18" fill="none" stroke="#3B82F6" strokeWidth="4" strokeDasharray="56 56" strokeDashoffset="-28"/>
+          <circle cx="24" cy="21" r="12" fill="none" stroke="#F97316" strokeWidth="2.5" strokeDasharray="37 37" strokeDashoffset="18.5"/>
+          <circle cx="24" cy="21" r="12" fill="none" stroke="#3B82F6" strokeWidth="2.5" strokeDasharray="37 37" strokeDashoffset="-18.5"/>
           
           <g className="clock-hand minute-hand" style={clockHandStyle}>
-             <line x1="35" y1="40" x2="35" y2="26" stroke="#111827" strokeWidth="1.5" strokeLinecap="round"/>
+             <line x1="24" y1="21" x2="24" y2="12" stroke="#111827" strokeWidth="1" strokeLinecap="round"/>
           </g>
           <g className="clock-hand hour-hand" style={clockHandStyle}>
-             <line x1="35" y1="40" x2="46" y2="40" stroke="#111827" strokeWidth="1.5" strokeLinecap="round"/>
+             <line x1="24" y1="21" x2="31" y2="21" stroke="#111827" strokeWidth="1" strokeLinecap="round"/>
           </g>
         </g>
 
-        <text x="75" y="35" fontSize="16" fontWeight="700" fill="url(#shimmer-gradient)">SAME DAY</text>
-        <text x="75" y="50" fontSize="12" fontWeight="600" fill="#3B82F6" className="text-glow" style={{ transition: 'fill 0.4s ease-in-out' }}>Home Buyer</text>
+        <text x="50" y="20" fontSize="11" fontWeight="700" fill="url(#shimmer-gradient)">SAME DAY</text>
+        <text x="50" y="32" fontSize="8" fontWeight="600" fill="#3B82F6" className="text-glow" style={{ transition: 'fill 0.4s ease-in-out' }}>Home Buyer</text>
       </svg>
     </div>
   )
