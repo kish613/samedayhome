@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Checkbox } from '@/components/ui/checkbox.jsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
 import { Phone, Mail, CheckCircle, Gift, Clock, Home, FileText } from 'lucide-react'
-import { Helmet } from 'react-helmet'
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 // Import existing logo
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
