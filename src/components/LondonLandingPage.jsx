@@ -51,25 +51,25 @@ function LondonLandingPage() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center justify-between h-14">
             <div className="flex items-center">
               <motion.img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-20 w-auto cursor-pointer drop-shadow-md"
-                whileHover={{ scale: 1.08, rotate: 3 }}
+                className="h-6 w-auto cursor-pointer"
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
               />
             </div>
             
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-2 text-blue-900">
+            <div className="flex items-center space-x-3">
+              <div className="hidden lg:flex items-center space-x-2 text-blue-900">
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold">0333 090 6219</span>
+                <span className="font-semibold text-sm whitespace-nowrap">0333 090 6219</span>
               </div>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold">
-                Free Cash Offer
+              <Button className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-sm whitespace-nowrap">
+                Get Offer
               </Button>
             </div>
           </div>
