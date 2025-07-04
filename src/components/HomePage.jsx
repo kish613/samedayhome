@@ -141,27 +141,27 @@ function HomePage() {
       {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between h-14">
             <div className="flex items-center">
               <img 
                 src={logoImg} 
                 alt="Same Day Home Buyer" 
-                className="h-12 w-auto cursor-pointer"
+                className="h-6 w-auto cursor-pointer"
               />
             </div>
             
-            <nav className="hidden lg:flex items-center space-x-6">
-              <a href="#how-it-works" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">How It Works</a>
-              <a href="#why-us" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Why Choose Us</a>
-              <a href="#comparison" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Compare Options</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">Reviews</a>
-              <a href="#faq" className="text-gray-700 hover:text-blue-900 transition-colors font-medium">FAQs</a>
+            <nav className="hidden xl:flex items-center space-x-4">
+              <a href="#how-it-works" className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap">How It Works</a>
+              <a href="#why-us" className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap">Why Us</a>
+              <a href="#comparison" className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap">Compare</a>
+              <a href="#testimonials" className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap">Reviews</a>
+              <a href="#faq" className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap">FAQs</a>
             </nav>
 
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-2 text-blue-900">
+            <div className="flex items-center space-x-3">
+              <div className="hidden lg:flex items-center space-x-2 text-blue-900">
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold">0333 090 6219</span>
+                <span className="font-semibold text-sm whitespace-nowrap">0333 090 6219</span>
               </div>
               <Button 
                 onClick={() => {
@@ -171,9 +171,9 @@ function HomePage() {
                     heroSection.scrollIntoView({ behavior: 'smooth' })
                   }
                 }}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold"
+                className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-sm whitespace-nowrap"
               >
-                Free Cash Offer
+                Get Offer
               </Button>
             </div>
           </div>

@@ -134,61 +134,61 @@ function HomePage() {
               <SameDayLogo className="h-6 w-auto cursor-pointer" />
             </div>
             
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden xl:flex items-center space-x-4">
               <a 
                 href="#how-it-works" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap"
               >
                 How It Works
               </a>
               <a 
                 href="#why-us" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap"
               >
-                Why Choose Us
+                Why Us
               </a>
               <a 
                 href="#comparison" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap"
               >
-                Compare Options
+                Compare
               </a>
               <a 
                 href="#testimonials" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap"
               >
                 Reviews
               </a>
               <a 
                 href="#faq" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap"
               >
                 FAQs
               </a>
               <Link 
                 to="/blog" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm"
+                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-sm whitespace-nowrap"
               >
                 Blog
               </Link>
+            </nav>
+
+            <div className="flex items-center space-x-3">
+              <div className="hidden lg:flex items-center space-x-2 text-blue-900">
+                <Phone className="h-4 w-4" />
+                <span className="font-semibold text-sm whitespace-nowrap">0333 090 6219</span>
+              </div>
               <Link 
                 to="/refer" 
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm"
+                className="hidden md:inline-flex bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors text-sm whitespace-nowrap"
               >
                 Earn £100
               </Link>
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-2 text-blue-900">
-                <Phone className="h-4 w-4" />
-                <span className="font-semibold text-sm">0333 090 6219</span>
-              </div>
               <Button 
                 onClick={handleCTAClick}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-sm"
+                className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-sm whitespace-nowrap"
               >
-                Free Cash Offer
+                Get Offer
               </Button>
             </div>
           </div>
