@@ -21,6 +21,7 @@ import SellHouseAfterDivorce from './components/blog/SellHouseAfterDivorce.jsx'
 import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
 import ReferralPage from './components/ReferralPage.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
+import Layout from './components/Layout.jsx';
 
 import './App.css'
 
@@ -126,75 +127,6 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Clean Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex items-center">
-              <AnimatedLogo />
-            </div>
-            
-            <nav className="hidden xl:flex items-center space-x-4">
-              <a 
-                href="#how-it-works" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
-              >
-                How It Works
-              </a>
-              <a 
-                href="#why-us" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
-              >
-                Why Us
-              </a>
-              <a 
-                href="#comparison" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
-              >
-                Compare
-              </a>
-              <a 
-                href="#testimonials" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
-              >
-                Reviews
-              </a>
-              <a 
-                href="#faq" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
-              >
-                FAQs
-              </a>
-              <Link 
-                to="/blog" 
-                className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
-              >
-                Blog
-              </Link>
-            </nav>
-
-            <div className="flex items-center space-x-3">
-              <div className="hidden lg:flex items-center space-x-2 text-blue-900">
-                <Phone className="h-4 w-4" />
-                <span className="font-semibold text-base whitespace-nowrap">0333 090 6219</span>
-              </div>
-              <Link 
-                to="/refer" 
-                className="hidden md:inline-flex bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors text-base whitespace-nowrap"
-              >
-                Earn £100
-              </Link>
-              <Button 
-                onClick={handleCTAClick}
-                className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-base whitespace-nowrap"
-              >
-                Get Offer
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
@@ -252,31 +184,25 @@ function HomePage() {
               <p className="text-sm mt-3 opacity-90">Free valuation • No obligation • 2-hour response</p>
             </motion.form>
 
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto"
-              variants={staggerChildren}
-              initial="initial"
-              animate="animate"
-            >
-              <motion.div variants={fadeInUp} className="flex items-center justify-center space-x-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <CheckCircle className="h-6 w-6 text-green-400" />
-                <span className="font-medium">Cash in 24 hours</span>
-              </motion.div>
-              <motion.div variants={fadeInUp} className="flex items-center justify-center space-x-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <CheckCircle className="h-6 w-6 text-green-400" />
-                <span className="font-medium">No estate agent fees</span>
-              </motion.div>
-              <motion.div variants={fadeInUp} className="flex items-center justify-center space-x-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <CheckCircle className="h-6 w-6 text-green-400" />
-                <span className="font-medium">Any condition accepted</span>
-              </motion.div>
-            </motion.div>
+            <div className="flex items-center justify-center space-x-6 text-sm">
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="h-5 w-5 text-green-400" />
+                <span>No Estate Agent Fees</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="h-5 w-5 text-green-400" />
+                <span>No Legal Fees</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="h-5 w-5 text-green-400" />
+                <span>Guaranteed Cash Offer</span>
+              </div>
+            </div>
           </motion.div>
-        </div>
       </section>
 
-      {/* Trust Indicators with Media Mentions */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50/30 relative overflow-hidden">
+      {/* Trust Badges Section */}
+      <section className="bg-gray-50 py-16">
         {/* Trust Seal Watermark */}
         <div 
           className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.04] pointer-events-none"
@@ -1044,21 +970,24 @@ function HomePage() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/valuation/:postcode" element={<ValuationPage />} />
-      <Route path="/refer" element={<ReferralPage />} />
-      <Route path="/london" element={<LondonLandingPage />} />
-      <Route path="/manchester" element={<ManchesterLandingPage />} />
-      <Route path="/birmingham" element={<BirminghamLandingPage />} />
-      <Route path="/liverpool" element={<LiverpoolLandingPage />} />
-      <Route path="/blog" element={<BlogPage />} />
-      <Route path="/blog/sell-probate-house-uk" element={<SellProbateHouseUK />} />
-      <Route path="/blog/avoid-repossession-uk" element={<AvoidRepossessionUK />} />
-      <Route path="/blog/sell-disrepair-house" element={<SellDisrepairHouse />} />
-      <Route path="/blog/sell-house-after-divorce-uk" element={<SellHouseAfterDivorce />} />
-      <Route path="/blog/emigration-house-sale" element={<EmigrationHouseSale />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/valuation/:postcode" element={<ValuationPage />} />
+        <Route path="/propertysubmitted" element={<PropertyDetailsForm />} />
+        <Route path="/london" element={<LondonLandingPage />} />
+        <Route path="/manchester" element={<ManchesterLandingPage />} />
+        <Route path="/birmingham" element={<BirminghamLandingPage />} />
+        <Route path="/liverpool" element={<LiverpoolLandingPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/how-to-sell-a-house-due-to-emigration" element={<EmigrationHouseSale />} />
+        <Route path="/blog/how-to-sell-a-house-after-a-divorce" element={<SellHouseAfterDivorce />} />
+        <Route path="/blog/how-to-sell-a-house-in-disrepair" element={<SellDisrepairHouse />} />
+        <Route path="/blog/how-to-sell-a-probate-property" element={<SellProbateHouseUK />} />
+        <Route path="/blog/how-to-avoid-repossession-of-your-house" element={<AvoidRepossessionUK />} />
+        <Route path="/refer" element={<ReferralPage />} />
+      </Routes>
+    </Layout>
   )
 }
 
