@@ -824,8 +824,12 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: 'url(https://res.cloudinary.com/dmns9ystn/image/upload/v1751634505/5d290aa3-b4da-48a5-ab3c-f2aae3b619c8_sr7ast.png)' }}
+        ></div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0, y: 30 }}
