@@ -15,10 +15,10 @@ const AnimatedLogo = ({ onLogoClick }) => {
       <style jsx>{`
         /* Same Day Home Buyer Logo Styles */
         .sameday-logo-container {
-          height: 80px;
+          height: 85px;
           width: auto;
           cursor: pointer;
-          padding: 10px 12px;
+          padding: 12px 16px;
           transition: all 0.3s ease;
           display: flex;
           align-items: center;
@@ -30,7 +30,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
         }
 
         .sameday-logo-svg {
-          height: 60px;
+          height: 65px;
           width: auto;
           transition: transform 0.3s ease-in-out;
         }
@@ -218,7 +218,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
       `}</style>
       
       <div className="sameday-logo-container" onClick={handleLogoClick}>
-        <svg className="sameday-logo-svg" viewBox="0 0 350 150" xmlns="http://www.w3.org/2000/svg">
+        <svg className="sameday-logo-svg" viewBox="0 0 380 150" xmlns="http://www.w3.org/2000/svg">
           {/* Enhanced gradient definitions */}
           <defs>
             <linearGradient id="shimmer-gradient" x1="-200%" y1="0" x2="200%" y2="0">
@@ -300,7 +300,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
 
           {/* Text Elements with wave animation - each letter gets individual animation */}
           <g>
-            <text x="140" y="85" fontSize="34" className="main-text shimmer-text">
+            <text x="140" y="85" fontSize="36" className="main-text shimmer-text">
               <tspan className="wave-text letter-1">S</tspan>
               <tspan className="wave-text letter-2">A</tspan>
               <tspan className="wave-text letter-3">M</tspan>
@@ -312,7 +312,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
             </text>
           </g>
           <g>
-            <text x="140" y="110" fontSize="24" className="sub-text text-glow" fill="#3B82F6">
+            <text x="140" y="110" fontSize="26" className="sub-text text-glow" fill="#3B82F6">
               <tspan className="wave-text letter-1">H</tspan>
               <tspan className="wave-text letter-2">o</tspan>
               <tspan className="wave-text letter-3">m</tspan>
