@@ -858,7 +858,7 @@ function HomePage() {
               },
               {
                 question: "How do you calculate your offers?",
-                answer: "Our offers are based on current market values, property condition, location, and local comparable sales. We use AI-powered analysis combined with local market expertise to ensure fair and competitive offers."
+                answer: "Our offers are based on current market values, property condition, location, and local comparable sales. We use advanced market analysis combined with local market expertise to ensure fair and competitive offers."
               },
               {
                 question: "Is there any obligation?",

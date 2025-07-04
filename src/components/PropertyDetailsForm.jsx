@@ -129,7 +129,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                 </h1>
                 
                 <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-                  Our proprietary AI valuation system will analyze your property using 50+ market factors 
+                  Our expert valuation system will analyze your property using 50+ market factors 
                   to deliver a guaranteed cash offer within 2 hours
                 </p>
                 
@@ -399,13 +399,13 @@ function PropertyDetailsForm({ postcode, onBack }) {
                   <div className="bg-gradient-to-r from-slate-900 to-blue-900 rounded-2xl p-8 text-white text-center">
                     <h3 className="text-2xl font-bold mb-4">Your Exclusive Cash Offer Promise</h3>
                     <p className="text-blue-100 mb-6 text-lg max-w-2xl mx-auto">
-                      Our advanced AI system will analyze your property and deliver a guaranteed cash offer in under 2 hours
+                      Our expert valuation team will analyze your property and deliver a guaranteed cash offer in under 2 hours
                     </p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
                       <div className="flex items-center justify-center space-x-2">
                         <CheckCircle className="h-5 w-5 text-green-400" />
-                        <span>Advanced AI Analysis</span>
+                        <span>Expert Market Analysis</span>
                       </div>
                       <div className="flex items-center justify-center space-x-2">
                         <CheckCircle className="h-5 w-5 text-green-400" />
