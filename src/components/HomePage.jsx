@@ -138,6 +138,55 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* FAQ Schema Markup */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How quickly can you complete?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We can provide a cash offer within 2 hours and complete the purchase in as little as 24 hours. Most transactions complete within 2-3 weeks, depending on your preferred timeline."
+              }
+            },
+            {
+              "@type": "Question", 
+              "name": "Do you charge any fees?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No, we don't charge any fees whatsoever. No estate agent fees, no legal costs, no survey fees, no administrative charges. The offer we make is the amount you receive."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What types of properties do you buy?", 
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We buy all types of residential properties including houses, flats, bungalows, and maisonettes in any condition. Whether your property needs extensive renovation or is move-in ready, we're interested."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do you calculate your offers?",
+              "acceptedAnswer": {
+                "@type": "Answer", 
+                "text": "Our offers are based on current market values, property condition, location, and local comparable sales. We use advanced market analysis combined with local market expertise to ensure fair and competitive offers."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there any obligation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely none. Our valuation service is completely free with no obligation to proceed. You can accept or decline our offer with no pressure or consequences."
+              }
+            }
+          ]
+        })
+      }} />
       {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-2">
@@ -202,8 +251,8 @@ function HomePage() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Sell Your House Fast
-              <span className="block text-orange-400">Decision in 2 Hours</span>
+              Sell My House Fast
+              <span className="block text-orange-400">Cash Offer in 2 Hours</span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -743,7 +792,7 @@ function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Sell Your House?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Sell My House Fast?</h2>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
               Join 15,000+ satisfied customers who chose the fastest, hassle-free way to sell their property
             </p>

@@ -29,9 +29,9 @@ const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/2
 import heroImg from './assets/uk_houses_hero.jpg'
 
 // Import local assets for Why Choose Us section  
-import lightningFastIcon from './assets/speed_icon.png'
-import cashGuaranteeIcon from './assets/cash_guarantee_icon.png'
-import zeroFeesIcon from './assets/cash_icon.png'
+const lightningFastIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751620946/ChatGPT_Image_Jul_4_2025_10_21_11_AM_h76xph.png'
+const cashGuaranteeIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751620945/ChatGPT_Image_Jul_4_2025_10_21_20_AM_glkfbw.png'
+const zeroFeesIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751620946/ChatGPT_Image_Jul_4_2025_10_20_48_AM_gemhrq.png'
 
 // Custom Cloudinary icons for trust section
 const calendarIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/calender_no_bg_icon_morvmr.png'
