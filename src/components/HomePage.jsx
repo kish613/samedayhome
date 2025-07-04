@@ -647,8 +647,17 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                            linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px)`,
+            backgroundSize: '20px 20px, 20px 20px, 100px 100px, 100px 100px'
+          }} />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}

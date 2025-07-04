@@ -20,7 +20,7 @@ import SellDisrepairHouse from './components/blog/SellDisrepairHouse.jsx'
 import SellHouseAfterDivorce from './components/blog/SellHouseAfterDivorce.jsx'
 import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
 import ReferralPage from './components/ReferralPage.jsx'
-import SameDayLogo from './components/AnimatedLogo.jsx'
+import AnimatedLogo from './components/AnimatedLogo.jsx'
 
 import './App.css'
 
@@ -128,10 +128,10 @@ function HomePage() {
     <div className="min-h-screen bg-white">
       {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between h-14">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
-              <SameDayLogo className="h-6 w-auto cursor-pointer" />
+              <AnimatedLogo />
             </div>
             
             <nav className="hidden xl:flex items-center space-x-4">
