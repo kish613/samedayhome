@@ -199,6 +199,7 @@ function HomePage() {
               </div>
             </div>
           </motion.div>
+        </div>
       </section>
 
       {/* Trust Badges Section */}
@@ -879,91 +880,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Enhanced Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <motion.img 
-                src={logoImg} 
-                alt="Same Day Home Buyer" 
-                className="h-14 w-auto mb-4 cursor-pointer filter brightness-0 invert"
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              />
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                The UK's leading cash property buyer. Fast, fair, and reliable service since 2003.
-              </p>
-              <div className="flex items-center space-x-2 text-gray-400 mb-2">
-                <Mail className="h-4 w-4" />
-                <span>info@samedayhomebuyer.co.uk</span>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-400">
-                <Phone className="h-4 w-4" />
-                <span>0333 090 6219</span>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
-                <li><a href="#why-us" className="hover:text-white transition-colors">Why Choose Us</a></li>
-                <li><a href="#comparison" className="hover:text-white transition-colors">Compare Options</a></li>
-                <li><a href="#testimonials" className="hover:text-white transition-colors">Customer Reviews</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">FAQs</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Cash House Purchases</li>
-                <li>Probate Property Sales</li>
-                <li>Distressed Property Sales</li>
-                <li>Quick Property Valuations</li>
-                <li>Auction Alternative</li>
-                <li><Link to="/refer" className="hover:text-white transition-colors">Earn £100 - Refer Properties</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Trust & Security</h4>
-              <div className="space-y-4">
-                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 border border-green-700 rounded-lg p-3 flex items-center space-x-3">
-                  <img 
-                    src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/nabp_no_bg_ul5cyq.png" 
-                    alt="NAPB Approved" 
-                    className="h-12 w-auto"
-                  />
-                  <div>
-                    <p className="text-green-300 font-medium text-sm">NAPB Approved</p>
-                    <p className="text-gray-400 text-xs">National Association of Property Buyers</p>
-                  </div>
-                </div>
-                <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border border-blue-700 rounded-lg p-3 flex items-center space-x-3">
-                  <img 
-                    src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/rics_no_bg_e2gx0k.png" 
-                    alt="RICS Regulated" 
-                    className="h-12 w-auto"
-                  />
-                  <div>
-                    <p className="text-blue-300 font-medium text-sm">RICS Regulated</p>
-                    <p className="text-gray-400 text-xs">Royal Institution of Chartered Surveyors</p>
-                  </div>
-                </div>
-                <p className="text-gray-400 text-sm mt-4">
-                  Fully insured and regulated for your peace of mind.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Same Day Home Buyer. All rights reserved. | Privacy Policy | Terms & Conditions</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
