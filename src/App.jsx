@@ -184,14 +184,14 @@ function HomePage() {
               <p className="text-sm mt-3 opacity-90">Free valuation • No obligation • 2-hour response</p>
             </motion.form>
 
-            <div className="flex items-center justify-center space-x-6 text-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
                 <span>No Estate Agent Fees</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>No Legal Fees</span>
+                <span className="font-semibold">We Pay All Legal Fees</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-green-400" />
