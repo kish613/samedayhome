@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Clock, Phone, Mail, CheckCircle, Star, ArrowRight, Home, Users, Award, TrendingUp, FileText, Calendar, MapPin, ChevronDown, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import ProcessChart from './ProcessChart.jsx'
+import AnimatedGrid from './AnimatedGrid.jsx'
 
 // Import assets
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
@@ -316,12 +317,8 @@ function HomePage() {
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 bg-gradient-to-br from-blue-50/30 to-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563eb' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }} />
-        </div>
-        <div className="container mx-auto px-4">
+        <AnimatedGrid />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -344,12 +341,8 @@ function HomePage() {
 
       {/* Why Choose Us Section */}
       <section id="why-us" className="py-20 bg-gradient-to-br from-green-50/20 to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.1'%3E%3Cpath d='M20 20l5-5v10l-5-5zm0 0l-5 5V15l5 5z'/%3E%3C/g%3E%3C/svg%3E")`
-          }} />
-        </div>
-        <div className="container mx-auto px-4">
+        <AnimatedGrid />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -490,7 +483,7 @@ function HomePage() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Cpolygon points='10,0 15,10 10,20 5,10'/%3E%3C/g%3E%3C/svg%3E")`
           }} />
         </div>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -593,12 +586,8 @@ function HomePage() {
 
       {/* Enhanced Testimonials Carousel */}
       <section id="testimonials" className="py-20 bg-gradient-to-br from-purple-50/30 to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%236b7280' fill-opacity='0.1'%3E%3Ccircle cx='15' cy='15' r='2'/%3E%3C/g%3E%3C/svg%3E")`
-          }} />
-        </div>
-        <div className="container mx-auto px-4">
+        <AnimatedGrid />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -697,15 +686,7 @@ function HomePage() {
 
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-                            linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px)`,
-            backgroundSize: '20px 20px, 20px 20px, 100px 100px, 100px 100px'
-          }} />
-        </div>
+        <AnimatedGrid />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -834,7 +815,7 @@ function HomePage() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <img src={logoImg} alt="Same Day Home Buyer" className="h-16 w-auto mb-4" />

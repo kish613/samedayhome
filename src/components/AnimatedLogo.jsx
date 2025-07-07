@@ -10,123 +10,97 @@ const AnimatedLogo = ({ onLogoClick }) => {
     }
   };
 
+  const styles = {
+    sameDayLogoContainer: {
+      height: '112px',
+      width: 'auto',
+      cursor: 'pointer',
+      padding: '16px 20px',
+      transition: 'all 0.3s ease',
+      display: 'flex',
+      alignItems: 'center',
+      fontFamily: 'Poppins, sans-serif',
+      animation: 'float 4s ease-in-out infinite'
+    },
+    sameDayLogoSvg: {
+      height: '100px',
+      width: 'auto',
+      transition: 'transform 0.3s ease-in-out'
+    }
+  };
+
   return (
     <>
-      <style jsx>{`
-        /* Same Day Home Buyer Logo Styles */
-        .sameday-logo-container {
-          height: 85px;
-          width: auto;
-          cursor: pointer;
-          padding: 12px 16px;
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          font-family: 'Poppins', sans-serif;
-        }
-
-        .sameday-logo-container:hover {
-          transform: translateY(-2px);
-        }
-
-        .sameday-logo-svg {
-          height: 65px;
-          width: auto;
-          transition: transform 0.3s ease-in-out;
-        }
-
-        /* Clock hand animations */
-        .sameday-logo-svg .clock-hand {
-          transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-          transform-origin: center;
-        }
-
-        .sameday-logo-svg .logo-glow {
-          transition: filter 0.4s ease-in-out;
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-2px); }
         }
         
-        .sameday-logo-svg .text-glow {
-          transition: fill 0.4s ease-in-out;
+        .sameday-logo-container:hover {
+          transform: translateY(-2px);
+          animation-play-state: paused;
         }
-
-        /* Hover effects */
+        
         .sameday-logo-container:hover .sameday-logo-svg {
           transform: scale(1.05);
         }
-
-        .sameday-logo-container:hover .sameday-logo-svg .hour-hand {
+        
+        .sameday-logo-container:hover .hour-hand {
           transform: rotate(360deg);
         }
-
-        .sameday-logo-container:hover .sameday-logo-svg .minute-hand {
+        
+        .sameday-logo-container:hover .minute-hand {
           transform: rotate(720deg);
         }
         
-        .sameday-logo-container:hover .sameday-logo-svg .logo-glow {
+        .sameday-logo-container:hover .logo-glow {
           filter: drop-shadow(0 0 15px #3b82f6) drop-shadow(0 0 10px #f97316);
         }
-
-        .sameday-logo-container:hover .sameday-logo-svg .text-glow {
+        
+        .sameday-logo-container:hover .text-glow {
           fill: #1E40AF;
           filter: drop-shadow(0 0 8px #3b82f6);
         }
-
-        /* Shimmer text effect */
+        
+        .clock-hand {
+          transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+          transform-origin: center;
+        }
+        
+        .logo-glow {
+          transition: filter 0.4s ease-in-out;
+        }
+        
+        .text-glow {
+          transition: fill 0.4s ease-in-out;
+        }
+        
         .shimmer-text {
           fill: url(#shimmer-gradient);
         }
-
-        /* Pulse animation for continuous engagement */
-        @keyframes pulse-glow {
-          0%, 100% {
-            filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
-          }
-          50% {
-            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));
-          }
+        
+        .minute-hand {
+          animation: tick 1s ease-in-out infinite alternate;
         }
-
-        /* Floating animation - reduced for header */
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-2px);
-          }
-        }
-
-        .sameday-logo-container {
-          animation: float 4s ease-in-out infinite;
-        }
-
-        .sameday-logo-container:hover {
-          animation-play-state: paused;
-        }
-
-        /* Enhanced clock tick animation */
+        
         @keyframes tick {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(6deg); }
         }
-
-        .minute-hand {
-          animation: tick 1s ease-in-out infinite alternate;
-        }
-
-        /* Particle trail effects */
+        
         .particle {
           fill: #3B82F6;
           opacity: 0;
           animation: particle-trail 1s ease-out forwards;
         }
-
+        
         .particle-orange {
           fill: #F97316;
           opacity: 0;
           animation: particle-trail 1s ease-out forwards;
         }
-
+        
         @keyframes particle-trail {
           0% {
             opacity: 1;
@@ -137,53 +111,50 @@ const AnimatedLogo = ({ onLogoClick }) => {
             transform: scale(0.2) translate(20px, -10px);
           }
         }
-
-        /* Morphing clock face */
+        
         .clock-face {
           transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-
+        
         .speedometer {
           opacity: 0;
           transition: opacity 0.4s ease;
         }
-
+        
         .house-details {
           transition: opacity 0.4s ease;
         }
-
+        
         .sameday-logo-container:hover .clock-face {
           opacity: 0.3;
         }
-
+        
         .sameday-logo-container:hover .speedometer {
           opacity: 1;
         }
-
+        
         .sameday-logo-container:hover .house-details {
           opacity: 0;
         }
-
-        /* Progress bar fill animation */
+        
         .progress-fill {
           stroke-dasharray: 220;
           stroke-dashoffset: 220;
           transition: stroke-dashoffset 0.8s ease-out;
         }
-
+        
         .sameday-logo-container:hover .progress-fill {
           stroke-dashoffset: 0;
         }
-
-        /* Text wave animation */
+        
         .wave-text {
           animation-fill-mode: both;
         }
-
+        
         .sameday-logo-container:hover .wave-text {
           animation: wave-bounce 0.8s ease-out;
         }
-
+        
         @keyframes wave-bounce {
           0%, 100% {
             transform: translateY(0) scale(1);
@@ -192,8 +163,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
             transform: translateY(-3px) scale(1.05);
           }
         }
-
-        /* Individual letter delays for wave effect */
+        
         .sameday-logo-container:hover .letter-1 { animation-delay: 0s; }
         .sameday-logo-container:hover .letter-2 { animation-delay: 0.1s; }
         .sameday-logo-container:hover .letter-3 { animation-delay: 0.2s; }
@@ -204,21 +174,20 @@ const AnimatedLogo = ({ onLogoClick }) => {
         .sameday-logo-container:hover .letter-8 { animation-delay: 0.7s; }
         .sameday-logo-container:hover .letter-9 { animation-delay: 0.8s; }
         .sameday-logo-container:hover .letter-10 { animation-delay: 0.9s; }
-
-        /* Text styling */
+        
         .main-text {
           font-weight: 800;
           letter-spacing: 2px;
         }
-
+        
         .sub-text {
           font-weight: 600;
           letter-spacing: 1px;
         }
       `}</style>
       
-      <div className="sameday-logo-container" onClick={handleLogoClick}>
-        <svg className="sameday-logo-svg" viewBox="0 0 380 150" xmlns="http://www.w3.org/2000/svg">
+      <div className="sameday-logo-container" style={styles.sameDayLogoContainer} onClick={handleLogoClick}>
+        <svg className="sameday-logo-svg" style={styles.sameDayLogoSvg} viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
           {/* Enhanced gradient definitions */}
           <defs>
             <linearGradient id="shimmer-gradient" x1="-200%" y1="0" x2="200%" y2="0">
@@ -300,7 +269,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
 
           {/* Text Elements with wave animation - each letter gets individual animation */}
           <g>
-            <text x="140" y="85" fontSize="36" className="main-text shimmer-text">
+            <text x="140" y="85" fontSize="48" className="main-text shimmer-text">
               <tspan className="wave-text letter-1">S</tspan>
               <tspan className="wave-text letter-2">A</tspan>
               <tspan className="wave-text letter-3">M</tspan>
@@ -312,7 +281,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
             </text>
           </g>
           <g>
-            <text x="140" y="110" fontSize="26" className="sub-text text-glow" fill="#3B82F6">
+            <text x="140" y="115" fontSize="34" className="sub-text text-glow" fill="#3B82F6">
               <tspan className="wave-text letter-1">H</tspan>
               <tspan className="wave-text letter-2">o</tspan>
               <tspan className="wave-text letter-3">m</tspan>
@@ -339,4 +308,4 @@ const AnimatedLogo = ({ onLogoClick }) => {
   );
 };
 
-export default AnimatedLogo; 
+export default AnimatedLogo;

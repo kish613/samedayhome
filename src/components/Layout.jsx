@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-28">
           <div className="flex items-center">
             <Link to="/">
               <AnimatedLogo />
@@ -35,46 +35,50 @@ const Header = () => {
           <nav className="hidden xl:flex items-center space-x-4">
             <a 
               href="/#how-it-works" 
-              className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
+              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               How It Works
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a 
               href="/#why-us" 
-              className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
+              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               Why Us
-            </a>
-            <a 
-              href="/#comparison" 
-              className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
-            >
-              Compare
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a 
               href="/#testimonials" 
-              className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
+              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               Reviews
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a 
               href="/#faq" 
-              className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
+              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               FAQs
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <Link 
               to="/blog" 
-              className="text-gray-700 hover:text-blue-900 transition-colors font-medium text-base whitespace-nowrap"
+              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               Blog
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </nav>
 
           <div className="flex items-center space-x-3">
             <div className="hidden lg:flex items-center space-x-2 text-blue-900">
               <Phone className="h-4 w-4" />
-              <span className="font-semibold text-base whitespace-nowrap">0333 090 6219</span>
+              <a 
+                href="tel:03330906219" 
+                className="font-semibold text-base whitespace-nowrap hover:text-blue-700 transition-colors duration-200 cursor-pointer"
+              >
+                0333 090 6219
+              </a>
             </div>
             <Link 
               to="/refer" 
@@ -116,7 +120,12 @@ const Footer = () => (
           </div>
           <div className="flex items-center space-x-2 text-gray-400">
             <Phone className="h-4 w-4" />
-            <span>0333 090 6219</span>
+            <a 
+              href="tel:03330906219" 
+              className="font-semibold text-base whitespace-nowrap hover:text-blue-700 transition-colors duration-200 cursor-pointer"
+            >
+              0333 090 6219
+            </a>
           </div>
         </div>
         
