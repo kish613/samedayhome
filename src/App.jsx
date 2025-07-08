@@ -23,6 +23,7 @@ import ReferralPage from './components/ReferralPage.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
 import AnimatedGrid from './components/AnimatedGrid.jsx';
+import AnimatedTimelinePaths from './components/AnimatedTimelinePaths.jsx';
 import BreathingGrid from './components/BreathingGrid.jsx';
 import FloatingOrbs from './components/FloatingOrbs.jsx';
 import MorphingBlobs from './components/MorphingBlobs.jsx';
@@ -607,8 +608,8 @@ function HomePage() {
       </section>
 
       {/* Process Chart Section */}
-      <section className="py-20 bg-gradient-to-br from-white to-gray-50/30 relative overflow-hidden">
-        <AnimatedGrid />
+      <section className="py-20 bg-white relative overflow-hidden">
+        <AnimatedTimelinePaths />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
