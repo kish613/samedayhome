@@ -320,7 +320,7 @@ function HomePage() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 bg-gradient-to-br from-blue-50/30 to-gray-50 relative overflow-hidden">
+      <section id="how-it-works" className="py-20 bg-gradient-to-br from-blue-50/20 to-gray-50/30 relative overflow-hidden">
         <FloatingOrbs />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -344,7 +344,7 @@ function HomePage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-us" className="py-20 bg-gradient-to-br from-green-50/20 to-white relative overflow-hidden">
+      <section id="why-us" className="py-20 bg-gradient-to-br from-green-50/10 to-white/50 relative overflow-hidden">
         <MorphingBlobs />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -481,7 +481,7 @@ function HomePage() {
       </section>
 
       {/* Comparison Table Section */}
-      <section id="comparison" className="py-20 bg-gradient-to-br from-amber-50/30 to-gray-50 relative overflow-hidden">
+      <section id="comparison" className="py-20 bg-gradient-to-br from-amber-50/20 to-gray-50/30 relative overflow-hidden">
         <DiagonalWaves />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -585,7 +585,7 @@ function HomePage() {
       </section>
 
       {/* Enhanced Testimonials Carousel */}
-      <section id="testimonials" className="py-20 bg-gradient-to-br from-purple-50/30 to-white relative overflow-hidden">
+      <section id="testimonials" className="py-20 bg-gradient-to-br from-purple-50/20 to-white/50 relative overflow-hidden">
         <ParticleConstellation />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -685,7 +685,7 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
+      <section id="faq" className="py-20 bg-gray-50/60 relative overflow-hidden">
         <BreathingGrid />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 

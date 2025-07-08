@@ -12,7 +12,7 @@ const MorphingBlobs = () => {
   }))
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {blobs.map((blob) => (
         <motion.div
           key={blob.id}
@@ -37,11 +37,12 @@ const MorphingBlobs = () => {
           }}
         >
           <div
-            className="w-full h-full opacity-20 blur-xl"
+            className="w-full h-full opacity-30 blur-xl"
             style={{
-              background: 'linear-gradient(45deg, rgba(34, 197, 94, 0.02), rgba(59, 130, 246, 0.02), rgba(249, 115, 22, 0.02))',
+              background: 'linear-gradient(45deg, rgba(34, 197, 94, 0.06), rgba(59, 130, 246, 0.06), rgba(249, 115, 22, 0.06))',
               clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
               filter: 'blur(20px)',
+              zIndex: 1,
             }}
           />
         </motion.div>

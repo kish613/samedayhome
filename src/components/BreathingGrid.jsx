@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 
 const BreathingGrid = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       <motion.div
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px)
+            linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
         }}
@@ -27,8 +27,8 @@ const BreathingGrid = () => {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(147, 51, 234, 0.015) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(147, 51, 234, 0.015) 1px, transparent 1px)
+            linear-gradient(rgba(147, 51, 234, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(147, 51, 234, 0.06) 1px, transparent 1px)
           `,
           backgroundSize: '25px 25px',
         }}

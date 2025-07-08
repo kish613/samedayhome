@@ -48,7 +48,7 @@ const ParticleConstellation = () => {
         // Draw particle
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(147, 51, 234, ${particle.opacity})`
+        ctx.fillStyle = `rgba(147, 51, 234, ${particle.opacity * 2})`
         ctx.fill()
 
         // Draw connections
@@ -63,7 +63,7 @@ const ParticleConstellation = () => {
               ctx.beginPath()
               ctx.moveTo(particle.x, particle.y)
               ctx.lineTo(otherParticle.x, otherParticle.y)
-              ctx.strokeStyle = `rgba(147, 51, 234, ${0.1 * (1 - distance / 100)})`
+              ctx.strokeStyle = `rgba(147, 51, 234, ${0.2 * (1 - distance / 100)})`
               ctx.lineWidth = 0.5
               ctx.stroke()
             }
@@ -84,7 +84,7 @@ const ParticleConstellation = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full opacity-40"
+      className="absolute inset-0 w-full h-full opacity-60 z-0"
       style={{ pointerEvents: 'none' }}
     />
   )

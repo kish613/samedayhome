@@ -26,7 +26,7 @@ const FloatingOrbs = () => {
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {orbs.map((orb) => (
         <motion.div
           key={orb.id}
@@ -37,6 +37,7 @@ const FloatingOrbs = () => {
             left: `${orb.x}%`,
             top: `${orb.y}%`,
             background: getGradient(orb.color),
+            zIndex: 1,
           }}
           animate={{
             y: [0, -30, 0],

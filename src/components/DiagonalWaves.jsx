@@ -10,7 +10,7 @@ const DiagonalWaves = () => {
   }))
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {waves.map((wave) => (
         <motion.div
           key={wave.id}
@@ -20,8 +20,8 @@ const DiagonalWaves = () => {
               45deg,
               transparent,
               transparent 20px,
-              rgba(249, 115, 22, ${wave.opacity}) 22px,
-              rgba(249, 115, 22, ${wave.opacity}) 24px
+              rgba(249, 115, 22, ${wave.opacity * 4}) 22px,
+              rgba(249, 115, 22, ${wave.opacity * 4}) 24px
             )`,
           }}
           animate={{
@@ -45,8 +45,8 @@ const DiagonalWaves = () => {
               -45deg,
               transparent,
               transparent 30px,
-              rgba(59, 130, 246, ${wave.opacity * 0.5}) 32px,
-              rgba(59, 130, 246, ${wave.opacity * 0.5}) 34px
+              rgba(59, 130, 246, ${wave.opacity * 2}) 32px,
+              rgba(59, 130, 246, ${wave.opacity * 2}) 34px
             )`,
           }}
           animate={{
