@@ -7,7 +7,11 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Clock, Phone, Mail, CheckCircle, Star, ArrowRight, Home, Users, Award, TrendingUp, FileText, Calendar, MapPin, ChevronDown, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import ProcessChart from './ProcessChart.jsx'
-import AnimatedGrid from './AnimatedGrid.jsx'
+import FloatingOrbs from './FloatingOrbs.jsx'
+import MorphingBlobs from './MorphingBlobs.jsx'
+import ParticleConstellation from './ParticleConstellation.jsx'
+import DiagonalWaves from './DiagonalWaves.jsx'
+import BreathingGrid from './BreathingGrid.jsx'
 
 // Import assets
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
@@ -317,7 +321,7 @@ function HomePage() {
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 bg-gradient-to-br from-blue-50/30 to-gray-50 relative overflow-hidden">
-        <AnimatedGrid />
+        <FloatingOrbs />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -341,7 +345,7 @@ function HomePage() {
 
       {/* Why Choose Us Section */}
       <section id="why-us" className="py-20 bg-gradient-to-br from-green-50/20 to-white relative overflow-hidden">
-        <AnimatedGrid />
+        <MorphingBlobs />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -478,11 +482,7 @@ function HomePage() {
 
       {/* Comparison Table Section */}
       <section id="comparison" className="py-20 bg-gradient-to-br from-amber-50/30 to-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Cpolygon points='10,0 15,10 10,20 5,10'/%3E%3C/g%3E%3C/svg%3E")`
-          }} />
-        </div>
+        <DiagonalWaves />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -586,7 +586,7 @@ function HomePage() {
 
       {/* Enhanced Testimonials Carousel */}
       <section id="testimonials" className="py-20 bg-gradient-to-br from-purple-50/30 to-white relative overflow-hidden">
-        <AnimatedGrid />
+        <ParticleConstellation />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -686,7 +686,7 @@ function HomePage() {
 
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
-        <AnimatedGrid />
+        <BreathingGrid />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
