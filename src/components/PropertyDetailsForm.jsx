@@ -74,12 +74,19 @@ function PropertyDetailsForm({ postcode, onBack }) {
         setOfferResult(response.data)
         setShowOfferResult(true)
 
-        // Send email in the background
+        // Send email in the background with full details
         apiClient.sendSubmissionEmail({
           name: formData.fullName,
           email: formData.email,
           phone: formData.phone,
           address: formData.fullAddress,
+          doorNumber: formData.doorNumber,
+          postcode: formData.postcode,
+          propertyType: formData.propertyType,
+          bedrooms: formData.bedrooms,
+          condition: formData.condition,
+          submittedAt: new Date().toISOString(),
+          valuationData: response.data // Include the full valuation response
         });
       } else {
         throw new Error(response.error || 'Failed to process your request')
