@@ -67,6 +67,26 @@ export class ApiClient {
       throw error
     }
   }
+
+  async sendSubmissionEmail(submissionData) {
+    try {
+      const response = await fetch(`${this.baseUrl}/property-submission`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Failed to send submission email:', errorData.error);
+        // Don't throw an error, just log it, as the main valuation was successful
+      }
+    } catch (error) {
+      console.error('Error sending submission email:', error);
+    }
+  }
 }
 
 export const apiClient = new ApiClient() 
