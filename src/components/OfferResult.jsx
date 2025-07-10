@@ -7,6 +7,10 @@ import { motion } from 'framer-motion'
 
 // Import the same hero image as homepage for consistency
 import heroImg from '../assets/uk_houses_hero.jpg'
+import AnimatedMedal from './AnimatedMedal.jsx'
+import AnimatedClock from './AnimatedClock.jsx'
+import AnimatedLock from './AnimatedLock.jsx'
+import AnimatedGoldPound from './AnimatedGoldPound.jsx'
 
 function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
   const { offer, success } = offerData.data || offerData
@@ -296,7 +300,7 @@ function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
                 </div>
                 
                 <p className="text-blue-200 mt-6 text-sm">
-                  Questions? Call us directly at <strong>0333 090 6219</strong> for immediate assistance
+                  Questions? Call us directly at <strong>0330 043 7570</strong> for immediate assistance
                 </p>
               </div>
             </motion.div>
@@ -317,7 +321,7 @@ function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Award className="h-8 w-8 text-white" />
+                    <AnimatedMedal className="scale-150" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Award Winning</h4>
                   <p className="text-slate-600 text-sm">Recognized industry leader with multiple awards for customer service excellence</p>
@@ -327,7 +331,7 @@ function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Clock className="h-8 w-8 text-white" />
+                    <AnimatedClock className="scale-125" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Lightning Fast</h4>
                   <p className="text-slate-600 text-sm">2-hour decision guarantee with 24-hour completion available nationwide</p>
@@ -337,7 +341,7 @@ function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-8 w-8 text-white" />
+                    <AnimatedLock size={32} />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Fully Regulated</h4>
                   <p className="text-slate-600 text-sm">RICS regulated, fully insured, and compliant with all industry standards</p>
@@ -347,7 +351,7 @@ function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Banknote className="h-8 w-8 text-white" />
+                    <AnimatedGoldPound size={32} />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">£500M+ Invested</h4>
                   <p className="text-slate-600 text-sm">Massive investment fund ready to complete on your property immediately</p>

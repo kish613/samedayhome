@@ -201,7 +201,7 @@ Based on industry research and competitor analysis:
   "name": "Same Day Home Buyer",
   "description": "UK's fastest cash house buyers",
   "url": "https://yourdomain.com",
-  "telephone": "0333 090 6219",
+  "telephone": "0330 043 7570",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "GB"

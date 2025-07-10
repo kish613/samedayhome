@@ -215,7 +215,7 @@ function HomePage() {
             <div className="flex items-center space-x-3">
               <div className="hidden lg:flex items-center space-x-2 text-blue-900">
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold text-sm whitespace-nowrap">0333 090 6219</span>
+                <span className="font-semibold text-sm whitespace-nowrap">0330 043 7570</span>
               </div>
               <Button 
                 onClick={() => {
@@ -839,7 +839,7 @@ function HomePage() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-center space-x-2">
                   <Phone className="h-4 w-4" />
-                  <span>0333 090 6219</span>
+                  <span>0330 043 7570</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Mail className="h-4 w-4" />

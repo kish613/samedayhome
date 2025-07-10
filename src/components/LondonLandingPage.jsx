@@ -66,7 +66,7 @@ function LondonLandingPage() {
             <div className="flex items-center space-x-3">
               <div className="hidden lg:flex items-center space-x-2 text-blue-900">
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold text-sm whitespace-nowrap">0333 090 6219</span>
+                <span className="font-semibold text-sm whitespace-nowrap">0330 043 7570</span>
               </div>
               <Button className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-sm whitespace-nowrap">
                 Get Offer
@@ -187,7 +187,7 @@ function LondonLandingPage() {
             </Button>
             <div className="flex items-center space-x-2">
               <Phone className="h-5 w-5" />
-              <span className="text-lg font-semibold">Call: 0333 090 6219</span>
+              <span className="text-lg font-semibold">Call: 0330 043 7570</span>
             </div>
           </div>
         </div>
@@ -212,7 +212,7 @@ function LondonLandingPage() {
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <Phone className="h-4 w-4" />
-                <span>0333 090 6219</span>
+                <span>0330 043 7570</span>
               </div>
             </div>
             

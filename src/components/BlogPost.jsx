@@ -118,7 +118,7 @@ function BlogPost({
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-2 text-blue-900">
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold">0333 090 6219</span>
+                <span className="font-semibold">0330 043 7570</span>
               </div>
               <Link to="/">
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold">
@@ -286,7 +286,7 @@ function BlogPost({
             
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-              <p className="text-gray-400 mb-2">Phone: 0333 090 6219</p>
+              <p className="text-gray-400 mb-2">Phone: 0330 043 7570</p>
               <p className="text-gray-400">Available 24/7</p>
             </div>
           </div>

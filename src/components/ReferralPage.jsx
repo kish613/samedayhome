@@ -149,7 +149,7 @@ function ReferralPage() {
                 style={{ padding: "8px 12px" }}
               >
                 <Phone className="h-4 w-4" />
-                <span className="font-semibold">0333 090 6219</span>
+                <span className="font-semibold">0330 043 7570</span>
               </motion.div>
               <Button 
                 onClick={() => window.location.href = '/'}
@@ -566,7 +566,7 @@ function ReferralPage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="h-4 w-4" />
-                  <span>0333 090 6219</span>
+                  <span>0330 043 7570</span>
                 </div>
               </div>
             </div>

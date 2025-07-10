@@ -74,10 +74,10 @@ const Header = () => {
             <div className="hidden lg:flex items-center space-x-2 text-blue-900">
               <Phone className="h-4 w-4" />
               <a 
-                href="tel:03330906219" 
+                href="tel:03300437570" 
                 className="font-semibold text-base whitespace-nowrap hover:text-blue-700 transition-colors duration-200 cursor-pointer"
               >
-                0333 090 6219
+                0330 043 7570
               </a>
             </div>
             <Link 
@@ -121,10 +121,10 @@ const Footer = () => (
           <div className="flex items-center space-x-2 text-gray-400">
             <Phone className="h-4 w-4" />
             <a 
-              href="tel:03330906219" 
+              href="tel:03300437570" 
               className="font-semibold text-base whitespace-nowrap hover:text-blue-700 transition-colors duration-200 cursor-pointer"
             >
-              0333 090 6219
+              0330 043 7570
             </a>
           </div>
         </div>

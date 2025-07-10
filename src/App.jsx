@@ -870,7 +870,7 @@ function HomePage() {
               </Button>
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5" />
-                <span className="text-lg font-semibold">Call: 0333 090 6219</span>
+                <span className="text-lg font-semibold">Call: 0330 043 7570</span>
               </div>
             </div>
             <div className="flex items-center space-x-8 text-sm opacity-90">

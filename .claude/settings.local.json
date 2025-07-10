@@ -12,7 +12,9 @@
       "Bash(pkill:*)",
       "Bash(rm:*)",
       "Bash(find:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }
