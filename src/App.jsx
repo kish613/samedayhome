@@ -13,6 +13,23 @@ import LondonLandingPage from './components/LondonLandingPage.jsx'
 import ManchesterLandingPage from './components/ManchesterLandingPage.jsx'
 import BirminghamLandingPage from './components/BirminghamLandingPage.jsx'
 import LiverpoolLandingPage from './components/LiverpoolLandingPage.jsx'
+import LeedsLandingPage from './components/LeedsLandingPage.jsx'
+import BradfordLandingPage from './components/BradfordLandingPage.jsx'
+import CamdenLandingPage from './components/CamdenLandingPage.jsx'
+import NottinghamLandingPage from './components/NottinghamLandingPage.jsx'
+import LeicesterLandingPage from './components/LeicesterLandingPage.jsx'
+import SouthamptonLandingPage from './components/SouthamptonLandingPage.jsx'
+import SheffieldLandingPage from './components/SheffieldLandingPage.jsx'
+import NewcastleLandingPage from './components/NewcastleLandingPage.jsx'
+import BristolLandingPage from './components/BristolLandingPage.jsx'
+import LewishamLandingPage from './components/LewishamLandingPage.jsx'
+import CroydonLandingPage from './components/CroydonLandingPage.jsx'
+import HammersmithLandingPage from './components/HammersmithLandingPage.jsx'
+import HaveringLandingPage from './components/HaveringLandingPage.jsx'
+import RedbridgeLandingPage from './components/RedbridgeLandingPage.jsx'
+import BarnetLandingPage from './components/BarnetLandingPage.jsx'
+import HackneyLandingPage from './components/HackneyLandingPage.jsx'
+import EnfieldLandingPage from './components/EnfieldLandingPage.jsx'
 import BlogPage from './components/BlogPage.jsx'
 import SellProbateHouseUK from './components/blog/SellProbateHouseUK.jsx'
 import AvoidRepossessionUK from './components/blog/AvoidRepossessionUK.jsx'
@@ -906,6 +923,23 @@ function App() {
         <Route path="/manchester" element={<ManchesterLandingPage />} />
         <Route path="/birmingham" element={<BirminghamLandingPage />} />
         <Route path="/liverpool" element={<LiverpoolLandingPage />} />
+        <Route path="/leeds" element={<LeedsLandingPage />} />
+        <Route path="/bradford" element={<BradfordLandingPage />} />
+        <Route path="/camden" element={<CamdenLandingPage />} />
+        <Route path="/nottingham" element={<NottinghamLandingPage />} />
+        <Route path="/leicester" element={<LeicesterLandingPage />} />
+        <Route path="/southampton" element={<SouthamptonLandingPage />} />
+        <Route path="/sheffield" element={<SheffieldLandingPage />} />
+        <Route path="/newcastle" element={<NewcastleLandingPage />} />
+        <Route path="/bristol" element={<BristolLandingPage />} />
+        <Route path="/lewisham" element={<LewishamLandingPage />} />
+        <Route path="/croydon" element={<CroydonLandingPage />} />
+        <Route path="/hammersmith" element={<HammersmithLandingPage />} />
+        <Route path="/havering" element={<HaveringLandingPage />} />
+        <Route path="/redbridge" element={<RedbridgeLandingPage />} />
+        <Route path="/barnet" element={<BarnetLandingPage />} />
+        <Route path="/hackney" element={<HackneyLandingPage />} />
+        <Route path="/enfield" element={<EnfieldLandingPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/how-to-sell-a-house-due-to-emigration" element={<EmigrationHouseSale />} />
         <Route path="/blog/how-to-sell-a-house-after-a-divorce" element={<SellHouseAfterDivorce />} />
