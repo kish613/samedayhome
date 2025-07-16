@@ -84,12 +84,12 @@ function ManchesterLandingPage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Sell Your House Fast
+              <span className="block text-orange-400">How to</span> Sell Your House Fast
               <span className="block text-orange-400">in Manchester</span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
-              We buy properties throughout Manchester and Greater Manchester. From city centre to suburbs. 
+              Learn <strong>how to sell house quickly UK</strong> in Manchester. We buy properties throughout Manchester and Greater Manchester. From city centre to suburbs. 
               Cash offers within 2 hours, completion in 24 hours.
             </p>
 
@@ -148,6 +148,84 @@ function ManchesterLandingPage() {
               <h3 className="text-xl font-bold mb-4 text-blue-900">Any Condition</h3>
               <p className="text-gray-600">We buy Manchester properties in any condition.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How to Sell Your House Fast in Manchester Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
+              How to Sell Your House Fast in Manchester
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Follow these simple steps to <strong>sell your house fast</strong> in Manchester with our proven process
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-orange-600">1</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-blue-900">Contact Us</h3>
+              <p className="text-gray-600">Call or fill out our form to get started. We'll ask basic questions about your Manchester property.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-orange-600">2</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-blue-900">Quick Valuation</h3>
+              <p className="text-gray-600">We'll value your property using Manchester market data and arrange a viewing if needed.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-orange-600">3</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-blue-900">Cash Offer</h3>
+              <p className="text-gray-600">Receive a guaranteed cash offer within 2 hours. No obligation to accept.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-orange-600">4</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-blue-900">Complete Sale</h3>
+              <p className="text-gray-600">We handle all paperwork and complete your Manchester property sale in 24 hours.</p>
+            </motion.div>
           </div>
         </div>
       </section>
