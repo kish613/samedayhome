@@ -12,6 +12,7 @@ import MorphingBlobs from './MorphingBlobs.jsx'
 import ParticleConstellation from './ParticleConstellation.jsx'
 import DiagonalWaves from './DiagonalWaves.jsx'
 import BreathingGrid from './BreathingGrid.jsx'
+import { EnhancedCard, EnhancedCardContent } from './EnhancedCard.jsx'
 
 // Import assets
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
@@ -192,6 +193,70 @@ function HomePage() {
           ]
         })
       }} />
+
+      {/* HowTo Schema Markup */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "How to Sell Your House Fast for Cash in the UK",
+          "description": "Learn how to sell your house fast in the UK with our step-by-step guide. Get cash offers within 2 hours and complete in 24 hours.",
+          "image": "https://samedayhomebuyer.co.uk/hero-image.jpg",
+          "totalTime": "PT24H",
+          "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "GBP",
+            "value": "0"
+          },
+          "supply": [
+            {
+              "@type": "HowToSupply",
+              "name": "Property Details"
+            },
+            {
+              "@type": "HowToSupply", 
+              "name": "Property Documents"
+            }
+          ],
+          "tool": [
+            {
+              "@type": "HowToTool",
+              "name": "Cash Buyer Service"
+            }
+          ],
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Contact Cash Buyer",
+              "text": "Contact a reputable cash buyer and provide basic property details including postcode, property type, and condition.",
+              "image": "https://samedayhomebuyer.co.uk/step1.jpg",
+              "url": "https://samedayhomebuyer.co.uk#step1"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Receive Cash Offer",
+              "text": "Get a guaranteed cash offer within 2 hours based on current market values and property condition.",
+              "image": "https://samedayhomebuyer.co.uk/step2.jpg",
+              "url": "https://samedayhomebuyer.co.uk#step2"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Accept Offer",
+              "text": "Review and accept the cash offer with no obligation. All legal costs and fees are covered.",
+              "image": "https://samedayhomebuyer.co.uk/step3.jpg",
+              "url": "https://samedayhomebuyer.co.uk#step3"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Complete Sale",
+              "text": "Complete the house sale in 24 hours with guaranteed completion and immediate cash payment.",
+              "image": "https://samedayhomebuyer.co.uk/step4.jpg",
+              "url": "https://samedayhomebuyer.co.uk#step4"
+            }
+          ]
+        })
+      }} />
+
       {/* Clean Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-2">
@@ -256,12 +321,12 @@ function HomePage() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Sell My House Fast
+              <span className="block text-orange-400">How to</span> Sell My House Fast
               <span className="block text-orange-400">Cash Offer in 2 Hours</span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
-              We buy any property in any condition across the UK. No fees, no hassle, guaranteed completion in 24 hours.
+              Learn <strong>how to sell house fast</strong> and <strong>how to sell house quickly</strong> in the UK. We buy any property in any condition across the UK. No fees, no hassle, guaranteed completion in 24 hours.
             </p>
 
             <motion.form 
@@ -297,22 +362,34 @@ function HomePage() {
               initial="initial"
               animate="animate"
             >
-              <motion.div variants={fadeInUp} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <Clock className="h-12 w-12 text-orange-400 mx-auto mb-4" />
-                <h4 className="text-xl font-semibold mb-2">2-Hour Decision</h4>
-                <p className="text-blue-100">Fast cash offers with guaranteed completion</p>
+              <motion.div variants={fadeInUp}>
+                <EnhancedCard variant="benefit" className="bg-white/10 backdrop-blur-sm text-center">
+                  <EnhancedCardContent className="p-6">
+                    <Clock className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+                    <h4 className="text-xl font-semibold mb-2">2-Hour Decision</h4>
+                    <p className="text-blue-100">Fast cash offers with guaranteed completion</p>
+                  </EnhancedCardContent>
+                </EnhancedCard>
               </motion.div>
               
-              <motion.div variants={fadeInUp} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <CheckCircle className="h-12 w-12 text-green-400 mx-auto mb-4" />
-                <h4 className="text-xl font-semibold mb-2">No Fees</h4>
-                <p className="text-blue-100">Zero estate agent fees or hidden costs</p>
+              <motion.div variants={fadeInUp}>
+                <EnhancedCard variant="benefit" className="bg-white/10 backdrop-blur-sm text-center">
+                  <EnhancedCardContent className="p-6">
+                    <CheckCircle className="h-12 w-12 text-green-400 mx-auto mb-4" />
+                    <h4 className="text-xl font-semibold mb-2">No Fees</h4>
+                    <p className="text-blue-100">Zero estate agent fees or hidden costs</p>
+                  </EnhancedCardContent>
+                </EnhancedCard>
               </motion.div>
               
-              <motion.div variants={fadeInUp} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <Home className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-                <h4 className="text-xl font-semibold mb-2">Any Condition</h4>
-                <p className="text-blue-100">We buy properties in any state, as-is</p>
+              <motion.div variants={fadeInUp}>
+                <EnhancedCard variant="benefit" className="bg-white/10 backdrop-blur-sm text-center">
+                  <EnhancedCardContent className="p-6">
+                    <Home className="h-12 w-12 text-blue-400 mx-auto mb-4" />
+                    <h4 className="text-xl font-semibold mb-2">Any Condition</h4>
+                    <p className="text-blue-100">We buy properties in any state, as-is</p>
+                  </EnhancedCardContent>
+                </EnhancedCard>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -626,13 +703,13 @@ function HomePage() {
                   
                   return (
                   <div key={index} className="w-1/3 flex-shrink-0 px-4">
-                    <Card className="h-full border-2 border-transparent hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden bg-transparent">
+                    <EnhancedCard variant="testimonial" className="h-full relative overflow-hidden bg-transparent">
                       {/* Property Background - Full Card Blur */}
                       <div 
                         className="absolute inset-0 bg-cover bg-center blur-sm"
                         style={{ backgroundImage: `url(${propertyImages[index % propertyImages.length]})` }}
                       />
-                      <CardContent className="p-6 relative z-10 bg-transparent">
+                      <EnhancedCardContent className="p-6 relative z-10 bg-transparent">
                         <div className="flex items-center mb-4">
                           <img 
                             src={testimonial.avatar} 
@@ -660,8 +737,8 @@ function HomePage() {
                             {testimonial.location} • Verified Purchase
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </EnhancedCardContent>
+                    </EnhancedCard>
                   </div>
                   );
                 })}
@@ -707,24 +784,44 @@ function HomePage() {
           <div className="max-w-4xl mx-auto space-y-6">
             {[
               {
-                question: "How quickly can you complete?",
-                answer: "We can provide a cash offer within 2 hours and complete the purchase in as little as 24 hours. Most transactions complete within 2-3 weeks, depending on your preferred timeline."
+                question: "How to sell house fast in the UK?",
+                answer: "To sell your house fast in the UK, choose a cash buyer like us. We can provide a cash offer within 2 hours and complete the purchase in as little as 24 hours. Most transactions complete within 2-3 weeks, depending on your preferred timeline."
               },
               {
-                question: "Do you charge any fees?",
-                answer: "No, we don't charge any fees whatsoever. No estate agent fees, no legal costs, no survey fees, no administrative charges. The offer we make is the amount you receive."
+                question: "How to sell house quickly without estate agent?",
+                answer: "You can sell your house quickly without an estate agent by working directly with cash buyers. We eliminate the need for estate agents, saving you time and money. No viewings, no chain complications, and no estate agent fees."
               },
               {
-                question: "What types of properties do you buy?",
-                answer: "We buy all types of residential properties including houses, flats, bungalows, and maisonettes in any condition. Whether your property needs extensive renovation or is move-in ready, we're interested."
+                question: "How to sell house for cash without fees?",
+                answer: "Selling for cash with us means no fees whatsoever. No estate agent fees, no legal costs, no survey fees, no administrative charges. The offer we make is the amount you receive in your bank account."
               },
               {
-                question: "How do you calculate your offers?",
-                answer: "Our offers are based on current market values, property condition, location, and local comparable sales. We use advanced market analysis combined with local market expertise to ensure fair and competitive offers."
+                question: "How to sell house in 7 days or less?",
+                answer: "To sell your house in 7 days, we offer express completion services. After accepting our cash offer, we can complete the legal process within 7 days if needed. Most standard completions take 2-3 weeks, but urgent sales can be fast-tracked."
               },
               {
-                question: "Is there any obligation?",
-                answer: "Absolutely none. Our valuation service is completely free with no obligation to proceed. You can accept or decline our offer with no pressure or consequences."
+                question: "How to get a quick house sale with guaranteed completion?",
+                answer: "A quick house sale with guaranteed completion is achieved through cash buyers who don't rely on mortgage approvals or property chains. We guarantee completion once contracts are signed, eliminating the risk of sale fall-throughs."
+              },
+              {
+                question: "How to find legitimate cash buyers for your property?",
+                answer: "Finding legitimate cash buyers requires checking their credentials, reviews, and track record. We're regulated by RICS, have 2,847+ five-star reviews, and have successfully completed over 15,000 property purchases since 2015."
+              },
+              {
+                question: "How to sell house urgently in any condition?",
+                answer: "To sell your house urgently in any condition, contact cash buyers who specialize in quick purchases. We buy all types of residential properties including houses, flats, bungalows, and maisonettes in any condition - from move-in ready to requiring extensive renovation."
+              },
+              {
+                question: "How to sell house without survey or chain complications?",
+                answer: "Cash buyers eliminate survey delays and chain complications by purchasing with cash reserves. We conduct our own rapid property assessment and aren't dependent on mortgage approvals or other property sales, ensuring a smooth, fast transaction."
+              },
+              {
+                question: "How to avoid repossession by selling house fast?",
+                answer: "To avoid repossession, you need to sell your house before the repossession date. We can help by providing immediate cash offers and completing purchases quickly, often within 2-3 weeks, helping you clear mortgage arrears and avoid repossession."
+              },
+              {
+                question: "How to sell inherited house or probate property quickly?",
+                answer: "To sell an inherited house or probate property quickly, work with experienced cash buyers who understand probate law. We can guide you through the legal requirements and complete the purchase once probate is granted, offering a hassle-free solution for inherited properties."
               }
             ].map((faq, index) => (
               <motion.div

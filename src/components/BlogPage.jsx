@@ -9,6 +9,36 @@ const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/2
 
 const blogPosts = [
   {
+    slug: 'how-to-find-cash-buyers',
+    title: 'How to Find Legitimate Cash Buyers for Your Property',
+    excerpt: 'Learn how to find legitimate cash buyers for your property in 2024. Get tips on avoiding scams, comparing offers, and securing the best deal for your house sale.',
+    date: 'January 18, 2025',
+    readTime: '8 min read',
+    keywords: 'how to find cash buyers, legitimate cash buyers, cash house buyers UK',
+    category: 'How To Guides',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    slug: 'how-to-sell-house-without-fees',
+    title: 'How to Sell House Without Fees - Complete Guide',
+    excerpt: 'Learn how to sell your house without paying estate agent fees or legal costs. Complete guide to fee-free house sales including cash buyers, private sales, and auctions.',
+    date: 'January 17, 2025',
+    readTime: '9 min read',
+    keywords: 'how to sell house without fees, sell house without estate agent',
+    category: 'How To Guides',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    slug: 'how-to-sell-house-without-chain',
+    title: 'How to Sell House Without Chain - Complete Guide',
+    excerpt: 'Learn how to sell your house without chain complications. Complete guide to chain-free sales including cash buyers, auctions, and targeting chain-free buyers.',
+    date: 'January 16, 2025',
+    readTime: '8 min read',
+    keywords: 'how to sell house without chain, sell house guaranteed, chain-free house sale',
+    category: 'How To Guides',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
     slug: 'sell-probate-house-uk',
     title: 'How to Sell a Probate Property Quickly in the UK',
     excerpt: 'Selling an inherited property can be complex. Learn the fastest ways to sell a probate house in the UK, including cash buyers, legal requirements, and tax considerations.',
@@ -20,7 +50,7 @@ const blogPosts = [
   },
   {
     slug: 'avoid-repossession-uk',
-    title: 'Avoiding Repossession: Your Options for a Fast House Sale',
+    title: 'How to Avoid Repossession: Your Options for a Fast House Sale',
     excerpt: 'Facing repossession? Discover your options for avoiding house repossession in the UK, including fast sale solutions and what to do if you cannot keep up with mortgage payments.',
     date: 'January 12, 2025',
     readTime: '6 min read',
@@ -30,7 +60,7 @@ const blogPosts = [
   },
   {
     slug: 'sell-disrepair-house',
-    title: 'Selling a House in Poor Condition – Is a Cash Buyer Right for You?',
+    title: 'How to Sell a House in Poor Condition – Is a Cash Buyer Right for You?',
     excerpt: 'Got a property in disrepair? Learn whether a cash buyer is the right choice for selling your damaged property and how to maximise your return.',
     date: 'January 10, 2025',
     readTime: '5 min read',
@@ -40,7 +70,7 @@ const blogPosts = [
   },
   {
     slug: 'sell-house-after-divorce-uk',
-    title: 'Divorce and House Sale: How to Sell Fast and Move On',
+    title: 'How to Sell House During Divorce: Your Complete Guide',
     excerpt: 'Divorcing and need to sell your house quickly? Learn the fastest ways to sell property during separation in the UK and move forward with your life.',
     date: 'January 8, 2025',
     readTime: '6 min read',
@@ -50,7 +80,7 @@ const blogPosts = [
   },
   {
     slug: 'emigration-house-sale',
-    title: 'Relocating Abroad? Here\'s How to Sell Your Home Fast',
+    title: 'How to Sell Your Property When Moving Abroad',
     excerpt: 'Moving abroad? Learn how to sell your UK property quickly before emigration, including timeline considerations and cash buyer advantages.',
     date: 'January 5, 2025',
     readTime: '5 min read',
