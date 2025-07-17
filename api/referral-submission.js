@@ -169,7 +169,7 @@ async function sendConfirmationEmail(referralData) {
       <p>Dear ${referralData.contactName},</p>
       <p>We have received your property referral for <strong>${referralData.propertyAddress}</strong>.</p>
       <p><strong>Referral ID:</strong> ${referralData.id}</p>
-      <p>Our team will analyze this lead within 2 hours and contact the property owner. If the lead meets our criteria and results in a successful purchase, you will receive your £100 Amazon voucher within 24 hours of verification.</p>
+      <p>Our team will analyze this lead within 2 hours and contact the property owner. If the lead meets our criteria and results in a successful purchase, you will receive your £500 Amazon voucher within 24 hours of verification.</p>
       <p>We'll keep you updated on the progress of your referral.</p>
       <p>Best regards,<br>Same Day Home Buyer Team</p>
     `

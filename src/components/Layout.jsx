@@ -84,7 +84,7 @@ const Header = () => {
               to="/refer" 
               className="hidden md:inline-flex bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors text-base whitespace-nowrap"
             >
-              Earn £100
+              Earn £500
             </Link>
             <Button 
               onClick={handleCTAClick}
@@ -148,7 +148,7 @@ const Footer = () => (
             <li>Distressed Property Sales</li>
             <li>Quick Property Valuations</li>
             <li>Auction Alternative</li>
-            <li><Link to="/refer" className="hover:text-white transition-colors">Earn £100 - Refer Properties</Link></li>
+            <li><Link to="/refer" className="hover:text-white transition-colors">Earn £500 - Refer Properties</Link></li>
           </ul>
         </div>
         
