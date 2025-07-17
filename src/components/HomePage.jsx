@@ -747,13 +747,15 @@ function HomePage() {
                           <span className="text-4xl text-purple-300 absolute -bottom-4 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">"</span>
                         </div>
                         <div className="border-t pt-4">
-                          <div className="font-semibold text-blue-900">{testimonial.name}</div>
-                          <div className="text-sm text-gray-500 flex items-center">
-                            <MapPin className="h-3 w-3 mr-1" />
-                            {testimonial.location} • 
-                            <div className="flex items-center ml-1 bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
-                              <CheckCircle className="h-3 w-3 mr-1" />
-                              Verified Purchase
+                          <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                            <div className="font-semibold text-blue-900">{testimonial.name}</div>
+                            <div className="text-sm text-gray-600 flex items-center mt-1">
+                              <MapPin className="h-3 w-3 mr-1" />
+                              {testimonial.location} • 
+                              <div className="flex items-center ml-1 bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
+                                <CheckCircle className="h-3 w-3 mr-1" />
+                                Verified Purchase
+                              </div>
                             </div>
                           </div>
                         </div>
