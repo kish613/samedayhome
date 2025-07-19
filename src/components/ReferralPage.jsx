@@ -9,6 +9,9 @@ import { Checkbox } from '@/components/ui/checkbox.jsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
 import { Phone, Mail, CheckCircle, Gift, Clock, Home, FileText } from 'lucide-react'
 import { HelmetProvider, Helmet } from 'react-helmet-async';
+import FloatingOrbs from './FloatingOrbs.jsx'
+import BreathingGrid from './BreathingGrid.jsx'
+import heroImg from '../assets/uk_houses_hero.jpg'
 
 // Import existing logo
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
@@ -106,19 +109,19 @@ function ReferralPage() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Earn £100 Amazon Voucher - Same Day Home Buyer Referral Program</title>
-        <meta name="description" content="Earn £100 Amazon voucher for quality property leads. Submit insolvency, probate, or derelict properties and get rewarded when we verify the lead." />
+        <title>Earn £500 Amazon Voucher - Same Day Home Buyer Referral Program</title>
+        <meta name="description" content="Earn £500 Amazon voucher for quality property leads. Submit insolvency, probate, or derelict properties and get rewarded when we verify the lead." />
         <meta name="keywords" content="property referral, earn money, Amazon voucher, property leads, insolvency, probate, derelict properties" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Earn £100 Amazon Voucher - Property Lead Referral" />
-        <meta property="og:description" content="Submit quality property leads and earn £100 Amazon vouchers. We analyze leads within 2 hours." />
+        <meta property="og:title" content="Earn £500 Amazon Voucher - Property Lead Referral" />
+        <meta property="og:description" content="Submit quality property leads and earn £500 Amazon vouchers. We analyze leads within 2 hours." />
         <meta property="og:url" content="https://samedayhome.vercel.app/refer" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Earn £100 Amazon Voucher - Property Lead Referral" />
-        <meta name="twitter:description" content="Submit quality property leads and earn £100 Amazon vouchers." />
+        <meta name="twitter:title" content="Earn £500 Amazon Voucher - Property Lead Referral" />
+        <meta name="twitter:description" content="Submit quality property leads and earn £500 Amazon vouchers." />
       </Helmet>
 
       {/* Header */}
@@ -163,8 +166,10 @@ function ReferralPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white" style={{ backgroundImage: `url(${heroImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/60"></div>
+        <FloatingOrbs />
+        <BreathingGrid />
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
@@ -173,13 +178,13 @@ function ReferralPage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-orange-400">Earn £100 Amazon Voucher</span>
+              <span className="text-orange-400">Earn £500 Amazon Voucher</span>
               <br />
               <span className="text-white">for Quality Property Leads</span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
-              Refer a property lead that meets our criteria and receive a £100 Amazon voucher when we complete our purchase
+              Refer a property lead that meets our criteria and receive a £500 Amazon voucher when we complete our purchase
             </p>
 
             <motion.div 
@@ -198,7 +203,7 @@ function ReferralPage() {
               </motion.div>
               <motion.div variants={fadeInUp} className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
                 <Gift className="h-6 w-6 text-orange-400" />
-                <span className="font-medium">£100 Amazon Voucher Reward</span>
+                <span className="font-medium">£500 Amazon Voucher Reward</span>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -274,7 +279,7 @@ function ReferralPage() {
                       3
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-blue-900 mb-4">Receive £100 Amazon Voucher</h3>
+                  <h3 className="text-2xl font-bold text-blue-900 mb-4">Receive £500 Amazon Voucher</h3>
                   <p className="text-gray-600 leading-relaxed">
                     Get your voucher within 24 hours of lead verification and successful contact
                   </p>
@@ -429,7 +434,7 @@ function ReferralPage() {
                       disabled={isSubmitting}
                       className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 text-lg"
                     >
-                      {isSubmitting ? 'Submitting...' : 'Submit Lead for £100 Reward'}
+                      {isSubmitting ? 'Submitting...' : 'Submit Lead for £500 Reward'}
                     </Button>
                   </form>
 
@@ -493,7 +498,7 @@ function ReferralPage() {
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                    £100 Amazon voucher paid within 24 hours of lead verification
+                    £500 Amazon voucher paid within 24 hours of lead verification
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
@@ -553,7 +558,7 @@ function ReferralPage() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               />
               <p className="text-gray-400 mb-4 leading-relaxed">
-                The UK's leading cash property buyer. Earn £100 for quality property leads.
+                The UK's leading cash property buyer. Earn £500 for quality property leads.
               </p>
             </div>
             

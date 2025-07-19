@@ -703,7 +703,7 @@ function HomePage() {
                   
                   return (
                   <div key={index} className="w-1/3 flex-shrink-0 px-4">
-                    <EnhancedCard variant="testimonial" className="h-full relative overflow-hidden bg-transparent">
+                    <EnhancedCard variant="testimonial" className="h-full relative overflow-hidden bg-transparent transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl group">
                       {/* Property Background - Full Card Blur */}
                       <div 
                         className="absolute inset-0 bg-cover bg-center blur-sm"
@@ -718,23 +718,45 @@ function HomePage() {
                           />
                           <div className="flex-1">
                             <div className="flex items-center justify-between">
-                              <div className="flex">
+                              <div className="flex relative">
+                                <div className="absolute inset-0 bg-yellow-400 rounded-full blur-sm opacity-30 animate-pulse"></div>
                                 {[...Array(testimonial.rating)].map((_, i) => (
-                                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400 relative z-10 animate-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
                                 ))}
                               </div>
-                              <Badge className="bg-green-100 text-green-800 text-xs">
+                              <Badge className={`text-xs font-bold px-3 py-1 flex items-center gap-1 ${
+                                testimonial.days <= 7 
+                                  ? 'bg-gradient-to-r from-green-400 to-green-600 text-white shadow-lg' 
+                                  : testimonial.days <= 14 
+                                  ? 'bg-gradient-to-r from-amber-400 to-amber-600 text-white shadow-lg'
+                                  : 'bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-lg'
+                              }`}>
+                                <Clock className="h-3 w-3" />
                                 {testimonial.days} days
                               </Badge>
                             </div>
                           </div>
                         </div>
-                        <p className="text-gray-600 mb-6 italic leading-relaxed">"{testimonial.text}"</p>
+                        <div className="relative mb-6">
+                          <span className="text-4xl text-purple-300 absolute -top-2 -left-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">"</span>
+                          <p className="text-gray-600 italic leading-relaxed pl-4">
+                            <span className="opacity-0 animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+                              {testimonial.text}
+                            </span>
+                          </p>
+                          <span className="text-4xl text-purple-300 absolute -bottom-4 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">"</span>
+                        </div>
                         <div className="border-t pt-4">
-                          <div className="font-semibold text-blue-900">{testimonial.name}</div>
-                          <div className="text-sm text-gray-500 flex items-center">
-                            <MapPin className="h-3 w-3 mr-1" />
-                            {testimonial.location} • Verified Purchase
+                          <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+                            <div className="font-semibold text-blue-900">{testimonial.name}</div>
+                            <div className="text-sm text-gray-600 flex items-center mt-1">
+                              <MapPin className="h-3 w-3 mr-1" />
+                              {testimonial.location} • 
+                              <div className="flex items-center ml-1 bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
+                                <CheckCircle className="h-3 w-3 mr-1" />
+                                Verified Purchase
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </EnhancedCardContent>

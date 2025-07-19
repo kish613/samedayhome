@@ -19,7 +19,8 @@
       "WebFetch(domain:docs.fetchify.com)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }
