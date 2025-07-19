@@ -1,4 +1,4 @@
-// Secure backend proxy for Postcoder API
+// Secure backend proxy for Fetchify API
 // This keeps your API key safe on the server
 
 export default async function handler(req, res) {
@@ -24,20 +24,20 @@ export default async function handler(req, res) {
     }
 
     // Get API key from server environment (secure)
-    const apiKey = process.env.POSTCODER_API_KEY
+    const apiKey = process.env.FETCHIFY_API_KEY || '649c2-a2bc4-c3307-0a4d8'
     
     if (!apiKey) {
-      console.error('POSTCODER_API_KEY not configured')
+      console.error('FETCHIFY_API_KEY not configured')
       return res.status(500).json({ error: 'Postcode lookup service not configured' })
     }
 
-    // Make request to Postcoder API from backend
-    const postcodeApiUrl = `https://ws.postcoder.com/pcw/${apiKey}/address/uk/${encodeURIComponent(cleanPostcode)}?format=json&lines=2`
+    // Make request to Fetchify API from backend
+    const fetchifyApiUrl = `https://pcls1.craftyclicks.co.uk/json/rapidaddress?key=${apiKey}&postcode=${encodeURIComponent(cleanPostcode)}&response=data_formatted`
     
-    const response = await fetch(postcodeApiUrl)
+    const response = await fetch(fetchifyApiUrl)
     
     if (!response.ok) {
-      console.error('Postcoder API error:', response.status, response.statusText)
+      console.error('Fetchify API error:', response.status, response.statusText)
       
       if (response.status === 401) {
         return res.status(500).json({ error: 'API authentication failed' })
@@ -50,18 +50,33 @@ export default async function handler(req, res) {
 
     const data = await response.json()
     
-    // Transform and validate the response
-    const addresses = Array.isArray(data) ? data.map(address => ({
-      id: address.summaryline || '',
-      street: address.street || '',
-      number: address.number || address.premise || '',
-      addressLine1: address.addressline1 || '',
-      addressLine2: address.addressline2 || '',
-      postTown: address.posttown || '',
-      county: address.county || '',
-      postcode: address.postcode || cleanPostcode,
-      fullAddress: address.summaryline || ''
-    })).filter(addr => addr.street && addr.fullAddress) : []
+    // Handle Fetchify response format
+    let addresses = []
+    
+    if (data && data.delivery_points && Array.isArray(data.delivery_points)) {
+      addresses = data.delivery_points.map(dp => {
+        // Extract street name and number from formatted address lines
+        const addressLine1 = dp.line_1 || ''
+        const addressLine2 = dp.line_2 || ''
+        
+        // Try to extract number and street from line_1
+        const numberMatch = addressLine1.match(/^(\d+[A-Z]?|\w+)\s+(.+)/)
+        const number = numberMatch ? numberMatch[1] : ''
+        const street = numberMatch ? numberMatch[2] : addressLine1
+        
+        return {
+          id: dp.udprn || '',
+          street: street || addressLine1,
+          number: number,
+          addressLine1: addressLine1,
+          addressLine2: addressLine2,
+          postTown: dp.post_town || '',
+          county: dp.traditional_county || dp.postal_county || '',
+          postcode: dp.postcode || cleanPostcode,
+          fullAddress: [addressLine1, addressLine2, dp.post_town, dp.postcode].filter(Boolean).join(', ')
+        }
+      }).filter(addr => addr.street && addr.fullAddress)
+    }
 
     // Return successful response
     res.status(200).json({

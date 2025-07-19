@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   try {
     // Check if API key is configured
-    const apiKey = process.env.POSTCODER_API_KEY
+    const apiKey = process.env.FETCHIFY_API_KEY
     
     res.status(200).json({
       success: true,
