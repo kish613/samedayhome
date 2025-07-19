@@ -15,7 +15,11 @@
       "Bash(git add:*)",
       "Bash(grep:*)",
       "Bash(rg:*)",
-      "Bash(vercel:*)"
+      "Bash(vercel:*)",
+      "WebFetch(domain:docs.fetchify.com)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)"
     ],
     "deny": []
   }
