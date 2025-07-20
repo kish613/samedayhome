@@ -63,6 +63,41 @@ class PostcodeService {
     }
   }
 
+  /**
+   * Get all addresses for a postcode, sorted by number/name
+   * @param {string} postcode - UK postcode to lookup
+   * @returns {Promise<Array>} Array of sorted address objects
+   */
+  async getAllAddressesSorted(postcode) {
+    try {
+      const addresses = await this.lookupByPostcode(postcode)
+      
+      // Sort addresses by number/name for better UX
+      return addresses.sort((a, b) => {
+        const numA = parseInt(a.number)
+        const numB = parseInt(b.number)
+        
+        // If both are numbers, sort numerically
+        if (!isNaN(numA) && !isNaN(numB)) {
+          return numA - numB
+        }
+        
+        // If one is a number and one isn't, put numbers first
+        if (!isNaN(numA) && isNaN(numB)) {
+          return -1
+        }
+        if (isNaN(numA) && !isNaN(numB)) {
+          return 1
+        }
+        
+        // Both are non-numeric, sort alphabetically
+        return (a.number || '').localeCompare(b.number || '')
+      })
+      
+    } catch (error) {
+      throw error
+    }
+  }
 
 
   /**
