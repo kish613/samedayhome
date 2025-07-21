@@ -124,47 +124,6 @@ function ReferralPage() {
         <meta name="twitter:description" content="Submit quality property leads and earn £500 Amazon vouchers." />
       </Helmet>
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <motion.img 
-                src={logoImg} 
-                alt="Same Day Home Buyer" 
-                className="h-20 w-auto cursor-pointer drop-shadow-md"
-                whileHover={{ scale: 1.08, rotate: 3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                onClick={() => window.location.href = '/'}
-              />
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <motion.div 
-                className="hidden md:flex items-center space-x-2 text-blue-900 cursor-pointer"
-                whileHover={{ 
-                  scale: 1.05,
-                  backgroundColor: "rgba(30, 58, 138, 0.1)",
-                  borderRadius: "12px"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                style={{ padding: "8px 12px" }}
-              >
-                <Phone className="h-4 w-4" />
-                <span className="font-semibold">0330 043 7570</span>
-              </motion.div>
-              <Button 
-                onClick={() => window.location.href = '/'}
-                className="bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 text-white font-semibold"
-              >
-                Back to Main Site
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white" style={{ backgroundImage: `url(${heroImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/60"></div>
@@ -545,59 +504,6 @@ function ReferralPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <motion.img 
-                src={logoImg} 
-                alt="Same Day Home Buyer" 
-                className="h-14 w-auto mb-4 cursor-pointer filter brightness-0 invert"
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              />
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                The UK's leading cash property buyer. Earn £500 for quality property leads.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Contact Us</h4>
-              <div className="space-y-2 text-gray-400">
-                <div className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4" />
-                  <span>referrals@samedayhomebuyer.co.uk</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4" />
-                  <span>0330 043 7570</span>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Additional Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a href="/" className="hover:text-white transition-colors">
-                    Sell Your House Fast
-                  </a>
-                </li>
-                <li>
-                  <a href="/blog" className="hover:text-white transition-colors">
-                    Property Blog
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-            <p>&copy; 2025 Same Day Home Buyer. All rights reserved. | Privacy Policy | Terms & Conditions</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
