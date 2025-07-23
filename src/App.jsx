@@ -30,6 +30,12 @@ import RedbridgeLandingPage from './components/RedbridgeLandingPage.jsx'
 import BarnetLandingPage from './components/BarnetLandingPage.jsx'
 import HackneyLandingPage from './components/HackneyLandingPage.jsx'
 import EnfieldLandingPage from './components/EnfieldLandingPage.jsx'
+import CoventryLandingPage from './components/CoventryLandingPage.jsx'
+import WolverhamptonLandingPage from './components/WolverhamptonLandingPage.jsx'
+import SolihullLandingPage from './components/SolihullLandingPage.jsx'
+import WalsallLandingPage from './components/WalsallLandingPage.jsx'
+import WestBromwichLandingPage from './components/WestBromwichLandingPage.jsx'
+import DudleyLandingPage from './components/DudleyLandingPage.jsx'
 import BlogPage from './components/BlogPage.jsx'
 import SellProbateHouseUK from './components/blog/SellProbateHouseUK.jsx'
 import AvoidRepossessionUK from './components/blog/AvoidRepossessionUK.jsx'
@@ -950,6 +956,12 @@ function App() {
         <Route path="/barnet" element={<BarnetLandingPage />} />
         <Route path="/hackney" element={<HackneyLandingPage />} />
         <Route path="/enfield" element={<EnfieldLandingPage />} />
+        <Route path="/coventry" element={<CoventryLandingPage />} />
+        <Route path="/wolverhampton" element={<WolverhamptonLandingPage />} />
+        <Route path="/solihull" element={<SolihullLandingPage />} />
+        <Route path="/walsall" element={<WalsallLandingPage />} />
+        <Route path="/west-bromwich" element={<WestBromwichLandingPage />} />
+        <Route path="/dudley" element={<DudleyLandingPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/how-to-find-cash-buyers" element={<HowToFindCashBuyers />} />
         <Route path="/blog/how-to-sell-house-without-fees" element={<SellHouseWithoutFees />} />
@@ -971,4 +983,3 @@ function App() {
 }
 
 export default App
-
