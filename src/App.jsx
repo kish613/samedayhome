@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
 import { Routes, Route, useNavigate, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
@@ -9,43 +9,6 @@ import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
-import LondonLandingPage from './components/LondonLandingPage.jsx'
-import ManchesterLandingPage from './components/ManchesterLandingPage.jsx'
-import BirminghamLandingPage from './components/BirminghamLandingPage.jsx'
-import LiverpoolLandingPage from './components/LiverpoolLandingPage.jsx'
-import LeedsLandingPage from './components/LeedsLandingPage.jsx'
-import BradfordLandingPage from './components/BradfordLandingPage.jsx'
-import CamdenLandingPage from './components/CamdenLandingPage.jsx'
-import NottinghamLandingPage from './components/NottinghamLandingPage.jsx'
-import LeicesterLandingPage from './components/LeicesterLandingPage.jsx'
-import SouthamptonLandingPage from './components/SouthamptonLandingPage.jsx'
-import SheffieldLandingPage from './components/SheffieldLandingPage.jsx'
-import NewcastleLandingPage from './components/NewcastleLandingPage.jsx'
-import BristolLandingPage from './components/BristolLandingPage.jsx'
-import LewishamLandingPage from './components/LewishamLandingPage.jsx'
-import CroydonLandingPage from './components/CroydonLandingPage.jsx'
-import HammersmithLandingPage from './components/HammersmithLandingPage.jsx'
-import HaveringLandingPage from './components/HaveringLandingPage.jsx'
-import RedbridgeLandingPage from './components/RedbridgeLandingPage.jsx'
-import BarnetLandingPage from './components/BarnetLandingPage.jsx'
-import HackneyLandingPage from './components/HackneyLandingPage.jsx'
-import EnfieldLandingPage from './components/EnfieldLandingPage.jsx'
-import CoventryLandingPage from './components/CoventryLandingPage.jsx'
-import WolverhamptonLandingPage from './components/WolverhamptonLandingPage.jsx'
-import SolihullLandingPage from './components/SolihullLandingPage.jsx'
-import WalsallLandingPage from './components/WalsallLandingPage.jsx'
-import WestBromwichLandingPage from './components/WestBromwichLandingPage.jsx'
-import DudleyLandingPage from './components/DudleyLandingPage.jsx'
-import BlogPage from './components/BlogPage.jsx'
-import SellProbateHouseUK from './components/blog/SellProbateHouseUK.jsx'
-import AvoidRepossessionUK from './components/blog/AvoidRepossessionUK.jsx'
-import SellDisrepairHouse from './components/blog/SellDisrepairHouse.jsx'
-import SellHouseAfterDivorce from './components/blog/SellHouseAfterDivorce.jsx'
-import EmigrationHouseSale from './components/blog/EmigrationHouseSale.jsx'
-import HowToFindCashBuyers from './components/blog/HowToFindCashBuyers.jsx'
-import SellHouseWithoutFees from './components/blog/SellHouseWithoutFees.jsx'
-import SellHouseWithoutChain from './components/blog/SellHouseWithoutChain.jsx'
-import ReferralPage from './components/ReferralPage.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
 import AnimatedGrid from './components/AnimatedGrid.jsx';
@@ -58,6 +21,49 @@ import SubtleBackgroundEnhancer from './components/SubtleBackgroundEnhancer.jsx'
 import SubtleGeometricPattern from './components/SubtleGeometricPattern.jsx';
 import TextureOverlay from './components/TextureOverlay.jsx';
 import MinimalPatternOverlay from './components/MinimalPatternOverlay.jsx';
+
+// Lazy load landing pages
+const LondonLandingPage = lazy(() => import('./components/LondonLandingPage.jsx'))
+const ManchesterLandingPage = lazy(() => import('./components/ManchesterLandingPage.jsx'))
+const BirminghamLandingPage = lazy(() => import('./components/BirminghamLandingPage.jsx'))
+const LiverpoolLandingPage = lazy(() => import('./components/LiverpoolLandingPage.jsx'))
+const LeedsLandingPage = lazy(() => import('./components/LeedsLandingPage.jsx'))
+const BradfordLandingPage = lazy(() => import('./components/BradfordLandingPage.jsx'))
+const CamdenLandingPage = lazy(() => import('./components/CamdenLandingPage.jsx'))
+const NottinghamLandingPage = lazy(() => import('./components/NottinghamLandingPage.jsx'))
+const LeicesterLandingPage = lazy(() => import('./components/LeicesterLandingPage.jsx'))
+const SouthamptonLandingPage = lazy(() => import('./components/SouthamptonLandingPage.jsx'))
+const SheffieldLandingPage = lazy(() => import('./components/SheffieldLandingPage.jsx'))
+const NewcastleLandingPage = lazy(() => import('./components/NewcastleLandingPage.jsx'))
+const BristolLandingPage = lazy(() => import('./components/BristolLandingPage.jsx'))
+const LewishamLandingPage = lazy(() => import('./components/LewishamLandingPage.jsx'))
+const CroydonLandingPage = lazy(() => import('./components/CroydonLandingPage.jsx'))
+const HammersmithLandingPage = lazy(() => import('./components/HammersmithLandingPage.jsx'))
+const HaveringLandingPage = lazy(() => import('./components/HaveringLandingPage.jsx'))
+const RedbridgeLandingPage = lazy(() => import('./components/RedbridgeLandingPage.jsx'))
+const BarnetLandingPage = lazy(() => import('./components/BarnetLandingPage.jsx'))
+const HackneyLandingPage = lazy(() => import('./components/HackneyLandingPage.jsx'))
+const EnfieldLandingPage = lazy(() => import('./components/EnfieldLandingPage.jsx'))
+const CoventryLandingPage = lazy(() => import('./components/CoventryLandingPage.jsx'))
+const WolverhamptonLandingPage = lazy(() => import('./components/WolverhamptonLandingPage.jsx'))
+const SolihullLandingPage = lazy(() => import('./components/SolihullLandingPage.jsx'))
+const WalsallLandingPage = lazy(() => import('./components/WalsallLandingPage.jsx'))
+const WestBromwichLandingPage = lazy(() => import('./components/WestBromwichLandingPage.jsx'))
+const DudleyLandingPage = lazy(() => import('./components/DudleyLandingPage.jsx'))
+
+// Lazy load blog pages
+const BlogPage = lazy(() => import('./components/BlogPage.jsx'))
+const SellProbateHouseUK = lazy(() => import('./components/blog/SellProbateHouseUK.jsx'))
+const AvoidRepossessionUK = lazy(() => import('./components/blog/AvoidRepossessionUK.jsx'))
+const SellDisrepairHouse = lazy(() => import('./components/blog/SellDisrepairHouse.jsx'))
+const SellHouseAfterDivorce = lazy(() => import('./components/blog/SellHouseAfterDivorce.jsx'))
+const EmigrationHouseSale = lazy(() => import('./components/blog/EmigrationHouseSale.jsx'))
+const HowToFindCashBuyers = lazy(() => import('./components/blog/HowToFindCashBuyers.jsx'))
+const SellHouseWithoutFees = lazy(() => import('./components/blog/SellHouseWithoutFees.jsx'))
+const SellHouseWithoutChain = lazy(() => import('./components/blog/SellHouseWithoutChain.jsx'))
+
+// Lazy load referral page
+const ReferralPage = lazy(() => import('./components/ReferralPage.jsx'));
 
 import './App.css'
 
@@ -928,56 +934,68 @@ function HomePage() {
   )
 }
 
+// Loading component for lazy-loaded routes
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto"></div>
+      <p className="mt-4 text-gray-600">Loading...</p>
+    </div>
+  </div>
+)
+
 function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/valuation/:postcode" element={<ValuationPage />} />
-        <Route path="/propertysubmitted" element={<PropertyDetailsForm />} />
-        <Route path="/london" element={<LondonLandingPage />} />
-        <Route path="/manchester" element={<ManchesterLandingPage />} />
-        <Route path="/birmingham" element={<BirminghamLandingPage />} />
-        <Route path="/liverpool" element={<LiverpoolLandingPage />} />
-        <Route path="/leeds" element={<LeedsLandingPage />} />
-        <Route path="/bradford" element={<BradfordLandingPage />} />
-        <Route path="/camden" element={<CamdenLandingPage />} />
-        <Route path="/nottingham" element={<NottinghamLandingPage />} />
-        <Route path="/leicester" element={<LeicesterLandingPage />} />
-        <Route path="/southampton" element={<SouthamptonLandingPage />} />
-        <Route path="/sheffield" element={<SheffieldLandingPage />} />
-        <Route path="/newcastle" element={<NewcastleLandingPage />} />
-        <Route path="/bristol" element={<BristolLandingPage />} />
-        <Route path="/lewisham" element={<LewishamLandingPage />} />
-        <Route path="/croydon" element={<CroydonLandingPage />} />
-        <Route path="/hammersmith" element={<HammersmithLandingPage />} />
-        <Route path="/havering" element={<HaveringLandingPage />} />
-        <Route path="/redbridge" element={<RedbridgeLandingPage />} />
-        <Route path="/barnet" element={<BarnetLandingPage />} />
-        <Route path="/hackney" element={<HackneyLandingPage />} />
-        <Route path="/enfield" element={<EnfieldLandingPage />} />
-        <Route path="/coventry" element={<CoventryLandingPage />} />
-        <Route path="/wolverhampton" element={<WolverhamptonLandingPage />} />
-        <Route path="/solihull" element={<SolihullLandingPage />} />
-        <Route path="/walsall" element={<WalsallLandingPage />} />
-        <Route path="/west-bromwich" element={<WestBromwichLandingPage />} />
-        <Route path="/dudley" element={<DudleyLandingPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/how-to-find-cash-buyers" element={<HowToFindCashBuyers />} />
-        <Route path="/blog/how-to-sell-house-without-fees" element={<SellHouseWithoutFees />} />
-        <Route path="/blog/how-to-sell-house-without-chain" element={<SellHouseWithoutChain />} />
-        <Route path="/blog/sell-probate-house-uk" element={<SellProbateHouseUK />} />
-        <Route path="/blog/avoid-repossession-uk" element={<AvoidRepossessionUK />} />
-        <Route path="/blog/sell-disrepair-house" element={<SellDisrepairHouse />} />
-        <Route path="/blog/sell-house-after-divorce-uk" element={<SellHouseAfterDivorce />} />
-        <Route path="/blog/emigration-house-sale" element={<EmigrationHouseSale />} />
-        <Route path="/blog/how-to-sell-a-house-due-to-emigration" element={<EmigrationHouseSale />} />
-        <Route path="/blog/how-to-sell-a-house-after-a-divorce" element={<SellHouseAfterDivorce />} />
-        <Route path="/blog/how-to-sell-a-house-in-disrepair" element={<SellDisrepairHouse />} />
-        <Route path="/blog/how-to-sell-a-probate-property" element={<SellProbateHouseUK />} />
-        <Route path="/blog/how-to-avoid-repossession-of-your-house" element={<AvoidRepossessionUK />} />
-        <Route path="/refer" element={<ReferralPage />} />
-      </Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/valuation/:postcode" element={<ValuationPage />} />
+          <Route path="/propertysubmitted" element={<PropertyDetailsForm />} />
+          <Route path="/london" element={<LondonLandingPage />} />
+          <Route path="/manchester" element={<ManchesterLandingPage />} />
+          <Route path="/birmingham" element={<BirminghamLandingPage />} />
+          <Route path="/liverpool" element={<LiverpoolLandingPage />} />
+          <Route path="/leeds" element={<LeedsLandingPage />} />
+          <Route path="/bradford" element={<BradfordLandingPage />} />
+          <Route path="/camden" element={<CamdenLandingPage />} />
+          <Route path="/nottingham" element={<NottinghamLandingPage />} />
+          <Route path="/leicester" element={<LeicesterLandingPage />} />
+          <Route path="/southampton" element={<SouthamptonLandingPage />} />
+          <Route path="/sheffield" element={<SheffieldLandingPage />} />
+          <Route path="/newcastle" element={<NewcastleLandingPage />} />
+          <Route path="/bristol" element={<BristolLandingPage />} />
+          <Route path="/lewisham" element={<LewishamLandingPage />} />
+          <Route path="/croydon" element={<CroydonLandingPage />} />
+          <Route path="/hammersmith" element={<HammersmithLandingPage />} />
+          <Route path="/havering" element={<HaveringLandingPage />} />
+          <Route path="/redbridge" element={<RedbridgeLandingPage />} />
+          <Route path="/barnet" element={<BarnetLandingPage />} />
+          <Route path="/hackney" element={<HackneyLandingPage />} />
+          <Route path="/enfield" element={<EnfieldLandingPage />} />
+          <Route path="/coventry" element={<CoventryLandingPage />} />
+          <Route path="/wolverhampton" element={<WolverhamptonLandingPage />} />
+          <Route path="/solihull" element={<SolihullLandingPage />} />
+          <Route path="/walsall" element={<WalsallLandingPage />} />
+          <Route path="/west-bromwich" element={<WestBromwichLandingPage />} />
+          <Route path="/dudley" element={<DudleyLandingPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/how-to-find-cash-buyers" element={<HowToFindCashBuyers />} />
+          <Route path="/blog/how-to-sell-house-without-fees" element={<SellHouseWithoutFees />} />
+          <Route path="/blog/how-to-sell-house-without-chain" element={<SellHouseWithoutChain />} />
+          <Route path="/blog/sell-probate-house-uk" element={<SellProbateHouseUK />} />
+          <Route path="/blog/avoid-repossession-uk" element={<AvoidRepossessionUK />} />
+          <Route path="/blog/sell-disrepair-house" element={<SellDisrepairHouse />} />
+          <Route path="/blog/sell-house-after-divorce-uk" element={<SellHouseAfterDivorce />} />
+          <Route path="/blog/emigration-house-sale" element={<EmigrationHouseSale />} />
+          <Route path="/blog/how-to-sell-a-house-due-to-emigration" element={<EmigrationHouseSale />} />
+          <Route path="/blog/how-to-sell-a-house-after-a-divorce" element={<SellHouseAfterDivorce />} />
+          <Route path="/blog/how-to-sell-a-house-in-disrepair" element={<SellDisrepairHouse />} />
+          <Route path="/blog/how-to-sell-a-probate-property" element={<SellProbateHouseUK />} />
+          <Route path="/blog/how-to-avoid-repossession-of-your-house" element={<AvoidRepossessionUK />} />
+          <Route path="/refer" element={<ReferralPage />} />
+        </Routes>
+      </Suspense>
     </Layout>
   )
 }
