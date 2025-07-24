@@ -51,6 +51,9 @@ const WalsallLandingPage = lazy(() => import('./components/WalsallLandingPage.js
 const WestBromwichLandingPage = lazy(() => import('./components/WestBromwichLandingPage.jsx'))
 const DudleyLandingPage = lazy(() => import('./components/DudleyLandingPage.jsx'))
 
+// Lazy load legal pages
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy.jsx'))
+
 // Lazy load blog pages
 const BlogPage = lazy(() => import('./components/BlogPage.jsx'))
 const SellProbateHouseUK = lazy(() => import('./components/blog/SellProbateHouseUK.jsx'))
@@ -303,7 +306,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={calendarIcon} alt="Calendar Icon" className="h-10 w-10" />
+                <img src={calendarIcon} alt="Quick property sale timeline - complete in 7 days" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-2">20+</h3>
               <p className="text-gray-600 font-medium">Years Experience</p>
@@ -332,7 +335,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={housesIcon} alt="Houses Icon" className="h-10 w-10" />
+                <img src={housesIcon} alt="Multiple property types we purchase - any condition accepted" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">15,000+</h3>
               <p className="text-gray-600 font-medium">Properties Bought</p>
@@ -361,7 +364,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={moneyMountainIcon} alt="Money Mountain Icon" className="h-10 w-10" />
+                <img src={moneyMountainIcon} alt="Maximum cash offer for your property - competitive market rates" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent mb-2">£500M+</h3>
               <p className="text-gray-600 font-medium">Total Invested</p>
@@ -390,7 +393,7 @@ function HomePage() {
                 }}
                 viewport={{ once: true }}
               >
-                <img src={clockIcon} alt="Clock Icon" className="h-10 w-10" />
+                <img src={clockIcon} alt="Fast 7-day property completion process" className="h-10 w-10" />
               </motion.div>
               <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent mb-2">2 Hours</h3>
               <p className="text-gray-600 font-medium">Average Decision Time</p>
@@ -482,7 +485,7 @@ function HomePage() {
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
-                      <img src={lightningFastIcon} alt="Lightning Fast Icon" className="h-16 w-16" />
+                      <img src={lightningFastIcon} alt="Lightning fast property sale process - immediate cash offer" className="h-16 w-16" />
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-orange-500 transition-colors duration-300">Lightning Fast</h3>
@@ -509,7 +512,7 @@ function HomePage() {
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
-                      <img src={cashGuaranteeIcon} alt="Cash Guarantee Icon" className="h-16 w-16" />
+                      <img src={cashGuaranteeIcon} alt="Guaranteed cash offer for your property - no chain delays" className="h-16 w-16" />
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-orange-500 transition-colors duration-300">Cash Guarantee</h3>
@@ -536,7 +539,7 @@ function HomePage() {
                 <CardContent className="p-8 text-center relative z-10">
                   <div className="mb-6">
                     <div className="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
-                      <img src={zeroFeesIcon} alt="Zero Fees Icon" className="h-16 w-16" />
+                      <img src={zeroFeesIcon} alt="No hidden fees or charges - we cover all costs" className="h-16 w-16" />
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-orange-500 transition-colors duration-300">Zero Fees</h3>
@@ -993,6 +996,7 @@ function App() {
           <Route path="/blog/how-to-sell-a-house-in-disrepair" element={<SellDisrepairHouse />} />
           <Route path="/blog/how-to-avoid-repossession-of-your-house" element={<AvoidRepossessionUK />} />
           <Route path="/refer" element={<ReferralPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
     </Layout>

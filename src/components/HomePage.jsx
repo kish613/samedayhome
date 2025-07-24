@@ -499,7 +499,7 @@ function HomePage() {
             >
               <div className="bg-gradient-to-br from-blue-900 to-blue-700 rounded-2xl p-8 text-white">
                 <div className="mb-6">
-                  <img src={cashGuaranteeIcon} alt="Cash Guarantee" className="h-16 w-16 mb-4" />
+                  <img src={cashGuaranteeIcon} alt="Guaranteed cash offer backed by £500M+ investment fund" className="h-16 w-16 mb-4" />
                   <h3 className="text-2xl font-bold mb-2">£500M+ Investment Fund</h3>
                   <p className="text-blue-100">Our massive investment fund means we can complete on any property, any time.</p>
                 </div>
@@ -713,7 +713,7 @@ function HomePage() {
                         <div className="flex items-center mb-4">
                           <img 
                             src={testimonial.avatar} 
-                            alt={testimonial.name}
+                            alt={`Photo of ${testimonial.name}`}
                             className="w-12 h-12 rounded-full mr-4 border-2 border-purple-200"
                           />
                           <div className="flex-1">

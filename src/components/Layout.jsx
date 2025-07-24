@@ -200,7 +200,12 @@ const Footer = () => (
       </div>
       
       <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-        <p>&copy; 2025 Same Day Home Buyer. All rights reserved. | Privacy Policy | Terms & Conditions</p>
+        <p>
+          &copy; 2025 Same Day Home Buyer. All rights reserved. | 
+          <Link to="/privacy-policy" className="hover:text-white transition-colors mx-1">Privacy Policy</Link> | 
+          <a href="#" className="hover:text-white transition-colors mx-1">Terms & Conditions</a> | 
+          <a href="/sitemap.xml" className="hover:text-white transition-colors mx-1">Sitemap</a>
+        </p>
       </div>
     </div>
   </footer>
