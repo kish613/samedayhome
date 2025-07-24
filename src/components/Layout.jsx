@@ -153,6 +153,21 @@ const Footer = () => (
         </div>
         
         <div>
+          <h4 className="font-semibold mb-4 text-lg">Service Areas</h4>
+          <ul className="space-y-2 text-gray-400">
+            <li><Link to="/london" className="hover:text-white transition-colors">London</Link></li>
+            <li><Link to="/manchester" className="hover:text-white transition-colors">Manchester</Link></li>
+            <li><Link to="/birmingham" className="hover:text-white transition-colors">Birmingham</Link></li>
+            <li><Link to="/liverpool" className="hover:text-white transition-colors">Liverpool</Link></li>
+            <li><Link to="/leeds" className="hover:text-white transition-colors">Leeds</Link></li>
+            <li><Link to="/bristol" className="hover:text-white transition-colors">Bristol</Link></li>
+            <li><Link to="/sheffield" className="hover:text-white transition-colors">Sheffield</Link></li>
+            <li><Link to="/newcastle" className="hover:text-white transition-colors">Newcastle</Link></li>
+            <li className="text-sm pt-2"><a href="/sitemap.xml" className="text-blue-400 hover:text-blue-300 transition-colors">View All Locations →</a></li>
+          </ul>
+        </div>
+        
+        <div>
           <h4 className="font-semibold mb-4 text-lg">Trust & Security</h4>
           <div className="space-y-4">
             <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 border border-green-700 rounded-lg p-3 flex items-center space-x-3">

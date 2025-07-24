@@ -991,7 +991,6 @@ function App() {
           <Route path="/blog/how-to-sell-a-house-due-to-emigration" element={<EmigrationHouseSale />} />
           <Route path="/blog/how-to-sell-a-house-after-a-divorce" element={<SellHouseAfterDivorce />} />
           <Route path="/blog/how-to-sell-a-house-in-disrepair" element={<SellDisrepairHouse />} />
-          <Route path="/blog/how-to-sell-a-probate-property" element={<SellProbateHouseUK />} />
           <Route path="/blog/how-to-avoid-repossession-of-your-house" element={<AvoidRepossessionUK />} />
           <Route path="/refer" element={<ReferralPage />} />
         </Routes>
