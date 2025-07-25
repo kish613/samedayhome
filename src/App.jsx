@@ -402,44 +402,6 @@ function HomePage() {
 
 
 
-          {/* Trust Badges */}
-          <motion.div 
-            className="mt-12 flex flex-col md:flex-row items-center justify-center gap-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl p-4 flex items-center space-x-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              whileHover={{ y: -5 }}
-            >
-              <img 
-                src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/nabp_no_bg_ul5cyq.png" 
-                alt="NAPB Approved" 
-                className="h-16 w-auto"
-              />
-              <div>
-                <p className="text-green-700 font-bold">NAPB Approved</p>
-                <p className="text-gray-600 text-sm">National Association of Property Buyers</p>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-4 flex items-center space-x-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              whileHover={{ y: -5 }}
-            >
-              <img 
-                src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/rics_no_bg_e2gx0k.png" 
-                alt="RICS Regulated" 
-                className="h-16 w-auto"
-              />
-              <div>
-                <p className="text-blue-700 font-bold">RICS Regulated</p>
-                <p className="text-gray-600 text-sm">Royal Institution of Chartered Surveyors</p>
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
       </section>
 

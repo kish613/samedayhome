@@ -99,7 +99,7 @@ function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-8 text-xs sm:text-sm">
                   <div className="flex items-center space-x-2">
                     <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-green-400" />
-                    <span>RICS Regulated</span>
+                    <span>Fully Insured</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
@@ -344,7 +344,7 @@ function OfferResult({ offerData, propertyData, onBack, onStartNew }) {
                     <AnimatedLock size={32} />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Fully Regulated</h4>
-                  <p className="text-slate-600 text-sm">RICS regulated, fully insured, and compliant with all industry standards</p>
+                  <p className="text-slate-600 text-sm">Fully insured and compliant with all industry standards</p>
                 </div>
               </div>
               

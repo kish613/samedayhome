@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button.jsx';
 import { Phone, Mail, ArrowRight } from 'lucide-react';
 import AnimatedLogo from './AnimatedLogo.jsx';
 import { motion } from 'framer-motion';
+import MobileMenu from './mobile/MobileMenu.jsx';
+import BottomNav from './mobile/BottomNav.jsx';
 
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png';
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleCTAClick = () => {
     // Scroll to the main form on the homepage, or navigate if not on homepage
@@ -23,9 +35,9 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between h-28">
+    <header className={`sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm transition-all duration-300 ${isScrolled ? 'py-1 xl:py-3' : 'py-3'}`}>
+      <div className="container mx-auto px-4">
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-12 xl:h-20' : 'h-16 xl:h-28'}`}>
           <div className="flex items-center">
             <Link to="/">
               <AnimatedLogo />
@@ -70,7 +82,7 @@ const Header = () => {
             </Link>
           </nav>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 xl:space-x-3">
             <div className="hidden lg:flex items-center space-x-2 text-blue-900">
               <Phone className="h-4 w-4" />
               <a 
@@ -88,10 +100,11 @@ const Header = () => {
             </Link>
             <Button 
               onClick={handleCTAClick}
-              className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-base whitespace-nowrap"
+              className="hidden xl:inline-flex bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-base whitespace-nowrap"
             >
               Get Offer
             </Button>
+            <MobileMenu />
           </div>
         </div>
       </div>
@@ -167,36 +180,6 @@ const Footer = () => (
           </ul>
         </div>
         
-        <div>
-          <h4 className="font-semibold mb-4 text-lg">Trust & Security</h4>
-          <div className="space-y-4">
-            <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 border border-green-700 rounded-lg p-3 flex items-center space-x-3">
-              <img 
-                src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/nabp_no_bg_ul5cyq.png" 
-                alt="NAPB Approved" 
-                className="h-12 w-auto"
-              />
-              <div>
-                <p className="text-green-300 font-medium text-sm">NAPB Approved</p>
-                <p className="text-gray-400 text-xs">National Association of Property Buyers</p>
-              </div>
-            </div>
-            <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border border-blue-700 rounded-lg p-3 flex items-center space-x-3">
-              <img 
-                src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751322237/rics_no_bg_e2gx0k.png" 
-                alt="RICS Regulated" 
-                className="h-12 w-auto"
-              />
-              <div>
-                <p className="text-blue-300 font-medium text-sm">RICS Regulated</p>
-                <p className="text-gray-400 text-xs">Royal Institution of Chartered Surveyors</p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm mt-4">
-              Fully insured and regulated for your peace of mind.
-            </p>
-          </div>
-        </div>
       </div>
       
       <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
@@ -215,8 +198,9 @@ const Layout = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow pb-16 xl:pb-0">{children}</main>
       <Footer />
+      <BottomNav />
     </div>
   );
 };

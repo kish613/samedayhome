@@ -23,7 +23,10 @@
       "Bash(ls:*)",
       "Bash(dir dist)",
       "Bash(dir)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(git fetch:*)",
+      "Bash(python:*)",
+      "Bash(del \"C:\\Users\\akite\\OneDrive\\Documents\\sdhb phtos and assests\\samedayhome\\remove_headers.py\")"
     ],
     "deny": []
   }

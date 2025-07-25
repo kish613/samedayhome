@@ -151,7 +151,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-8 text-xs sm:text-sm">
                   <div className="flex items-center space-x-2">
                     <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-green-400" />
-                    <span>RICS Regulated</span>
+                    <span>Fully Insured</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
@@ -479,10 +479,10 @@ function PropertyDetailsForm({ postcode, onBack }) {
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286321/approved_stamp_qi2reb.png" alt="Fully regulated by RICS and NAPB property industry standards" className="h-8 w-8" />
+                    <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1751286321/approved_stamp_qi2reb.png" alt="Fully regulated property industry standards" className="h-8 w-8" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-lg">Fully Regulated</h4>
-                  <p className="text-slate-600 text-sm">RICS regulated, fully insured, and compliant with all industry standards</p>
+                  <p className="text-slate-600 text-sm">Fully insured and compliant with all industry standards</p>
                 </div>
               </div>
               

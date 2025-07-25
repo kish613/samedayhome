@@ -13,6 +13,7 @@ import ParticleConstellation from './ParticleConstellation.jsx'
 import DiagonalWaves from './DiagonalWaves.jsx'
 import BreathingGrid from './BreathingGrid.jsx'
 import { EnhancedCard, EnhancedCardContent } from './EnhancedCard.jsx'
+import '../components/mobile/mobile-styles.css'
 
 // Import assets
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
@@ -26,10 +27,18 @@ function HomePage() {
   const [activeTab, setActiveTab] = useState(0)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [showFAB, setShowFAB] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
     setIsVisible(true)
+    
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
     
     // FAB scroll detection
     const handleScroll = () => {
@@ -43,6 +52,7 @@ function HomePage() {
     }, 4000)
     
     return () => {
+      window.removeEventListener('resize', checkMobile)
       window.removeEventListener('scroll', handleScroll)
       clearInterval(testimonialInterval)
     }
@@ -300,12 +310,15 @@ function HomePage() {
       </header>
 
       {/* Enhanced Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className={`relative flex items-center justify-center overflow-hidden ${isMobile ? 'hero-mobile' : 'min-h-screen'}`}>
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImg})` }}
+          style={{ 
+            backgroundImage: `url(${heroImg})`,
+            backgroundPosition: isMobile ? 'center' : 'center center'
+          }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/60"></div>
+          <div className={`absolute inset-0 ${isMobile ? 'mobile-gradient-simple bg-gradient-to-b from-blue-900/85 to-blue-700/70' : 'bg-gradient-to-r from-blue-900/80 to-blue-700/60'}`}></div>
         </div>
         
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
@@ -320,74 +333,76 @@ function HomePage() {
               </Badge>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className={`font-bold mb-6 leading-tight ${isMobile ? 'hero-title-mobile' : 'text-5xl md:text-7xl'}`}>
               <span className="block text-orange-400">How to</span> Sell My House Fast
               <span className="block text-orange-400">Cash Offer in 2 Hours</span>
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
+            <p className={`mb-8 max-w-4xl mx-auto leading-relaxed ${isMobile ? 'hero-subtitle-mobile' : 'text-xl md:text-2xl'}`}>
               Learn <strong>how to sell house fast</strong> and <strong>how to sell house quickly</strong> in the UK. We buy any property in any condition across the UK. No fees, no hassle, guaranteed completion in 24 hours.
             </p>
 
             <motion.form 
               onSubmit={handleSubmit}
-              className="max-w-2xl mx-auto mb-12 bg-white/10 backdrop-blur-sm rounded-2xl p-8"
+              className={`max-w-2xl mx-auto mb-12 rounded-2xl ${isMobile ? 'form-mobile mobile-backdrop-light' : 'bg-white/10 backdrop-blur-sm p-8'}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <h3 className="text-xl font-semibold mb-4">Get Your FREE Cash Offer</h3>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <h3 className={`font-semibold mb-4 ${isMobile ? 'text-lg' : 'text-xl'}`}>Get Your FREE Cash Offer</h3>
+              <div className="flex flex-col gap-3">
                 <Input
                   type="text"
                   placeholder="Enter your property postcode"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="flex-1 h-14 text-gray-900 text-lg"
+                  className={`flex-1 text-gray-900 ${isMobile ? 'form-input-mobile' : 'h-14 text-lg'}`}
+                  inputMode="text"
+                  autoComplete="postal-code"
                 />
                 <Button 
                   type="submit"
-                  className="bg-orange-500 hover:bg-orange-600 h-14 px-8 font-semibold text-lg"
+                  className={`bg-orange-500 hover:bg-orange-600 font-semibold touch-target ${isMobile ? 'form-button-mobile' : 'h-14 px-8 text-lg'}`}
                 >
                   Get Cash Offer
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
-              <p className="text-sm mt-3 opacity-90">Free valuation • No obligation • 2-hour response</p>
+              <p className={`mt-3 opacity-90 ${isMobile ? 'text-xs' : 'text-sm'}`}>Free valuation • No obligation • 2-hour response</p>
             </motion.form>
 
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto"
+              className={`grid gap-6 max-w-5xl mx-auto ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-1 md:grid-cols-3'}`}
               variants={staggerChildren}
               initial="initial"
               animate="animate"
             >
               <motion.div variants={fadeInUp}>
-                <EnhancedCard variant="benefit" className="bg-white/10 backdrop-blur-sm text-center">
-                  <EnhancedCardContent className="p-6">
-                    <Clock className="h-12 w-12 text-orange-400 mx-auto mb-4" />
-                    <h4 className="text-xl font-semibold mb-2">2-Hour Decision</h4>
-                    <p className="text-blue-100">Fast cash offers with guaranteed completion</p>
+                <EnhancedCard variant="benefit" className={`text-center ${isMobile ? 'bg-white/15 mobile-backdrop-light' : 'bg-white/10 backdrop-blur-sm'}`}>
+                  <EnhancedCardContent className={isMobile ? 'benefit-card-mobile' : 'p-6'}>
+                    <Clock className={`text-orange-400 mx-auto ${isMobile ? 'benefit-icon-mobile' : 'h-12 w-12 mb-4'}`} />
+                    <h4 className={`font-semibold ${isMobile ? 'benefit-title-mobile' : 'text-xl mb-2'}`}>2-Hour Decision</h4>
+                    <p className={`text-blue-100 ${isMobile ? 'benefit-text-mobile' : ''}`}>Fast cash offers with guaranteed completion</p>
                   </EnhancedCardContent>
                 </EnhancedCard>
               </motion.div>
               
               <motion.div variants={fadeInUp}>
-                <EnhancedCard variant="benefit" className="bg-white/10 backdrop-blur-sm text-center">
-                  <EnhancedCardContent className="p-6">
-                    <CheckCircle className="h-12 w-12 text-green-400 mx-auto mb-4" />
-                    <h4 className="text-xl font-semibold mb-2">No Fees</h4>
-                    <p className="text-blue-100">Zero estate agent fees or hidden costs</p>
+                <EnhancedCard variant="benefit" className={`text-center ${isMobile ? 'bg-white/15 mobile-backdrop-light' : 'bg-white/10 backdrop-blur-sm'}`}>
+                  <EnhancedCardContent className={isMobile ? 'benefit-card-mobile' : 'p-6'}>
+                    <CheckCircle className={`text-green-400 mx-auto ${isMobile ? 'benefit-icon-mobile' : 'h-12 w-12 mb-4'}`} />
+                    <h4 className={`font-semibold ${isMobile ? 'benefit-title-mobile' : 'text-xl mb-2'}`}>No Fees</h4>
+                    <p className={`text-blue-100 ${isMobile ? 'benefit-text-mobile' : ''}`}>Zero estate agent fees or hidden costs</p>
                   </EnhancedCardContent>
                 </EnhancedCard>
               </motion.div>
               
               <motion.div variants={fadeInUp}>
-                <EnhancedCard variant="benefit" className="bg-white/10 backdrop-blur-sm text-center">
-                  <EnhancedCardContent className="p-6">
-                    <Home className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-                    <h4 className="text-xl font-semibold mb-2">Any Condition</h4>
-                    <p className="text-blue-100">We buy properties in any state, as-is</p>
+                <EnhancedCard variant="benefit" className={`text-center ${isMobile ? 'bg-white/15 mobile-backdrop-light' : 'bg-white/10 backdrop-blur-sm'}`}>
+                  <EnhancedCardContent className={isMobile ? 'benefit-card-mobile' : 'p-6'}>
+                    <Home className={`text-blue-400 mx-auto ${isMobile ? 'benefit-icon-mobile' : 'h-12 w-12 mb-4'}`} />
+                    <h4 className={`font-semibold ${isMobile ? 'benefit-title-mobile' : 'text-xl mb-2'}`}>Any Condition</h4>
+                    <p className={`text-blue-100 ${isMobile ? 'benefit-text-mobile' : ''}`}>We buy properties in any state, as-is</p>
                   </EnhancedCardContent>
                 </EnhancedCard>
               </motion.div>
@@ -398,7 +413,7 @@ function HomePage() {
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 bg-gradient-to-br from-blue-50/20 to-gray-50/30 relative overflow-hidden">
-        <FloatingOrbs />
+        {!isMobile && <FloatingOrbs />}
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -422,7 +437,7 @@ function HomePage() {
 
       {/* Why Choose Us Section */}
       <section id="why-us" className="py-20 bg-gradient-to-br from-green-50/10 to-white/50 relative overflow-hidden">
-        <MorphingBlobs />
+        {!isMobile && <MorphingBlobs />}
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -474,7 +489,7 @@ function HomePage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-blue-900 mb-2">Award-Winning Service</h3>
-                    <p className="text-gray-600">Recognised industry leader with 4.9/5 Trustpilot rating and RICS regulation.</p>
+                    <p className="text-gray-600">Recognised industry leader with 4.9/5 Trustpilot rating.</p>
                   </div>
                 </div>
 
@@ -827,7 +842,7 @@ function HomePage() {
               },
               {
                 question: "How to find legitimate cash buyers for your property?",
-                answer: "Finding legitimate cash buyers requires checking their credentials, reviews, and track record. We're regulated by RICS, have 2,847+ five-star reviews, and have successfully completed over 15,000 property purchases since 2015."
+                answer: "Finding legitimate cash buyers requires checking their credentials, reviews, and track record. We have 2,847+ five-star reviews and have successfully completed over 15,000 property purchases since 2015."
               },
               {
                 question: "How to sell house urgently in any condition?",
@@ -983,7 +998,7 @@ function HomePage() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | Regulated by RICS | Licensed Property Buyers</p>
+            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | Licensed Property Buyers</p>
           </div>
         </div>
       </footer>

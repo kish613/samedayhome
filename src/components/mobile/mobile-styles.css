@@ -1,0 +1,173 @@
+/* Mobile-specific styles for enhanced user experience */
+
+/* Touch ripple effect */
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: ripple 600ms ease-out;
+  pointer-events: none;
+}
+
+/* Mobile hero optimizations */
+@media (max-width: 768px) {
+  /* Hero section mobile adjustments */
+  .hero-mobile {
+    min-height: calc(100vh - 48px);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .hero-title-mobile {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle-mobile {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Mobile form optimizations */
+  .form-mobile {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .form-input-mobile {
+    height: 3rem;
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .form-button-mobile {
+    height: 3rem;
+    font-size: 1rem;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+  
+  /* Mobile cards */
+  .benefit-card-mobile {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+  
+  .benefit-icon-mobile {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .benefit-title-mobile {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .benefit-text-mobile {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+/* Touch-friendly buttons */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Disable heavy animations on mobile */
+  .no-mobile-animation {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+  
+  /* Simplify gradients on mobile */
+  .mobile-gradient-simple {
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary)) !important;
+  }
+  
+  /* Reduce backdrop blur on mobile for performance */
+  .mobile-backdrop-light {
+    backdrop-filter: blur(4px) !important;
+  }
+}
+
+/* Mobile scroll optimization */
+.mobile-scroll-smooth {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prevent text selection on interactive elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile loading states */
+@keyframes mobile-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.mobile-loading {
+  animation: mobile-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Safe area insets for modern phones */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Mobile-specific utility classes */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-block {
+    display: block !important;
+  }
+  
+  .mobile-flex {
+    display: flex !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  
+  .mobile-px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .mobile-py-4 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
