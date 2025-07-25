@@ -26,7 +26,8 @@
       "Bash(powershell:*)",
       "Bash(git fetch:*)",
       "Bash(python:*)",
-      "Bash(del \"C:\\Users\\akite\\OneDrive\\Documents\\sdhb phtos and assests\\samedayhome\\remove_headers.py\")"
+      "Bash(del \"C:\\Users\\akite\\OneDrive\\Documents\\sdhb phtos and assests\\samedayhome\\remove_headers.py\")",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }
