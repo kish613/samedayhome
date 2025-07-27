@@ -14,6 +14,21 @@ const BottomNav = () => {
       action: () => navigate('/'),
       isActive: location.pathname === '/'
     },
+    {
+      icon: Calculator,
+      label: 'Get Offer',
+      action: () => {
+        if (location.pathname === '/') {
+          const heroSection = document.querySelector('section');
+          if (heroSection) {
+            heroSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          navigate('/#hero');
+        }
+      },
+      isPrimary: true
+    },
     { 
       icon: Star, 
       label: 'Reviews', 
@@ -27,6 +42,12 @@ const BottomNav = () => {
           navigate('/#testimonials');
         }
       }
+    },
+    {
+      icon: Phone,
+      label: 'Call',
+      action: () => window.location.href = 'tel:03300437570',
+      isPhone: true
     }
   ];
 

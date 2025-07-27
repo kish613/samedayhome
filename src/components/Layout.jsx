@@ -105,15 +105,6 @@ const Header = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-2 xl:space-x-3">
-            {/* Phone icon for mobile */}
-            {isMobile && (
-              <a
-                href="tel:03300437570"
-                className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                <Phone className="h-5 w-5 text-blue-900" />
-              </a>
-            )}
             
             {/* Desktop phone number */}
             <div className="hidden lg:flex items-center space-x-2 text-blue-900">
@@ -135,21 +126,6 @@ const Header = () => {
             </Link>
             
             {/* Mobile Get Offer button */}
-            {isMobile ? (
-              <Button 
-                onClick={handleCTAClick}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-sm"
-              >
-                Get Offer
-              </Button>
-            ) : (
-              <Button 
-                onClick={handleCTAClick}
-                className="hidden xl:inline-flex bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-base whitespace-nowrap"
-              >
-                Get Offer
-              </Button>
-            )}
             
             {/* Mobile Menu */}
             <MobileMenu />
