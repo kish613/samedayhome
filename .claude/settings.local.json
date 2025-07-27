@@ -23,7 +23,9 @@
       "Bash(ls:*)",
       "Bash(dir dist)",
       "Bash(dir)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "WebFetch(domain:www.samedayhomebuyer.co.uk)",
+      "WebFetch(domain:quickmovenow.co.uk)"
     ],
     "deny": []
   }

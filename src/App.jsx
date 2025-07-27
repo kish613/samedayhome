@@ -50,6 +50,16 @@ const SolihullLandingPage = lazy(() => import('./components/SolihullLandingPage.
 const WalsallLandingPage = lazy(() => import('./components/WalsallLandingPage.jsx'))
 const WestBromwichLandingPage = lazy(() => import('./components/WestBromwichLandingPage.jsx'))
 const DudleyLandingPage = lazy(() => import('./components/DudleyLandingPage.jsx'))
+const DerbyLandingPage = lazy(() => import('./components/DerbyLandingPage.jsx'))
+const StokeOnTrentLandingPage = lazy(() => import('./components/StokeOnTrentLandingPage.jsx'))
+const TelfordLandingPage = lazy(() => import('./components/TelfordLandingPage.jsx'))
+const WorcesterLandingPage = lazy(() => import('./components/WorcesterLandingPage.jsx'))
+const ShrewsburyLandingPage = lazy(() => import('./components/ShrewsburyLandingPage.jsx'))
+const TamworthLandingPage = lazy(() => import('./components/TamworthLandingPage.jsx'))
+const NuneatonLandingPage = lazy(() => import('./components/NuneatonLandingPage.jsx'))
+const RugbyLandingPage = lazy(() => import('./components/RugbyLandingPage.jsx'))
+const BurtonOnTrentLandingPage = lazy(() => import('./components/BurtonOnTrentLandingPage.jsx'))
+const HerefordLandingPage = lazy(() => import('./components/HerefordLandingPage.jsx'))
 
 // Lazy load blog pages
 const BlogPage = lazy(() => import('./components/BlogPage.jsx'))
@@ -979,6 +989,16 @@ function App() {
           <Route path="/walsall" element={<WalsallLandingPage />} />
           <Route path="/west-bromwich" element={<WestBromwichLandingPage />} />
           <Route path="/dudley" element={<DudleyLandingPage />} />
+          <Route path="/derby" element={<DerbyLandingPage />} />
+          <Route path="/stoke-on-trent" element={<StokeOnTrentLandingPage />} />
+          <Route path="/telford" element={<TelfordLandingPage />} />
+          <Route path="/worcester" element={<WorcesterLandingPage />} />
+          <Route path="/shrewsbury" element={<ShrewsburyLandingPage />} />
+          <Route path="/tamworth" element={<TamworthLandingPage />} />
+          <Route path="/nuneaton" element={<NuneatonLandingPage />} />
+          <Route path="/rugby" element={<RugbyLandingPage />} />
+          <Route path="/burton-on-trent" element={<BurtonOnTrentLandingPage />} />
+          <Route path="/hereford" element={<HerefordLandingPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/how-to-find-cash-buyers" element={<HowToFindCashBuyers />} />
           <Route path="/blog/how-to-sell-house-without-fees" element={<SellHouseWithoutFees />} />

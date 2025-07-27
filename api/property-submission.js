@@ -83,7 +83,7 @@ export default async (req, res) => {
 
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: ['akiteit4@gmail.com'],
+      to: ['info@samedayhomebuyer.co.uk'],
       subject: 'New Property Valuation Request',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto;">
