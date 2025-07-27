@@ -422,7 +422,7 @@ function ProbatePage() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | RICS Regulated | Probate Property Specialists</p>
+            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | Probate Property Specialists</p>
           </div>
         </div>
       </footer>

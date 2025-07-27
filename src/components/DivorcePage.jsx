@@ -502,7 +502,7 @@ function DivorcePage() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | RICS Regulated | Confidential Divorce Property Sales</p>
+            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | Confidential Divorce Property Sales</p>
           </div>
         </div>
       </footer>

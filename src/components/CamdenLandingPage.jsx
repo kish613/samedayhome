@@ -48,35 +48,7 @@ function CamdenLandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between h-14">
-            <div className="flex items-center">
-              <motion.img 
-                src={logoImg} 
-                alt="Same Day Home Buyer" 
-                className="h-6 w-auto cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              />
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <div className="hidden lg:flex items-center space-x-2 text-blue-900">
-                <Phone className="h-4 w-4" />
-                <span className="font-semibold text-sm whitespace-nowrap">0330 043 7570</span>
-              </div>
-              <Button className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-sm whitespace-nowrap">
-                Get Offer
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero Section - Camden Specific */}
+    <div className="min-h-screen bg-white">      {/* Hero Section - Camden Specific */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"

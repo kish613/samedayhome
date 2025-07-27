@@ -25,7 +25,11 @@
       "Bash(dir)",
       "Bash(powershell:*)",
       "WebFetch(domain:www.samedayhomebuyer.co.uk)",
-      "WebFetch(domain:quickmovenow.co.uk)"
+      "WebFetch(domain:quickmovenow.co.uk)",
+      "Bash(git fetch:*)",
+      "Bash(python:*)",
+      "Bash(del \"C:\\Users\\akite\\OneDrive\\Documents\\sdhb phtos and assests\\samedayhome\\remove_headers.py\")",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }

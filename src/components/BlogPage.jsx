@@ -195,7 +195,7 @@ function BlogPage() {
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img 
                       src={post.image}
-                      alt={post.title}
+                      alt={`Illustration for article: ${post.title}`}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />

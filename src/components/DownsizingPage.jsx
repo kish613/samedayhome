@@ -572,7 +572,7 @@ function DownsizingPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | RICS Regulated | Downsizing Property Specialists</p>
+            <p>&copy; 2024 Same Day Home Buyer. All rights reserved. | Downsizing Property Specialists</p>
           </div>
         </div>
       </footer>
