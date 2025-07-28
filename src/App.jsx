@@ -8,7 +8,7 @@ import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
-import PropertyShowcase from './components/PropertyShowcase.jsx'
+import ThreeDPhotoCarouselDemo from './components/ThreeDCarousel.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
@@ -341,27 +341,83 @@ function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <PropertyShowcase 
+            <ThreeDPhotoCarouselDemo 
               images={[
                 {
-                  src: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-                  alt: 'Modern family home purchased in Manchester'
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_113443_Original_ociqkl.jpg',
+                  alt: 'Property purchased in UK'
                 },
                 {
-                  src: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-                  alt: 'Victorian terrace house purchased in London'
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221026_151152_Original_jl41gs.jpg',
+                  alt: 'Property purchased in UK'
                 },
                 {
-                  src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-                  alt: 'Contemporary apartment purchased in Birmingham'
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_145237_Original_jrwbhe.jpg',
+                  alt: 'Property purchased in UK'
                 },
                 {
-                  src: 'https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-                  alt: 'Detached property purchased in Leeds'
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221025_154328_Original_ggbbyw.jpg',
+                  alt: 'Property purchased in UK'
                 },
                 {
-                  src: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-                  alt: 'Period cottage purchased in Bristol'
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221026_151152_Original_1_nn5qc9.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_152032_Original_phjvgw.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221025_154328_Original_1_iihhze.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_170611_Original_f5emzz.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_152032_Original_1_cwtwvt.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220901_134103_Original_1_fgqxy5.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_145237_Original_1_gj61en.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220831_124356_Original_jaimwa.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220830_180153_Original_oi5tsa.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220830_180153_Original_1_w15zrw.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220831_124356_Original_1_krqrs0.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220815_114245_Original_2_is9go4.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220810_133732_Original_2_lr7xen.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220810_121309_Original_ygkfcd.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721217/20220810_133732_Original_1_p2kza6.jpg',
+                  alt: 'Property purchased in UK'
                 }
               ]}
             />
