@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-07-28T13:28:09.802Z",
+  "environment": {
+    "nodeVersion": "v22.11.0",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "tests": {
+    "performance": {
+      "passed": 3,
+      "failed": 1,
+      "total": 4
+    },
+    "accessibility": {
+      "passed": 3,
+      "failed": 2,
+      "total": 5
+    },
+    "integration": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5
+    }
+  },
+  "summary": {
+    "passed": 11,
+    "failed": 3,
+    "total": 14,
+    "success": false
+  }
+}
