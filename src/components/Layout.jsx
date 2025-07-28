@@ -5,7 +5,6 @@ import { Phone, Mail, ArrowRight } from 'lucide-react';
 import AnimatedLogo from './AnimatedLogo.jsx';
 import { motion } from 'framer-motion';
 import MobileMenu from './mobile/MobileMenu.jsx';
-import BottomNav from './mobile/BottomNav.jsx';
 
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png';
 
@@ -246,9 +245,8 @@ const Layout = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow pb-16 xl:pb-0">{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
-      <BottomNav />
     </div>
   );
 };
