@@ -14,21 +14,6 @@ const BottomNav = () => {
       action: () => navigate('/'),
       isActive: location.pathname === '/'
     },
-    {
-      icon: Calculator,
-      label: 'Get Offer',
-      action: () => {
-        if (location.pathname === '/') {
-          const heroSection = document.querySelector('section');
-          if (heroSection) {
-            heroSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        } else {
-          navigate('/#hero');
-        }
-      },
-      isPrimary: true
-    },
     { 
       icon: Star, 
       label: 'Reviews', 
@@ -42,18 +27,12 @@ const BottomNav = () => {
           navigate('/#testimonials');
         }
       }
-    },
-    {
-      icon: Phone,
-      label: 'Call',
-      action: () => window.location.href = 'tel:03300437570',
-      isPhone: true
     }
   ];
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 xl:hidden bg-white border-t border-gray-200 shadow-lg">
-      <div className="grid grid-cols-4 h-16" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+      <div className="grid grid-cols-2 h-16" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
         {navItems.map((item, index) => (
           <motion.button
             key={index}
