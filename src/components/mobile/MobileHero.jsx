@@ -86,24 +86,6 @@ const MobileHero = ({ heroImg }) => {
           </form>
         </motion.div>
       </div>
-
-      {/* Sticky CTA Bar */}
-      <div className="fixed bottom-16 left-0 right-0 z-40 bg-white border-t border-gray-200 shadow-lg p-3">
-        <div className="container max-w-md mx-auto flex items-center justify-between gap-3">
-          <Button 
-            onClick={handleSubmit}
-            className="flex-1 h-12 bg-orange-500 hover:bg-orange-600 font-semibold text-base"
-          >
-            Get Cash Offer
-          </Button>
-          <a
-            href="tel:03300437570"
-            className="flex items-center justify-center w-12 h-12 bg-green-50 hover:bg-green-100 rounded-lg transition-colors"
-          >
-            <Phone className="h-5 w-5 text-green-600" />
-          </a>
-        </div>
-      </div>
     </section>
   );
 };
