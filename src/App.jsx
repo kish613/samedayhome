@@ -11,6 +11,7 @@ import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
 import ScrollCarousel from './components/ScrollCarousel.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import DataVisualizationBackground from './components/DataVisualizationBackground.jsx'
+import RadialPulseRings from './components/RadialPulseRings.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
 import AnimatedGrid from './components/AnimatedGrid.jsx';
@@ -331,9 +332,9 @@ function HomePage() {
       )}
 
       {/* Property Showcase Section */}
-      <section className="bg-gray-50 py-12 relative overflow-hidden">
-        {/* Data Visualization Background */}
-        <DataVisualizationBackground />
+      <section className="bg-gray-50 py-12 relative">
+        {/* Radial Pulse Rings Background */}
+        <RadialPulseRings />
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
