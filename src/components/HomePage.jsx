@@ -15,6 +15,13 @@ import BreathingGrid from './BreathingGrid.jsx'
 import { EnhancedCard, EnhancedCardContent } from './EnhancedCard.jsx'
 import '../components/mobile/mobile-styles.css'
 
+// Import mobile components
+import MobileHero from './mobile/MobileHero.jsx'
+import MobileComparisonCards from './mobile/MobileComparisonCards.jsx'
+import MobileProcessCards from './mobile/MobileProcessCards.jsx'
+import MobileTestimonials from './mobile/MobileTestimonials.jsx'
+import MobileFAQ from './mobile/MobileFAQ.jsx'
+
 // Import assets
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
 import heroImg from '../assets/uk_houses_hero.jpg'

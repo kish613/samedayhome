@@ -12,14 +12,25 @@ const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/2
 const Header = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   const handleCTAClick = () => {
@@ -37,13 +48,23 @@ const Header = () => {
   return (
     <header className={`sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm transition-all duration-300 ${isScrolled ? 'py-1 xl:py-3' : 'py-3'}`}>
       <div className="container mx-auto px-4">
-        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-12 xl:h-20' : 'h-16 xl:h-28'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${isMobile ? 'h-14' : isScrolled ? 'h-12 xl:h-20' : 'h-16 xl:h-28'}`}>
+          {/* Logo */}
           <div className="flex items-center">
             <Link to="/">
-              <AnimatedLogo />
+              {isMobile ? (
+                <img 
+                  src={logoImg} 
+                  alt="Same Day Home Buyer" 
+                  className="h-8 w-auto"
+                />
+              ) : (
+                <AnimatedLogo />
+              )}
             </Link>
           </div>
           
+          {/* Desktop Navigation */}
           <nav className="hidden xl:flex items-center space-x-4">
             <a 
               href="/#how-it-works" 
@@ -82,7 +103,19 @@ const Header = () => {
             </Link>
           </nav>
 
+          {/* Right Side Actions */}
           <div className="flex items-center space-x-2 xl:space-x-3">
+            {/* Phone icon for mobile */}
+            {isMobile && (
+              <a
+                href="tel:03300437570"
+                className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <Phone className="h-5 w-5 text-blue-900" />
+              </a>
+            )}
+            
+            {/* Desktop phone number */}
             <div className="hidden lg:flex items-center space-x-2 text-blue-900">
               <Phone className="h-4 w-4" />
               <a 
@@ -92,18 +125,33 @@ const Header = () => {
                 0330 043 7570
               </a>
             </div>
+            
+            {/* Desktop buttons */}
             <Link 
               to="/refer" 
               className="hidden md:inline-flex bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors text-base whitespace-nowrap"
             >
               Earn £500
             </Link>
-            <Button 
-              onClick={handleCTAClick}
-              className="hidden xl:inline-flex bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-base whitespace-nowrap"
-            >
-              Get Offer
-            </Button>
+            
+            {/* Mobile Get Offer button */}
+            {isMobile ? (
+              <Button 
+                onClick={handleCTAClick}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-sm"
+              >
+                Get Offer
+              </Button>
+            ) : (
+              <Button 
+                onClick={handleCTAClick}
+                className="hidden xl:inline-flex bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 text-base whitespace-nowrap"
+              >
+                Get Offer
+              </Button>
+            )}
+            
+            {/* Mobile Menu */}
             <MobileMenu />
           </div>
         </div>

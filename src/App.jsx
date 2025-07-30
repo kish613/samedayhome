@@ -22,6 +22,13 @@ import SubtleGeometricPattern from './components/SubtleGeometricPattern.jsx';
 import TextureOverlay from './components/TextureOverlay.jsx';
 import MinimalPatternOverlay from './components/MinimalPatternOverlay.jsx';
 
+// Import mobile components
+import MobileHero from './components/mobile/MobileHero.jsx';
+import MobileComparisonCards from './components/mobile/MobileComparisonCards.jsx';
+import MobileProcessCards from './components/mobile/MobileProcessCards.jsx';
+import MobileTestimonials from './components/mobile/MobileTestimonials.jsx';
+import MobileFAQ from './components/mobile/MobileFAQ.jsx';
+
 // Lazy load landing pages
 const LondonLandingPage = lazy(() => import('./components/LondonLandingPage.jsx'))
 const ManchesterLandingPage = lazy(() => import('./components/ManchesterLandingPage.jsx'))
@@ -101,10 +108,20 @@ function HomePage() {
   const [activeTab, setActiveTab] = useState(0)
   const [showForm, setShowForm] = useState(false)
   const [submittedPostcode, setSubmittedPostcode] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
     setIsVisible(true)
+    
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
   const handleSubmit = (e) => {
@@ -178,84 +195,138 @@ function HomePage() {
     }
   ]
 
+  const testimonialData = [
+    {
+      name: "Sarah M.",
+      location: "London",
+      rating: 5,
+      days: 3,
+      text: "Absolutely fantastic service. They delivered exactly what they promised - cash offer in 2 hours and completion in just 3 days. Couldn't be happier with the process!",
+      avatar: "SM"
+    },
+    {
+      name: "David K.",
+      location: "Manchester",
+      rating: 5,
+      days: 5,
+      text: "After months trying to sell through estate agents, I called these guys. Within a week I had cash in my bank. Zero fees, zero hassle - exactly as advertised!",
+      avatar: "DK"
+    },
+    {
+      name: "Emma T.",
+      location: "Birmingham",
+      rating: 5,
+      days: 7,
+      text: "Professional, fast, and fair. The whole process was transparent from start to finish. They handled everything and completed the purchase in under a week.",
+      avatar: "ET"
+    }
+  ]
+
+  const faqData = [
+    {
+      question: "How quickly can you complete?",
+      answer: "We can provide a cash offer within 2 hours and complete the purchase in as little as 24 hours. Most transactions complete within 2-3 weeks, depending on your preferred timeline."
+    },
+    {
+      question: "Do you charge any fees?",
+      answer: "No, we don't charge any fees whatsoever. No estate agent fees, no legal costs, no survey fees, no administrative charges. The offer we make is the amount you receive."
+    },
+    {
+      question: "What types of properties do you buy?",
+      answer: "We buy all types of residential properties including houses, flats, bungalows, and maisonettes in any condition. Whether your property needs extensive renovation or is move-in ready, we're interested."
+    },
+    {
+      question: "How do you calculate your offers?",
+      answer: "Our offers are based on current market values, property condition, location, and local comparable sales. We use advanced market analysis combined with local market expertise to ensure fair and competitive offers."
+    },
+    {
+      question: "Is there any obligation?",
+      answer: "Absolutely none. Our valuation service is completely free with no obligation to proceed. You can accept or decline our offer with no pressure or consequences."
+    }
+  ]
+
 
 
   return (
     <div className="min-h-screen">
-      {/* Enhanced Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImg})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/60"></div>
-        </div>
-        
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+      {/* Hero Section - Mobile or Desktop */}
+      {isMobile ? (
+        <MobileHero heroImg={heroImg} />
+      ) : (
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${heroImg})` }}
           >
-            <div className="mb-6">
-              <Badge className="bg-orange-500 text-white px-4 py-2 text-lg font-semibold mb-4">
-                UK's Fastest House Buyer
-              </Badge>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Sell Your House Fast
-              <span className="block text-orange-400">Decision in 2 Hours</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
-              We buy any property in any condition across the UK. No fees, no hassle, guaranteed completion in 24 hours.
-            </p>
-
-            <motion.form 
-              onSubmit={handleSubmit}
-              className="max-w-2xl mx-auto mb-12 bg-white/10 backdrop-blur-sm rounded-2xl p-8"
-              initial={{ opacity: 0, y: 20 }}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/60"></div>
+          </div>
+          
+          <div className="relative z-10 container mx-auto px-4 text-center text-white">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8 }}
             >
-              <h3 className="text-xl font-semibold mb-4">Get Your FREE Cash Offer</h3>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Input
-                  type="text"
-                  placeholder="Enter your property postcode"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  className="flex-1 h-14 text-blue-900 text-xl font-bold placeholder:text-blue-700 placeholder:font-semibold border-2 border-white/50 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
-                />
-                <Button 
-                  type="submit"
-                  className="bg-orange-500 hover:bg-orange-600 h-14 px-8 font-semibold text-lg"
-                >
-                  Get Cash Offer
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+              <div className="mb-6">
+                <Badge className="bg-orange-500 text-white px-4 py-2 text-lg font-semibold mb-4">
+                  UK's Fastest House Buyer
+                </Badge>
               </div>
-              <p className="text-sm mt-3 opacity-90">Free valuation • No obligation • 2-hour response</p>
-            </motion.form>
+              
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Sell Your House Fast
+                <span className="block text-orange-400">Decision in 2 Hours</span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
+                We buy any property in any condition across the UK. No fees, no hassle, guaranteed completion in 24 hours.
+              </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>No Estate Agent Fees</span>
+              <motion.form 
+                onSubmit={handleSubmit}
+                className="max-w-2xl mx-auto mb-12 bg-white/10 backdrop-blur-sm rounded-2xl p-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <h3 className="text-xl font-semibold mb-4">Get Your FREE Cash Offer</h3>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Input
+                    type="text"
+                    placeholder="Enter your property postcode"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="flex-1 h-14 text-blue-900 text-xl font-bold placeholder:text-blue-700 placeholder:font-semibold border-2 border-white/50 bg-white/90 backdrop-blur-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
+                  />
+                  <Button 
+                    type="submit"
+                    className="bg-orange-500 hover:bg-orange-600 h-14 px-8 font-semibold text-lg"
+                  >
+                    Get Cash Offer
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+                <p className="text-sm mt-3 opacity-90">Free valuation • No obligation • 2-hour response</p>
+              </motion.form>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <span>No Estate Agent Fees</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <span className="font-semibold">We Pay All Legal Fees</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <span>Guaranteed Cash Offer</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span className="font-semibold">We Pay All Legal Fees</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>Guaranteed Cash Offer</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Trust Badges Section */}
       <section className="bg-gray-50 py-16 relative">
@@ -528,30 +599,33 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Comparison Section */}
-      <section id="comparison" className="py-20 relative overflow-hidden min-h-screen">
-        {/* Visual Metrics Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-          style={{ backgroundImage: 'url(/uk_houses_hero.jpg)' }}
-        />
-        {/* Light overlay for readability */}
-        <div className="absolute inset-0 bg-white/15"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">
-              Compare Your Options
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See how we stack up against traditional selling methods. The choice is clear.
-            </p>
-          </motion.div>
+      {/* Comparison Section - Mobile Cards or Desktop Table */}
+      {isMobile ? (
+        <MobileComparisonCards comparisonData={comparisonData} />
+      ) : (
+        <section id="comparison" className="py-20 relative overflow-hidden min-h-screen">
+          {/* Visual Metrics Background */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
+            style={{ backgroundImage: 'url(/uk_houses_hero.jpg)' }}
+          />
+          {/* Light overlay for readability */}
+          <div className="absolute inset-0 bg-white/15"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-blue-900 mb-4">
+                Compare Your Options
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                See how we stack up against traditional selling methods. The choice is clear.
+              </p>
+            </motion.div>
 
           <motion.div 
             className="overflow-x-auto"
@@ -618,52 +692,60 @@ function HomePage() {
           </motion.div>
         </div>
       </section>
+      )}
 
-      {/* Process Chart Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <AnimatedTimelinePaths />
-        <SubtleBackgroundEnhancer variant="modern" intensity="minimal" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">
-              Our Streamlined Process
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience a hassle-free journey from enquiry to completion with our transparent 4-step process.
-            </p>
-          </motion.div>
-          <ProcessChart />
-        </div>
-      </section>
+      {/* Process Section - Mobile Cards or Desktop Chart */}
+      {isMobile ? (
+        <MobileProcessCards />
+      ) : (
+        <section className="py-20 bg-white relative overflow-hidden">
+          <AnimatedTimelinePaths />
+          <SubtleBackgroundEnhancer variant="modern" intensity="minimal" />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-blue-900 mb-4">
+                Our Streamlined Process
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Experience a hassle-free journey from enquiry to completion with our transparent 4-step process.
+              </p>
+            </motion.div>
+            <ProcessChart />
+          </div>
+        </section>
+      )}
 
-      {/* Enhanced Testimonials */}
-      <section id="testimonials" className="py-20 bg-white relative overflow-hidden">
-        <MorphingBlobs />
-        <SubtleBackgroundEnhancer variant="default" intensity="minimal" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">
-              What Our Customers Say
-            </h2>
-            <div className="flex items-center justify-center space-x-1 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
-              ))}
-              <span className="ml-2 text-lg font-semibold text-green-600">4.9/5 from 2,847 reviews</span>
-            </div>
-          </motion.div>
+      {/* Testimonials Section - Mobile Slider or Desktop Grid */}
+      {isMobile ? (
+        <MobileTestimonials testimonialData={testimonialData} />
+      ) : (
+        <section id="testimonials" className="py-20 bg-white relative overflow-hidden">
+          <MorphingBlobs />
+          <SubtleBackgroundEnhancer variant="default" intensity="minimal" />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-blue-900 mb-4">
+                What Our Customers Say
+              </h2>
+              <div className="flex items-center justify-center space-x-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                ))}
+                <span className="ml-2 text-lg font-semibold text-green-600">4.9/5 from 2,847 reviews</span>
+              </div>
+            </motion.div>
 
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -773,54 +855,37 @@ function HomePage() {
           </motion.div>
         </div>
       </section>
+      )}
 
-      {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
-        <ParticleConstellation />
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: 'url(https://res.cloudinary.com/dmns9ystn/image/upload/v1751634505/5d290aa3-b4da-48a5-ab3c-f2aae3b619c8_sr7ast.png)' }}
-        ></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Badge className="bg-blue-100 text-blue-900 px-4 py-2 text-sm font-semibold mb-4">
-              FAQ
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to know about selling your house to us
-            </p>
-          </motion.div>
+      {/* FAQ Section - Mobile Accordion or Desktop Cards */}
+      {isMobile ? (
+        <MobileFAQ faqData={faqData} />
+      ) : (
+        <section id="faq" className="py-20 bg-gray-50 relative overflow-hidden">
+          <ParticleConstellation />
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-30"
+            style={{ backgroundImage: 'url(https://res.cloudinary.com/dmns9ystn/image/upload/v1751634505/5d290aa3-b4da-48a5-ab3c-f2aae3b619c8_sr7ast.png)' }}
+          ></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div 
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Badge className="bg-blue-100 text-blue-900 px-4 py-2 text-sm font-semibold mb-4">
+                FAQ
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">Frequently Asked Questions</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Everything you need to know about selling your house to us
+              </p>
+            </motion.div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
-            {[
-              {
-                question: "How quickly can you complete?",
-                answer: "We can provide a cash offer within 2 hours and complete the purchase in as little as 24 hours. Most transactions complete within 2-3 weeks, depending on your preferred timeline."
-              },
-              {
-                question: "Do you charge any fees?",
-                answer: "No, we don't charge any fees whatsoever. No estate agent fees, no legal costs, no survey fees, no administrative charges. The offer we make is the amount you receive."
-              },
-              {
-                question: "What types of properties do you buy?",
-                answer: "We buy all types of residential properties including houses, flats, bungalows, and maisonettes in any condition. Whether your property needs extensive renovation or is move-in ready, we're interested."
-              },
-              {
-                question: "How do you calculate your offers?",
-                answer: "Our offers are based on current market values, property condition, location, and local comparable sales. We use advanced market analysis combined with local market expertise to ensure fair and competitive offers."
-              },
-              {
-                question: "Is there any obligation?",
-                answer: "Absolutely none. Our valuation service is completely free with no obligation to proceed. You can accept or decline our offer with no pressure or consequences."
-              }
-            ].map((faq, index) => (
+            <div className="max-w-4xl mx-auto space-y-6">
+              {faqData.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -857,6 +922,7 @@ function HomePage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Enhanced CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white relative overflow-hidden">
