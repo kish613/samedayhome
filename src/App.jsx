@@ -8,7 +8,7 @@ import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
-import ThreeDPhotoCarouselDemo from './components/ThreeDCarousel.jsx'
+import ScrollCarousel from './components/ScrollCarousel.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import DataVisualizationBackground from './components/DataVisualizationBackground.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
@@ -358,7 +358,7 @@ function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <ThreeDPhotoCarouselDemo 
+            <ScrollCarousel 
               images={[
                 {
                   src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_113443_Original_ociqkl.jpg',
@@ -434,32 +434,30 @@ function HomePage() {
                   src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220831_124356_Original_1_krqrs0.jpg',
                   alt: 'Property purchased in UK',
                   completionDays: 6
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220815_114245_Original_2_is9go4.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 8
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220810_133732_Original_2_lr7xen.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220810_121309_Original_ygkfcd.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 6
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721217/20220810_133732_Original_1_p2kza6.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
                 }
               ]}
-            />
-          </motion.div>
-        </div>
-      </section>
+            />          </motion.div>
+
+          {/* Call-to-Action Button */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                Get a Free Cash Offer
+              </button>
+              <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300">
+                See More Success Stories
+              </button>
+            </div>
+            <p className="text-gray-600 mt-4 text-sm">
+              Join hundreds of satisfied homeowners who sold their properties quickly and hassle-free
+            </p>
+          </motion.div>        </div>      </section>
 
       {/* Enhanced Benefits Section */}
       <section id="why-us" className="py-20 bg-white relative overflow-hidden">

@@ -30,7 +30,9 @@
       "Bash(python:*)",
       "Bash(del \"C:\\Users\\akite\\OneDrive\\Documents\\sdhb phtos and assests\\samedayhome\\remove_headers.py\")",
       "Bash(git checkout:*)",
-      "Bash(node test-postcoder.js)"
+      "Bash(node test-postcoder.js)",
+      "Bash(taskkill:*)",
+      "Bash(del srccomponentsThreeDCarousel.jsx srccomponentsPropertyShowcase.jsx srccomponentsOptimizedCarousel.jsx)"
     ],
     "deny": []
   }
