@@ -46,7 +46,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm transition-all duration-300 ${isScrolled ? 'py-1 xl:py-3' : 'py-3'}`}>
+    <header className={`sticky top-0 z-50 bg-gray-800/95 backdrop-blur-sm border-b border-gray-700 shadow-sm transition-all duration-300 ${isScrolled ? 'py-1 xl:py-3' : 'py-3'}`}>
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between transition-all duration-300 ${isMobile ? 'h-14' : isScrolled ? 'h-12 xl:h-20' : 'h-16 xl:h-28'}`}>
           {/* Logo */}
@@ -68,38 +68,38 @@ const Header = () => {
           <nav className="hidden xl:flex items-center space-x-4">
             <a 
               href="/#how-it-works" 
-              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
+              className="text-gray-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               How It Works
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a 
               href="/#why-us" 
-              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
+              className="text-gray-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               Why Us
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a 
               href="/#testimonials" 
-              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
+              className="text-gray-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               Reviews
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a 
               href="/#faq" 
-              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
+              className="text-gray-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               FAQs
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <Link 
               to="/blog" 
-              className="text-gray-700 hover:text-blue-900 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
+              className="text-gray-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"
             >
               Blog
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </nav>
 
@@ -109,18 +109,18 @@ const Header = () => {
             {isMobile && (
               <a
                 href="tel:03300437570"
-                className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
+                className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-700 transition-colors"
               >
-                <Phone className="h-5 w-5 text-blue-900" />
+                <Phone className="h-5 w-5 text-blue-400" />
               </a>
             )}
             
             {/* Desktop phone number */}
-            <div className="hidden lg:flex items-center space-x-2 text-blue-900">
+            <div className="hidden lg:flex items-center space-x-2 text-blue-400">
               <Phone className="h-4 w-4" />
               <a 
                 href="tel:03300437570" 
-                className="font-semibold text-base whitespace-nowrap hover:text-blue-700 transition-colors duration-200 cursor-pointer"
+                className="font-semibold text-base whitespace-nowrap hover:text-blue-300 transition-colors duration-200 cursor-pointer"
               >
                 0330 043 7570
               </a>

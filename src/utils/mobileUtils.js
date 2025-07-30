@@ -219,6 +219,16 @@ export const formatEmailForMailto = (email, subject = '', body = '') => {
   return `mailto:${email}${queryString ? '?' + queryString : ''}`;
 };
 
+// Check if user prefers reduced motion
+export const prefersReducedMotion = () => {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+
+// Get animation duration based on user preference
+export const getAnimationDuration = (defaultDuration = 300) => {
+  return prefersReducedMotion() ? 0 : defaultDuration;
+};
+
 // Check if Web Share API is supported
 export const canShare = () => {
   return 'share' in navigator;
@@ -321,6 +331,8 @@ export default {
   addMobileEventListener,
   formatPhoneForTel,
   formatEmailForMailto,
+  prefersReducedMotion,
+  getAnimationDuration,
   canShare,
   shareContent,
   mobileStorage,

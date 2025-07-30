@@ -5,7 +5,8 @@ import {
   getViewportDimensions, 
   getOrientation,
   getSafeAreaInsets,
-  throttle 
+  throttle,
+  getAnimationDuration
 } from '../utils/mobileUtils';
 
 /**
@@ -284,7 +285,7 @@ export const useMobileNavigation = () => {
     
     setTimeout(() => {
       setNavState(prev => ({ ...prev, isAnimating: false }));
-    }, 300);
+    }, getAnimationDuration(300));
   }, []);
 
   const closeNav = useCallback(() => {
@@ -295,7 +296,7 @@ export const useMobileNavigation = () => {
     
     setTimeout(() => {
       setNavState(prev => ({ ...prev, isAnimating: false }));
-    }, 300);
+    }, getAnimationDuration(300));
   }, []);
 
   const toggleNav = useCallback(() => {

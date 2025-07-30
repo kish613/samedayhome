@@ -8,6 +8,7 @@ import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
+import ThreeDPhotoCarouselDemo from './components/ThreeDCarousel.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
@@ -328,17 +329,8 @@ function HomePage() {
         </section>
       )}
 
-      {/* Trust Badges Section */}
+      {/* Property Showcase Section */}
       <section className="bg-gray-50 py-16 relative">
-        <FloatingOrbs />
-        {/* Trust Seal Watermark */}
-        <div 
-          className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-[0.04] pointer-events-none"
-          style={{ 
-            backgroundImage: 'url(https://res.cloudinary.com/dmns9ystn/image/upload/v1751563492/ChatGPT_Image_Jul_3_2025_06_24_40_PM_uuigx5.png)',
-            backgroundSize: '500px 500px'
-          }}
-        />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             className="text-center mb-12"
@@ -347,142 +339,99 @@ function HomePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Trusted by Thousands</h2>
-            <div className="flex items-center justify-center space-x-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
-              ))}
-              <span className="ml-2 text-lg font-semibold text-green-600">4.9/5 on Trustpilot</span>
-            </div>
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">Recent Property Purchases</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              See some of the properties we've recently purchased from satisfied homeowners across the UK.
+            </p>
           </motion.div>
 
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center mb-12"
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <motion.div 
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <motion.div 
-                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: [0, -10, 10, -10, 0],
-                  transition: { duration: 0.5 }
-                }}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                  delay: 0.2
-                }}
-                viewport={{ once: true }}
-              >
-                <img src={calendarIcon} alt="Quick property sale timeline - complete in 7 days" className="h-10 w-10" />
-              </motion.div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-2">20+</h3>
-              <p className="text-gray-600 font-medium">Years Experience</p>
-            </motion.div>
-            <motion.div 
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <motion.div 
-                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
-                whileHover={{ 
-                  scale: 1.1,
-                  y: [-2, -8, -2],
-                  transition: { duration: 0.6, repeat: Infinity, repeatType: "reverse" }
-                }}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                  delay: 0.3
-                }}
-                viewport={{ once: true }}
-              >
-                <img src={housesIcon} alt="Multiple property types we purchase - any condition accepted" className="h-10 w-10" />
-              </motion.div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">15,000+</h3>
-              <p className="text-gray-600 font-medium">Properties Bought</p>
-            </motion.div>
-            <motion.div 
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <motion.div 
-                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: [0, 360],
-                  transition: { duration: 1 }
-                }}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                  delay: 0.4
-                }}
-                viewport={{ once: true }}
-              >
-                <img src={moneyMountainIcon} alt="Maximum cash offer for your property - competitive market rates" className="h-10 w-10" />
-              </motion.div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent mb-2">£500M+</h3>
-              <p className="text-gray-600 font-medium">Total Invested</p>
-            </motion.div>
-            <motion.div 
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <motion.div 
-                className="bg-blue-900 text-white rounded-full w-20 h-20 flex items-center justify-center mb-4"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: [0, -45, 45, 0],
-                  transition: { duration: 0.8 }
-                }}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                  delay: 0.5
-                }}
-                viewport={{ once: true }}
-              >
-                <img src={clockIcon} alt="Fast 7-day property completion process" className="h-10 w-10" />
-              </motion.div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent mb-2">2 Hours</h3>
-              <p className="text-gray-600 font-medium">Average Decision Time</p>
-            </motion.div>
+            <ThreeDPhotoCarouselDemo 
+              images={[
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_113443_Original_ociqkl.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221026_151152_Original_jl41gs.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_145237_Original_jrwbhe.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221025_154328_Original_ggbbyw.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221026_151152_Original_1_nn5qc9.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_152032_Original_phjvgw.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221025_154328_Original_1_iihhze.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_170611_Original_f5emzz.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_152032_Original_1_cwtwvt.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220901_134103_Original_1_fgqxy5.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_145237_Original_1_gj61en.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220831_124356_Original_jaimwa.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220830_180153_Original_oi5tsa.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220830_180153_Original_1_w15zrw.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220831_124356_Original_1_krqrs0.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220815_114245_Original_2_is9go4.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220810_133732_Original_2_lr7xen.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721219/20220810_121309_Original_ygkfcd.jpg',
+                  alt: 'Property purchased in UK'
+                },
+                {
+                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721217/20220810_133732_Original_1_p2kza6.jpg',
+                  alt: 'Property purchased in UK'
+                }
+              ]}
+            />
           </motion.div>
-
-
-
         </div>
       </section>
 

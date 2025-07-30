@@ -1,4 +1,4 @@
-// Secure backend proxy for Fetchify API
+// Secure backend proxy for Postcoder API
 // This keeps your API key safe on the server
 
 export default async function handler(req, res) {
@@ -24,20 +24,20 @@ export default async function handler(req, res) {
     }
 
     // Get API key from server environment (secure)
-    const apiKey = process.env.FETCHIFY_API_KEY || '649c2-a2bc4-c3307-0a4d8'
+    const apiKey = process.env.POSTCODER_API_KEY
     
     if (!apiKey) {
-      console.error('FETCHIFY_API_KEY not configured')
+      console.error('POSTCODER_API_KEY not configured')
       return res.status(500).json({ error: 'Postcode lookup service not configured' })
     }
 
-    // Make request to Fetchify API from backend
-    const fetchifyApiUrl = `https://pcls1.craftyclicks.co.uk/json/rapidaddress?key=${apiKey}&postcode=${encodeURIComponent(cleanPostcode)}&response=data_formatted`
+    // Make request to Postcoder API from backend
+    const postcoderApiUrl = `https://ws.postcoder.com/pcw/${apiKey}/address/UK/${encodeURIComponent(cleanPostcode)}`
     
-    const response = await fetch(fetchifyApiUrl)
+    const response = await fetch(postcoderApiUrl)
     
     if (!response.ok) {
-      console.error('Fetchify API error:', response.status, response.statusText)
+      console.error('Postcoder API error:', response.status, response.statusText)
       
       if (response.status === 401) {
         return res.status(500).json({ error: 'API authentication failed' })
@@ -50,30 +50,41 @@ export default async function handler(req, res) {
 
     const data = await response.json()
     
-    // Handle Fetchify response format
+    // Handle Postcoder response format
     let addresses = []
     
-    if (data && data.delivery_points && Array.isArray(data.delivery_points)) {
-      addresses = data.delivery_points.map(dp => {
-        // Extract street name and number from formatted address lines
-        const addressLine1 = dp.line_1 || ''
-        const addressLine2 = dp.line_2 || ''
+    if (data && Array.isArray(data)) {
+      addresses = data.map(addr => {
+        // Extract components from Postcoder response
+        const organisation = addr.organisation || ''
+        const number = addr.number || addr.premise || ''
+        const buildingName = addr.buildingname || ''
+        const street = addr.street || ''
+        const locality = addr.locality || addr.dependentlocality || ''
+        const postTown = addr.posttown || ''
+        const county = addr.county || ''
+        const postcode = addr.postcode || cleanPostcode
         
-        // Try to extract number and street from line_1
-        const numberMatch = addressLine1.match(/^(\d+[A-Z]?|\w+)\s+(.+)/)
-        const number = numberMatch ? numberMatch[1] : ''
-        const street = numberMatch ? numberMatch[2] : addressLine1
+        // Build address line 1 - typically number and street
+        const addressLine1Parts = []
+        if (number) addressLine1Parts.push(number)
+        if (buildingName && buildingName !== number) addressLine1Parts.push(buildingName)
+        if (street) addressLine1Parts.push(street)
+        
+        const addressLine1 = addressLine1Parts.join(' ').trim()
+        const addressLine2 = locality
         
         return {
-          id: dp.udprn || '',
-          street: street || addressLine1,
+          id: addr.udprn || '',
+          street: street,
           number: number,
+          organisation: organisation,
           addressLine1: addressLine1,
           addressLine2: addressLine2,
-          postTown: dp.post_town || '',
-          county: dp.traditional_county || dp.postal_county || '',
-          postcode: dp.postcode || cleanPostcode,
-          fullAddress: [addressLine1, addressLine2, dp.post_town, dp.postcode].filter(Boolean).join(', ')
+          postTown: postTown,
+          county: county,
+          postcode: postcode,
+          fullAddress: addr.summaryline || [organisation, addressLine1, addressLine2, postTown, postcode].filter(Boolean).join(', ')
         }
       }).filter(addr => addr.street && addr.fullAddress)
     }
