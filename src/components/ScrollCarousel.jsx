@@ -85,12 +85,6 @@ const ScrollCarousel = ({ images }) => {
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white/50 -z-10" />
       
-      {/* Instructions */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-        <p className="text-gray-700 text-sm font-medium">
-          Scroll the page to rotate the carousel
-        </p>
-      </div>
     </div>
   );
 };

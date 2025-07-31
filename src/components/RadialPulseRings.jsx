@@ -1,26 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const RadialPulseRings = () => {
-  // Create multiple rings with different animation delays
-  const rings = [
-    { delay: 0, duration: 4 },
-    { delay: 1, duration: 4 },
-    { delay: 2, duration: 4 },
-    { delay: 3, duration: 4 },
-  ];
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [isLowEndDevice, setIsLowEndDevice] = useState(false);
+
+  useEffect(() => {
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mediaQuery.matches);
+
+    // Detect low-end devices
+    const checkDevice = () => {
+      const hasLowCores = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+      const hasLowMemory = navigator.deviceMemory && navigator.deviceMemory < 4;
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      setIsLowEndDevice(hasLowCores || hasLowMemory || isMobile);
+    };
+
+    checkDevice();
+  }, []);
+
+  // Reduce rings for performance
+  const rings = isLowEndDevice ? 
+    [{ delay: 0, duration: 4 }, { delay: 2, duration: 4 }] :
+    [{ delay: 0, duration: 4 }, { delay: 1, duration: 4 }, { delay: 2, duration: 4 }];
+
+  if (reducedMotion) {
+    // Static background for accessibility
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-gray-50 to-indigo-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-radial from-blue-200/20 to-transparent" />
+      </div>
+    );
+  }
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Base gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-gray-50 to-indigo-50" />
       
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        {/* Color spreading rings */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{ 
+          transform: 'translate(-50%, -50%) translateZ(0)',
+          willChange: 'transform'
+        }}
+      >
+        {/* Optimized color spreading rings */}
         {rings.map((ring, index) => (
           <motion.div
             key={`color-${index}`}
-            className="absolute rounded-full bg-gradient-to-r from-blue-300/30 via-indigo-300/20 to-transparent"
+            className="absolute rounded-full"
             initial={{ 
               width: 100, 
               height: 100, 
@@ -29,9 +62,9 @@ const RadialPulseRings = () => {
               y: '-50%'
             }}
             animate={{ 
-              width: 1400, 
-              height: 1400, 
-              opacity: [0, 0.4, 0.4, 0],
+              width: isLowEndDevice ? 800 : 1000, 
+              height: isLowEndDevice ? 800 : 1000, 
+              opacity: [0, 0.3, 0.3, 0],
               x: '-50%',
               y: '-50%'
             }}
@@ -45,16 +78,21 @@ const RadialPulseRings = () => {
             style={{
               left: '50%',
               top: '50%',
-              filter: 'blur(40px)',
+              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 70%)',
+              transform: 'translateZ(0)',
+              willChange: 'transform, opacity, width, height',
+              backfaceVisibility: 'hidden',
+              perspective: 1000,
+              contain: 'layout style paint'
             }}
           />
         ))}
         
-        {/* Border rings */}
+        {/* Optimized border rings */}
         {rings.map((ring, index) => (
           <motion.div
             key={index}
-            className="absolute rounded-full border-2 border-blue-400/30"
+            className="absolute rounded-full border-2"
             initial={{ 
               width: 100, 
               height: 100, 
@@ -63,9 +101,9 @@ const RadialPulseRings = () => {
               y: '-50%'
             }}
             animate={{ 
-              width: 1200, 
-              height: 1200, 
-              opacity: [0, 0.6, 0.6, 0],
+              width: isLowEndDevice ? 800 : 1000, 
+              height: isLowEndDevice ? 800 : 1000, 
+              opacity: [0, 0.5, 0.5, 0],
               x: '-50%',
               y: '-50%'
             }}
@@ -79,52 +117,23 @@ const RadialPulseRings = () => {
             style={{
               left: '50%',
               top: '50%',
-              borderWidth: '2px',
-              boxShadow: '0 0 20px rgba(59, 130, 246, 0.2)',
+              borderColor: 'rgba(59, 130, 246, 0.3)',
+              boxShadow: isLowEndDevice ? 'none' : '0 0 10px rgba(59, 130, 246, 0.2)',
+              transform: 'translateZ(0)',
+              willChange: 'transform, opacity, width, height',
+              backfaceVisibility: 'hidden',
+              contain: 'layout style paint'
             }}
           />
         ))}
         
-        {/* Inner color waves */}
-        {rings.map((ring, index) => (
-          <motion.div
-            key={`inner-color-${index}`}
-            className="absolute rounded-full bg-gradient-to-r from-indigo-400/20 via-blue-400/15 to-transparent"
-            initial={{ 
-              width: 30, 
-              height: 30, 
-              opacity: 0.5,
-              x: '-50%',
-              y: '-50%'
-            }}
-            animate={{ 
-              width: 800, 
-              height: 800, 
-              opacity: 0,
-              x: '-50%',
-              y: '-50%'
-            }}
-            transition={{
-              duration: ring.duration * 0.8,
-              delay: ring.delay + 0.5,
-              repeat: Infinity,
-              ease: "easeOut"
-            }}
-            style={{
-              left: '50%',
-              top: '50%',
-              filter: 'blur(30px)',
-            }}
-          />
-        ))}
-        
-        {/* Center glow effect */}
+        {/* Optimized center glow - using gradient instead of blur */}
         <motion.div
-          className="absolute w-96 h-96 rounded-full"
-          initial={{ scale: 0.8, opacity: 0.4 }}
-          animate={{ scale: 1.2, opacity: 0.6 }}
+          className="absolute w-64 h-64 rounded-full"
+          initial={{ scale: 0.8, opacity: 0.3 }}
+          animate={{ scale: 1.1, opacity: 0.5 }}
           transition={{
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut"
@@ -132,27 +141,39 @@ const RadialPulseRings = () => {
           style={{
             left: '50%',
             top: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%)',
-            filter: 'blur(40px)',
+            transform: 'translate(-50%, -50%) translateZ(0)',
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(59, 130, 246, 0.2) 30%, rgba(59, 130, 246, 0.1) 60%, transparent 100%)',
+            willChange: 'transform, opacity',
+            backfaceVisibility: 'hidden',
+            contain: 'layout style paint'
           }}
         />
         
-        {/* Static color spots for depth */}
-        <div className="absolute w-64 h-64 rounded-full bg-blue-300/10 blur-3xl"
-          style={{
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-80%, -30%)',
-          }}
-        />
-        <div className="absolute w-48 h-48 rounded-full bg-indigo-300/10 blur-3xl"
-          style={{
-            left: '50%',
-            top: '50%',
-            transform: 'translate(60%, 40%)',
-          }}
-        />
+        {/* Static gradient spots - only on high-end devices */}
+        {!isLowEndDevice && (
+          <>
+            <div 
+              className="absolute w-48 h-48 rounded-full"
+              style={{
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-80%, -30%) translateZ(0)',
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+                backfaceVisibility: 'hidden'
+              }}
+            />
+            <div 
+              className="absolute w-40 h-40 rounded-full"
+              style={{
+                left: '50%',
+                top: '50%',
+                transform: 'translate(60%, 40%) translateZ(0)',
+                background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%)',
+                backfaceVisibility: 'hidden'
+              }}
+            />
+          </>
+        )}
       </div>
     </div>
   );

@@ -448,9 +448,11 @@ function HomePage() {
             viewport={{ once: true }}
           >
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                Get a Free Cash Offer
-              </button>
+              <Link to="/propertysubmitted">
+                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  Get a Free Cash Offer
+                </button>
+              </Link>
               <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300">
                 See More Success Stories
               </button>
