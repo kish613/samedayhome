@@ -1,4 +1,5 @@
 import { ScrollVelocity } from "@/components/ui/scroll-velocity"
+import { useState } from "react"
 
 const images = [
   {
@@ -93,7 +94,7 @@ const images = [
   }
 ]
 
-const velocity = [1, -1]
+const velocity = [0.3, -0.3]
 
 function ScrollCarousel() {
   return (
@@ -102,22 +103,33 @@ function ScrollCarousel() {
         {velocity.map((v, index) => (
           <div key={index} className="w-full">
             <ScrollVelocity velocity={v}>
-            {images.map(({ title, thumbnail, completionDays }, imgIndex) => (
-              <div
-                key={`image-${index}-${imgIndex}`}
-                className="relative h-[10rem] w-[15rem] md:h-[12rem] md:w-[18rem] xl:h-[16rem] xl:w-[24rem] group"
-              >
-                <div className="relative h-full w-full rounded-md overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105 bg-gray-200">
-                  <img
-                    src={thumbnail}
-                    alt={title}
-                    className="h-full w-full object-cover object-center"
-                    loading="lazy"
-                    onError={(e) => {
-                      console.error(`Failed to load image: ${thumbnail}`);
-                      e.target.style.display = 'none';
-                    }}
-                  />
+            {images.map(({ title, thumbnail, completionDays }, imgIndex) => {
+              const [isLoading, setIsLoading] = useState(true);
+              
+              return (
+                <div
+                  key={`image-${index}-${imgIndex}`}
+                  className="relative h-[10rem] w-[15rem] md:h-[12rem] md:w-[18rem] xl:h-[16rem] xl:w-[24rem] group"
+                >
+                  <div className="relative h-full w-full rounded-md overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105 bg-gray-200">
+                    {/* Loading skeleton */}
+                    {isLoading && (
+                      <div className="absolute inset-0 bg-gray-300 animate-pulse" />
+                    )}
+                    
+                    <img
+                      src={thumbnail}
+                      alt={title}
+                      className="h-full w-full object-cover object-center"
+                      loading="lazy"
+                      onLoad={() => setIsLoading(false)}
+                      onError={(e) => {
+                        console.error(`Failed to load image: ${thumbnail}`);
+                        setIsLoading(false);
+                        e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23f3f4f6"/%3E%3Cpath d="M150 100 L200 50 L250 100 L250 150 L150 150 Z" fill="%23d1d5db"/%3E%3Crect x="180" y="110" width="40" height="40" fill="%23e5e7eb"/%3E%3Ctext x="200" y="200" text-anchor="middle" font-family="Arial" font-size="14" fill="%239ca3af"%3EProperty Image%3C/text%3E%3C/svg%3E';
+                        e.target.className = 'h-full w-full object-cover object-center';
+                      }}
+                    />
                   
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -134,7 +146,8 @@ function ScrollCarousel() {
                   <div className="absolute inset-0 bg-orange-500/0 transition-all duration-300 group-hover:bg-orange-500/20" />
                 </div>
               </div>
-            ))}
+              );
+            })}
             </ScrollVelocity>
           </div>
         ))}

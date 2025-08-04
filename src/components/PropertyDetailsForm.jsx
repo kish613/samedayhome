@@ -215,6 +215,7 @@ function PropertyDetailsForm({ postcode, onBack }) {
                     onAddressChange={(value) => handleInputChange('fullAddress', value)}
                   />
 
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label className="text-slate-800 font-semibold text-base">Property Type *</Label>
