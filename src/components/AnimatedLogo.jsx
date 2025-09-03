@@ -12,10 +12,10 @@ const AnimatedLogo = ({ onLogoClick }) => {
 
   const styles = {
     sameDayLogoContainer: {
-      height: '112px',
+      height: '100%',
       width: 'auto',
       cursor: 'pointer',
-      padding: '16px 20px',
+      padding: '8px 16px',
       transition: 'all 0.3s ease',
       display: 'flex',
       alignItems: 'center',
@@ -23,7 +23,7 @@ const AnimatedLogo = ({ onLogoClick }) => {
       animation: 'float 4s ease-in-out infinite'
     },
     sameDayLogoSvg: {
-      height: '100px',
+      height: '60px',
       width: 'auto',
       transition: 'transform 0.3s ease-in-out'
     }

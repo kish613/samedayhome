@@ -118,8 +118,9 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
   const handleSearchChange = (value) => {
     setSearchTerm(value)
     
-    // If user clears the search, clear the selected address
-    if (!value.trim()) {
+    // Don't clear the selected address if user is just clearing the search field
+    // Only clear if they haven't selected an address yet
+    if (!value.trim() && !selectedAddress) {
       setSelectedAddress(null)
       onDoorNumberChange('')
       onAddressChange('')
@@ -213,7 +214,7 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
       </div>
 
       {/* Address Search and Selection */}
-      {allAddresses.length > 0 && (
+      {allAddresses.length > 0 && !selectedAddress && (
         <div className="space-y-4">
           <div className="space-y-2">
             <Label className="text-slate-800 font-semibold text-base">
@@ -304,12 +305,28 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
       {/* Selected Address Confirmation */}
       {selectedAddress && (
         <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
-          <div className="flex items-start space-x-3">
-            <MapPin className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-            <div className="flex-1">
-              <div className="font-medium text-green-900 mb-1">Selected Address:</div>
-              <div className="text-green-800 text-sm sm:text-base">{selectedAddress.fullAddress}</div>
+          <div className="flex items-start justify-between">
+            <div className="flex items-start space-x-3 flex-1">
+              <MapPin className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <div className="flex-1">
+                <div className="font-medium text-green-900 mb-1">Selected Address:</div>
+                <div className="text-green-800 text-sm sm:text-base">{selectedAddress.fullAddress}</div>
+              </div>
             </div>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                setSelectedAddress(null)
+                onDoorNumberChange('')
+                onAddressChange('')
+                setSearchTerm('')
+              }}
+              className="text-red-600 hover:text-red-700 hover:bg-red-50 ml-2"
+            >
+              Change
+            </Button>
           </div>
         </div>
       )}

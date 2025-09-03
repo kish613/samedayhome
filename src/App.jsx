@@ -11,7 +11,7 @@ import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
 import ScrollCarousel from './components/ScrollCarousel.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import DataVisualizationBackground from './components/DataVisualizationBackground.jsx'
-import RadialPulseRings from './components/RadialPulseRings.jsx'
+import MorphingHouseSilhouettes from './components/MorphingHouseSilhouettes.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
 import AnimatedGrid from './components/AnimatedGrid.jsx';

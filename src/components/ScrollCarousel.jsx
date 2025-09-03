@@ -141,7 +141,7 @@ function ScrollCarousel() {
                   <div className="absolute inset-0 bg-orange-500/0 transition-all duration-300 group-hover:bg-orange-500/20" />
                 </div>
               </div>
-            ))}
+            ))
             </ScrollVelocity>
           </div>
         ))}
