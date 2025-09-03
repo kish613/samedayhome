@@ -1,4 +1,4 @@
-import { ScrollVelocity } from "@/components/ui/scroll-velocity"
+import React from 'react'
 
 const images = [
   {
@@ -93,61 +93,44 @@ const images = [
   }
 ]
 
-const velocity = [0.2, -0.2]
-
-function ScrollCarousel() {
+export default function ScrollCarousel() {
   return (
-    <div className="w-full">
-      <div className="flex flex-col gap-8 py-12">
-        {velocity.map((v, index) => (
-          <div key={index} className="w-full">
-            <ScrollVelocity velocity={v}>
-            {images.map(({ title, thumbnail, completionDays }, imgIndex) => (
-              <div
-                key={`image-${index}-${imgIndex}`}
-                className="relative h-[10rem] w-[15rem] md:h-[12rem] md:w-[18rem] xl:h-[16rem] xl:w-[24rem] group"
-              >
-                <div className="relative h-full w-full rounded-md overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105 bg-gray-200">
-                  <img
-                    src={thumbnail}
-                    alt={title}
-                    className="h-full w-full object-cover object-center"
-                    loading="lazy"
-                    onError={(e) => {
-                      const fallbackImages = [
-                        "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=600&h=400&fit=crop&auto=format&q=80",
-                        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop&auto=format&q=80",
-                        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop&auto=format&q=80",
-                        "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&auto=format&q=80",
-                        "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&h=400&fit=crop&auto=format&q=80"
-                      ];
-                      const randomFallback = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
-                      e.target.src = randomFallback;
-                    }}
-                  />
-                  
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  
-                  {/* Text Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="text-base font-semibold mb-1 tracking-wide uppercase">{title}</h3>
-                    <p className="text-xs font-light tracking-wider">
-                      {completionDays} days to complete
-                    </p>
-                  </div>
-                  
-                  {/* Hover Effect */}
-                  <div className="absolute inset-0 bg-orange-500/0 transition-all duration-300 group-hover:bg-orange-500/20" />
-                </div>
+    <div className="w-full overflow-x-auto">
+      <div className="flex gap-4 py-12">
+        {images.map(({ title, thumbnail, completionDays }, idx) => (
+          <div
+            key={`image-${idx}`}
+            className="relative h-[10rem] w-[15rem] md:h-[12rem] md:w-[18rem] xl:h-[16rem] xl:w-[24rem] flex-shrink-0 group"
+          >
+            <div className="relative h-full w-full rounded-md overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105 bg-gray-200">
+              <img
+                src={thumbnail}
+                alt={title}
+                className="h-full w-full object-cover object-center"
+                loading="lazy"
+                onError={(e) => {
+                  const fallbackImages = [
+                    "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=600&h=400&fit=crop&auto=format&q=80",
+                    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop&auto=format&q=80",
+                    "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop&auto=format&q=80",
+                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&auto=format&q=80",
+                    "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&h=400&fit=crop&auto=format&q=80"
+                  ];
+                  const img = e.target as HTMLImageElement;
+                  const randomFallback = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
+                  img.src = randomFallback;
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="text-base font-semibold mb-1 tracking-wide uppercase">{title}</h3>
+                <p className="text-xs font-light tracking-wider">{completionDays} days to complete</p>
               </div>
-            ))
-            </ScrollVelocity>
+              <div className="absolute inset-0 bg-orange-500/0 transition-all duration-300 group-hover:bg-orange-500/20" />
+            </div>
           </div>
         ))}
       </div>
     </div>
   )
 }
-
-export default ScrollCarousel
