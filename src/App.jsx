@@ -8,7 +8,7 @@ import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
-import ScrollCarousel from './components/ScrollCarousel.jsx'
+import ScrollCarousel from './components/ScrollCarousel.tsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import DataVisualizationBackground from './components/DataVisualizationBackground.jsx'
 import MorphingHouseSilhouettes from './components/MorphingHouseSilhouettes.jsx'
