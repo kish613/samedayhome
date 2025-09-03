@@ -339,17 +339,9 @@ function HomePage() {
 
       {/* Property Showcase Section */}
       <section className="py-12 relative overflow-hidden">
-        {/* Soft Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-stone-50"></div>
-        
-        {/* Paper Texture Overlay */}
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '20px 20px'
-        }}></div>
-        
-        {/* Subtle Linen Texture */}
-        <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        {/* Faint radial spotlight over neutral base */}
+        <div className="absolute inset-0 bg-slate-50"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(2,132,199,0.06)_0%,transparent_55%)]"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
