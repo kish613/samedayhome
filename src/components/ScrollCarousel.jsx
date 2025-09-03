@@ -8,7 +8,7 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221026_151152_Original_jl41gs.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 6
   },
   {
@@ -18,12 +18,12 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221025_154328_Original_ggbbyw.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 7
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221026_151152_Original_1_nn5qc9.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 7
   },
   {
@@ -33,17 +33,17 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972560/26_ashleigh_sJHUDn_fvqvaa.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 7
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972559/25_alexandra_sJHUDn_rxxl4s.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 6
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972557/19_iona_sJHUDn_q8hdsj.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 8
   },
   {
@@ -53,7 +53,7 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972555/11_tara_court_sJHUDn_ygj6yl.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1520637836862-4d197d17c973?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 8
   },
   {
@@ -63,37 +63,37 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1754043485/82_grange_sJHUDn_gnfawl.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 6
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972572/6_welland_sJHUDn_qebjhf.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 8
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972566/68_stourbridge_sJHUDn_qvef0w.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 7
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972564/16_berryfield_2_sJHUDn_ii39ya.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 6
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972554/110_hillaries_sJHUDn_anrvh2.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 8
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972553/1_booth_sJHUDn_jlke5x.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=400&fit=crop&auto=format&q=80",
     completionDays: 7
   }
 ]
 
-const velocity = [1, -1]
+const velocity = [0.2, -0.2]
 
 function ScrollCarousel() {
   return (
@@ -114,8 +114,15 @@ function ScrollCarousel() {
                     className="h-full w-full object-cover object-center"
                     loading="lazy"
                     onError={(e) => {
-                      console.error(`Failed to load image: ${thumbnail}`);
-                      e.target.style.display = 'none';
+                      const fallbackImages = [
+                        "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=600&h=400&fit=crop&auto=format&q=80",
+                        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop&auto=format&q=80",
+                        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop&auto=format&q=80",
+                        "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&auto=format&q=80",
+                        "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&h=400&fit=crop&auto=format&q=80"
+                      ];
+                      const randomFallback = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
+                      e.target.src = randomFallback;
                     }}
                   />
                   

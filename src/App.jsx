@@ -94,6 +94,12 @@ import './App.css'
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
 import heroImg from './assets/uk_houses_hero.jpg'
 
+// Import background images from public folder
+const modernUkHouse = '/modern_uk_house.jpg'
+const propertyBg1 = '/property_bg_1.webp'
+const propertyBg2 = '/property_bg_2.jpg'
+const propertyBg3 = '/property_bg_3.jpg'
+
 // Import local assets for Why Choose Us section  
 const lightningFastIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751620946/ChatGPT_Image_Jul_4_2025_10_21_11_AM_h76xph.png'
 const cashGuaranteeIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751620945/ChatGPT_Image_Jul_4_2025_10_21_20_AM_glkfbw.png'
@@ -332,9 +338,18 @@ function HomePage() {
       )}
 
       {/* Property Showcase Section */}
-      <section className="bg-gray-50 py-12 relative">
-        {/* Radial Pulse Rings Background */}
-        <RadialPulseRings />
+      <section className="py-12 relative overflow-hidden">
+        {/* Soft Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-stone-50"></div>
+        
+        {/* Paper Texture Overlay */}
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '20px 20px'
+        }}></div>
+        
+        {/* Subtle Linen Texture */}
+        <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -496,7 +511,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/modern_uk_house.jpg)' }}
+                  style={{ backgroundImage: `url(${modernUkHouse})` }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -523,7 +538,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/property_bg_1.webp)' }}
+                  style={{ backgroundImage: `url(${propertyBg1})` }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -550,7 +565,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/property_bg_2.jpg)' }}
+                  style={{ backgroundImage: `url(${propertyBg2})` }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -583,7 +598,7 @@ function HomePage() {
           {/* Visual Metrics Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-            style={{ backgroundImage: 'url(/uk_houses_hero.jpg)' }}
+            style={{ backgroundImage: `url(${heroImg})` }}
           />
           {/* Light overlay for readability */}
           <div className="absolute inset-0 bg-white/15"></div>
@@ -735,7 +750,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/property_bg_1.webp)' }}
+                  style={{ backgroundImage: `url(${propertyBg1})` }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -768,7 +783,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/property_bg_2.jpg)' }}
+                  style={{ backgroundImage: `url(${propertyBg2})` }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -801,7 +816,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: 'url(/property_bg_3.jpg)' }}
+                  style={{ backgroundImage: `url(${propertyBg3})` }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
