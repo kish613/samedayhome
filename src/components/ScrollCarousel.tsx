@@ -8,7 +8,7 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753869658/dji_mimo_20220913_124418_16_1663597550044_photo_jmswwh.jpg",
     completionDays: 6
   },
   {
@@ -18,12 +18,12 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1754393933/32_edited_nas2lo.png",
     completionDays: 7
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1754043485/82_grange_sJHUDn_gnfawl.jpg",
     completionDays: 7
   },
   {
@@ -33,17 +33,17 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1754043485/18_weston_ave_Ckrv5c_uc7irw.jpg",
     completionDays: 7
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972574/5_bela_sJHUDn_ej77zi.jpg",
     completionDays: 6
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1754043483/123_berridge_Ckrv5c_u6umll.jpg",
     completionDays: 8
   },
   {
@@ -53,7 +53,7 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1520637836862-4d197d17c973?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972566/68_stourbridge_sJHUDn_qvef0w.jpg",
     completionDays: 8
   },
   {
@@ -63,32 +63,32 @@ const images = [
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972564/16_berryfield_2_sJHUDn_ii39ya.jpg",
     completionDays: 6
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972554/110_hillaries_sJHUDn_anrvh2.jpg",
     completionDays: 8
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972553/1_booth_sJHUDn_jlke5x.jpg",
     completionDays: 7
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1754056402/2_lf47ji.jpg",
     completionDays: 6
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1753869658/dji_mimo_20220913_124418_16_1663597550044_photo_jmswwh.jpg",
     completionDays: 8
   },
   {
     title: "Recently Purchased",
-    thumbnail: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=400&fit=crop&auto=format&q=80",
+    thumbnail: "https://res.cloudinary.com/dmns9ystn/image/upload/v1754393933/32_edited_nas2lo.png",
     completionDays: 7
   }
 ]
@@ -110,11 +110,11 @@ export default function ScrollCarousel() {
                 loading="lazy"
                 onError={(e) => {
                   const fallbackImages = [
-                    "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=600&h=400&fit=crop&auto=format&q=80",
-                    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop&auto=format&q=80",
-                    "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop&auto=format&q=80",
-                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&auto=format&q=80",
-                    "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&h=400&fit=crop&auto=format&q=80"
+                    "https://res.cloudinary.com/dmns9ystn/image/upload/v1753869658/dji_mimo_20220913_124418_16_1663597550044_photo_jmswwh.jpg",
+                    "https://res.cloudinary.com/dmns9ystn/image/upload/v1754393933/32_edited_nas2lo.png",
+                    "https://res.cloudinary.com/dmns9ystn/image/upload/v1754043485/82_grange_sJHUDn_gnfawl.jpg",
+                    "https://res.cloudinary.com/dmns9ystn/image/upload/v1754043485/18_weston_ave_Ckrv5c_uc7irw.jpg",
+                    "https://res.cloudinary.com/dmns9ystn/image/upload/v1753972574/5_bela_sJHUDn_ej77zi.jpg"
                   ];
                   const img = e.target as HTMLImageElement;
                   const randomFallback = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
