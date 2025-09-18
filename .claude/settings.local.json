@@ -32,10 +32,7 @@
       "Bash(git checkout:*)",
       "Bash(node test-postcoder.js)",
       "Bash(taskkill:*)",
-      "Bash(del srccomponentsThreeDCarousel.jsx srccomponentsPropertyShowcase.jsx srccomponentsOptimizedCarousel.jsx)",
-      "Bash(dir distassets)",
-      "Bash(dir:*)",
-      "Bash(npm run preview:*)"
+      "Bash(del srccomponentsThreeDCarousel.jsx srccomponentsPropertyShowcase.jsx srccomponentsOptimizedCarousel.jsx)"
     ],
     "deny": []
   }

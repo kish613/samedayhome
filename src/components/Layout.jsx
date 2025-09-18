@@ -65,7 +65,7 @@ const Header = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center space-x-8">
+          <nav className="hidden xl:flex items-center space-x-4">
             <a 
               href="/#how-it-works" 
               className="text-gray-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg whitespace-nowrap relative group hover:scale-105"

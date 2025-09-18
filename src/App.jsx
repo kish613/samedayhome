@@ -8,10 +8,10 @@ import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
-import ScrollCarousel from './components/ScrollCarousel.tsx'
+import ScrollCarousel from './components/ScrollCarousel.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import DataVisualizationBackground from './components/DataVisualizationBackground.jsx'
-import MorphingHouseSilhouettes from './components/MorphingHouseSilhouettes.jsx'
+import RadialPulseRings from './components/RadialPulseRings.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
 import AnimatedGrid from './components/AnimatedGrid.jsx';
@@ -93,12 +93,6 @@ import './App.css'
 // Import assets
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png'
 import heroImg from './assets/uk_houses_hero.jpg'
-
-// Import background images from public folder
-const modernUkHouse = '/modern_uk_house.jpg'
-const propertyBg1 = '/property_bg_1.webp'
-const propertyBg2 = '/property_bg_2.jpg'
-const propertyBg3 = '/property_bg_3.jpg'
 
 // Import local assets for Why Choose Us section  
 const lightningFastIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751620946/ChatGPT_Image_Jul_4_2025_10_21_11_AM_h76xph.png'
@@ -338,10 +332,9 @@ function HomePage() {
       )}
 
       {/* Property Showcase Section */}
-      <section className="py-12 relative overflow-hidden">
-        {/* Faint radial spotlight over neutral base */}
-        <div className="absolute inset-0 bg-slate-50"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(2,132,199,0.06)_0%,transparent_55%)]"></div>
+      <section className="bg-gray-50 py-12 relative">
+        {/* Radial Pulse Rings Background */}
+        <RadialPulseRings />
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -503,7 +496,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${modernUkHouse})` }}
+                  style={{ backgroundImage: 'url(/modern_uk_house.jpg)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -530,7 +523,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${propertyBg1})` }}
+                  style={{ backgroundImage: 'url(/property_bg_1.webp)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -557,7 +550,7 @@ function HomePage() {
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${propertyBg2})` }}
+                  style={{ backgroundImage: 'url(/property_bg_2.jpg)' }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-white/85 group-hover:bg-white/75 transition-all duration-300"></div>
@@ -590,7 +583,7 @@ function HomePage() {
           {/* Visual Metrics Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-            style={{ backgroundImage: `url(${heroImg})` }}
+            style={{ backgroundImage: 'url(/uk_houses_hero.jpg)' }}
           />
           {/* Light overlay for readability */}
           <div className="absolute inset-0 bg-white/15"></div>
@@ -742,7 +735,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: `url(${propertyBg1})` }}
+                  style={{ backgroundImage: 'url(/property_bg_1.webp)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -775,7 +768,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: `url(${propertyBg2})` }}
+                  style={{ backgroundImage: 'url(/property_bg_2.jpg)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
@@ -808,7 +801,7 @@ function HomePage() {
                 {/* Property Background */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center blur-sm transition-all duration-500 group-hover:blur-md group-hover:scale-110"
-                  style={{ backgroundImage: `url(${propertyBg3})` }}
+                  style={{ backgroundImage: 'url(/property_bg_3.jpg)' }}
                 />
                 <CardContent className="p-6 relative z-10 bg-transparent">
                   <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 h-52 flex flex-col justify-between transition-all duration-500 group-hover:bg-white/30 group-hover:backdrop-blur-md group-hover:scale-105 group-hover:shadow-xl">
