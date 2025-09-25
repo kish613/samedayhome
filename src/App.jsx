@@ -8,7 +8,6 @@ import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
-import ScrollCarousel from './components/ScrollCarousel.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import DataVisualizationBackground from './components/DataVisualizationBackground.jsx'
 import RadialPulseRings from './components/RadialPulseRings.jsx'
@@ -359,85 +358,16 @@ function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <ScrollCarousel 
-              images={[
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_113443_Original_ociqkl.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221026_151152_Original_jl41gs.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 6
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_145237_Original_jrwbhe.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 8
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221025_154328_Original_ggbbyw.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221026_151152_Original_1_nn5qc9.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_152032_Original_phjvgw.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 8
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221025_154328_Original_1_iihhze.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 6
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_170611_Original_f5emzz.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_152032_Original_1_cwtwvt.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 8
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220901_134103_Original_1_fgqxy5.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_145237_Original_1_gj61en.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 6
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220831_124356_Original_jaimwa.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 8
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220830_180153_Original_oi5tsa.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220830_180153_Original_1_w15zrw.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 7
-                },
-                {
-                  src: 'https://res.cloudinary.com/dmns9ystn/image/upload/v1753721220/20220831_124356_Original_1_krqrs0.jpg',
-                  alt: 'Property purchased in UK',
-                  completionDays: 6
-                }
-              ]}
-            />          </motion.div>
+            <div className="relative bg-white/60 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden">
+              <img
+                src="/GlassGrid.svg"
+                alt="Animated grid of recently purchased properties"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/40"></div>
+            </div>
+          </motion.div>
 
           {/* Call-to-Action Button */}
           <motion.div

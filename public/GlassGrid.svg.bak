@@ -1,0 +1,192 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="791" viewBox="0 0 1200 791">
+  <foreignObject width="100%" height="100%" x="0" y="0" externalResourcesRequired="true">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="wrap">
+      <style>
+        :root { color-scheme: only light; }
+        *, *::before, *::after { box-sizing: border-box; }
+        .wrap {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: clamp(24px, 6vw, 72px);
+          background: radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.55), rgba(203, 213, 225, 0.18) 45%, rgba(30, 41, 59, 0.4) 100%);
+          font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .glass {
+          width: min(1100px, 100%);
+          border-radius: 34px;
+          padding: 0;
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          box-shadow:
+            0 35px 90px rgba(15, 23, 42, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.35);
+          backdrop-filter: blur(28px);
+          -webkit-backdrop-filter: blur(28px);
+          position: relative;
+          overflow: hidden;
+        }
+        .grid {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 0;
+          border-radius: inherit;
+          overflow: hidden;
+        }
+        .tile {
+          position: relative;
+          aspect-ratio: 1 / 1;
+          overflow: hidden;
+          isolation: isolate;
+        }
+        .tile img {
+          position: absolute;
+          inset: -8%;
+          width: 116%;
+          height: 116%;
+          object-fit: cover;
+          transform-origin: center;
+          animation: photo-rotate 24s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+          will-change: transform;
+          z-index: 1;
+        }
+        .overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(185deg, rgba(15, 23, 42, 0) 45%, rgba(15, 23, 42, 0.5) 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 18px;
+          gap: 6px;
+          color: rgba(248, 250, 252, 0.95);
+          z-index: 2;
+        }
+        .label {
+          font-size: 11px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          font-weight: 600;
+          color: rgba(226, 232, 240, 0.86);
+        }
+        .detail {
+          font-size: 16px;
+          font-weight: 600;
+          text-shadow: 0 6px 16px rgba(15, 23, 42, 0.55);
+        }
+        .tile:nth-child(3n+1) img { animation-delay: -6s; }
+        .tile:nth-child(3n+2) img { animation-delay: -12s; }
+        .tile:nth-child(4n) img { animation-delay: -18s; }
+        @keyframes photo-rotate {
+          0% { transform: scale(1.08) rotate(0deg); }
+          25% { transform: scale(1.11) rotate(5deg); }
+          50% { transform: scale(1.07) rotate(-5deg); }
+          75% { transform: scale(1.11) rotate(3deg); }
+          100% { transform: scale(1.08) rotate(0deg); }
+        }
+        @media (max-width: 960px) {
+          .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        @media (max-width: 640px) {
+          .glass { border-radius: 26px; }
+          .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .detail { font-size: 15px; }
+        }
+      </style>
+      <div class="glass">
+        <div class="grid">
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_113443_Original_ociqkl.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 7 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221026_151152_Original_jl41gs.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 6 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753721221/20220901_145237_Original_jrwbhe.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 8 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753721223/20221025_154328_Original_ggbbyw.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 7 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20221026_151152_Original_1_nn5qc9.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 7 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753721222/20220929_152032_Original_phjvgw.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 8 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753972560/26_ashleigh_sJHUDn_fvqvaa.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 7 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753972559/25_alexandra_sJHUDn_rxxl4s.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 6 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753972557/19_iona_sJHUDn_q8hdsj.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 8 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753972556/13_mount_st_sJHUDn_jm9joo.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 7 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753972555/11_tara_court_sJHUDn_ygj6yl.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 8 days</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://res.cloudinary.com/dmns9ystn/image/upload/v1753972562/39_meadowview_sJHUDn_uxczlk.jpg" alt="Property purchased in UK" />
+            <figcaption class="overlay">
+              <span class="label">Recently Purchased</span>
+              <span class="detail">Completed in 7 days</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

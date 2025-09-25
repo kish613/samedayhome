@@ -635,11 +635,46 @@ html {
   .mobile-slide-up,
   .mobile-bounce,
   .animate-fade-in-up,
-  .animate-fade-in {
+  .animate-fade-in,
+  .animate-scroll-left,
+  .animate-scroll-right {
     animation: none;
   }
   
   .touch-feedback {
     transition: none;
   }
+}
+
+/* CSS-based infinite scroll carousel animations */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right linear infinite;
+}
+
+/* Pause animation on hover for better UX */
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
 }
