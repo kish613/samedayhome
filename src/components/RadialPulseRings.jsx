@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const RadialPulseRings = () => {
+const RadialPulseRings = ({ variant = 'default' }) => {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isLowEndDevice, setIsLowEndDevice] = useState(false);
 
@@ -23,24 +23,34 @@ const RadialPulseRings = () => {
   }, []);
 
   // Reduce rings for performance
-  const rings = isLowEndDevice ? 
-    [{ delay: 0, duration: 4 }, { delay: 2, duration: 4 }] :
-    [{ delay: 0, duration: 4 }, { delay: 1, duration: 4 }, { delay: 2, duration: 4 }];
+  const rings = isLowEndDevice
+    ? [{ delay: 0, duration: 4 }, { delay: 2, duration: 4 }]
+    : [{ delay: 0, duration: 4 }, { delay: 1, duration: 4 }, { delay: 2, duration: 4 }];
+
+  const baseGradientStyle = variant === 'subtle'
+    ? {
+        background: 'linear-gradient(135deg, rgba(236, 244, 254, 0.18) 0%, rgba(239, 242, 245, 0.16) 52%, rgba(248, 249, 250, 0.2) 100%)',
+        mixBlendMode: 'lighten',
+        opacity: 0.08
+      }
+    : {
+        background: 'linear-gradient(to bottom right, #eff6ff 0%, #f9fafb 50%, #eef2ff 100%)'
+      };
 
   if (reducedMotion) {
     // Static background for accessibility
     return (
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-gray-50 to-indigo-50" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: -1 }}>
+        <div className="absolute inset-0" style={baseGradientStyle} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-radial from-blue-200/20 to-transparent" />
       </div>
     );
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: -1 }}>
       {/* Base gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-gray-50 to-indigo-50" />
+      <div className="absolute inset-0" style={baseGradientStyle} />
       
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -180,3 +190,4 @@ const RadialPulseRings = () => {
 };
 
 export default RadialPulseRings;
+

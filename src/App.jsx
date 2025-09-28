@@ -23,6 +23,7 @@ import SubtleBackgroundEnhancer from './components/SubtleBackgroundEnhancer.jsx'
 import SubtleGeometricPattern from './components/SubtleGeometricPattern.jsx';
 import TextureOverlay from './components/TextureOverlay.jsx';
 import MinimalPatternOverlay from './components/MinimalPatternOverlay.jsx';
+import ExpandablePhotoShowcase from './components/ExpandablePhotoShowcase.jsx';
 
 // Import mobile components
 import MobileHero from './components/mobile/MobileHero.jsx';
@@ -331,9 +332,9 @@ function HomePage() {
       )}
 
       {/* Property Showcase Section */}
-      <section className="bg-gray-50 py-12 relative">
+      <section className="property-showcase-section py-12 relative">
         {/* Radial Pulse Rings Background */}
-        <RadialPulseRings />
+        <RadialPulseRings variant="subtle" />
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -352,45 +353,56 @@ function HomePage() {
             </p>
           </motion.div>
 
-          <motion.div
+                    <motion.div
+            className="properties-showcase-shell"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="relative bg-white/60 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden">
-              <img
-                src="/GlassGrid.svg"
-                alt="Animated grid of recently purchased properties"
-                className="w-full h-auto"
-                loading="lazy"
-              />
-              <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/40"></div>
+            <div className="properties-showcase-ribbons" role="presentation">
+              <span className="properties-showcase-ribbon properties-showcase-ribbon--primary">Just Sold</span>
+              <span className="properties-showcase-ribbon properties-showcase-ribbon--accent">Completed in 5 Days</span>
+            </div>
+
+            <div className="properties-showcase-stats">
+              <div className="properties-stat-card">
+                <span className="properties-stat-value">200+ Properties</span>
+                <span className="properties-stat-copy">Bought nationwide</span>
+              </div>
+              <div className="properties-stat-card">
+                <span className="properties-stat-value">Average completion</span>
+                <span className="properties-stat-copy">7 days from offer</span>
+              </div>
+              <div className="properties-stat-card">
+                <span className="properties-stat-value">4.9/5 Satisfaction</span>
+                <span className="properties-stat-copy">Rated by home sellers</span>
+              </div>
+              <div className="properties-stat-card">
+                <span className="properties-stat-value">24hr Cash Offers</span>
+                <span className="properties-stat-copy">Guaranteed decision</span>
+              </div>
+            </div>
+
+            <ExpandablePhotoShowcase />
+
+            <div className="properties-showcase-cta">
+              <div className="properties-showcase-cta-copy">
+                Want yours here? Get a free cash offer today.
+              </div>
+              <div className="properties-showcase-cta-actions">
+                <Link to="/propertysubmitted" className="properties-showcase-cta-button properties-showcase-cta-button--primary">
+                  Get a Free Cash Offer
+                </Link>
+                <button type="button" className="properties-showcase-cta-button properties-showcase-cta-button--secondary">
+                  See More Success Stories
+                </button>
+              </div>
             </div>
           </motion.div>
 
-          {/* Call-to-Action Button */}
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/propertysubmitted">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  Get a Free Cash Offer
-                </button>
-              </Link>
-              <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300">
-                See More Success Stories
-              </button>
-            </div>
-            <p className="text-gray-600 mt-4 text-sm">
-              Join hundreds of satisfied homeowners who sold their properties quickly and hassle-free
-            </p>
-          </motion.div>        </div>      </section>
+        </div>
+      </section>
 
       {/* Enhanced Benefits Section */}
       <section id="why-us" className="py-20 bg-white relative overflow-hidden">
@@ -958,3 +970,6 @@ function App() {
 }
 
 export default App
+
+
+
