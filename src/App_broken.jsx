@@ -4,13 +4,12 @@ import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
-import { Phone, Mail, CheckCircle, Star, ArrowRight, Users, TrendingUp, FileText, Calendar, MapPin, ChevronDown, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import ProcessChart from './components/ProcessChart.jsx'
 import PropertyDetailsForm from './components/PropertyDetailsForm.jsx'
 import ValuationPage from './components/ValuationPage.jsx'
 import DataVisualizationBackground from './components/DataVisualizationBackground.jsx'
-import RadialPulseRings from './components/RadialPulseRings.jsx'
+import ScrollBasedSilhouettes from './components/ScrollBasedSilhouettes.jsx'
 import AnimatedLogo from './components/AnimatedLogo.jsx'
 import Layout from './components/Layout.jsx';
 import AnimatedGrid from './components/AnimatedGrid.jsx';
@@ -24,6 +23,7 @@ import SubtleGeometricPattern from './components/SubtleGeometricPattern.jsx';
 import TextureOverlay from './components/TextureOverlay.jsx';
 import MinimalPatternOverlay from './components/MinimalPatternOverlay.jsx';
 import ExpandablePhotoShowcase from './components/ExpandablePhotoShowcase.jsx';
+import HomePage from './components/HomePage.jsx';
 
 // Import mobile components
 import MobileHero from './components/mobile/MobileHero.jsx';
@@ -105,29 +105,9 @@ const housesIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v175076181
 const moneyMountainIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/money_mount_no_bg_icon_hlcte7.png'
 const clockIcon = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1750761812/2_hour_clock_no_bg_fzxyai.png'
 
-function HomePage() {
-  const [address, setAddress] = useState('')
-  const [isVisible, setIsVisible] = useState(false)
-  const [activeTab, setActiveTab] = useState(0)
-  const [showForm, setShowForm] = useState(false)
-  const [submittedPostcode, setSubmittedPostcode] = useState('')
-  const [isMobile, setIsMobile] = useState(false)
-  const navigate = useNavigate()
+// HomePage component moved to separate file
 
-  useEffect(() => {
-    setIsVisible(true)
-    
-    // Check if mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  const handleSubmit = (e) => {
+const PageLoader = () => (
     e.preventDefault()
     if (!address.trim()) return
     
@@ -333,8 +313,8 @@ function HomePage() {
 
       {/* Property Showcase Section */}
       <section className="property-showcase-section py-12 relative">
-        {/* Radial Pulse Rings Background */}
-        <RadialPulseRings variant="subtle" />
+        {/* Scroll-based Silhouettes Background */}
+        <ScrollBasedSilhouettes />
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
