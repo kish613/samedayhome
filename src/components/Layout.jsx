@@ -6,6 +6,7 @@ import AnimatedLogo from './AnimatedLogo.jsx';
 import { motion } from 'framer-motion';
 import MobileMenu from './mobile/MobileMenu.jsx';
 import BottomNav from './mobile/BottomNav.jsx';
+import SupportChatbot from './SupportChatbot.jsx';
 
 const logoImg = 'https://res.cloudinary.com/dmns9ystn/image/upload/v1751291817/260by80_lgo_sameday_uibnpv.png';
 
@@ -249,6 +250,7 @@ const Layout = ({ children }) => {
       <main className="flex-grow pb-16 xl:pb-0">{children}</main>
       <Footer />
       <BottomNav />
+      <SupportChatbot />
     </div>
   );
 };
