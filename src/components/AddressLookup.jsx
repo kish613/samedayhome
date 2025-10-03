@@ -98,7 +98,7 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
       )}
 
       {/* Address List - Simple clickable list */}
-      {addresses.length > 0 && (
+      {addresses.length > 0 && !selectedAddress && (
         <div className="space-y-2">
           <Label className="text-slate-800 font-semibold text-base">
             Select Your Address * ({addresses.length} found)
@@ -109,9 +109,7 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
                 key={address.id || index}
                 type="button"
                 onClick={() => handleAddressSelect(address)}
-                className={`w-full text-left p-3 hover:bg-blue-50 border-b border-slate-200 last:border-b-0 transition-colors ${
-                  selectedAddress?.id === address.id ? 'bg-blue-100 border-blue-300' : ''
-                }`}
+                className="w-full text-left p-3 hover:bg-blue-50 border-b border-slate-200 last:border-b-0 transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
@@ -122,9 +120,6 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
                       {address.postTown}, {address.postcode}
                     </div>
                   </div>
-                  {selectedAddress?.id === address.id && (
-                    <CheckCircle className="h-5 w-5 text-green-600 ml-3 flex-shrink-0" />
-                  )}
                 </div>
               </button>
             ))}
@@ -136,10 +131,17 @@ function AddressLookup({ postcode, onAddressChange, doorNumber, onDoorNumberChan
       {selectedAddress && (
         <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
           <div className="flex items-start space-x-3">
-            <MapPin className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+            <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
             <div className="flex-1">
               <div className="font-medium text-green-900 mb-1">Selected Address:</div>
               <div className="text-green-800">{selectedAddress.fullAddress}</div>
+              <button
+                type="button"
+                onClick={() => setSelectedAddress(null)}
+                className="mt-3 text-sm text-blue-600 hover:text-blue-800 underline font-medium transition-colors"
+              >
+                Change address
+              </button>
             </div>
           </div>
         </div>
